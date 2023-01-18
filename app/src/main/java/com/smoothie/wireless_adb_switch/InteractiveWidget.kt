@@ -9,8 +9,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.RemoteViews
+import kotlinx.coroutines.runBlocking
 
-class InteractiveWidget(private val adb: WirelessADB = WirelessADB()) : AppWidgetProvider() {
+class InteractiveWidget : AppWidgetProvider() {
 
     companion object {
         private val INTENT_EXTRA_NAME = "WIDGET_UPDATE_INTENT"
@@ -41,29 +42,32 @@ class InteractiveWidget(private val adb: WirelessADB = WirelessADB()) : AppWidge
             updateWidget(context, appWidgetManager, widgetId)
     }
 
-     override fun onReceive(context: Context?, intent: Intent?) {
-        if (context != null && intent != null && intent.getBooleanExtra(INTENT_EXTRA_NAME, false)) {
-            Log.d("", "Button clicked!")
+    override fun onReceive(context: Context?, intent: Intent?) {
+        val noAction =
+             context == null ||
+             intent == null ||
+             !intent.getBooleanExtra(INTENT_EXTRA_NAME, false)
 
-            Thread {
-                val status = !adb.enabled
-                adb.enabled = status
-
-                val manager = AppWidgetManager.getInstance(context)
-                val componentName =
-                    ComponentName(context.applicationContext, InteractiveWidget::class.java)
-                val ids = manager.getAppWidgetIds(componentName)
-                manager.updateAppWidget(ids, generateRemoteViews(context, if (status) SwitchState.Enabled else SwitchState.Disabled))
-            }.start()
-
-            val manager = AppWidgetManager.getInstance(context)
-            val componentName =
-                ComponentName(context.applicationContext, InteractiveWidget::class.java)
-            val ids = manager.getAppWidgetIds(componentName)
-            manager.updateAppWidget(ids, generateRemoteViews(context, SwitchState.Waiting))
+        if (noAction) {
+            super.onReceive(context, intent)
+            return
         }
 
-         super.onReceive(context, intent)
+        updateAllWidgets(context!!, SwitchState.Waiting)
+
+        Thread {
+            val status = !WirelessADB.enabled
+            updateAllWidgets(context, if (status) SwitchState.Enabled else SwitchState.Disabled)
+            WirelessADB.enabled = status
+        }.start()
+    }
+
+    private fun updateAllWidgets(context: Context, status: SwitchState) {
+        val manager = AppWidgetManager.getInstance(context)
+        val componentName =
+            ComponentName(context.applicationContext, InteractiveWidget::class.java)
+        val ids = manager.getAppWidgetIds(componentName)
+        manager.updateAppWidget(ids, generateRemoteViews(context, status))
     }
 
     private fun generateRemoteViews(context: Context, status: SwitchState): RemoteViews {
@@ -101,8 +105,8 @@ class InteractiveWidget(private val adb: WirelessADB = WirelessADB()) : AppWidge
         if (context == null || appWidgetManager == null)
             return
 
-        val status = adb.enabled
-        appWidgetManager.updateAppWidget(appWidgetId, generateRemoteViews(context, if (adb.enabled) SwitchState.Enabled else SwitchState.Disabled ))
+        val status = if (WirelessADB.enabled) SwitchState.Enabled else SwitchState.Disabled
+        appWidgetManager.updateAppWidget(appWidgetId, generateRemoteViews(context, status))
     }
 
 }
