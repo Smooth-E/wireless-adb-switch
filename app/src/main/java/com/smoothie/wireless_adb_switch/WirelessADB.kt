@@ -3,7 +3,6 @@ package com.smoothie.wireless_adb_switch
 import android.content.Context
 import android.net.wifi.WifiManager
 import android.text.format.Formatter
-import android.util.Log
 
 class WirelessADB : SuperShell() {
 

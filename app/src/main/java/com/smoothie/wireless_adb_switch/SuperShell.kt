@@ -25,9 +25,19 @@ open class SuperShell {
     protected fun execute(command: String): String {
         outputStream.writeBytes(command + "\n")
         outputStream.flush()
-        val result = inputStream.readLine()
-        Log.d("SuperShell", "Got command: $command\nResult: $result")
+        var result = ""
+        while (result.isEmpty()) {
+            result = inputStream.readLine()
+            Log.d("result", result)
+        }
+        // Log.d("SuperShell", "\nGot command: $command\nResult: $result")
         return result
+    }
+
+    fun destroy() {
+        Log.d("P", "Process destroyed! 11")
+        process.destroy()
+        Log.d("P", "Process destroyed! 22")
     }
 
 }
