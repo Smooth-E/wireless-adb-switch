@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Wireless ADB Switch</string>
+    <string name="widget_name">Basic switch</string>
+    <string name="widget_description">This widget provides a switch to enable wireless Android Debugging.</string>
+</resources>
