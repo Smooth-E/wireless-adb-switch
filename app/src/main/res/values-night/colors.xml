@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/md_theme_dark_primary</color>
+    <color name="colorOnPrimary">@color/md_theme_dark_onPrimary</color>
+    <color name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</color>
+    <color name="colorOnPrimaryContainer">@color/md_theme_dark_onPrimaryContainer</color>
+    <color name="colorSecondary">@color/md_theme_dark_secondary</color>
+    <color name="colorOnSecondary">@color/md_theme_dark_onSecondary</color>
+    <color name="colorSecondaryContainer">@color/md_theme_dark_secondaryContainer</color>
+    <color name="colorOnSecondaryContainer">@color/md_theme_dark_onSecondaryContainer</color>
+    <color name="colorTertiary">@color/md_theme_dark_tertiary</color>
+    <color name="colorOnTertiary">@color/md_theme_dark_onTertiary</color>
+    <color name="colorTertiaryContainer">@color/md_theme_dark_tertiaryContainer</color>
+    <color name="colorOnTertiaryContainer">@color/md_theme_dark_onTertiaryContainer</color>
+    <color name="colorError">@color/md_theme_dark_error</color>
+    <color name="colorErrorContainer">@color/md_theme_dark_errorContainer</color>
+    <color name="colorOnError">@color/md_theme_dark_onError</color>
+    <color name="colorOnErrorContainer">@color/md_theme_dark_onErrorContainer</color>
+    <color name="colorBackground">@color/md_theme_dark_background</color>
+    <color name="colorOnBackground">@color/md_theme_dark_onBackground</color>
+    <color name="colorSurface">@color/md_theme_dark_surface</color>
+    <color name="colorOnSurface">@color/md_theme_dark_onSurface</color>
+    <color name="colorSurfaceVariant">@color/md_theme_dark_surfaceVariant</color>
+    <color name="colorOnSurfaceVariant">@color/md_theme_dark_onSurfaceVariant</color>
+    <color name="colorOutline">@color/md_theme_dark_outline</color>
+    <color name="colorOnSurfaceInverse">@color/md_theme_dark_inverseOnSurface</color>
+    <color name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</color>
+    <color name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</color>
+
+
+</resources>

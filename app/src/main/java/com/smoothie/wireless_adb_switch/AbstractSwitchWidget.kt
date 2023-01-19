@@ -44,6 +44,8 @@ abstract class AbstractSwitchWidget : AppWidgetProvider() {
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
+        PRESENT_WIDGETS.add(this)
+
         val noAction =
              context == null ||
              intent == null ||
@@ -90,8 +92,6 @@ abstract class AbstractSwitchWidget : AppWidgetProvider() {
     ) {
         if (context == null || appWidgetManager == null)
             return
-
-        PRESENT_WIDGETS.add(getWidget())
 
         val status = if (WirelessADB.enabled) SwitchState.Enabled else SwitchState.Disabled
         appWidgetManager.updateAppWidget(appWidgetId, generateRemoteViews(context, status))
