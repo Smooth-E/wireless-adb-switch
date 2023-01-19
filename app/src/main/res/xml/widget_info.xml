@@ -3,8 +3,6 @@
     android:minHeight="40dp"
     android:targetCellWidth="1"
     android:targetCellHeight="1"
-    android:maxResizeWidth="250dp"
-    android:maxResizeHeight="120dp"
     android:updatePeriodMillis="86400000"
     android:description="@string/widget_description"
     android:previewLayout="@layout/widget_base"

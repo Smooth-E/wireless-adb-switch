@@ -12,33 +12,30 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Wirelessadbswitch"
+        android:theme="@style/Theme.WirelessDebuggingSwitch"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
+            <meta-data android:name="android.app.lib_name" android:value="" />
         </activity>
 
-        <receiver
-            android:name=".InteractiveWidget"
-            android:exported="false">
+        <receiver android:name=".BasicSwitchWidget" android:exported="false">
+
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget" />
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info" />
         </receiver>
+
     </application>
 
 </manifest>
