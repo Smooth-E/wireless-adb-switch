@@ -1,4 +1,4 @@
-package com.smoothie.wireless_adb_switch
+package com.smoothie.wirelessDebuggingSwitch
 
 import android.content.Context
 import android.net.wifi.WifiManager

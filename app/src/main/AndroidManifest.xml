@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".CustomApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -20,11 +21,15 @@
             android:exported="true">
 
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
 
             <meta-data android:name="android.app.lib_name" android:value="" />
+
         </activity>
 
         <receiver android:name=".BasicSwitchWidget" android:exported="false">
@@ -33,7 +38,13 @@
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info" />
+            <intent-filter>
+                <action android:name="com.smoothie.wirelessDebuggingSwitch.UPDATE_WIDGETS" />
+            </intent-filter>
+
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+
         </receiver>
 
     </application>

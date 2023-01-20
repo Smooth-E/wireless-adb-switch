@@ -1,12 +1,9 @@
-package com.smoothie.wireless_adb_switch
+package com.smoothie.wirelessDebuggingSwitch
 
 import android.content.Context
 import android.widget.RemoteViews
 
 class BasicSwitchWidget : AbstractSwitchWidget() {
-
-
-    override fun getWidget(): AbstractSwitchWidget = this
 
     override fun generateRemoteViews(context: Context, status: SwitchState): RemoteViews {
         val remoteViews = RemoteViews(context.packageName, R.layout.widget_switch_small)

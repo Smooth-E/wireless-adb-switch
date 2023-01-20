@@ -1,4 +1,4 @@
-package com.smoothie.wireless_adb_switch
+package com.smoothie.wirelessDebuggingSwitch
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -7,21 +7,37 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.RemoteViews
 
 abstract class AbstractSwitchWidget : AppWidgetProvider() {
-
-    companion object {
-        @JvmStatic
-        protected val INTENT_EXTRA_NAME = "WIDGET_UPDATE_INTENT"
-        @JvmStatic
-        private val PRESENT_WIDGETS = HashSet<AbstractSwitchWidget>()
-    }
 
     protected enum class SwitchState {
         Disabled,
         Waiting,
         Enabled
+    }
+
+    companion object {
+
+        @JvmStatic
+        val INTENT_EXTRA_FLAG_NAME =
+            "com.smoothie.wirelessDebuggingSwitch.intent.FLAG_UPDATE_WIDGETS"
+
+        private val WIDGET_CLASS_NAMES = arrayListOf<String>(
+            BasicSwitchWidget::class.java.name
+        )
+
+        fun getAllWidgetIds(context: Context): IntArray {
+            val manager = AppWidgetManager.getInstance(context)
+            val ids = ArrayList<Int>()
+            WIDGET_CLASS_NAMES.forEach {
+                val componentName = ComponentName(context.applicationContext, it)
+                ids.addAll(manager.getAppWidgetIds(componentName).toList())
+            }
+            return ids.toIntArray()
+        }
+
     }
 
     override fun onAppWidgetOptionsChanged(
@@ -36,22 +52,17 @@ abstract class AbstractSwitchWidget : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager?,
         appWidgetIds: IntArray?
     ) {
+        Log.d("onUpdate", "${context == null} ${appWidgetIds == null} ${appWidgetManager == null}")
         if (appWidgetIds == null || context == null || appWidgetManager == null)
             return
 
-        for (widgetId in appWidgetIds)
-            updateWidget(context, appWidgetManager, widgetId)
+        appWidgetIds.forEach {
+            updateWidget(context, appWidgetManager, it)
+        }
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        PRESENT_WIDGETS.add(this)
-
-        val noAction =
-             context == null ||
-             intent == null ||
-             !intent.getBooleanExtra(INTENT_EXTRA_NAME, false)
-
-        if (noAction) {
+        if (intent?.hasExtra(INTENT_EXTRA_FLAG_NAME) == false) {
             super.onReceive(context, intent)
             return
         }
@@ -63,19 +74,6 @@ abstract class AbstractSwitchWidget : AppWidgetProvider() {
             updateAllWidgets(context, if (status) SwitchState.Enabled else SwitchState.Disabled)
             WirelessADB.enabled = status
         }.start()
-    }
-
-    protected abstract fun getWidget(): AbstractSwitchWidget
-
-    private fun getAllWidgetIds(context: Context): IntArray {
-        val manager = AppWidgetManager.getInstance(context)
-        val ids = ArrayList<Int>()
-        for (widget in PRESENT_WIDGETS) {
-            val componentName =
-                ComponentName(context.applicationContext, widget::class.java)
-            ids.addAll(manager.getAppWidgetIds(componentName).toList())
-        }
-        return ids.toIntArray()
     }
 
     private fun updateAllWidgets(context: Context, status: SwitchState) {
@@ -98,10 +96,10 @@ abstract class AbstractSwitchWidget : AppWidgetProvider() {
     }
 
     protected fun getPendingUpdateIntent(context: Context): PendingIntent {
-        val intent = Intent()
+        val intent = Intent(context, BasicSwitchWidget::class.java)
         intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, getAllWidgetIds(context))
-        intent.putExtra(INTENT_EXTRA_NAME, true)
+        intent.putExtra(INTENT_EXTRA_FLAG_NAME, true)
 
         val flag = PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         return PendingIntent.getBroadcast(context, 0, intent, flag)
