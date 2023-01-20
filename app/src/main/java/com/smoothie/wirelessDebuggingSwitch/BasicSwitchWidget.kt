@@ -3,7 +3,7 @@ package com.smoothie.wirelessDebuggingSwitch
 import android.content.Context
 import android.widget.RemoteViews
 
-class BasicSwitchWidget : AbstractSwitchWidget() {
+class BasicSwitchWidget : SwitchWidget() {
 
     override fun generateRemoteViews(context: Context, status: SwitchState): RemoteViews {
         val remoteViews = RemoteViews(context.packageName, R.layout.widget_switch_small)

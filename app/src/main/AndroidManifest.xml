@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
         android:name=".CustomApplication"
@@ -21,24 +22,29 @@
             android:exported="true">
 
             <intent-filter>
-
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
 
             <meta-data android:name="android.app.lib_name" android:value="" />
 
         </activity>
 
+        <receiver android:name=".WidgetUpdater" android:exported="false">
+
+            <intent-filter>
+                <action
+                    android:name="com.smoothie.wirelessDebuggingSwitch.intent.WIDGET_UPDATE_TICK" />
+            </intent-filter>
+
+        </receiver>
+
         <receiver android:name=".BasicSwitchWidget" android:exported="false">
 
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <intent-filter>
+                <action android:name="android.appwidget.action.ENABLED" />
+                <action android:name="android.appwidget.action.DISABLED" />
                 <action android:name="com.smoothie.wirelessDebuggingSwitch.UPDATE_WIDGETS" />
             </intent-filter>
 

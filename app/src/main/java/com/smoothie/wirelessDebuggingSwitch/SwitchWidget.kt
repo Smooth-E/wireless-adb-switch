@@ -10,7 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.RemoteViews
 
-abstract class AbstractSwitchWidget : AppWidgetProvider() {
+abstract class SwitchWidget : AppWidgetProvider() {
 
     protected enum class SwitchState {
         Disabled,
@@ -20,8 +20,9 @@ abstract class AbstractSwitchWidget : AppWidgetProvider() {
 
     companion object {
 
-        @JvmStatic
-        val INTENT_EXTRA_FLAG_NAME =
+        const val INTENT_FLAG_SWITCH_STATE =
+            "com.smoothie.wirelessDebuggingSwitch.intent.FLAG_SWITCH_STATE"
+        const val INTENT_FLAG_UPDATE =
             "com.smoothie.wirelessDebuggingSwitch.intent.FLAG_UPDATE_WIDGETS"
 
         private val WIDGET_CLASS_NAMES = arrayListOf<String>(
@@ -36,6 +37,25 @@ abstract class AbstractSwitchWidget : AppWidgetProvider() {
                 ids.addAll(manager.getAppWidgetIds(componentName).toList())
             }
             return ids.toIntArray()
+        }
+
+        private fun createBasicIntent(context: Context): Intent {
+            val intent = Intent()
+            intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, getAllWidgetIds(context))
+            return intent
+        }
+
+        private fun createStateSwitchIntent(context: Context): Intent {
+            val intent = createBasicIntent(context)
+            intent.putExtra(INTENT_FLAG_SWITCH_STATE, true)
+            return intent
+        }
+
+        fun createUpdateIntent(context: Context): Intent {
+            val intent = createBasicIntent(context)
+            intent.putExtra(INTENT_FLAG_UPDATE, true)
+            return intent
         }
 
     }
@@ -62,18 +82,37 @@ abstract class AbstractSwitchWidget : AppWidgetProvider() {
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        if (intent?.hasExtra(INTENT_EXTRA_FLAG_NAME) == false) {
+        if (intent?.hasExtra(INTENT_FLAG_SWITCH_STATE) == true) {
+            updateAllWidgets(context!!, SwitchState.Waiting)
+
+            Thread {
+                val status = !WirelessADB.enabled
+                updateAllWidgets(context, if (status) SwitchState.Enabled else SwitchState.Disabled)
+                WirelessADB.enabled = status
+            }.start()
+        }
+        else if (intent?.hasExtra(INTENT_FLAG_UPDATE) == true) {
+            Thread {
+                val status = if (WirelessADB.enabled) SwitchState.Enabled else SwitchState.Disabled
+                updateAllWidgets(context!!, status)
+            }.start()
+        }
+        else {
             super.onReceive(context, intent)
             return
         }
+    }
 
-        updateAllWidgets(context!!, SwitchState.Waiting)
+    override fun onEnabled(context: Context?) {
+        super.onEnabled(context)
+        if (context != null)
+            WidgetUpdater.enable(context)
+    }
 
-        Thread {
-            val status = !WirelessADB.enabled
-            updateAllWidgets(context, if (status) SwitchState.Enabled else SwitchState.Disabled)
-            WirelessADB.enabled = status
-        }.start()
+    override fun onDisabled(context: Context?) {
+        super.onDisabled(context)
+        if (context != null)
+            WidgetUpdater.disable(context)
     }
 
     private fun updateAllWidgets(context: Context, status: SwitchState) {
@@ -96,13 +135,8 @@ abstract class AbstractSwitchWidget : AppWidgetProvider() {
     }
 
     protected fun getPendingUpdateIntent(context: Context): PendingIntent {
-        val intent = Intent(context, BasicSwitchWidget::class.java)
-        intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, getAllWidgetIds(context))
-        intent.putExtra(INTENT_EXTRA_FLAG_NAME, true)
-
         val flag = PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-        return PendingIntent.getBroadcast(context, 0, intent, flag)
+        return PendingIntent.getBroadcast(context, 0, createStateSwitchIntent(context), flag)
     }
 
 }
