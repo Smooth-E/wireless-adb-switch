@@ -20,37 +20,36 @@
         <activity
             android:name=".PreferenceActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
 
+        <activity android:name=".BasicWidgetConfigurationActivity" android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
         </activity>
 
         <receiver android:name=".receiver.WidgetUpdater" android:exported="false">
-
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action
                     android:name="com.smoothie.wirelessDebuggingSwitch.intent.WIDGET_UPDATE_TICK" />
             </intent-filter>
-
         </receiver>
 
         <receiver android:name=".receiver.BasicSwitchWidget" android:exported="false">
-
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.appwidget.action.ENABLED" />
                 <action android:name="android.appwidget.action.DISABLED" />
                 <action android:name="com.smoothie.wirelessDebuggingSwitch.UPDATE_WIDGETS" />
             </intent-filter>
-
             <meta-data android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
-
         </receiver>
 
     </application>

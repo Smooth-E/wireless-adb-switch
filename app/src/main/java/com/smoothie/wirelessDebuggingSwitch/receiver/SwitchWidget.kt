@@ -10,6 +10,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.RemoteViews
+import com.smoothie.wirelessDebuggingSwitch.Utilities
 import com.smoothie.wirelessDebuggingSwitch.WirelessADB
 
 abstract class SwitchWidget : AppWidgetProvider() {
@@ -26,7 +27,6 @@ abstract class SwitchWidget : AppWidgetProvider() {
             "com.smoothie.wirelessDebuggingSwitch.intent.FLAG_SWITCH_STATE"
         const val INTENT_FLAG_UPDATE =
             "com.smoothie.wirelessDebuggingSwitch.intent.FLAG_UPDATE_WIDGETS"
-        const val SHARED_PREFERENCES_NAME_PREFIX = "widget_shared_preferences_"
 
         private const val TAG = "SwitchWidget"
 
@@ -128,19 +128,16 @@ abstract class SwitchWidget : AppWidgetProvider() {
 
         val applicationContext = context.applicationContext
         appWidgetIds.forEach { id ->
-            applicationContext.deleteSharedPreferences(getSharedPreferencesName(id))
+            applicationContext.deleteSharedPreferences(Utilities.getWidgetSharedPreferencesName(id))
             Log.d(TAG, "Deleted widget with id $id")
         }
     }
-
-    private fun getSharedPreferencesName(widgetId: Int): String =
-        "$SHARED_PREFERENCES_NAME_PREFIX$widgetId"
 
     private fun updateWidgets(context: Context, widgetIds: IntArray, state: SwitchState) {
         val manager = AppWidgetManager.getInstance(context)
         val applicationContext = context.applicationContext
         widgetIds.forEach { id ->
-            val preferenceName = getSharedPreferencesName(id)
+            val preferenceName = Utilities.getWidgetSharedPreferencesName(id)
             val preferences =
                 applicationContext.getSharedPreferences(preferenceName, Context.MODE_PRIVATE)
             manager.updateAppWidget(id, generateRemoteViews(context, preferences, state))

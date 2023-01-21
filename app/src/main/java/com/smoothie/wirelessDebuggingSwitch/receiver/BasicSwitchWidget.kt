@@ -13,7 +13,6 @@ class BasicSwitchWidget : SwitchWidget() {
         state: SwitchState
     ): RemoteViews {
         val remoteViews = RemoteViews(context.packageName, R.layout.widget_switch_small)
-
         remoteViews.setOnClickPendingIntent(R.id.clickable, getPendingUpdateIntent(context))
 
         val iconResource =

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SeekBarPreference
+        android:key="@string/key_background_transparency"
+        app:layout="@layout/preference_seekbar"
+        android:icon="@drawable/ic_round_gradient_24"
+        app:title="@string/preference_name_background_transparency"
+        android:summary="@string/preference_description_background_transparency"
+        app:min="0"
+        android:max="100"/>
+
+    <SwitchPreferenceCompat
+        android:key="@string/key_use_colorful_background"
+        android:layout="@layout/preference_base"
+        android:widgetLayout="@layout/preference_switch_compat"
+        app:title="@string/preference_name_container_color"
+        android:summary="@string/preference_description_container_color"
+        android:icon="@drawable/ic_round_invert_colors_24"/>
+
+</PreferenceScreen>

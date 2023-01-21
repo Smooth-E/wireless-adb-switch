@@ -16,7 +16,6 @@
         android:layout_gravity="center"
         app:tint="@color/colorSecondary"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:minWidth="24dp"
         android:minHeight="24dp"
@@ -58,8 +57,7 @@
             android:clipChildren="false"
             android:clipToPadding="false">
 
-            <SeekBar
-                android:background="@null"
+            <androidx.appcompat.widget.AppCompatSeekBar
                 android:id="@+id/seekbar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -68,7 +66,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/seekbar_value" />
+                app:layout_constraintEnd_toStartOf="@id/seekbar_value"
+                android:paddingVertical="10dp"/>
 
             <TextView
                 android:text="10"

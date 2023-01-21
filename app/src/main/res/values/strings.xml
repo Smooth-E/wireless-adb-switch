@@ -2,9 +2,12 @@
 
     <string name="app_name">Wireless ADB Switch</string>
 
-    <string name="widget_name">Basic switch</string>
     <string name="header_wireless_debugging">Wireless\nDebugging</string>
-    <string name="widget_description">This widget provides a switch to enable wireless Android Debugging.</string>
+
+    <string name="widget_name">Basic switch</string>
+    <string name="widget_description">
+        This widget provides a switch to enable wireless Android Debugging.
+    </string>
 
     <string name="state_enabled">Enabled</string>
     <string name="state_waiting">Waiting</string>
@@ -13,6 +16,21 @@
     <string name="header_settings">Settings</string>
 
     <string name="preference_name_update_interval">Widget update interval</string>
-    <string name="preference_description_update_interval">Specify how often widgets should update</string>
+    <string name="preference_description_update_interval">
+        Specify how often widgets should update.
+    </string>
+
+    <string name="header_configure_widget">Configure widget</string>
+
+    <string name="preference_name_background_transparency">Background transparency</string>
+    <string name="preference_description_background_transparency">
+        Specify how transparent this widget should be.
+    </string>
+
+    <string name="preference_name_container_color">Use colorful background</string>
+    <string name="preference_description_container_color">
+        Choose whether to use surface or container color for widget background.
+        Transparency is applied independently.
+    </string>
 
 </resources>

@@ -1,12 +1,12 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="40dp"
+    android:minWidth="80dp"
     android:minHeight="40dp"
-    android:targetCellWidth="1"
-    android:targetCellHeight="1"
     android:updatePeriodMillis="1000"
     android:description="@string/widget_description"
     android:previewLayout="@layout/widget_switch_small"
     android:initialLayout="@layout/widget_switch_small"
     android:resizeMode="horizontal|vertical"
-    android:widgetCategory="home_screen">
+    android:widgetCategory="home_screen"
+    android:configure="com.smoothie.wirelessDebuggingSwitch.BasicWidgetConfigurationActivity"
+    android:widgetFeatures="configuration_optional|reconfigurable">
 </appwidget-provider>

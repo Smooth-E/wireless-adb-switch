@@ -19,7 +19,8 @@
             style="@style/Widget.Material3.CollapsingToolbar.Large"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:maxLines="1"
-            app:toolbarId="@id/toolbar">
+            app:toolbarId="@id/toolbar"
+            android:paddingBottom="10dp">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
@@ -42,7 +43,7 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <FrameLayout
-            android:id="@+id/preference_fragment"
+            android:id="@+id/fragment_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
