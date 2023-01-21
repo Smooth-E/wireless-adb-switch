@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
-        android:name=".CustomApplication"
+        android:name=".Application"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -28,13 +28,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".BasicWidgetConfigurationActivity" android:exported="false">
+        <activity android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.ConfigurationActivity" android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
 
-        <receiver android:name=".receiver.WidgetUpdater" android:exported="false">
+        <receiver android:name=".core.WidgetUpdater" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action
@@ -42,7 +42,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".receiver.BasicSwitchWidget" android:exported="false">
+        <receiver android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.Widget" android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.appwidget.action.ENABLED" />

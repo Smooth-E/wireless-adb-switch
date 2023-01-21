@@ -1,4 +1,4 @@
-package com.smoothie.wirelessDebuggingSwitch.receiver
+package com.smoothie.wirelessDebuggingSwitch.core
 
 import android.app.AlarmManager
 import android.app.PendingIntent

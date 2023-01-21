@@ -4,9 +4,9 @@ import android.app.Application
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.util.Log
 import androidx.preference.PreferenceManager
-import com.smoothie.wirelessDebuggingSwitch.receiver.WidgetUpdater
+import com.smoothie.wirelessDebuggingSwitch.core.WidgetUpdater
 
-class CustomApplication : Application() {
+class Application : Application() {
 
     private lateinit var sharedPreferenceChangeListener: OnSharedPreferenceChangeListener
 

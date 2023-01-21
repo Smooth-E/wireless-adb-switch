@@ -7,6 +7,6 @@
     android:initialLayout="@layout/widget_switch_small"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen"
-    android:configure="com.smoothie.wirelessDebuggingSwitch.BasicWidgetConfigurationActivity"
+    android:configure="com.smoothie.wirelessDebuggingSwitch.widget.basic.ConfigurationActivity"
     android:widgetFeatures="configuration_optional|reconfigurable">
 </appwidget-provider>

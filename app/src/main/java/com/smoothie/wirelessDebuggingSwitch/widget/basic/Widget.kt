@@ -1,11 +1,12 @@
-package com.smoothie.wirelessDebuggingSwitch.receiver
+package com.smoothie.wirelessDebuggingSwitch.widget.basic
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.widget.RemoteViews
 import com.smoothie.wirelessDebuggingSwitch.R
+import com.smoothie.wirelessDebuggingSwitch.core.SwitchWidget
 
-class BasicSwitchWidget : SwitchWidget() {
+class Widget : SwitchWidget() {
 
     override fun generateRemoteViews(
         context: Context,

@@ -1,4 +1,4 @@
-package com.smoothie.wirelessDebuggingSwitch.receiver
+package com.smoothie.wirelessDebuggingSwitch.core
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -12,6 +12,7 @@ import android.util.Log
 import android.widget.RemoteViews
 import com.smoothie.wirelessDebuggingSwitch.Utilities
 import com.smoothie.wirelessDebuggingSwitch.WirelessADB
+import com.smoothie.wirelessDebuggingSwitch.widget.basic.Widget
 
 abstract class SwitchWidget : AppWidgetProvider() {
 
@@ -31,7 +32,7 @@ abstract class SwitchWidget : AppWidgetProvider() {
         private const val TAG = "SwitchWidget"
 
         private val WIDGET_CLASS_NAMES = arrayListOf<String>(
-            BasicSwitchWidget::class.java.name
+            Widget::class.java.name
         )
 
         fun getAllWidgetIds(context: Context): IntArray {

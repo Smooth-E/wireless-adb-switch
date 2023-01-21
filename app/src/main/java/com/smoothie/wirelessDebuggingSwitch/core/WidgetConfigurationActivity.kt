@@ -1,4 +1,4 @@
-package com.smoothie.wirelessDebuggingSwitch
+package com.smoothie.wirelessDebuggingSwitch.core
 
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.WallpaperManager
@@ -11,14 +11,20 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceFragmentCompat
 import com.google.android.material.imageview.ShapeableImageView
+import com.smoothie.wirelessDebuggingSwitch.R
+import com.smoothie.wirelessDebuggingSwitch.Utilities
 
 
-abstract class WidgetConfigurationActivity(preferenceScreen: Int) : CollapsingToolbarActivity(
+abstract class WidgetConfigurationActivity(
+    preferenceScreen: Int,
+    private val previewAspectRatio: Float
+) : CollapsingToolbarActivity(
     WidgetConfigurationFragment(preferenceScreen),
     R.string.header_configure_widget
 ) {
@@ -50,12 +56,40 @@ abstract class WidgetConfigurationActivity(preferenceScreen: Int) : CollapsingTo
     protected abstract fun generateWidget(preferences: SharedPreferences) : View
 
     class OnWidgetConfigurationChangeListener(
-        private val widgetConfigurationActivity: WidgetConfigurationActivity,
+        private val activity: WidgetConfigurationActivity,
         private val previewView: ViewGroup
     ) : OnSharedPreferenceChangeListener {
 
         companion object {
             private const val TAG = "OnWidgetConfigurationChangeListener"
+        }
+
+        private inner class GlobalLayoutListener(
+            private val sharedPreferences: SharedPreferences
+        ) : OnGlobalLayoutListener {
+
+            override fun onGlobalLayout() {
+                updatePreview(sharedPreferences, previewView)
+                previewView.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+
+        }
+
+        private fun updatePreview(sharedPreferences: SharedPreferences, previewView: ViewGroup) {
+
+            val previewHeight =
+                previewView.height - previewView.paddingBottom - previewView.paddingTop
+            val width = previewHeight / activity.previewAspectRatio
+            val height = previewHeight * activity.previewAspectRatio
+
+            val view = activity.generateWidget(sharedPreferences)
+            view.layoutParams = ViewGroup.LayoutParams(
+                Utilities.dp2px(activity, width),
+                Utilities.dp2px(activity, height)
+            )
+
+            previewView.removeAllViews()
+            previewView.addView(view)
         }
 
         override fun onSharedPreferenceChanged(
@@ -67,9 +101,12 @@ abstract class WidgetConfigurationActivity(preferenceScreen: Int) : CollapsingTo
                 return
             }
 
-            val view = widgetConfigurationActivity.generateWidget(sharedPreferences)
-            previewView.removeAllViews()
-            previewView.addView(view)
+            if (!previewView.isAttachedToWindow) {
+                previewView.viewTreeObserver
+                    .addOnGlobalLayoutListener(GlobalLayoutListener(sharedPreferences))
+            }
+            else
+                updatePreview(sharedPreferences, previewView)
         }
     }
 
@@ -96,6 +133,9 @@ abstract class WidgetConfigurationActivity(preferenceScreen: Int) : CollapsingTo
             }
 
             preferences.registerOnSharedPreferenceChangeListener(listener)
+
+            // This will generate widget preview on activity startup
+            listener.onSharedPreferenceChanged(preferences, rootKey)
         }
 
         override fun onDestroy() {

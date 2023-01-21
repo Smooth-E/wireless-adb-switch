@@ -1,4 +1,4 @@
-package com.smoothie.wirelessDebuggingSwitch
+package com.smoothie.wirelessDebuggingSwitch.core
 
 import android.graphics.Color
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.appbar.MaterialToolbar
+import com.smoothie.wirelessDebuggingSwitch.R
 
 open class CollapsingToolbarActivity(
     private val contentFragment: Fragment,
