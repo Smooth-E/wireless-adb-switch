@@ -1,7 +1,8 @@
-package com.smoothie.wirelessDebuggingSwitch
+package com.smoothie.wirelessDebuggingSwitch.receiver
 
 import android.content.Context
 import android.widget.RemoteViews
+import com.smoothie.wirelessDebuggingSwitch.R
 
 class BasicSwitchWidget : SwitchWidget() {
 

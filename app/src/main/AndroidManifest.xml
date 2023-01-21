@@ -30,7 +30,7 @@
 
         </activity>
 
-        <receiver android:name=".WidgetUpdater" android:exported="false">
+        <receiver android:name=".receiver.WidgetUpdater" android:exported="false">
 
             <intent-filter>
                 <action
@@ -39,7 +39,7 @@
 
         </receiver>
 
-        <receiver android:name=".BasicSwitchWidget" android:exported="false">
+        <receiver android:name=".receiver.BasicSwitchWidget" android:exported="false">
 
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

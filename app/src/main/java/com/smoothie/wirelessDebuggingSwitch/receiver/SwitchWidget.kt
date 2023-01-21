@@ -1,4 +1,4 @@
-package com.smoothie.wirelessDebuggingSwitch
+package com.smoothie.wirelessDebuggingSwitch.receiver
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -9,6 +9,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.RemoteViews
+import com.smoothie.wirelessDebuggingSwitch.WirelessADB
 
 abstract class SwitchWidget : AppWidgetProvider() {
 

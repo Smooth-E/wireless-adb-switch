@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="AttributeDeclaration">
+        <attr name="text" format="string" />
+        <attr name="icon_primary" format="reference" />
+        <attr name="icon_secondary" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="CollapsingTopBar">
+        <attr name="text" />
+        <attr name="icon_primary" />
+        <attr name="icon_secondary" />
+    </declare-styleable>
+
+</resources>
