@@ -5,17 +5,37 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.util.Log
+import androidx.preference.PreferenceManager
 
 class WidgetUpdater : BroadcastReceiver() {
+
+    class OnSharedPreferencesChangeListener(private val context: Context) :
+        SharedPreferences.OnSharedPreferenceChangeListener {
+
+        override fun onSharedPreferenceChanged(
+            sharedPreferences: SharedPreferences?,
+            key: String?
+        ) {
+            if (key != "update_interval")
+                return
+
+            Log.d("WidgetUpdaterSPListener", "Preference updated!")
+            disable(context)
+            enable(context)
+        }
+
+    }
 
     companion object {
 
         private const val INTENT_ACTION =
             "com.smoothie.wirelessDebuggingSwitch.intent.WIDGET_UPDATE_TICK"
-        private const val INTERVAL = 1 * 1000
+        private const val BOOT_COMPLETED_ACTION = "android.intent.action.BOOT_COMPLETED"
         private const val TAG = "WidgetUpdater"
 
+        private var interval = 1
         private var lastPendingIntent: PendingIntent? = null
         private var enabled = false
 
@@ -31,11 +51,15 @@ class WidgetUpdater : BroadcastReceiver() {
         }
 
         private fun schedule(context: Context) {
-            Log.d("WidgetUpdater", "enableOrUpdate() called!")
-            val time = System.currentTimeMillis() + INTERVAL
+            val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+            interval = sharedPreferences.getInt("update_interval", 1)
+            val time = System.currentTimeMillis() + interval * 1000
+
             val intent = createPendingIntent(context)
             getAlarmManager(context).setExact(AlarmManager.RTC, time, intent)
             lastPendingIntent = intent
+
+            Log.d(TAG, "Scheduled alarm for $interval seconds")
         }
 
         fun enable(context: Context) {
@@ -46,22 +70,25 @@ class WidgetUpdater : BroadcastReceiver() {
 
             schedule(context)
             enabled = true
+            Log.d(TAG, "Enabled")
         }
 
         fun disable(context: Context) {
             if (lastPendingIntent == null) {
-                Log.d("WidgetUpdater", "lastPendingIntent was null on disable()")
+                Log.d(TAG, "lastPendingIntent was null on disable()")
                 return
             }
 
             val alarmManager = getAlarmManager(context)
             alarmManager.cancel(lastPendingIntent)
+            enabled = false
+            Log.d(TAG, "Disabled")
         }
 
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        if (intent?.action == INTENT_ACTION) {
+        if (intent?.action == INTENT_ACTION || intent?.action == BOOT_COMPLETED_ACTION) {
             schedule(context!!)
             context.sendBroadcast(SwitchWidget.createUpdateIntent(context))
         }

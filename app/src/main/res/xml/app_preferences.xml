@@ -5,8 +5,8 @@
 
     <SeekBarPreference
         app:key="update_interval"
-        app:title="Widget update interval"
-        app:summary="Specify how often widgets will update."
+        app:title="@string/preference_name_update_interval"
+        app:summary="@string/preference_description_update_interval"
         app:icon="@drawable/ic_round_manage_history_24"
         app:defaultValue="1"
         app:min="1"
