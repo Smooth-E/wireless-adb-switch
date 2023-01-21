@@ -6,14 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    tools:ignore="HardcodedText">
+    tools:ignore="HardcodedText"
+    android:paddingTop="10dp">
 
     <ImageView
         android:id="@android:id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:tint="@color/colorPrimary"
+        app:tint="@color/colorSecondary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,9 +54,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:clipChildren="false"
+            android:clipToPadding="false">
 
             <SeekBar
+                android:background="@null"
                 android:id="@+id/seekbar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -64,8 +68,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/seekbar_value"
-                android:padding="0dp"/>
+                app:layout_constraintEnd_toStartOf="@id/seekbar_value" />
 
             <TextView
                 android:text="10"
