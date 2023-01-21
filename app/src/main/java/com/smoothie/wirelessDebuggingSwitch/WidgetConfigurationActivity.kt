@@ -1,12 +1,19 @@
 package com.smoothie.wirelessDebuggingSwitch
 
+import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.app.WallpaperManager
 import android.appwidget.AppWidgetManager.*
 import android.content.Intent
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceFragmentCompat
+import com.google.android.material.imageview.ShapeableImageView
+
 
 open class WidgetConfigurationActivity(preferenceScreen: Int) : CollapsingToolbarActivity(
     WidgetConfigurationFragment(preferenceScreen),
@@ -61,6 +68,23 @@ open class WidgetConfigurationActivity(preferenceScreen: Int) : CollapsingToolba
 
             activity = requireActivity() as WidgetConfigurationActivity
             activity.setResult(RESULT_CANCELED)
+
+            fun setWallpaper() {
+                val wallpaperManager = WallpaperManager.getInstance(activity)
+                view.findViewById<ShapeableImageView>(R.id.showcase_background)
+                    .setImageDrawable(wallpaperManager.drawable)
+            }
+
+            val permissionLauncher = registerForActivityResult(RequestPermission()) { granted ->
+                if (granted)
+                    setWallpaper()
+            }
+
+            val permissionState = ContextCompat.checkSelfPermission(activity, READ_EXTERNAL_STORAGE)
+            if (permissionState == PERMISSION_GRANTED)
+                setWallpaper()
+            else
+                permissionLauncher.launch(READ_EXTERNAL_STORAGE)
 
             val extras = activity.intent.extras
             widgetId =
