@@ -12,6 +12,6 @@
         app:min="1"
         android:max="10"
         app:showSeekBarValue="true"
-        android:layout="@layout/preference_custom_widget_seekbar"/>
+        android:layout="@layout/seekbar_preference"/>
 
 </PreferenceScreen>
