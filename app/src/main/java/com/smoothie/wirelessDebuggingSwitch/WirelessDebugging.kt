@@ -4,7 +4,7 @@ import android.content.Context
 import android.net.wifi.WifiManager
 import android.text.format.Formatter
 
-class WirelessADB : SuperShell() {
+class WirelessDebugging : SuperShell() {
 
     companion object {
 

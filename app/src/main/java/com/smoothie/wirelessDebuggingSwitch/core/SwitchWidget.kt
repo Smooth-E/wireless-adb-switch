@@ -11,7 +11,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.RemoteViews
 import com.smoothie.wirelessDebuggingSwitch.Utilities
-import com.smoothie.wirelessDebuggingSwitch.WirelessADB
+import com.smoothie.wirelessDebuggingSwitch.WirelessDebugging
 import com.smoothie.wirelessDebuggingSwitch.widget.basic.Widget
 
 abstract class SwitchWidget : AppWidgetProvider() {
@@ -66,12 +66,21 @@ abstract class SwitchWidget : AppWidgetProvider() {
 
     }
 
+    private var width: Int = 0
+    private var height: Int = 0
+
     override fun onAppWidgetOptionsChanged(
         context: Context?,
         appWidgetManager: AppWidgetManager?,
         appWidgetId: Int,
         newOptions: Bundle?
     ) {
+        if (newOptions != null) {
+            width = newOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_WIDTH)
+            height = newOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT)
+            Log.d("New options", "$width $height")
+        }
+
         if (context != null)
             updateWidgets(context, intArrayOf(appWidgetId), getSwitchState())
         else
@@ -83,7 +92,6 @@ abstract class SwitchWidget : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager?,
         appWidgetIds: IntArray?
     ) {
-        Log.d("onUpdate", "${context == null} ${appWidgetIds == null} ${appWidgetManager == null}")
         if (appWidgetIds == null || context == null || appWidgetManager == null)
             return
 
@@ -95,9 +103,9 @@ abstract class SwitchWidget : AppWidgetProvider() {
             updateAllWidgets(context!!, SwitchState.Waiting)
 
             Thread {
-                val state = !WirelessADB.enabled
+                val state = !WirelessDebugging.enabled
                 updateAllWidgets(context, if (state) SwitchState.Enabled else SwitchState.Disabled)
-                WirelessADB.enabled = state
+                WirelessDebugging.enabled = state
             }.start()
         }
         else if (intent?.hasExtra(INTENT_FLAG_UPDATE) == true) {
@@ -141,7 +149,7 @@ abstract class SwitchWidget : AppWidgetProvider() {
             val preferenceName = Utilities.getWidgetSharedPreferencesName(id)
             val preferences =
                 applicationContext.getSharedPreferences(preferenceName, Context.MODE_PRIVATE)
-            manager.updateAppWidget(id, generateRemoteViews(context, preferences, state))
+            manager.updateAppWidget(id, generateRemoteViews(context, id, preferences, state))
         }
     }
 
@@ -150,16 +158,18 @@ abstract class SwitchWidget : AppWidgetProvider() {
 
     protected abstract fun generateRemoteViews(
         context: Context,
+        widgetId: Int,
         preferences: SharedPreferences,
         state: SwitchState
     ): RemoteViews
 
     protected fun getPendingUpdateIntent(context: Context): PendingIntent {
         val flag = PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-        return PendingIntent.getBroadcast(context, 0, createStateSwitchIntent(context), flag)
+        return PendingIntent
+            .getBroadcast(context, 0, createStateSwitchIntent(context), flag)
     }
 
     private fun getSwitchState(): SwitchState =
-        if (WirelessADB.enabled) SwitchState.Enabled else SwitchState.Disabled
+        if (WirelessDebugging.enabled) SwitchState.Enabled else SwitchState.Disabled
 
 }

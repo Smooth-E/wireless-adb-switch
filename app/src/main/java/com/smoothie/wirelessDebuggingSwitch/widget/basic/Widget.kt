@@ -1,15 +1,18 @@
 package com.smoothie.wirelessDebuggingSwitch.widget.basic
 
+import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.SharedPreferences
 import android.widget.RemoteViews
 import com.smoothie.wirelessDebuggingSwitch.R
+import com.smoothie.wirelessDebuggingSwitch.Utilities
 import com.smoothie.wirelessDebuggingSwitch.core.SwitchWidget
 
 class Widget : SwitchWidget() {
 
     override fun generateRemoteViews(
         context: Context,
+        widgetId: Int,
         preferences: SharedPreferences,
         state: SwitchState
     ): RemoteViews {
@@ -44,6 +47,13 @@ class Widget : SwitchWidget() {
         val textColorValue = context.getColor(textColor)
         remoteViews.setInt(R.id.text_view_status, "setBackgroundResource", background)
         remoteViews.setInt(R.id.text_view_status, "setTextColor", textColorValue)
+
+        val options = AppWidgetManager.getInstance(context).getAppWidgetOptions(widgetId)
+        val width = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_WIDTH).toFloat()
+        val height = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT).toFloat() * 2.1f
+
+        val bitmap = Utilities.generateWidgetBackground(context, width, height, preferences)
+        remoteViews.setBitmap(R.id.background, "setImageBitmap", bitmap)
 
         return remoteViews
     }

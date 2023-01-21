@@ -53,7 +53,11 @@ abstract class WidgetConfigurationActivity(
         setResult(RESULT_OK, intent)
     }
 
-    protected abstract fun generateWidget(preferences: SharedPreferences) : View
+    protected abstract fun generateWidget(
+        width: Int,
+        height: Int,
+        preferences: SharedPreferences
+    ) : View
 
     class OnWidgetConfigurationChangeListener(
         private val activity: WidgetConfigurationActivity,
@@ -79,14 +83,11 @@ abstract class WidgetConfigurationActivity(
 
             val previewHeight =
                 previewView.height - previewView.paddingBottom - previewView.paddingTop
-            val width = previewHeight / activity.previewAspectRatio
-            val height = previewHeight * activity.previewAspectRatio
+            val width = (previewHeight * activity.previewAspectRatio).toInt()
+            val height = (previewHeight / activity.previewAspectRatio).toInt()
 
-            val view = activity.generateWidget(sharedPreferences)
-            view.layoutParams = ViewGroup.LayoutParams(
-                Utilities.dp2px(activity, width),
-                Utilities.dp2px(activity, height)
-            )
+            val view = activity.generateWidget(width, height, sharedPreferences)
+            view.layoutParams = ViewGroup.LayoutParams(width, height)
 
             previewView.removeAllViews()
             previewView.addView(view)
