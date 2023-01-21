@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.RemoteViews
@@ -25,6 +26,9 @@ abstract class SwitchWidget : AppWidgetProvider() {
             "com.smoothie.wirelessDebuggingSwitch.intent.FLAG_SWITCH_STATE"
         const val INTENT_FLAG_UPDATE =
             "com.smoothie.wirelessDebuggingSwitch.intent.FLAG_UPDATE_WIDGETS"
+        const val SHARED_PREFERENCES_NAME_PREFIX = "widget_shared_preferences_"
+
+        private const val TAG = "SwitchWidget"
 
         private val WIDGET_CLASS_NAMES = arrayListOf<String>(
             BasicSwitchWidget::class.java.name
@@ -66,7 +70,12 @@ abstract class SwitchWidget : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager?,
         appWidgetId: Int,
         newOptions: Bundle?
-    ) = updateWidget(context, appWidgetManager, appWidgetId)
+    ) {
+        if (context != null)
+            updateWidgets(context, intArrayOf(appWidgetId), getSwitchState())
+        else
+            Log.d(TAG, "Widget options changed with null context!")
+    }
 
     override fun onUpdate(
         context: Context?,
@@ -77,9 +86,7 @@ abstract class SwitchWidget : AppWidgetProvider() {
         if (appWidgetIds == null || context == null || appWidgetManager == null)
             return
 
-        appWidgetIds.forEach {
-            updateWidget(context, appWidgetManager, it)
-        }
+        updateWidgets(context, appWidgetIds, getSwitchState())
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -87,15 +94,14 @@ abstract class SwitchWidget : AppWidgetProvider() {
             updateAllWidgets(context!!, SwitchState.Waiting)
 
             Thread {
-                val status = !WirelessADB.enabled
-                updateAllWidgets(context, if (status) SwitchState.Enabled else SwitchState.Disabled)
-                WirelessADB.enabled = status
+                val state = !WirelessADB.enabled
+                updateAllWidgets(context, if (state) SwitchState.Enabled else SwitchState.Disabled)
+                WirelessADB.enabled = state
             }.start()
         }
         else if (intent?.hasExtra(INTENT_FLAG_UPDATE) == true) {
             Thread {
-                val status = if (WirelessADB.enabled) SwitchState.Enabled else SwitchState.Disabled
-                updateAllWidgets(context!!, status)
+                updateAllWidgets(context!!, getSwitchState())
             }.start()
         }
         else {
@@ -116,28 +122,46 @@ abstract class SwitchWidget : AppWidgetProvider() {
             WidgetUpdater.disable(context)
     }
 
-    private fun updateAllWidgets(context: Context, status: SwitchState) {
-        val manager = AppWidgetManager.getInstance(context)
-        manager.updateAppWidget(getAllWidgetIds(context), generateRemoteViews(context, status))
-    }
-
-    protected abstract fun generateRemoteViews(context: Context, status: SwitchState): RemoteViews
-
-    private fun updateWidget(
-        context: Context?,
-        appWidgetManager: AppWidgetManager?,
-        appWidgetId: Int
-    ) {
-        if (context == null || appWidgetManager == null)
+    override fun onDeleted(context: Context?, appWidgetIds: IntArray?) {
+        if (context == null || appWidgetIds == null)
             return
 
-        val status = if (WirelessADB.enabled) SwitchState.Enabled else SwitchState.Disabled
-        appWidgetManager.updateAppWidget(appWidgetId, generateRemoteViews(context, status))
+        val applicationContext = context.applicationContext
+        appWidgetIds.forEach { id ->
+            applicationContext.deleteSharedPreferences(getSharedPreferencesName(id))
+            Log.d(TAG, "Deleted widget with id $id")
+        }
     }
+
+    private fun getSharedPreferencesName(widgetId: Int): String =
+        "$SHARED_PREFERENCES_NAME_PREFIX$widgetId"
+
+    private fun updateWidgets(context: Context, widgetIds: IntArray, state: SwitchState) {
+        val manager = AppWidgetManager.getInstance(context)
+        val applicationContext = context.applicationContext
+        widgetIds.forEach { id ->
+            val preferenceName = getSharedPreferencesName(id)
+            val preferences =
+                applicationContext.getSharedPreferences(preferenceName, Context.MODE_PRIVATE)
+            manager.updateAppWidget(id, generateRemoteViews(context, preferences, state))
+        }
+    }
+
+    private fun updateAllWidgets(context: Context, state: SwitchState) =
+        updateWidgets(context, getAllWidgetIds(context), state)
+
+    protected abstract fun generateRemoteViews(
+        context: Context,
+        preferences: SharedPreferences,
+        state: SwitchState
+    ): RemoteViews
 
     protected fun getPendingUpdateIntent(context: Context): PendingIntent {
         val flag = PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         return PendingIntent.getBroadcast(context, 0, createStateSwitchIntent(context), flag)
     }
+
+    private fun getSwitchState(): SwitchState =
+        if (WirelessADB.enabled) SwitchState.Enabled else SwitchState.Disabled
 
 }
