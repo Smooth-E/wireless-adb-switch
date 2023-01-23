@@ -1,6 +1,5 @@
 package com.smoothie.wirelessDebuggingSwitch.widget.basic
 
-import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.SharedPreferences
 import android.widget.RemoteViews
@@ -51,12 +50,19 @@ class Widget : SwitchWidget() {
         remoteViews.setInt(R.id.text_view_status, "setBackgroundResource", background)
         remoteViews.setInt(R.id.text_view_status, "setTextColor", textColorValue)
 
-        val options = AppWidgetManager.getInstance(context).getAppWidgetOptions(widgetId)
-        val width = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_WIDTH).toFloat()
-        val height = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT).toFloat() * 2.1f
+        val radius =  Utilities.dp2px(context, 20f)
+        val cornerBitmap = Utilities.generateWidgetCornerBitmap(context, preferences, radius)
+        remoteViews.setBitmap(R.id.corner_bottom_left, "setImageBitmap", cornerBitmap)
+        remoteViews.setBitmap(R.id.corner_bottom_right, "setImageBitmap", cornerBitmap)
+        remoteViews.setBitmap(R.id.corner_top_left, "setImageBitmap", cornerBitmap)
+        remoteViews.setBitmap(R.id.corner_top_right, "setImageBitmap", cornerBitmap)
 
-        val bitmap = Utilities.generateWidgetBackground(context, width, height, preferences)
-        remoteViews.setBitmap(R.id.background, "setImageBitmap", bitmap)
+        val centerBitmap = Utilities.generateWidgetCenterBitmap(context, preferences)
+        remoteViews.setBitmap(R.id.side_top, "setImageBitmap", centerBitmap)
+        remoteViews.setBitmap(R.id.side_bottom, "setImageBitmap", centerBitmap)
+        remoteViews.setBitmap(R.id.side_left, "setImageBitmap", centerBitmap)
+        remoteViews.setBitmap(R.id.side_right, "setImageBitmap", centerBitmap)
+        remoteViews.setBitmap(R.id.center, "setImageBitmap", centerBitmap)
 
         return remoteViews
     }

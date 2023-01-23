@@ -1,23 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
     android:focusable="true"
-    android:id="@+id/clickable">
+    android:id="@+id/clickable"
+    tools:ignore="RtlHardcoded">
 
-    <ImageView
-        android:id="@+id/background"
+    <RelativeLayout
+        android:id="@+id/background_nine_patch"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <!-- Corner pieces -->
+
+        <ImageView
+            android:id="@+id/corner_top_left"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/shape_corner"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+
+        <ImageView
+            android:id="@+id/corner_top_right"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/shape_corner"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:rotation="90"/>
+
+        <ImageView
+            android:id="@+id/corner_bottom_left"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/shape_corner"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:rotation="-90"/>
+
+        <ImageView
+            android:id="@+id/corner_bottom_right"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/shape_corner"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:rotation="180" />
+
+        <!-- Side pieces -->
+
+        <ImageView
+            android:id="@+id/side_top"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:src="#FFF"
+            android:layout_toRightOf="@id/corner_top_left"
+            android:layout_toLeftOf="@id/corner_top_right"
+            android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:id="@+id/side_bottom"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:src="#FFF"
+            android:layout_toRightOf="@id/corner_bottom_left"
+            android:layout_toLeftOf="@id/corner_bottom_right"
+            android:layout_alignParentBottom="true"
+            android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:id="@+id/side_left"
+            android:layout_width="24dp"
+            android:layout_height="0dp"
+            android:src="#FFF"
+            android:layout_below="@id/corner_top_left"
+            android:layout_above="@id/corner_bottom_left"
+            android:layout_alignParentLeft="true"
+            android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:id="@+id/side_right"
+            android:layout_width="24dp"
+            android:layout_height="0dp"
+            android:layout_below="@+id/corner_top_right"
+            android:layout_above="@id/corner_bottom_right"
+            android:layout_alignParentRight="true"
+            android:src="#FFF"
+            android:scaleType="centerCrop"/>
+
+        <!-- Center piece -->
+
+        <ImageView
+            android:id="@+id/center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="#FFF"
+            android:layout_above="@id/side_bottom"
+            android:layout_below="@id/side_top"
+            android:layout_toRightOf="@id/side_left"
+            android:layout_toLeftOf="@id/side_right"
+            android:scaleType="centerCrop"/>
+
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center"
         android:gravity="center">
 
         <ImageView
@@ -52,4 +148,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</FrameLayout>

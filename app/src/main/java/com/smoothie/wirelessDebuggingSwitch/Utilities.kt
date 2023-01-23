@@ -22,15 +22,7 @@ class Utilities {
             return (dp * density).toInt()
         }
 
-        fun generateWidgetBackground(
-            context: Context,
-            width: Float,
-            height: Float,
-            preferences: SharedPreferences
-        ): Bitmap {
-
-            val radius = getBackgroundCornerRadius(context).toFloat()
-
+        private fun createPaint(context: Context, preferences: SharedPreferences): Paint {
             var key = context.getString(R.string.key_use_colorful_background)
             val useColorfulBackground =
                 preferences.getBoolean(key, false)
@@ -54,27 +46,30 @@ class Utilities {
             paint.style = Paint.Style.FILL
             paint.blendMode = BlendMode.SRC
 
-            Log.d("Drawing", "Creating bitmap of $width x $height")
+            return paint
+        }
 
-            val bitmap = Bitmap.createBitmap(width.toInt(), height.toInt(), Bitmap.Config.ARGB_8888)
+        fun generateWidgetCornerBitmap(
+            context: Context,
+            preferences: SharedPreferences,
+            radius: Int
+        ): Bitmap {
+            val paint = createPaint(context, preferences)
+            val bitmap = Bitmap.createBitmap(radius, radius, Bitmap.Config.ARGB_8888)
             val canvas = Canvas(bitmap)
 
-            // Canvas origin is located in the upper left corner
+            val radiusFloat = radius.toFloat()
+            canvas.drawCircle(radiusFloat, radiusFloat, radiusFloat, paint)
 
-            // Draw corners
-            canvas.drawCircle(radius, radius, radius, paint)
-            canvas.drawCircle(radius, height - radius, radius, paint)
-            canvas.drawCircle(width - radius, radius, radius, paint)
-            canvas.drawCircle(width - radius, height - radius, radius, paint)
+            return bitmap
+        }
 
-            // Draw center piece
-            canvas.drawRect(radius, radius, width - radius, height - radius, paint)
+        fun generateWidgetCenterBitmap(context: Context, preferences: SharedPreferences): Bitmap {
+            val paint = createPaint(context, preferences)
+            val bitmap = Bitmap.createBitmap(512, 512, Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(bitmap)
 
-            // Draw side pieces
-            canvas.drawRect(0f, radius, radius, height - radius, paint)
-            canvas.drawRect(radius, 0f, width - radius, radius, paint)
-            canvas.drawRect(width - radius, radius, width, height - radius, paint)
-            canvas.drawRect(radius, height - radius, width - radius, height, paint)
+            canvas.drawRect(0f, 0f, 512f, 512f, paint)
 
             return bitmap
         }
