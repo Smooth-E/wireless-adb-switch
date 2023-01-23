@@ -1,4 +1,4 @@
-package com.smoothie.wirelessDebuggingSwitch.core
+package com.smoothie.widgetFactory
 
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat

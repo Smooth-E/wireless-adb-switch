@@ -1,4 +1,4 @@
-package com.smoothie.wirelessDebuggingSwitch.core
+package com.smoothie.widgetFactory
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -93,7 +93,7 @@ class WidgetUpdater : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         if (intent?.action == INTENT_ACTION || intent?.action == BOOT_COMPLETED_ACTION) {
             schedule(context!!)
-            context.sendBroadcast(SwitchWidget.createUpdateIntent(context))
+            context.sendBroadcast(ConfigurableWidget.createBasicIntent(context))
         }
     }
 

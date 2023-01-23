@@ -1,4 +1,4 @@
-package com.smoothie.wirelessDebuggingSwitch.core
+package com.smoothie.widgetFactory
 
 import android.graphics.Color
 import android.os.Bundle

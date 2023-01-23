@@ -28,13 +28,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.ConfigurationActivity" android:exported="false">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
-
-        <receiver android:name=".core.WidgetUpdater" android:exported="false">
+        <receiver android:name="com.smoothie.widgetFactory.WidgetUpdater" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action
@@ -42,15 +36,32 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.Widget" android:exported="false">
+        <!-- ################################################################################### -->
+
+        <activity
+            android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.ConfigurationActivity"
+            android:exported="false">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+
+        </activity>
+
+        <receiver
+            android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.Widget"
+            android:exported="false">
+
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.appwidget.action.ENABLED" />
                 <action android:name="android.appwidget.action.DISABLED" />
                 <action android:name="com.smoothie.wirelessDebuggingSwitch.UPDATE_WIDGETS" />
             </intent-filter>
+
             <meta-data android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
+
         </receiver>
 
     </application>

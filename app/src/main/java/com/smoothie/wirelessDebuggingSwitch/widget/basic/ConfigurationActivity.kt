@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.wirelessDebuggingSwitch.Utilities
-import com.smoothie.wirelessDebuggingSwitch.core.WidgetConfigurationActivity
+import com.smoothie.widgetFactory.WidgetConfigurationActivity
 
 class ConfigurationActivity :
     WidgetConfigurationActivity(R.xml.preferences_widget_basic, 1f / 1f) {

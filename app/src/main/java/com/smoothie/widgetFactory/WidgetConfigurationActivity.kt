@@ -1,4 +1,4 @@
-package com.smoothie.wirelessDebuggingSwitch.core
+package com.smoothie.widgetFactory
 
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.WallpaperManager
@@ -20,7 +20,6 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.wirelessDebuggingSwitch.Utilities
 
-
 abstract class WidgetConfigurationActivity(
     preferenceScreen: Int,
     private val previewAspectRatio: Float
@@ -33,24 +32,24 @@ abstract class WidgetConfigurationActivity(
         private const val TAG = "WidgetConfigurationActivity"
     }
 
-    override fun onStop() {
-        super.onStop()
-
+    override fun finish() {
         val widgetId =
             intent?.extras?.getInt(EXTRA_APPWIDGET_ID, INVALID_APPWIDGET_ID) ?: INVALID_APPWIDGET_ID
 
         if (widgetId == INVALID_APPWIDGET_ID) {
             Log.d(TAG, "Widget ID was invalid!")
-            return
+            super.finish()
         }
 
         val updateIntent = Intent()
             .setAction(ACTION_APPWIDGET_UPDATE)
-            .putExtra(EXTRA_APPWIDGET_ID, widgetId)
+            .putExtra(EXTRA_APPWIDGET_IDS, intArrayOf(widgetId))
         sendBroadcast(updateIntent)
 
         val intent = Intent().putExtra(EXTRA_APPWIDGET_ID, widgetId)
         setResult(RESULT_OK, intent)
+
+        super.finish()
     }
 
     protected abstract fun generateWidget(

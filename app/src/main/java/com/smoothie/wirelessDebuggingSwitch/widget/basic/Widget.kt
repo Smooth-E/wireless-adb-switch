@@ -6,27 +6,30 @@ import android.content.SharedPreferences
 import android.widget.RemoteViews
 import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.wirelessDebuggingSwitch.Utilities
-import com.smoothie.wirelessDebuggingSwitch.core.SwitchWidget
+import com.smoothie.wirelessDebuggingSwitch.widget.SwitchWidget
 
 class Widget : SwitchWidget() {
 
     override fun generateRemoteViews(
         context: Context,
         widgetId: Int,
-        preferences: SharedPreferences,
-        state: SwitchState
+        preferences: SharedPreferences
     ): RemoteViews {
         val remoteViews = RemoteViews(context.packageName, R.layout.widget_switch_small)
-        remoteViews.setOnClickPendingIntent(R.id.clickable, getPendingUpdateIntent(context))
+        remoteViews.setOnClickPendingIntent(R.id.clickable, getPendingUpdateIntent(
+            context,
+            createStateSwitchIntent(context)
+        ))
+
 
         val iconResource =
-            if (state == SwitchState.Enabled)
+            if (switchState == SwitchState.Enabled)
                 R.drawable.ic_round_wifi_24
             else
                 R.drawable.ic_round_wifi_off_24
         remoteViews.setImageViewResource(R.id.image_view_status, iconResource)
 
-        val text = when(state) {
+        val text = when(switchState) {
             SwitchState.Enabled -> "Enabled"
             SwitchState.Waiting -> ""
             SwitchState.Disabled -> "Disabled"
@@ -35,7 +38,7 @@ class Widget : SwitchWidget() {
 
         val background: Int
         val textColor: Int
-        if (state == SwitchState.Enabled) {
+        if (switchState == SwitchState.Enabled) {
             background = R.drawable.status_enabled
             textColor = R.color.colorSurface
         }

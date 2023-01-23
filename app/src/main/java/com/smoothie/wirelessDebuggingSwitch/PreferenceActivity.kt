@@ -1,7 +1,7 @@
 package com.smoothie.wirelessDebuggingSwitch
 
-import com.smoothie.wirelessDebuggingSwitch.core.CollapsingToolbarActivity
-import com.smoothie.wirelessDebuggingSwitch.core.PreferenceFragment
+import com.smoothie.widgetFactory.CollapsingToolbarActivity
+import com.smoothie.widgetFactory.PreferenceFragment
 
 class PreferenceActivity : CollapsingToolbarActivity(
     PreferenceFragment(R.xml.preferences_app),
