@@ -50,14 +50,15 @@ class Widget : SwitchWidget() {
         remoteViews.setInt(R.id.text_view_status, "setBackgroundResource", background)
         remoteViews.setInt(R.id.text_view_status, "setTextColor", textColorValue)
 
-        val radius =  Utilities.dp2px(context, 20f)
+        val radius = Utilities.getWidgetCornerRadius(context, preferences)
+
         val cornerBitmap = Utilities.generateWidgetCornerBitmap(context, preferences, radius)
         remoteViews.setBitmap(R.id.corner_bottom_left, "setImageBitmap", cornerBitmap)
         remoteViews.setBitmap(R.id.corner_bottom_right, "setImageBitmap", cornerBitmap)
         remoteViews.setBitmap(R.id.corner_top_left, "setImageBitmap", cornerBitmap)
         remoteViews.setBitmap(R.id.corner_top_right, "setImageBitmap", cornerBitmap)
 
-        val centerBitmap = Utilities.generateWidgetCenterBitmap(context, preferences)
+        val centerBitmap = Utilities.generateRectangleBitmapForWidget(context, preferences)
         remoteViews.setBitmap(R.id.side_top, "setImageBitmap", centerBitmap)
         remoteViews.setBitmap(R.id.side_bottom, "setImageBitmap", centerBitmap)
         remoteViews.setBitmap(R.id.side_left, "setImageBitmap", centerBitmap)

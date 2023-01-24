@@ -18,16 +18,16 @@
 
         <ImageView
             android:id="@+id/corner_top_left"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/shape_corner"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true" />
 
         <ImageView
             android:id="@+id/corner_top_right"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/shape_corner"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
@@ -35,8 +35,8 @@
 
         <ImageView
             android:id="@+id/corner_bottom_left"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/shape_corner"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
@@ -44,8 +44,8 @@
 
         <ImageView
             android:id="@+id/corner_bottom_right"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/shape_corner"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
@@ -56,39 +56,43 @@
         <ImageView
             android:id="@+id/side_top"
             android:layout_width="0dp"
-            android:layout_height="24dp"
+            android:layout_height="0dp"
             android:src="#FFF"
             android:layout_toRightOf="@id/corner_top_left"
             android:layout_toLeftOf="@id/corner_top_right"
+            android:layout_alignBottom="@id/corner_top_right"
             android:layout_alignParentTop="true"
             android:scaleType="centerCrop"/>
 
         <ImageView
             android:id="@+id/side_bottom"
             android:layout_width="0dp"
-            android:layout_height="24dp"
+            android:layout_height="0dp"
             android:src="#FFF"
             android:layout_toRightOf="@id/corner_bottom_left"
             android:layout_toLeftOf="@id/corner_bottom_right"
+            android:layout_alignTop="@id/corner_bottom_right"
             android:layout_alignParentBottom="true"
             android:scaleType="centerCrop"/>
 
         <ImageView
             android:id="@+id/side_left"
-            android:layout_width="24dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="#FFF"
             android:layout_below="@id/corner_top_left"
             android:layout_above="@id/corner_bottom_left"
+            android:layout_alignRight="@id/corner_bottom_left"
             android:layout_alignParentLeft="true"
             android:scaleType="centerCrop"/>
 
         <ImageView
             android:id="@+id/side_right"
-            android:layout_width="24dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_below="@+id/corner_top_right"
             android:layout_above="@id/corner_bottom_right"
+            android:layout_alignLeft="@id/corner_bottom_right"
             android:layout_alignParentRight="true"
             android:src="#FFF"
             android:scaleType="centerCrop"/>

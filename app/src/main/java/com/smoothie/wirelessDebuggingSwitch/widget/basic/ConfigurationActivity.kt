@@ -13,14 +13,15 @@ class ConfigurationActivity :
     override fun generateWidget(width: Int, height: Int, preferences: SharedPreferences): View {
         val view = layoutInflater.inflate(R.layout.widget_switch_small, null)
 
-        val radius =  Utilities.dp2px(this, 20f)
+        val radius =  Utilities.getWidgetCornerRadius(this, preferences)
+
         val cornerBitmap = Utilities.generateWidgetCornerBitmap(this, preferences, radius)
         view.findViewById<ImageView>(R.id.corner_top_left).setImageBitmap(cornerBitmap)
         view.findViewById<ImageView>(R.id.corner_top_right).setImageBitmap(cornerBitmap)
         view.findViewById<ImageView>(R.id.corner_bottom_left).setImageBitmap(cornerBitmap)
         view.findViewById<ImageView>(R.id.corner_bottom_right).setImageBitmap(cornerBitmap)
 
-        val centerBitmap = Utilities.generateWidgetCenterBitmap(this, preferences)
+        val centerBitmap = Utilities.generateRectangleBitmapForWidget(this, preferences)
         view.findViewById<ImageView>(R.id.side_left).setImageBitmap(centerBitmap)
         view.findViewById<ImageView>(R.id.side_right).setImageBitmap(centerBitmap)
         view.findViewById<ImageView>(R.id.side_top).setImageBitmap(centerBitmap)

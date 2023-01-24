@@ -3,7 +3,6 @@ package com.smoothie.wirelessDebuggingSwitch
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.*
-import android.util.Log
 
 class Utilities {
 
@@ -64,7 +63,10 @@ class Utilities {
             return bitmap
         }
 
-        fun generateWidgetCenterBitmap(context: Context, preferences: SharedPreferences): Bitmap {
+        fun generateRectangleBitmapForWidget(
+            context: Context,
+            preferences: SharedPreferences
+        ): Bitmap {
             val paint = createPaint(context, preferences)
             val bitmap = Bitmap.createBitmap(512, 512, Bitmap.Config.ARGB_8888)
             val canvas = Canvas(bitmap)
@@ -72,6 +74,18 @@ class Utilities {
             canvas.drawRect(0f, 0f, 512f, 512f, paint)
 
             return bitmap
+        }
+
+        fun getWidgetCornerRadius(
+            context: Context,
+            preferences: SharedPreferences
+        ): Int {
+            val key = context.getString(R.string.key_corner_roundness)
+            val roundnessModifier = preferences.getInt(key, 100) / 100f
+            val systemRoundness =
+                context.resources.getDimensionPixelSize(R.dimen.system_appwidget_background_radius)
+            val radius = (systemRoundness * roundnessModifier).toInt()
+            return if (radius == 0) 1 else radius
         }
 
         fun getDimen(context: Context, resource: Int): Int =
