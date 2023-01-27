@@ -3,7 +3,7 @@ package com.smoothie.widgetFactory
 import android.Manifest
 import android.app.WallpaperManager
 import android.appwidget.AppWidgetManager
-import android.content.SharedPreferences
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
@@ -17,13 +17,19 @@ import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.wirelessDebuggingSwitch.Utilities
 
 class WidgetConfigurationFragment(
-    private val preferenceScreen: Int
-) : Fragment(R.layout.fragment_widget_preferences) {
+    private val preferenceScreen: Int,
+    isPortrait: Boolean
+) : Fragment(
+    if (isPortrait)
+        R.layout.fragment_widget_preferences
+    else
+        R.layout.fragment_widget_preferences
+) {
 
     private lateinit var activity: WidgetConfigurationActivity
     private var widgetId: Int = AppWidgetManager.INVALID_APPWIDGET_ID
 
-    private lateinit var widgetConfigurationChangeListener: SharedPreferences.OnSharedPreferenceChangeListener
+    private lateinit var widgetConfigurationChangeListener: OnSharedPreferenceChangeListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,9 +43,10 @@ class WidgetConfigurationFragment(
                 .setImageDrawable(wallpaperManager.drawable)
         }
 
-        val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-            if (granted)
-                setWallpaper()
+        val permissionLauncher =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+                if (granted)
+                    setWallpaper()
         }
 
         val permissionState = ContextCompat.checkSelfPermission(activity,
@@ -67,7 +74,7 @@ class WidgetConfigurationFragment(
             OnWidgetConfigurationChangedListener(activity, previewViewGroup)
 
         val preferencesName = Utilities.getWidgetSharedPreferencesName(widgetId)
-        val preferenceFragment = WidgetConfigurationActivity.WidgetConfigurationPreferenceFragment(
+        val preferenceFragment = WidgetConfigurationPreferenceFragment(
             preferenceScreen,
             preferencesName,
             widgetConfigurationChangeListener
