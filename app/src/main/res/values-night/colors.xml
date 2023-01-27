@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with Material Theme Builder -->
+<!-- https://m3.material.io/theme-builder#/custom -->
+
 <resources>
+
+    <!-- Base theme colors -->
+
     <color name="colorPrimary">@color/md_theme_dark_primary</color>
     <color name="colorOnPrimary">@color/md_theme_dark_onPrimary</color>
     <color name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</color>
@@ -27,5 +34,8 @@
     <color name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</color>
     <color name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</color>
 
+    <!-- Custom colors -->
+
+    <color name="colorGoogleWidgetBackground">@color/colorOnSecondary</color>
 
 </resources>

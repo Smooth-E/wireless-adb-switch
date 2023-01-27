@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimary">@color/m3_sys_color_dynamic_light_primary</color>
     <color name="colorOnPrimary">@color/m3_sys_color_dynamic_light_on_primary</color>
     <color name="colorPrimaryInverse">@color/m3_sys_color_dynamic_light_inverse_primary</color>
@@ -22,4 +23,7 @@
     <color name="colorSurfaceInverse">@color/m3_sys_color_dynamic_light_inverse_surface</color>
     <color name="colorOnSurfaceInverse">@color/m3_sys_color_dynamic_light_inverse_on_surface</color>
     <color name="colorOutline">@color/m3_sys_color_dynamic_light_outline</color>
+
+    <color name="colorGoogleWidgetBackground">@color/material_dynamic_secondary95</color>
+
 </resources>

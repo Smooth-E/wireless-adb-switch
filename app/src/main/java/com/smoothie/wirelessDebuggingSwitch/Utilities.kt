@@ -30,7 +30,7 @@ object Utilities {
 
         val colorId =
             if (useColorfulBackground)
-                R.color.colorPrimaryContainer
+                R.color.colorGoogleWidgetBackground
             else
                 R.color.colorSurface
 

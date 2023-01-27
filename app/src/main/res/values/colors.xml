@@ -1,5 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Generated with Material Theme Builder -->
+<!-- https://m3.material.io/theme-builder#/custom -->
 
 <resources>
+
+    <!-- Base theme colors -->
+
     <color name="colorPrimary">@color/md_theme_light_primary</color>
     <color name="colorOnPrimary">@color/md_theme_light_onPrimary</color>
     <color name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</color>
@@ -26,6 +33,22 @@
     <color name="colorOnSurfaceInverse">@color/md_theme_light_inverseOnSurface</color>
     <color name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</color>
     <color name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</color>
+
+    <!-- Colors included with Material Theme Builder but not used in app's theme -->
+    <!-- Commented to prevent unintended usage, since there are no equivalent colors in MD3 -->
+
+    <!--
+    <color name="colorShadow">@color/md_theme_light_shadow</color>
+    <color name="colorSurfaceTint">@color/md_theme_light_surfaceTint</color>
+    <color name="colorOutlineVariant">@color/md_theme_light_outlineVariant</color>
+    <color name="colorScrim">@color/md_theme_light_scrim</color>
+    -->
+
+    <!-- Custom colors -->
+
+    <color name="colorGoogleWidgetBackground">@color/colorOnSecondary</color>
+
+    <!-- Other colors from Material Theme Builder -->
 
     <color name="seed">#964900</color>
     <color name="md_theme_light_primary">#964900</color>
@@ -54,10 +77,12 @@
     <color name="md_theme_light_inverseOnSurface">#FBEEE8</color>
     <color name="md_theme_light_inverseSurface">#362F2B</color>
     <color name="md_theme_light_inversePrimary">#FFB787</color>
+
     <color name="md_theme_light_shadow">#000000</color>
     <color name="md_theme_light_surfaceTint">#964900</color>
     <color name="md_theme_light_outlineVariant">#D7C3B7</color>
     <color name="md_theme_light_scrim">#000000</color>
+
     <color name="md_theme_dark_primary">#FFB787</color>
     <color name="md_theme_dark_onPrimary">#502400</color>
     <color name="md_theme_dark_primaryContainer">#723600</color>
@@ -88,4 +113,5 @@
     <color name="md_theme_dark_surfaceTint">#FFB787</color>
     <color name="md_theme_dark_outlineVariant">#52443C</color>
     <color name="md_theme_dark_scrim">#000000</color>
+
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimary">@color/m3_sys_color_dynamic_dark_primary</color>
     <color name="colorOnPrimary">@color/m3_sys_color_dynamic_dark_on_primary</color>
     <color name="colorPrimaryInverse">@color/m3_sys_color_dynamic_dark_inverse_primary</color>
@@ -22,4 +23,7 @@
     <color name="colorSurfaceInverse">@color/m3_sys_color_dynamic_dark_inverse_surface</color>
     <color name="colorOnSurfaceInverse">@color/m3_sys_color_dynamic_dark_inverse_on_surface</color>
     <color name="colorOutline">@color/m3_sys_color_dynamic_dark_outline</color>
+
+    <color name="colorGoogleWidgetBackground">@color/m3_sys_color_dynamic_dark_on_secondary</color>
+
 </resources>
