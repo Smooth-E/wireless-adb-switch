@@ -4,12 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.*
 
-object Utilities {
-
-    private const val WIDGET_SHARED_PREFERENCES_NAME_PREFIX = "widget_shared_preferences_"
-
-    fun getWidgetSharedPreferencesName(widgetId: Int): String =
-        "${WIDGET_SHARED_PREFERENCES_NAME_PREFIX}$widgetId"
+object DrawingUtilities {
 
     fun getSharedPreferencesKey(context: Context, id: Int): String =
         context.getString(id)
@@ -88,11 +83,5 @@ object Utilities {
 
     fun getDimen(context: Context, resource: Int): Int =
         context.resources.getDimensionPixelSize(resource)
-
-    fun getInnerCornerRadius(context: Context): Int =
-        getDimen(context, R.dimen.system_appwidget_inner_radius)
-
-    fun getBackgroundCornerRadius(context: Context): Int =
-        getDimen(context, R.dimen.system_appwidget_background_radius)
 
 }

@@ -3,32 +3,29 @@ package com.smoothie.widgetFactory
 import android.Manifest
 import android.app.WallpaperManager
 import android.appwidget.AppWidgetManager
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.imageview.ShapeableImageView
 import com.smoothie.wirelessDebuggingSwitch.R
-import com.smoothie.wirelessDebuggingSwitch.Utilities
 
-class WidgetConfigurationFragment(
-    private val preferenceScreen: Int
-) : Fragment(R.layout.fragment_widget_preferences) {
+class WidgetConfigurationFragment : Fragment(R.layout.fragment_widget_preferences) {
 
+    private var preferenceScreen: Int = -1
     private lateinit var activity: WidgetConfigurationActivity
     private var widgetId: Int = AppWidgetManager.INVALID_APPWIDGET_ID
-
-    private lateinit var widgetConfigurationChangeListener: SharedPreferences.OnSharedPreferenceChangeListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         activity = requireActivity() as WidgetConfigurationActivity
+
+        preferenceScreen = activity.preferencesResourceId
+
         activity.setResult(AppCompatActivity.RESULT_CANCELED)
 
         fun setWallpaper() {
@@ -62,20 +59,23 @@ class WidgetConfigurationFragment(
             return
         }
 
-        val previewViewGroup = view.findViewById<ViewGroup>(R.id.preview_holder)
-        widgetConfigurationChangeListener =
-            OnWidgetConfigurationChangedListener(activity, previewViewGroup)
+        val preferencesName = WidgetConfiguration.getWidgetSharedPreferencesName(widgetId)
 
-        val preferencesName = Utilities.getWidgetSharedPreferencesName(widgetId)
-        val preferenceFragment = WidgetConfigurationActivity.WidgetConfigurationPreferenceFragment(
-            preferenceScreen,
-            preferencesName,
-            widgetConfigurationChangeListener
+        val arguments = Bundle()
+        arguments.putString(
+            WidgetConfigurationPreferenceFragment.KEY_PREFERENCES_NAME,
+            preferencesName
         )
+        arguments.putInt(
+            WidgetConfigurationPreferenceFragment.KEY_PREFERENCES_RESOURCE,
+            preferenceScreen
+        )
+
+        val fragmentClass =  WidgetConfigurationPreferenceFragment::class.java
 
         requireActivity().supportFragmentManager
             .beginTransaction()
-            .replace(R.id.preference_fragment_holder, preferenceFragment)
+            .replace(R.id.preference_fragment_holder, fragmentClass, arguments)
             .commit()
     }
 

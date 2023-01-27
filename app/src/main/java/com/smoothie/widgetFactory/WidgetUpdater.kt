@@ -9,7 +9,7 @@ import android.content.SharedPreferences
 import android.util.Log
 import androidx.preference.PreferenceManager
 import com.smoothie.wirelessDebuggingSwitch.R
-import com.smoothie.wirelessDebuggingSwitch.Utilities
+import com.smoothie.wirelessDebuggingSwitch.DrawingUtilities
 
 class WidgetUpdater : BroadcastReceiver() {
 
@@ -54,7 +54,7 @@ class WidgetUpdater : BroadcastReceiver() {
 
         private fun schedule(context: Context) {
             val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-            val key = Utilities.getSharedPreferencesKey(context, R.string.key_update_interval)
+            val key = DrawingUtilities.getSharedPreferencesKey(context, R.string.key_update_interval)
             interval = sharedPreferences.getInt(key, 1)
             val time = System.currentTimeMillis() + interval * 1000
 

@@ -26,7 +26,6 @@ class OnWidgetConfigurationChangedListener(
     }
 
     private fun updatePreview(widgetSharedPreferences: SharedPreferences, previewView: ViewGroup) {
-
         val previewHeight =
             previewView.height - previewView.paddingBottom - previewView.paddingTop
         val width = (previewHeight * activity.previewAspectRatio).toInt()

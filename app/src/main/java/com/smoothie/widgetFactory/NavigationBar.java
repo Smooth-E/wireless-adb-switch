@@ -12,9 +12,13 @@ import java.lang.annotation.RetentionPolicy;
 public final class NavigationBar {
 
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({MODE_THREE_BUTTONS,
+    @IntDef(
+        {
+            MODE_THREE_BUTTONS,
             MODE_TWO_BUTTONS,
-            MODE_GESTURES})
+            MODE_GESTURES
+        }
+    )
     @interface NavigationBarInteractionMode {}
 
     /**

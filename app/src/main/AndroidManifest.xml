@@ -19,9 +19,8 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".PreferenceActivity"
-            android:exported="true"
-            android:configChanges="screenSize|orientation">
+            android:name="com.smoothie.widgetFactory.ApplicationPreferenceActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
@@ -41,8 +40,7 @@
 
         <activity
             android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.ConfigurationActivity"
-            android:exported="false"
-            android:configChanges="orientation|screenSize">
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>

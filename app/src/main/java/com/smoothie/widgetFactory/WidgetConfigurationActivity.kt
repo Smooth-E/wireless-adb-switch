@@ -3,20 +3,16 @@ package com.smoothie.widgetFactory
 import android.appwidget.AppWidgetManager.*
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.preference.PreferenceFragmentCompat
+import android.view.ViewGroup
 import com.smoothie.wirelessDebuggingSwitch.R
 
 abstract class WidgetConfigurationActivity(
-    private val preferenceScreen: Int,
+    val preferencesResourceId: Int,
     val previewAspectRatio: Float
-) : CollapsingToolbarActivity(
-    WidgetConfigurationFragment(preferenceScreen),
-    R.string.header_configure_widget
-) {
+) : CollapsingToolbarActivity(R.string.header_configure_widget, WidgetConfigurationFragment()) {
 
     companion object {
         private const val TAG = "WidgetConfigurationActivity"
@@ -47,42 +43,5 @@ abstract class WidgetConfigurationActivity(
         height: Int,
         widgetPreferences: SharedPreferences
     ) : View
-
-    class WidgetConfigurationPreferenceFragment(
-        private val preferenceResource: Int,
-        private val sharedPreferencesName: String,
-        private val listener: OnSharedPreferenceChangeListener
-    ) : PreferenceFragmentCompat() {
-
-        companion object {
-            private const val TAG = "WidgetConfigurationPreferenceFragment"
-        }
-
-        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-            preferenceManager.sharedPreferencesName = sharedPreferencesName
-            setPreferencesFromResource(preferenceResource, rootKey)
-
-            val preferences = preferenceManager.sharedPreferences
-
-            if (preferences == null) {
-                Log.d(TAG, "preferenceManager.sharedPreferences is null!")
-                requireActivity().finish()
-                return
-            }
-
-            preferences.registerOnSharedPreferenceChangeListener(listener)
-
-            // This will generate widget preview on activity startup
-            listener.onSharedPreferenceChanged(preferences, rootKey)
-        }
-
-        override fun onDestroy() {
-            super.onDestroy()
-
-            preferenceManager
-                .sharedPreferences?.unregisterOnSharedPreferenceChangeListener(listener)
-        }
-
-    }
 
 }

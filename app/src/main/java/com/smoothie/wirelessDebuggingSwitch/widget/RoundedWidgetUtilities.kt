@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.RemoteViews
 import com.smoothie.wirelessDebuggingSwitch.R
-import com.smoothie.wirelessDebuggingSwitch.Utilities
+import com.smoothie.wirelessDebuggingSwitch.DrawingUtilities
 
 object RoundedWidgetUtilities {
 
@@ -28,14 +28,14 @@ object RoundedWidgetUtilities {
             R.id.center
         )
     ) {
-        val radius = Utilities.getWidgetCornerRadius(context, preferences)
+        val radius = DrawingUtilities.getWidgetCornerRadius(context, preferences)
 
-        val cornerBitmap = Utilities.generateWidgetCornerBitmap(context, preferences, radius)
+        val cornerBitmap = DrawingUtilities.generateWidgetCornerBitmap(context, preferences, radius)
         cornerViewIds.forEach { id ->
             remoteViews.setBitmap(id, "setImageBitmap", cornerBitmap)
         }
 
-        val centerBitmap = Utilities.generateRectangleBitmapForWidget(context, preferences)
+        val centerBitmap = DrawingUtilities.generateRectangleBitmapForWidget(context, preferences)
         plainViewIds.forEach { id ->
             remoteViews.setBitmap(id, "setImageBitmap", centerBitmap)
         }
@@ -59,14 +59,14 @@ object RoundedWidgetUtilities {
             R.id.center
         )
     ) {
-        val radius =  Utilities.getWidgetCornerRadius(context, preferences)
+        val radius =  DrawingUtilities.getWidgetCornerRadius(context, preferences)
 
-        val cornerBitmap = Utilities.generateWidgetCornerBitmap(context, preferences, radius)
+        val cornerBitmap = DrawingUtilities.generateWidgetCornerBitmap(context, preferences, radius)
         cornerViewIds.forEach { id ->
             view.findViewById<ImageView>(id).setImageBitmap(cornerBitmap)
         }
 
-        val centerBitmap = Utilities.generateRectangleBitmapForWidget(context, preferences)
+        val centerBitmap = DrawingUtilities.generateRectangleBitmapForWidget(context, preferences)
         plainViewIds.forEach { id ->
             view.findViewById<ImageView>(id).setImageBitmap(centerBitmap)
         }
