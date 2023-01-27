@@ -30,6 +30,7 @@
     <FrameLayout
         android:id="@+id/preference_fragment_holder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true" />
 
 </LinearLayout>

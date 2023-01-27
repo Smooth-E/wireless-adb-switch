@@ -20,7 +20,8 @@
 
         <activity
             android:name=".PreferenceActivity"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="screenSize|orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
@@ -40,28 +41,24 @@
 
         <activity
             android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.ConfigurationActivity"
-            android:exported="false">
-
+            android:exported="false"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
-
         </activity>
 
         <receiver
             android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.Widget"
             android:exported="false">
-
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.appwidget.action.ENABLED" />
                 <action android:name="android.appwidget.action.DISABLED" />
                 <action android:name="com.smoothie.wirelessDebuggingSwitch.UPDATE_WIDGETS" />
             </intent-filter>
-
             <meta-data android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
-
         </receiver>
 
     </application>
