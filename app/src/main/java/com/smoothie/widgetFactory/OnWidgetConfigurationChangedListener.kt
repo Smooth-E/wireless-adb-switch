@@ -25,14 +25,14 @@ class OnWidgetConfigurationChangedListener(
 
     }
 
-    private fun updatePreview(sharedPreferences: SharedPreferences, previewView: ViewGroup) {
+    private fun updatePreview(widgetSharedPreferences: SharedPreferences, previewView: ViewGroup) {
 
         val previewHeight =
             previewView.height - previewView.paddingBottom - previewView.paddingTop
         val width = (previewHeight * activity.previewAspectRatio).toInt()
         val height = (previewHeight / activity.previewAspectRatio).toInt()
 
-        val view = activity.generateWidget(width, height, sharedPreferences)
+        val view = activity.generateWidget(width, height, widgetSharedPreferences)
         view.layoutParams = ViewGroup.LayoutParams(width, height)
 
         previewView.removeAllViews()

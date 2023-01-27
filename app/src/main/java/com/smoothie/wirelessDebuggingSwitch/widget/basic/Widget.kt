@@ -3,8 +3,8 @@ package com.smoothie.wirelessDebuggingSwitch.widget.basic
 import android.content.Context
 import android.content.SharedPreferences
 import android.widget.RemoteViews
+import com.smoothie.wirelessDebuggingSwitch.widget.RoundedWidgetUtilities
 import com.smoothie.wirelessDebuggingSwitch.R
-import com.smoothie.wirelessDebuggingSwitch.Utilities
 import com.smoothie.wirelessDebuggingSwitch.widget.SwitchWidget
 
 class Widget : SwitchWidget() {
@@ -15,11 +15,8 @@ class Widget : SwitchWidget() {
         preferences: SharedPreferences
     ): RemoteViews {
         val remoteViews = RemoteViews(context.packageName, R.layout.widget_switch_small)
-        remoteViews.setOnClickPendingIntent(R.id.clickable, getPendingUpdateIntent(
-            context,
-            createStateSwitchIntent(context)
-        ))
-
+        val pendingIntent = getPendingUpdateIntent(context, createStateSwitchIntent(context))
+        remoteViews.setOnClickPendingIntent(R.id.clickable, pendingIntent)
 
         val iconResource =
             if (switchState == SwitchState.Enabled)
@@ -29,9 +26,9 @@ class Widget : SwitchWidget() {
         remoteViews.setImageViewResource(R.id.image_view_status, iconResource)
 
         val text = when(switchState) {
-            SwitchState.Enabled -> "Enabled"
-            SwitchState.Waiting -> ""
-            SwitchState.Disabled -> "Disabled"
+            SwitchState.Enabled -> context.getString(R.string.state_enabled)
+            SwitchState.Waiting -> context.getString(R.string.state_waiting)
+            SwitchState.Disabled -> context.getString(R.string.state_enabled)
         }
         remoteViews.setTextViewText(R.id.text_view_status, text)
 
@@ -50,20 +47,7 @@ class Widget : SwitchWidget() {
         remoteViews.setInt(R.id.text_view_status, "setBackgroundResource", background)
         remoteViews.setInt(R.id.text_view_status, "setTextColor", textColorValue)
 
-        val radius = Utilities.getWidgetCornerRadius(context, preferences)
-
-        val cornerBitmap = Utilities.generateWidgetCornerBitmap(context, preferences, radius)
-        remoteViews.setBitmap(R.id.corner_bottom_left, "setImageBitmap", cornerBitmap)
-        remoteViews.setBitmap(R.id.corner_bottom_right, "setImageBitmap", cornerBitmap)
-        remoteViews.setBitmap(R.id.corner_top_left, "setImageBitmap", cornerBitmap)
-        remoteViews.setBitmap(R.id.corner_top_right, "setImageBitmap", cornerBitmap)
-
-        val centerBitmap = Utilities.generateRectangleBitmapForWidget(context, preferences)
-        remoteViews.setBitmap(R.id.side_top, "setImageBitmap", centerBitmap)
-        remoteViews.setBitmap(R.id.side_bottom, "setImageBitmap", centerBitmap)
-        remoteViews.setBitmap(R.id.side_left, "setImageBitmap", centerBitmap)
-        remoteViews.setBitmap(R.id.side_right, "setImageBitmap", centerBitmap)
-        remoteViews.setBitmap(R.id.center, "setImageBitmap", centerBitmap)
+        RoundedWidgetUtilities.applyRemoteViewsParameters(context, preferences, remoteViews)
 
         return remoteViews
     }

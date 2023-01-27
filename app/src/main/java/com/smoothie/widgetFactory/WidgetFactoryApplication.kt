@@ -1,4 +1,4 @@
-package com.smoothie.wirelessDebuggingSwitch
+package com.smoothie.widgetFactory
 
 import android.app.Application
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.preference.PreferenceManager
 import com.smoothie.widgetFactory.WidgetUpdater
 
-class Application : Application() {
+class WidgetFactoryApplication : Application() {
 
     private lateinit var sharedPreferenceChangeListener: OnSharedPreferenceChangeListener
 
