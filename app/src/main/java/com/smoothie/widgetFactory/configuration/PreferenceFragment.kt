@@ -1,4 +1,4 @@
-package com.smoothie.widgetFactory
+package com.smoothie.widgetFactory.configuration
 
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
@@ -8,13 +8,14 @@ import android.view.ViewGroup
 import androidx.preference.PreferenceFragmentCompat
 import com.smoothie.wirelessDebuggingSwitch.R
 
-class WidgetConfigurationPreferenceFragment : PreferenceFragmentCompat() {
+class PreferenceFragment : PreferenceFragmentCompat() {
 
     companion object {
         private const val TAG = "WidgetConfigurationPreferenceFragment"
 
         const val KEY_PREFERENCES_NAME = "PREFERENCES_NAME"
         const val KEY_PREFERENCES_RESOURCE = "PREFERENCES_RESOURCE"
+        const val KEY_PREVIEW_ASPECT = "PREVIEW_ASPECT"
     }
 
     private lateinit var listener: OnSharedPreferenceChangeListener
@@ -40,10 +41,17 @@ class WidgetConfigurationPreferenceFragment : PreferenceFragmentCompat() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val configurationActivity = requireActivity() as WidgetConfigurationActivity
         val previewViewGroup = configurationActivity.findViewById<ViewGroup>(R.id.preview_holder)
 
-        listener = OnWidgetConfigurationChangedListener(configurationActivity, previewViewGroup)
+        val previewAspectRatio = requireArguments().getFloat(KEY_PREVIEW_ASPECT)
+        Log.d(TAG, "Preview aspect ratio: $previewAspectRatio")
+        listener = OnConfigurationChangedListener(
+            configurationActivity,
+            previewViewGroup,
+            previewAspectRatio
+        )
 
         val preferences = preferenceManager.sharedPreferences!!
         preferences.registerOnSharedPreferenceChangeListener(listener)

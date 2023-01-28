@@ -20,7 +20,7 @@
         Specify how often widgets should update.
     </string>
 
-    <string name="header_configure_widget">Configure widget</string>
+    <string name="header_widget_configuration">Widget configuration</string>
 
     <string name="preference_name_background_transparency">Background transparency</string>
     <string name="preference_summary_background_transparency">

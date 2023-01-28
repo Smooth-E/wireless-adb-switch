@@ -11,24 +11,11 @@ import com.smoothie.wirelessDebuggingSwitch.R
 open class CollapsingToolbarActivity(
     private val titleStringResource: Int,
     private val contentFragment: Fragment
-) : AppCompatActivity() {
+) : FullScreenActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_collapsing_toolbar)
-
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        window.statusBarColor = Color.TRANSPARENT
-        window.isNavigationBarContrastEnforced = false
-
-        if (NavigationBar.getInteractionMode(this) == NavigationBar.MODE_GESTURES) {
-            window.navigationBarColor = Color.TRANSPARENT
-            window.navigationBarDividerColor = Color.TRANSPARENT
-        }
-        else {
-            window.navigationBarColor = getColor(R.color.colorOnSecondary)
-            window.navigationBarDividerColor = getColor(R.color.colorOutline)
-        }
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         toolbar.title = getString(titleStringResource)

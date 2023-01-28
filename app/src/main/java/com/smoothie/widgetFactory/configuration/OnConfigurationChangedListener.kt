@@ -1,13 +1,14 @@
-package com.smoothie.widgetFactory
+package com.smoothie.widgetFactory.configuration
 
 import android.content.SharedPreferences
 import android.util.Log
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 
-class OnWidgetConfigurationChangedListener(
+class OnConfigurationChangedListener(
     private val activity: WidgetConfigurationActivity,
-    private val previewView: ViewGroup
+    private val previewView: ViewGroup,
+    private val previewAspectRatio: Float
 ) : SharedPreferences.OnSharedPreferenceChangeListener {
 
     companion object {
@@ -26,10 +27,12 @@ class OnWidgetConfigurationChangedListener(
     }
 
     private fun updatePreview(widgetSharedPreferences: SharedPreferences, previewView: ViewGroup) {
+        Log.d(TAG, "Updating preview!")
+
         val previewHeight =
             previewView.height - previewView.paddingBottom - previewView.paddingTop
-        val width = (previewHeight * activity.previewAspectRatio).toInt()
-        val height = (previewHeight / activity.previewAspectRatio).toInt()
+        val width = (previewHeight * previewAspectRatio).toInt()
+        val height = (previewHeight / previewAspectRatio).toInt()
 
         val view = activity.generateWidget(width, height, widgetSharedPreferences)
         view.layoutParams = ViewGroup.LayoutParams(width, height)

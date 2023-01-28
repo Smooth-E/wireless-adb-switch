@@ -1,9 +1,10 @@
 package com.smoothie.wirelessDebuggingSwitch.widget.basic
 
 import android.content.SharedPreferences
+import android.util.Log
 import android.view.View
 import com.smoothie.wirelessDebuggingSwitch.R
-import com.smoothie.widgetFactory.WidgetConfigurationActivity
+import com.smoothie.widgetFactory.configuration.WidgetConfigurationActivity
 import com.smoothie.wirelessDebuggingSwitch.widget.RoundedWidgetUtilities
 
 class ConfigurationActivity : WidgetConfigurationActivity(

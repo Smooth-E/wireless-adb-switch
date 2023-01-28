@@ -10,6 +10,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.RemoteViews
+import com.smoothie.widgetFactory.configuration.WidgetPreferences
 import com.smoothie.wirelessDebuggingSwitch.widget.basic.Widget
 
 abstract class ConfigurableWidget : AppWidgetProvider() {
@@ -71,7 +72,7 @@ abstract class ConfigurableWidget : AppWidgetProvider() {
 
         val applicationContext = context.applicationContext
         appWidgetIds.forEach { id ->
-            val preferencesName = WidgetConfiguration.getWidgetSharedPreferencesName(id)
+            val preferencesName = WidgetPreferences.getWidgetSharedPreferencesName(id)
             applicationContext.deleteSharedPreferences(preferencesName)
             Log.d(TAG, "Deleted widget with id $id")
         }
@@ -95,7 +96,7 @@ abstract class ConfigurableWidget : AppWidgetProvider() {
         val manager = AppWidgetManager.getInstance(context)
         val applicationContext = context.applicationContext
         widgetIds.forEach { id ->
-            val preferenceName = WidgetConfiguration.getWidgetSharedPreferencesName(id)
+            val preferenceName = WidgetPreferences.getWidgetSharedPreferencesName(id)
             val preferences =
                 applicationContext.getSharedPreferences(preferenceName, Context.MODE_PRIVATE)
             manager.updateAppWidget(id, generateRemoteViews(context, id, preferences))

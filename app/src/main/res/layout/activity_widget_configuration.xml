@@ -29,7 +29,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:elevation="0dp"
                 app:layout_collapseMode="pin"
-                app:title="@string/header_settings"
+                app:title="@string/header_widget_configuration"
                 app:navigationIcon="@drawable/ic_round_arrow_back_24"
                 app:navigationIconTint="@color/colorOnSurface"/>
 
@@ -43,10 +43,40 @@
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <FrameLayout
-            android:id="@+id/fragment_holder"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:padding="10dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/showcase_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
+                    android:src="@drawable/placeholder_wallpaper"
+                    android:scaleType="centerCrop" />
+
+                <RelativeLayout
+                    android:id="@+id/preview_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="30dp"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/preference_fragment_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true" />
+
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
