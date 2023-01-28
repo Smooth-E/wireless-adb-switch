@@ -5,6 +5,8 @@ import java.io.DataOutputStream
 
 open class SuperShell {
 
+    class RootEvaluationException(message: String?) : Exception(message)
+
     companion object {
 
         @JvmStatic
@@ -15,7 +17,7 @@ open class SuperShell {
             }
             catch (exception: Exception) {
                 exception.printStackTrace()
-                throw Exception("Could not get super privileges!")
+                throw RootEvaluationException("Could not get super privileges!")
             }
             val outputStream = DataOutputStream(process.outputStream)
             val inputStream = DataInputStream(process.inputStream)

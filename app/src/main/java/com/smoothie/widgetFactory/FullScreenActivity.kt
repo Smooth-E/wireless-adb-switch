@@ -1,9 +1,9 @@
 package com.smoothie.widgetFactory
 
+import android.content.res.Configuration.ORIENTATION_PORTRAIT
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.WindowManager
+import android.view.WindowManager.LayoutParams
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import com.smoothie.wirelessDebuggingSwitch.R
@@ -22,9 +22,16 @@ open class FullScreenActivity : AppCompatActivity() {
             window.navigationBarDividerColor = Color.TRANSPARENT
         }
         else {
-            window.navigationBarColor = getColor(R.color.colorOnSecondary)
-            window.navigationBarDividerColor = getColor(R.color.colorOutline)
+            val outlineColorId = if (resources.configuration.orientation == ORIENTATION_PORTRAIT)
+                R.color.colorSurfaceInverse
+            else
+                R.color.colorTransparent
+
+            window.navigationBarColor = getColor(R.color.colorSurface)
+            window.navigationBarDividerColor = getColor(outlineColorId)
         }
+
+        window.attributes.layoutInDisplayCutoutMode = LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
     }
 
 }

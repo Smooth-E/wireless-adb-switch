@@ -47,6 +47,7 @@
     <!-- Custom colors -->
 
     <color name="colorGoogleWidgetBackground">@color/colorOnSecondary</color>
+    <color name="colorTransparent">#0000</color>
 
     <!-- Other colors from Material Theme Builder -->
 
