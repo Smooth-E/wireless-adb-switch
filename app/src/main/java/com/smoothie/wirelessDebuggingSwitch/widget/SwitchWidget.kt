@@ -22,6 +22,7 @@ abstract class SwitchWidget(name: String) : ConfigurableWidget(name) {
     companion object {
 
         private const val TAG = "SwitchWidget"
+        private const val CLIPBOARD_PREFIX = "connect-wireless-debugging://"
 
         const val INTENT_FLAG_CHANGE_STATE =
             "com.smoothie.wirelessDebuggingSwitch.intent.FLAG_CHANGE_STATE"
@@ -71,7 +72,7 @@ abstract class SwitchWidget(name: String) : ConfigurableWidget(name) {
             return
         }
 
-        val result = KdeConnect.sendClipboard(context, connectionAddress)
+        val result = KdeConnect.sendClipboard(context,  CLIPBOARD_PREFIX + connectionAddress)
 
         if (!result.isSuccess) {
             val message = context.getString(R.string.message_failed_sending_clipboard)
