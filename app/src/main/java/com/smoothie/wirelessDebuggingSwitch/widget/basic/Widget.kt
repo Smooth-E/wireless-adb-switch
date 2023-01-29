@@ -28,7 +28,7 @@ class Widget : SwitchWidget(Widget::class.java.name) {
         val text = when(switchState) {
             SwitchState.Enabled -> context.getString(R.string.state_enabled)
             SwitchState.Waiting -> context.getString(R.string.state_waiting)
-            SwitchState.Disabled -> context.getString(R.string.state_enabled)
+            SwitchState.Disabled -> context.getString(R.string.state_disabled)
         }
         remoteViews.setTextViewText(R.id.text_view_status, text)
 

@@ -42,13 +42,15 @@ abstract class SwitchWidget(name: String) : ConfigurableWidget(name) {
 
             Log.d(TAG, "Wireless debugging switching begun!")
 
-            Thread {
-                val state = !WirelessDebugging.enabled
-                switchState = if (state) SwitchState.Enabled else SwitchState.Disabled
-                updateAllWidgets(context)
-                WirelessDebugging.enabled = state
-                Log.d(TAG, "Wireless debugging switching finished!")
-            }.start()
+            WirelessDebugging.enabled = !WirelessDebugging.enabled
+            switchState = if (WirelessDebugging.enabled)
+                SwitchState.Enabled
+            else
+                SwitchState.Disabled
+
+            updateAllWidgets(context)
+
+            Log.d(TAG, "Wireless debugging switching finished!")
         }
         else
             super.onReceive(context, intent)
