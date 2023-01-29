@@ -1,11 +1,12 @@
 package com.smoothie.wirelessDebuggingSwitch.widget
 
 import android.appwidget.AppWidgetManager
-import android.content.Context
-import android.content.Intent
+import android.content.*
 import android.util.Log
+import android.widget.Toast
 import com.smoothie.widgetFactory.ConfigurableWidget
 import com.smoothie.wirelessDebuggingSwitch.WirelessDebugging
+import com.topjohnwu.superuser.Shell
 
 abstract class SwitchWidget(name: String) : ConfigurableWidget(name) {
 
@@ -40,8 +41,6 @@ abstract class SwitchWidget(name: String) : ConfigurableWidget(name) {
             switchState = SwitchState.Waiting
             updateAllWidgets(context!!)
 
-            Log.d(TAG, "Wireless debugging switching begun!")
-
             WirelessDebugging.enabled = !WirelessDebugging.enabled
             switchState = if (WirelessDebugging.enabled)
                 SwitchState.Enabled
@@ -50,7 +49,35 @@ abstract class SwitchWidget(name: String) : ConfigurableWidget(name) {
 
             updateAllWidgets(context)
 
-            Log.d(TAG, "Wireless debugging switching finished!")
+            if (switchState == SwitchState.Enabled) {
+                val connectionAddress: String
+                try {
+                    val port = WirelessDebugging.getPort()
+                    val address = WirelessDebugging.getAddress(context)
+                    connectionAddress = "$address:$port"
+                }
+                catch (exception: Exception) {
+                    Log.e(TAG, "Unable to get connection address and port.")
+                    exception.printStackTrace()
+                    return
+                }
+
+                val label = "Wireless debugging connection address"
+                val clipboardManager =
+                    context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                clipboardManager.setPrimaryClip(ClipData.newPlainText(label, connectionAddress))
+
+                val packageName = "org.kde.kdeconnect_tp"
+                val activityName =
+                    "org.kde.kdeconnect.Plugins.ClibpoardPlugin.ClipboardFloatingActivity"
+                val command =
+                    "am start " +
+                    "-n $packageName/$activityName " +
+                    "--ez SHOW_TOAST 1"
+
+                val result = Shell.cmd(command).exec()
+                Log.d(TAG, result.toString())
+            }
         }
         else
             super.onReceive(context, intent)
