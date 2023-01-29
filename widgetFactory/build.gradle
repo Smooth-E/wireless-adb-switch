@@ -1,32 +1,22 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
 
 android {
-    namespace 'com.smoothie.wirelessDebuggingSwitch'
+    namespace 'com.smoothie.widgetFactory'
     compileSdk 33
-
-    defaultConfig {
-        applicationId "com.smoothie.wirelessDebuggingSwitch"
-        minSdk 30
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdk 30
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     kotlinOptions {
@@ -47,7 +37,4 @@ dependencies {
 
     implementation 'androidx.preference:preference:1.2.0'
     implementation 'androidx.preference:preference-ktx:1.2.0'
-
-    implementation(project(':widgetFactory'))
-    implementation(project(':libsu:core'))
 }

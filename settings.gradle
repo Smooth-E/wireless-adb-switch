@@ -3,6 +3,7 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+        maven { url 'https://www.jitpack.io' }
     }
 }
 dependencyResolutionManagement {
@@ -14,3 +15,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "wireless-adb-switch"
 include ':app'
+include ':widgetFactory'
+include ':libsu:core'

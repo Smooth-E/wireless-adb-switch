@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string translatable="false" name="key_update_interval">update_interval</string>
     <string translatable="false" name="key_background_transparency">background_transparency</string>
     <string translatable="false" name="key_use_colorful_background">use_colorful_background</string>
     <string translatable="false" name="key_corner_roundness">corner_roundness</string>

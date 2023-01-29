@@ -3,10 +3,11 @@ package com.smoothie.wirelessDebuggingSwitch.widget
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import com.smoothie.widgetFactory.ConfigurableWidget
 import com.smoothie.wirelessDebuggingSwitch.WirelessDebugging
 
-abstract class SwitchWidget : ConfigurableWidget() {
+abstract class SwitchWidget(name: String) : ConfigurableWidget(name) {
 
     enum class SwitchState {
         Disabled,
@@ -39,11 +40,14 @@ abstract class SwitchWidget : ConfigurableWidget() {
             switchState = SwitchState.Waiting
             updateAllWidgets(context!!)
 
+            Log.d(TAG, "Wireless debugging switching begun!")
+
             Thread {
                 val state = !WirelessDebugging.enabled
                 switchState = if (state) SwitchState.Enabled else SwitchState.Disabled
                 updateAllWidgets(context)
                 WirelessDebugging.enabled = state
+                Log.d(TAG, "Wireless debugging switching finished!")
             }.start()
         }
         else

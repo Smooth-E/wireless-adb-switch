@@ -7,7 +7,7 @@ import com.smoothie.wirelessDebuggingSwitch.widget.RoundedWidgetUtilities
 import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.wirelessDebuggingSwitch.widget.SwitchWidget
 
-class Widget : SwitchWidget() {
+class Widget : SwitchWidget(Widget::class.java.name) {
 
     override fun generateRemoteViews(
         context: Context,

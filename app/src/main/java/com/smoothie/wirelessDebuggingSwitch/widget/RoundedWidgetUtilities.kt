@@ -2,11 +2,11 @@ package com.smoothie.wirelessDebuggingSwitch.widget
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.*
 import android.view.View
 import android.widget.ImageView
 import android.widget.RemoteViews
 import com.smoothie.wirelessDebuggingSwitch.R
-import com.smoothie.wirelessDebuggingSwitch.DrawingUtilities
 
 object RoundedWidgetUtilities {
 
@@ -28,14 +28,14 @@ object RoundedWidgetUtilities {
             R.id.center
         )
     ) {
-        val radius = DrawingUtilities.getWidgetCornerRadius(context, preferences)
+        val radius = getWidgetCornerRadius(context, preferences)
 
-        val cornerBitmap = DrawingUtilities.generateWidgetCornerBitmap(context, preferences, radius)
+        val cornerBitmap = generateWidgetCornerBitmap(context, preferences, radius)
         cornerViewIds.forEach { id ->
             remoteViews.setBitmap(id, "setImageBitmap", cornerBitmap)
         }
 
-        val centerBitmap = DrawingUtilities.generateRectangleBitmapForWidget(context, preferences)
+        val centerBitmap = generateRectangleBitmapForWidget(context, preferences)
         plainViewIds.forEach { id ->
             remoteViews.setBitmap(id, "setImageBitmap", centerBitmap)
         }
@@ -59,17 +59,84 @@ object RoundedWidgetUtilities {
             R.id.center
         )
     ) {
-        val radius =  DrawingUtilities.getWidgetCornerRadius(context, preferences)
+        val radius =  getWidgetCornerRadius(context, preferences)
 
-        val cornerBitmap = DrawingUtilities.generateWidgetCornerBitmap(context, preferences, radius)
+        val cornerBitmap = generateWidgetCornerBitmap(context, preferences, radius)
         cornerViewIds.forEach { id ->
             view.findViewById<ImageView>(id).setImageBitmap(cornerBitmap)
         }
 
-        val centerBitmap = DrawingUtilities.generateRectangleBitmapForWidget(context, preferences)
+        val centerBitmap = generateRectangleBitmapForWidget(context, preferences)
         plainViewIds.forEach { id ->
             view.findViewById<ImageView>(id).setImageBitmap(centerBitmap)
         }
+    }
+
+    fun generateRectangleBitmapForWidget(
+        context: Context,
+        preferences: SharedPreferences
+    ): Bitmap {
+        val paint = createPaint(context, preferences)
+        val bitmap = Bitmap.createBitmap(512, 512, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+
+        canvas.drawRect(0f, 0f, 512f, 512f, paint)
+
+        return bitmap
+    }
+
+    fun getWidgetCornerRadius(
+        context: Context,
+        preferences: SharedPreferences
+    ): Int {
+        val key = context.getString(R.string.key_corner_roundness)
+        val roundnessModifier = preferences.getInt(key, 100) / 100f
+        val systemRoundness =
+            context.resources.getDimensionPixelSize(com.smoothie.widgetFactory.R.dimen.system_appwidget_background_radius)
+        val radius = (systemRoundness * roundnessModifier).toInt()
+        return if (radius == 0) 1 else radius
+    }
+
+    private fun createPaint(context: Context, preferences: SharedPreferences): Paint {
+        var key = context.getString(R.string.key_use_colorful_background)
+        val useColorfulBackground =
+            preferences.getBoolean(key, false)
+
+        key = context.getString(R.string.key_background_transparency)
+        val transparency =
+            preferences.getInt(key, 100) / 100f
+
+        val colorId =
+            if (useColorfulBackground)
+                R.color.colorGoogleWidgetBackground
+            else
+                R.color.colorSurface
+
+        val theme = context.theme
+        val color = Color.valueOf(theme.resources.getColor(colorId, theme))
+        val colorInt =  Color.argb(transparency, color.red(), color.green(), color.blue())
+
+        val paint = Paint()
+        paint.color = colorInt
+        paint.style = Paint.Style.FILL
+        paint.blendMode = BlendMode.SRC
+
+        return paint
+    }
+
+    fun generateWidgetCornerBitmap(
+        context: Context,
+        preferences: SharedPreferences,
+        radius: Int
+    ): Bitmap {
+        val paint = createPaint(context, preferences)
+        val bitmap = Bitmap.createBitmap(radius, radius, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+
+        val radiusFloat = radius.toFloat()
+        canvas.drawCircle(radiusFloat, radiusFloat, radiusFloat, paint)
+
+        return bitmap
     }
 
 }

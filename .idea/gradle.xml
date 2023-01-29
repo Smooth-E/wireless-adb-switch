@@ -12,6 +12,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/libsu" />
+            <option value="$PROJECT_DIR$/libsu/core" />
+            <option value="$PROJECT_DIR$/widgetFactory" />
           </set>
         </option>
       </GradleProjectSettings>
