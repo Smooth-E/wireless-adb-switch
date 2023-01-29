@@ -14,6 +14,8 @@
     <string name="state_waiting">Waiting</string>
     <string name="state_disabled">Disabled</string>
 
+    <string name="message_failed_sending_clipboard">Failed to send clipboard!</string>
+
     <string name="preference_name_update_interval">Widget update interval</string>
     <string name="preference_description_update_interval">
         Specify how often widgets should update.
