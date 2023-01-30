@@ -30,8 +30,9 @@ def main():
 
         address = new_clipboard.removeprefix(connect_action_prefix)
         result = os.popen('adb connect ' + address).readline()
+        result = result[0].upper() + result[1:]
         
-        if result.startswith('connected to '):
+        if result.startswith('Connected to '):
             icon = 'nm-device-wireless'
         else:
             icon = 'error'
