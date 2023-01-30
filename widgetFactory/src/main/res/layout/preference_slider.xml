@@ -10,9 +10,9 @@
     android:paddingTop="10dp">
 
     <ImageView
-        android:id="@android:id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@android:id/icon"
         android:minWidth="24dp"
         android:minHeight="24dp"
         android:layout_gravity="center"
@@ -57,8 +57,8 @@
             android:clipChildren="false"
             android:clipToPadding="false">
 
-            <androidx.appcompat.widget.AppCompatSeekBar
-                android:id="@+id/seekbar"
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:focusable="false"
@@ -66,13 +66,14 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/seekbar_value"
-                android:paddingVertical="10dp"/>
+                app:layout_constraintEnd_toStartOf="@id/slider_value"
+                android:paddingVertical="10dp"
+                android:layout_marginEnd="10dp"/>
 
             <TextView
-                android:minHeight="24dp"
                 android:minWidth="24dp"
-                android:id="@+id/seekbar_value"
+                android:minHeight="24dp"
+                android:id="@+id/slider_value"
                 android:layout_height="wrap_content"
                 android:layout_width="30dp"
                 android:gravity="center"

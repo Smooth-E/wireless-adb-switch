@@ -80,7 +80,6 @@ abstract class SwitchWidget(name: String) : ConfigurableWidget(name) {
             Log.w(TAG, result.toString())
             return
         }
-
     }
 
     override fun onUpdate(

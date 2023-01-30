@@ -42,4 +42,5 @@ dependencies {
 
     implementation(project(':widgetFactory'))
     implementation(project(':libsu:core'))
+    implementation 'androidx.core:core-ktx:+'
 }

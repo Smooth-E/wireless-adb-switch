@@ -53,7 +53,7 @@ class WidgetUpdater : BroadcastReceiver() {
         private fun schedule(context: Context) {
             val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
             val key = Utilities.getSharedPreferencesKey(context, R.string.key_update_interval)
-            interval = sharedPreferences.getInt(key, 1)
+            interval = sharedPreferences.getFloat(key, 1f).toInt()
             val time = System.currentTimeMillis() + interval * 1000
 
             val intent = createPendingIntent(context)

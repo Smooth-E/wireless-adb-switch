@@ -90,7 +90,7 @@ object RoundedWidgetUtilities {
         preferences: SharedPreferences
     ): Int {
         val key = context.getString(R.string.key_corner_roundness)
-        val roundnessModifier = preferences.getInt(key, 100) / 100f
+        val roundnessModifier = preferences.getFloat(key, 100f) / 100f
         val systemRoundness =
             context.resources.getDimensionPixelSize(com.smoothie.widgetFactory.R.dimen.system_appwidget_background_radius)
         val radius = (systemRoundness * roundnessModifier).toInt()
@@ -104,7 +104,7 @@ object RoundedWidgetUtilities {
 
         key = context.getString(R.string.key_background_transparency)
         val transparency =
-            preferences.getInt(key, 100) / 100f
+            preferences.getFloat(key, 100f) / 100f
 
         val colorId =
             if (useColorfulBackground)

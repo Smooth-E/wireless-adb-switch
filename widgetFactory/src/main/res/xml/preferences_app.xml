@@ -3,15 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <SeekBarPreference
+    <com.smoothie.widgetFactory.SliderPreference
         app:key="@string/key_update_interval"
         app:title="@string/preference_name_update_interval"
         app:summary="@string/preference_description_update_interval"
-        app:icon="@drawable/ic_round_manage_history_24"
+        app:icon="@drawable/round_manage_history_24"
         app:defaultValue="1"
-        app:min="1"
-        android:max="10"
+        app:showSliderValue="true"
+        android:valueFrom="1"
+        android:valueTo="10"
         app:showSeekBarValue="true"
-        android:layout="@layout/preference_seekbar"/>
+        android:stepSize="1"/>
 
 </PreferenceScreen>

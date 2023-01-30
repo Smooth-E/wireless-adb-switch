@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="GlobalAttributeDeclaration">
+        <attr name="android:valueFrom" format="float"/>
+        <attr name="android:valueTo" format="float"/>
+        <attr name="android:stepSize" format="float"/>
+        <attr name="adjustable" format="boolean"/>
+        <attr name="showSliderValue" format="boolean"/>
+        <attr name="updatesContinuously" format="boolean"/>
+        <attr name="style" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="SliderPreference">
+        <attr name="android:valueTo"/>
+        <attr name="android:valueFrom"/>
+        <attr name="android:stepSize"/>
+        <attr name="adjustable"/>
+        <attr name="showSliderValue"/>
+        <attr name="updatesContinuously"/>
+        <attr name="style"/>
+    </declare-styleable>
+
+</resources>
