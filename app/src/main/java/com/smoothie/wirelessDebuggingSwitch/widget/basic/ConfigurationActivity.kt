@@ -7,7 +7,7 @@ import com.smoothie.widgetFactory.configuration.WidgetConfigurationActivity
 import com.smoothie.wirelessDebuggingSwitch.widget.RoundedWidgetUtilities
 
 class ConfigurationActivity : WidgetConfigurationActivity(
-    R.xml.preferences_widget_basic,
+    R.xml.widget_basic_preferences,
     1f
 ) {
 

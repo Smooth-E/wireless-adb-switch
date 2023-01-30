@@ -12,7 +12,9 @@
         android:max="100"
         android:stepSize="1"
         app:updatesContinuously="true"
-        app:showSliderValue="false"/>
+        app:showSliderValue="false"
+        app:labelFormatter="suffix_int"
+        app:labelFormatterSuffix="%"/>
 
     <com.smoothie.widgetFactory.preference.slider.SliderPreference
         android:key="@string/key_corner_roundness"
@@ -24,7 +26,9 @@
         android:defaultValue="100"
         android:stepSize="1"
         app:updatesContinuously="true"
-        app:showSliderValue="false"/>
+        app:showSliderValue="false"
+        app:labelFormatter="suffix_int"
+        app:labelFormatterSuffix="%"/>
 
     <SwitchPreferenceCompat
         android:key="@string/key_use_colorful_background"

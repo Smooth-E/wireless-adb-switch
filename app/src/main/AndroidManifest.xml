@@ -46,7 +46,7 @@
                 <action android:name="com.smoothie.wirelessDebuggingSwitch.UPDATE_WIDGETS" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider"
-                android:resource="@xml/widget_info" />
+                android:resource="@xml/widget_basic_info" />
         </receiver>
 
     </application>

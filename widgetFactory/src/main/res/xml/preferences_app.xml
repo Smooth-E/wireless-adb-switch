@@ -13,8 +13,8 @@
         android:valueFrom="1"
         android:valueTo="10"
         android:stepSize="1"
-        app:labelFormatter="prefix_int"
-        app:labelFormatterPrefix="s"
+        app:labelFormatter="suffix_int"
+        app:labelFormatterSuffix="s"
         app:displayWholeNumbers="true"/>
 
 </PreferenceScreen>

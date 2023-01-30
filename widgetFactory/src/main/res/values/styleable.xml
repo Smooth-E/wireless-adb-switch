@@ -15,8 +15,8 @@
         <attr name="labelFormatter" format="enum">
             <enum name="none" value="0"/>
             <enum name="basic" value="1"/>
-            <enum name="prefix" value="2"/>
-            <enum name="prefix_int" value="3"/>
+            <enum name="suffix" value="2"/>
+            <enum name="suffix_int" value="3"/>
         </attr>
         <attr name="labelFormatterSuffix" format="string"/>
     </declare-styleable>
