@@ -3,7 +3,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.smoothie.widgetFactory.SliderPreference
+    <com.smoothie.widgetFactory.preference.SliderPreference
+        app:key="@string/key_update_interval"
+        app:title="@string/preference_name_update_interval"
+        app:summary="@string/preference_description_update_interval"
+        app:icon="@drawable/round_manage_history_24"
+        app:defaultValue="1"
+        app:showSliderValue="true"
+        android:valueFrom="1"
+        android:valueTo="10"
+        app:showSeekBarValue="true"
+        android:stepSize="1" />
+
+    <com.smoothie.widgetFactory.preference.SliderPreference
+        app:key="@string/key_update_interval"
+        app:title="@string/preference_name_update_interval"
+        app:summary="@string/preference_description_update_interval"
+        app:icon="@drawable/round_manage_history_24"
+        app:defaultValue="1"
+        app:showSliderValue="true"
+        android:valueFrom="1"
+        android:valueTo="10"
+        app:showSeekBarValue="true"
+        android:stepSize="1"/>
+
+    <com.smoothie.widgetFactory.preference.SliderPreference
         app:key="@string/key_update_interval"
         app:title="@string/preference_name_update_interval"
         app:summary="@string/preference_description_update_interval"

@@ -8,6 +8,12 @@
         <item name="android:windowLightNavigationBar">true</item>
         <item name="android:windowLightStatusBar">true</item>
 
+        <item name="switchPreferenceCompatStyle">
+            @style/Theme.WidgetFactory.SwitchPreferenceCompat
+        </item>
+
+        <item name="sliderPreferenceStyle">@style/Theme.WidgetFactory.SliderPreference</item>
+
     </style>
 
 </resources>
