@@ -1,4 +1,4 @@
-package com.smoothie.widgetFactory.preference
+package com.smoothie.widgetFactory.preference.slider
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -10,11 +10,20 @@ import android.view.View
 import android.widget.TextView
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
+import com.google.android.material.slider.BasicLabelFormatter
+import com.google.android.material.slider.LabelFormatter
 import com.google.android.material.slider.Slider
 import com.smoothie.widgetFactory.R
 import kotlin.math.abs
 
 open class SliderPreference : Preference {
+
+    private object LabelFormatterType {
+        const val NONE = 0
+        const val BASIC = 1
+        const val SUFFIX = 2
+        const val SUFFIX_INT = 3
+    }
 
     companion object {
         private const val TAG = "SliderPreference"
@@ -22,56 +31,72 @@ open class SliderPreference : Preference {
 
     private var isTrackingTouch = false
     private var sliderValueTextView: TextView? = null
+    private var currentSliderValue = 0f
+    private var labelFormatterType = LabelFormatterType.BASIC
+    private var labelFormatterSuffix: String? = null
 
     private lateinit var slider: Slider
 
-    private var currentSliderValue = 0f
-
     var showSliderValue = true
-    set(value) {
-        if (field == value)
-            return
+        set(value) {
+            if (field == value)
+                return
 
-        field = value
-        notifyChanged()
-    }
+            field = value
+            notifyChanged()
+        }
 
-    var updatesContinuously = true
+    var labelFormatter: LabelFormatter? = null
+        set(value) {
+            slider.setLabelFormatter(value)
+            field = value
+        }
+
+    var updatesContinuously = false
     var isAdjustableWithKeys = true
 
     var sliderStep = 1f
-    set(value) {
-        if (value != sliderStep) {
-            field = (maximumValue - minimumValue).coerceAtMost(abs(value))
-            notifyChanged()
+        set(value) {
+            if (value != sliderStep) {
+                field = (maximumValue - minimumValue).coerceAtMost(abs(value))
+                notifyChanged()
+            }
         }
-    }
 
     var minimumValue = 0f
-    set(value) {
-        val clampedValue = if (value > maximumValue) maximumValue else value
+        set(value) {
+            val clampedValue = if (value > maximumValue) maximumValue else value
 
-        if (clampedValue != minimumValue) {
-            field = clampedValue
-            notifyChanged()
+            if (clampedValue != minimumValue) {
+                field = clampedValue
+                notifyChanged()
+            }
         }
-    }
 
     var maximumValue = 100f
-    set(value) {
-        val clampedValue = if (value < minimumValue) minimumValue else value
+        set(value) {
+            val clampedValue = if (value < minimumValue) minimumValue else value
 
-        if (clampedValue != field) {
-            field = clampedValue
+            if (clampedValue != field) {
+                field = clampedValue
+                notifyChanged()
+            }
+        }
+
+    var displaysWholeNumbers = false
+        set(value) {
+            if (field == value)
+                return
+
+            field = value
             notifyChanged()
         }
-    }
 
     private val sliderChangeListener = Slider.OnChangeListener { slider, value, fromUser ->
         if (fromUser && (updatesContinuously || !isTrackingTouch))
             syncValueInternal(slider)
         else
-            updateLabelValue(value + minimumValue)
+            updateLabelValue(value)
     }
 
     private val sliderTouchListener = object : Slider.OnSliderTouchListener {
@@ -136,7 +161,16 @@ open class SliderPreference : Preference {
         showSliderValue = obtainedAttributes.getBoolean(attributeIndex, true)
 
         attributeIndex = R.styleable.SliderPreference_updatesContinuously
-        updatesContinuously = obtainedAttributes.getBoolean(attributeIndex, true)
+        updatesContinuously = obtainedAttributes.getBoolean(attributeIndex, false)
+
+        attributeIndex = R.styleable.SliderPreference_displayWholeNumbers
+        displaysWholeNumbers = obtainedAttributes.getBoolean(attributeIndex, false)
+
+        attributeIndex = R.styleable.SliderPreference_labelFormatter
+        labelFormatterType = obtainedAttributes.getInt(attributeIndex, LabelFormatterType.BASIC)
+
+        attributeIndex = R.styleable.SliderPreference_labelFormatterSuffix
+        labelFormatterSuffix = obtainedAttributes.getString(attributeIndex)
 
         obtainedAttributes.recycle()
     }
@@ -166,15 +200,28 @@ open class SliderPreference : Preference {
         slider.addOnChangeListener(sliderChangeListener)
         slider.addOnSliderTouchListener(sliderTouchListener)
 
-        slider.valueTo = maximumValue - minimumValue
+        slider.valueFrom = minimumValue
+        slider.valueTo = maximumValue
 
         if (sliderStep != 0f)
             slider.stepSize = sliderStep
         else
             sliderStep = slider.stepSize
 
-        slider.value = getSliderValue() - minimumValue
-        updateLabelValue(getSliderValue())
+        if (labelFormatterType != LabelFormatterType.NONE) {
+            if (labelFormatterType != LabelFormatterType.BASIC && labelFormatterSuffix == null)
+                throw NullPointerException("Suffix formatter is enabled but no suffix was given!")
+
+            labelFormatter = when(labelFormatterType) {
+                LabelFormatterType.BASIC -> BasicLabelFormatter()
+                LabelFormatterType.SUFFIX -> SuffixLabelFormatter(labelFormatterSuffix!!)
+                LabelFormatterType.SUFFIX_INT -> IntegerWithSuffixLabelFormatter(labelFormatterSuffix!!)
+                else -> null
+            }
+        }
+
+        slider.value = currentSliderValue
+        updateLabelValue(currentSliderValue)
         slider.isEnabled = isEnabled
     }
 
@@ -260,8 +307,18 @@ open class SliderPreference : Preference {
         }
     }
 
-    fun updateLabelValue(value: Float) {
-        sliderValueTextView?.text = value.toString()
+    private fun updateLabelValue(value: Float) {
+        var text = if (displaysWholeNumbers) value.toInt().toString() else value.toString()
+
+        val displaySuffix =
+            labelFormatterType != LabelFormatterType.NONE &&
+            labelFormatterType != LabelFormatterType.BASIC &&
+            labelFormatterSuffix != null
+
+        if (displaySuffix)
+            text += labelFormatterSuffix
+
+        sliderValueTextView?.text = text
     }
 
     private class SavedState : BaseSavedState {

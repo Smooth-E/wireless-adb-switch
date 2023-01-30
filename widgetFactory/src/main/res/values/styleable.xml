@@ -11,6 +11,14 @@
         <attr name="showSliderValue" format="boolean"/>
         <attr name="updatesContinuously" format="boolean"/>
         <attr name="style" format="reference"/>
+        <attr name="displayWholeNumbers" format="boolean" />
+        <attr name="labelFormatter" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="basic" value="1"/>
+            <enum name="prefix" value="2"/>
+            <enum name="prefix_int" value="3"/>
+        </attr>
+        <attr name="labelFormatterSuffix" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="SliderPreference">
@@ -21,6 +29,9 @@
         <attr name="showSliderValue"/>
         <attr name="updatesContinuously"/>
         <attr name="style"/>
+        <attr name="displayWholeNumbers"/>
+        <attr name="labelFormatter"/>
+        <attr name="labelFormatterSuffix"/>
     </declare-styleable>
 
 </resources>
