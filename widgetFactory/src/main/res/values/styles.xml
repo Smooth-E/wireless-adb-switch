@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style
-        name="Theme.WidgetFactory.SwitchPreferenceCompat"
-        parent="Preference.SwitchPreferenceCompat">
+    <style name="Theme.WidgetFactory.PreferenceCategory" parent="">
+        <item name="allowDividerBelow">false</item>
+        <item name="allowDividerAbove">false</item>
+        <item name="layout">@layout/preference_category_custom</item>
+    </style>
 
+    <style name="Theme.WidgetFactory.SwitchPreferenceCompat"
+        parent="Preference.SwitchPreferenceCompat">
         <item name="layout">@layout/preference_base</item>
         <item name="widgetLayout">@layout/preference_switch_compat</item>
         <item name="allowDividerAbove">false</item>
         <item name="allowDividerBelow">false</item>
-
     </style>
 
     <style name="Theme.WidgetFactory.SliderPreference" parent="Preference">
-
         <item name="allowDividerBelow">false</item>
         <item name="allowDividerAbove">true</item>
-
     </style>
 
 </resources>
