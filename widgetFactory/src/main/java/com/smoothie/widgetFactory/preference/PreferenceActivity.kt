@@ -4,8 +4,9 @@ import com.smoothie.widgetFactory.CollapsingToolbarActivity
 import com.smoothie.widgetFactory.R
 
 open class PreferenceActivity(
-    val preferencesResourceId: Int
+    val preferencesResourceId: Int,
+    titleStringResource: Int = R.string.header_settings
 ) : CollapsingToolbarActivity(
-    R.string.header_settings,
+    titleStringResource,
     PreferenceFragment()
 )

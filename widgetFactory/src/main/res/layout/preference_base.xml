@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:src="@drawable/ic_round_gradient_24"
+            tools:src="@drawable/ic_android_24dp"
             android:id="@android:id/icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             app:maxHeight="48dp"
             android:minWidth="24dp"
             android:minHeight="24dp"
-            app:tint="@color/colorSecondary"
+            app:tint="?attr/colorSecondary"
             android:paddingHorizontal="10dp"/>
 
     </FrameLayout>
@@ -48,7 +48,7 @@
         android:singleLine="true"
         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
         android:ellipsize="marquee"
-        android:text="Placeholder Title"/>
+        tools:text="Placeholder Title"/>
 
     <TextView
         android:id="@android:id/summary"
@@ -56,8 +56,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:textColor="?android:attr/textColorSecondary"
-        android:maxLines="4"
-        android:text="@string/preference_summary_container_color"/>
+        tools:text="Placeholder"
+        android:paddingTop="5dp"/>
 
     </LinearLayout>
 

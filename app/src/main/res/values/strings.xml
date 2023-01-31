@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
 
-    <string name="app_name">Wireless ADB Switch</string>
+    <string name="app_name">Wireless Debugging Switch</string>
 
     <string name="header_wireless_debugging">Wireless\nDebugging</string>
+    <string name="header_widget_configuration">Widget configuration</string>
 
-    <string name="widget_name">Basic switch</string>
-    <string name="widget_description">
-        This widget provides a switch to enable wireless Android Debugging.
-    </string>
+    <string name="message_failed_sending_clipboard">Failed to send clipboard!</string>
 
     <string name="state_enabled">Enabled</string>
     <string name="state_waiting">Waiting</string>
     <string name="state_disabled">Disabled</string>
 
-    <string name="message_failed_sending_clipboard">Failed to send clipboard!</string>
+    <string name="preference_name_enable_kde_connect">Enable KDE Connect integration</string>
+    <string name="preference_summary_enable_kde_connect">
+        If this option is enabled your clipboard will be synced with KDE Connect when you enable
+        wireless debugging using a widget. KDE Connect must be installed for this to work.
+    </string>
 
-    <string name="header_widget_configuration">Widget configuration</string>
+    <string name="preference_name_prefix_connection_data">Prefix synced connection data</string>
+    <string name="preference_summary_prefix_connection_data">
+        If this option is enabled, connection data will be prefixed with
+        connect-wireless-debugging://
+        \nThis allows user scripts to separate it from other clipboard
+        data and automatically connect with your phone. KDE Connect integration must be enabled for
+        this to work.
+    </string>
 
     <string name="preference_name_background_transparency">Background transparency</string>
     <string name="preference_summary_background_transparency">
@@ -25,7 +34,7 @@
 
     <string name="preference_name_corner_radius">Corner radius</string>
     <string name="preference_summary_corner_radius">
-        Specify corner roundness for the widget background.
+        Specify the corner roundness for widget\'s background.
         Corner radius ic calculated relative to your system\'s
         default corner radius for widget background
     </string>
@@ -34,6 +43,11 @@
     <string name="preference_summary_container_color">
         Choose whether to use surface or container color for widget background.
         Transparency is applied independently.
+    </string>
+
+    <string name="widget_basic_name">Basic switch</string>
+    <string name="widget_basic_description">
+        This widget provides a switch to enable wireless Android Debugging.
     </string>
 
 </resources>

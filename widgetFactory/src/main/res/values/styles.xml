@@ -7,6 +7,8 @@
 
         <item name="layout">@layout/preference_base</item>
         <item name="widgetLayout">@layout/preference_switch_compat</item>
+        <item name="allowDividerAbove">false</item>
+        <item name="allowDividerBelow">false</item>
 
     </style>
 

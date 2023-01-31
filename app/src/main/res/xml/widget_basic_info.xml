@@ -2,7 +2,7 @@
     android:minWidth="80dp"
     android:minHeight="40dp"
     android:updatePeriodMillis="1000"
-    android:description="@string/widget_description"
+    android:description="@string/widget_basic_description"
     android:previewLayout="@layout/widget_switch_small"
     android:initialLayout="@layout/widget_switch_small"
     android:resizeMode="horizontal|vertical"

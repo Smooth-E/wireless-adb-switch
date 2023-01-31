@@ -33,7 +33,7 @@
 
         <TextView
             android:id="@android:id/title"
-            android:text="Placeholder Title"
+            tools:text="Placeholder Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"
@@ -44,16 +44,16 @@
             android:id="@android:id/summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="5dp"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textColor="?android:attr/textColorSecondary"
-            android:maxLines="4"
-            android:text="Placeholder description of an example widget!"/>
+            tools:text="Placeholder description of an example widget!"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:clipChildren="false"
             android:clipToPadding="false">
 
@@ -67,7 +67,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/slider_value"
-                android:paddingVertical="10dp"
                 android:layout_marginEnd="10dp"/>
 
             <TextView
