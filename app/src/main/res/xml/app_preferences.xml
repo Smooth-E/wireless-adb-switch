@@ -17,16 +17,20 @@
             android:valueTo="10" />
 
         <SwitchPreferenceCompat
+
+            android:defaultValue="true"
             android:key="@string/key_enable_kde_connect"
             android:title="@string/preference_name_enable_kde_connect"
             android:summary="@string/preference_summary_enable_kde_connect"
             android:icon="@drawable/round_phonelink_24" />
 
         <SwitchPreferenceCompat
+            android:defaultValue="true"
             android:key="@string/key_prefix_connection_data"
             android:title="@string/preference_name_prefix_connection_data"
             android:summary="@string/preference_summary_prefix_connection_data"
-            android:icon="@drawable/round_settings_ethernet_24" />
+            android:icon="@drawable/round_settings_ethernet_24"
+            android:dependency="@string/key_enable_kde_connect" />
 
     </PreferenceCategory>
 

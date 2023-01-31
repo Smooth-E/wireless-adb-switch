@@ -5,6 +5,7 @@ import android.content.*
 import android.content.pm.PackageManager
 import android.util.Log
 import android.widget.Toast
+import androidx.preference.PreferenceManager
 import com.smoothie.widgetFactory.ConfigurableWidget
 import com.smoothie.wirelessDebuggingSwitch.KdeConnect
 import com.smoothie.wirelessDebuggingSwitch.R
@@ -72,7 +73,24 @@ abstract class SwitchWidget(name: String) : ConfigurableWidget(name) {
             return
         }
 
-        val result = KdeConnect.sendClipboard(context,  CLIPBOARD_PREFIX + connectionAddress)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+
+        var preferenceKey = context.getString(R.string.key_enable_kde_connect)
+        val kdeIntegrationEnabled = preferences.getBoolean(preferenceKey, true)
+
+        if (!KdeConnect.isInstalled(context) || !kdeIntegrationEnabled)
+            return
+
+        preferenceKey = context.getString(R.string.key_prefix_connection_data)
+        val prefixConnectionData = preferences.getBoolean(preferenceKey, true)
+
+        val connectionData =
+            if (prefixConnectionData)
+                CLIPBOARD_PREFIX + connectionAddress
+            else
+                connectionAddress
+
+        val result = KdeConnect.sendClipboard(context, connectionData)
 
         if (!result.isSuccess) {
             val message = context.getString(R.string.message_failed_sending_clipboard)

@@ -6,8 +6,12 @@ import androidx.preference.PreferenceFragmentCompat
 open class PreferenceFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        val resource = (requireActivity() as PreferenceActivity).preferencesResourceId
+        val preferenceActivity = requireActivity() as PreferenceActivity
+
+        val resource = preferenceActivity.preferencesResourceId
         setPreferencesFromResource(resource, rootKey)
+
+        preferenceActivity.onPreferencesCreated(this)
     }
 
 }
