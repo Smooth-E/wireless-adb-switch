@@ -1,11 +1,9 @@
 
 <resources>
 
-    <style name="Theme.WidgetFactory" parent="Theme.Material3.Dark.NoActionBar">
-
+    <style name="Theme.WidgetFactory" parent="Theme.WidgetFactory.Base">
         <item name="android:windowLightNavigationBar">false</item>
         <item name="android:windowLightStatusBar">false</item>
-
     </style>
 
 </resources>
