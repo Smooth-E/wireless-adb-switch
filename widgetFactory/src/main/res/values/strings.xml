@@ -3,6 +3,8 @@
 
     <string name="settings">Settings</string>
 
+    <string name="header_widget_configuration">Widget configuration</string>
+
     <string name="preference_name_update_interval">Widget update interval</string>
     <string name="preference_description_update_interval">
         Specify how often widgets should update.

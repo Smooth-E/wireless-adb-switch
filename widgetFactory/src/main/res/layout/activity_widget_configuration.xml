@@ -4,7 +4,7 @@
     android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSurface"
+    android:background="?attr/colorSurface"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
             style="@style/Widget.Material3.CollapsingToolbar.Large"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:maxLines="1"
             app:toolbarId="@id/toolbar"
             android:paddingBottom="10dp">
@@ -30,8 +30,8 @@
                 android:elevation="0dp"
                 app:layout_collapseMode="pin"
                 app:title="@string/header_widget_configuration"
-                app:navigationIcon="@drawable/ic_round_arrow_back_24"
-                app:navigationIconTint="@color/colorOnSurface"/>
+                app:navigationIcon="@drawable/round_arrow_back_24"
+                app:navigationIconTint="?attr/colorOnSurface"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

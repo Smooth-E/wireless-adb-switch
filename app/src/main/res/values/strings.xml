@@ -4,7 +4,6 @@
     <string name="app_name">Wireless Debugging Switch</string>
 
     <string name="header_wireless_debugging">Wireless\nDebugging</string>
-    <string name="header_widget_configuration">Widget configuration</string>
 
     <string name="message_failed_sending_clipboard">Failed to send clipboard!</string>
 
