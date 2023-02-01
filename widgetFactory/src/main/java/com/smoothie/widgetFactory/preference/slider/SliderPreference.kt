@@ -294,7 +294,7 @@ open class SliderPreference : Preference {
     }
 
     private fun syncValueInternal(slider: Slider) {
-        val cachedSliderValue = minimumValue + slider.value
+        val cachedSliderValue = slider.value
 
         if (cachedSliderValue == currentSliderValue)
             return
