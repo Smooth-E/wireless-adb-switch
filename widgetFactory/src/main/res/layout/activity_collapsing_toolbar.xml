@@ -4,7 +4,7 @@
     android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSurface"
+    android:background="?attr/colorSurface"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -29,9 +29,9 @@
                 android:layout_height="?attr/actionBarSize"
                 android:elevation="0dp"
                 app:layout_collapseMode="pin"
-                app:title="@string/header_settings"
-                app:navigationIcon="@drawable/ic_round_arrow_back_24"
-                app:navigationIconTint="@color/colorOnSurface"/>
+                app:title="@string/settings"
+                app:navigationIcon="@drawable/round_arrow_back_24"
+                app:navigationIconTint="?attr/colorOnSurface" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

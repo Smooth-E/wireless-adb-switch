@@ -37,7 +37,24 @@ abstract class WidgetConfigurationActivity(
 
         setResult(RESULT_CANCELED)
 
-        findViewById<Toolbar>(R.id.toolbar).setOnClickListener { finish() }
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        toolbar.setOnClickListener { finish() }
+        toolbar.inflateMenu(R.menu.widget_configuration_toolbar)
+        toolbar.setOnMenuItemClickListener { menuItem ->
+            if (menuItem.itemId != R.id.settings)
+                return@setOnMenuItemClickListener false
+
+            val intent = packageManager.getLaunchIntentForPackage(application.packageName)
+
+            if (intent == null) {
+                Log.e(TAG, "No activity found to handle a launch intent!")
+                return@setOnMenuItemClickListener false
+            }
+
+            intent.action = Intent.ACTION_APPLICATION_PREFERENCES
+            startActivity(intent)
+            return@setOnMenuItemClickListener true
+        }
 
         val permissionLauncher = registerForActivityResult(RequestPermission()) { granted ->
             if (granted)
