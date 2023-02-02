@@ -15,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts.RequestPermissi
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.google.android.material.imageview.ShapeableImageView
+import com.smoothie.widgetFactory.ConfigurableWidget
 import com.smoothie.widgetFactory.FullScreenActivity
 import com.smoothie.widgetFactory.R
 import com.smoothie.widgetFactory.configuration.PreferenceFragment.Companion.KEY_PREFERENCES_NAME
@@ -104,11 +105,9 @@ abstract class WidgetConfigurationActivity(
             return
         }
 
-        val updateIntent = Intent()
-        intent.action = ACTION_APPWIDGET_UPDATE
-        intent.putExtra(EXTRA_APPWIDGET_IDS, intArrayOf(widgetId))
-        Log.d(TAG, "Sent update broadcast!")
-        sendBroadcast(updateIntent)
+        // TODO: Figure out how to update only one widget instead of all available
+        // TODO: Sending an ACTION_APPWIDGET_UPDATE intent does nothing for some reason
+        ConfigurableWidget.updateAllWidgets(this)
 
         val intent = Intent().putExtra(EXTRA_APPWIDGET_ID, widgetId)
         setResult(RESULT_OK, intent)
