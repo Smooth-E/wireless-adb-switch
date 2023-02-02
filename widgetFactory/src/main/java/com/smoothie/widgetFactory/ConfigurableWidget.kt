@@ -12,7 +12,7 @@ import android.util.Log
 import android.widget.RemoteViews
 import com.smoothie.widgetFactory.configuration.WidgetPreferences
 
-abstract class ConfigurableWidget(name: String) : AppWidgetProvider() {
+abstract class ConfigurableWidget(private val className: String) : AppWidgetProvider() {
 
     companion object {
 
@@ -22,29 +22,29 @@ abstract class ConfigurableWidget(name: String) : AppWidgetProvider() {
 
         fun addWidget(name: String) = widgetClassNames.add(name)
 
-        fun getAllWidgetIds(context: Context): IntArray {
-            val manager = AppWidgetManager.getInstance(context)
-            val ids = ArrayList<Int>()
-            widgetClassNames.forEach {
-                val componentName = ComponentName(context.applicationContext, it)
-                ids.addAll(manager.getAppWidgetIds(componentName).toList())
-            }
-            return ids.toIntArray()
-        }
+        fun updateAllWidgets(context: Context) {
+            Log.i(TAG, "updateAllWidgets()")
 
-        @JvmStatic
-        fun createBasicIntent(context: Context): Intent {
-            val intent = Intent()
-            intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, getAllWidgetIds(context))
-            return intent
+            for (className in widgetClassNames) {
+                val applicationContext = context.applicationContext
+                val componentName = ComponentName(applicationContext, className)
+                val manager = AppWidgetManager.getInstance(applicationContext)
+                val widgetIds = manager.getAppWidgetIds(componentName)
+
+                val intent = Intent()
+                intent.component = componentName
+                intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIds)
+
+                context.sendBroadcast(intent)
+            }
         }
 
     }
 
     init {
-        addWidget(name)
-        Log.d(TAG, "Added a name: $name")
+        addWidget(className)
+        Log.d(TAG, "Added a name: $className")
         Log.d(TAG, "All names added: $widgetClassNames")
     }
 
@@ -65,6 +65,8 @@ abstract class ConfigurableWidget(name: String) : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager?,
         appWidgetIds: IntArray?
     ) {
+        Log.d(TAG, "onUpdate()")
+
         if (appWidgetIds == null || context == null || appWidgetManager == null)
             return
 
@@ -89,9 +91,6 @@ abstract class ConfigurableWidget(name: String) : AppWidgetProvider() {
         preferences: SharedPreferences
     ): RemoteViews
 
-    protected fun updateAllWidgets(context: Context) =
-        updateWidgets(context, getAllWidgetIds(context))
-
     protected fun getPendingUpdateIntent(context: Context, updateIntent: Intent): PendingIntent {
         val flag = PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         return PendingIntent.getBroadcast(context, 0, updateIntent, flag)
@@ -100,6 +99,7 @@ abstract class ConfigurableWidget(name: String) : AppWidgetProvider() {
     private fun updateWidgets(context: Context, widgetIds: IntArray) {
         val manager = AppWidgetManager.getInstance(context)
         val applicationContext = context.applicationContext
+
         widgetIds.forEach { id ->
             val preferenceName = WidgetPreferences.getWidgetSharedPreferencesName(id)
             val preferences =

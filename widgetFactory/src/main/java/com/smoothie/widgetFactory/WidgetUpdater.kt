@@ -32,7 +32,7 @@ class WidgetUpdater : BroadcastReceiver() {
 
         private const val INTENT_ACTION =
             "com.smoothie.wirelessDebuggingSwitch.intent.WIDGET_UPDATE_TICK"
-        private const val BOOT_COMPLETED_ACTION = "android.intent.action.BOOT_COMPLETED"
+        private const val BOOT_COMPLETED_ACTION = Intent.ACTION_BOOT_COMPLETED
         private const val TAG = "WidgetUpdater"
 
         private var interval = 1
@@ -91,7 +91,7 @@ class WidgetUpdater : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         if (intent?.action == INTENT_ACTION || intent?.action == BOOT_COMPLETED_ACTION) {
             schedule(context!!)
-            context.sendBroadcast(ConfigurableWidget.createBasicIntent(context))
+            ConfigurableWidget.updateAllWidgets(context)
         }
     }
 

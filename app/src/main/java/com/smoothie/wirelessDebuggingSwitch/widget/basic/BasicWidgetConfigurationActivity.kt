@@ -8,7 +8,8 @@ import com.smoothie.widgetFactory.configuration.WidgetConfigurationActivity
 import com.smoothie.wirelessDebuggingSwitch.PreferenceUtilities
 import com.smoothie.wirelessDebuggingSwitch.widget.RoundedWidgetUtilities
 
-class ConfigurationActivity : WidgetConfigurationActivity(
+class BasicWidgetConfigurationActivity : WidgetConfigurationActivity(
+    BasicWidget::class.java.name,
     R.xml.widget_basic_preferences,
     1f
 ) {
@@ -18,7 +19,7 @@ class ConfigurationActivity : WidgetConfigurationActivity(
         height: Int,
         widgetPreferences: SharedPreferences
     ): View {
-        val view = layoutInflater.inflate(R.layout.widget_switch_small, null)
+        val view = layoutInflater.inflate(R.layout.widget_basic, null)
 
         RoundedWidgetUtilities.applyPreviewParameters(this, widgetPreferences, view)
 

@@ -8,14 +8,15 @@ import com.smoothie.wirelessDebuggingSwitch.widget.RoundedWidgetUtilities
 import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.wirelessDebuggingSwitch.widget.SwitchWidget
 
-class Widget : SwitchWidget(Widget::class.java.name) {
+class BasicWidget : SwitchWidget(BasicWidget::class.java.name) {
 
     override fun generateRemoteViews(
         context: Context,
         widgetId: Int,
         preferences: SharedPreferences
     ): RemoteViews {
-        val remoteViews = RemoteViews(context.packageName, R.layout.widget_switch_small)
+        val remoteViews = RemoteViews(context.packageName, R.layout.widget_basic)
+
         val pendingIntent = getPendingUpdateIntent(context, createStateSwitchIntent(context))
         remoteViews.setOnClickPendingIntent(R.id.clickable, pendingIntent)
 

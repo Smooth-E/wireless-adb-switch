@@ -52,7 +52,14 @@
 
     <string name="widget_basic_name">Basic switch</string>
     <string name="widget_basic_description">
-        This widget provides a switch to enable wireless Android Debugging.
+        This widget provides a switch to enable Android\'s Wireless Debugging feature.
+    </string>
+
+    <string name="widget_coupled_name">Informative widget</string>
+    <string name="widget_coupled_description">
+        This widget provides a switch to enable Android\'s Wireless Debugging feature.
+        It also provides some technical information about current connection and
+        allows you to copy it.
     </string>
 
 </resources>

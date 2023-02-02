@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.WallpaperManager
 import android.appwidget.AppWidgetManager.*
+import android.content.ComponentName
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
@@ -21,6 +22,7 @@ import com.smoothie.widgetFactory.configuration.PreferenceFragment.Companion.KEY
 import com.smoothie.widgetFactory.configuration.PreferenceFragment.Companion.KEY_PREVIEW_ASPECT
 
 abstract class WidgetConfigurationActivity(
+    private val widgetClassName: String,
     private val preferencesResourceId: Int,
     private val previewAspectRatio: Float
 ) : FullScreenActivity() {
@@ -99,11 +101,13 @@ abstract class WidgetConfigurationActivity(
         if (widgetId == INVALID_APPWIDGET_ID) {
             Log.d(TAG, "Widget ID was invalid!")
             super.finish()
+            return
         }
 
         val updateIntent = Intent()
-            .setAction(ACTION_APPWIDGET_UPDATE)
-            .putExtra(EXTRA_APPWIDGET_IDS, intArrayOf(widgetId))
+        intent.action = ACTION_APPWIDGET_UPDATE
+        intent.putExtra(EXTRA_APPWIDGET_IDS, intArrayOf(widgetId))
+        Log.d(TAG, "Sent update broadcast!")
         sendBroadcast(updateIntent)
 
         val intent = Intent().putExtra(EXTRA_APPWIDGET_ID, widgetId)

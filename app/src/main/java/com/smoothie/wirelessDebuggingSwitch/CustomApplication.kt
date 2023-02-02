@@ -1,6 +1,10 @@
 package com.smoothie.wirelessDebuggingSwitch
 
+import android.content.IntentFilter
+import com.smoothie.widgetFactory.ConfigurableWidget
 import com.smoothie.widgetFactory.WidgetFactoryApplication
+import com.smoothie.wirelessDebuggingSwitch.widget.basic.BasicWidget
+import com.smoothie.wirelessDebuggingSwitch.widget.coupled.CoupledWidget
 import com.topjohnwu.superuser.Shell
 
 class CustomApplication : WidgetFactoryApplication() {

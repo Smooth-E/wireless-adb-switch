@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:id="@+id/clickable"
+    tools:background="#000">
+
+    <include layout="@layout/widget_background" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/image_view_status"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_round_wifi_24"
+            android:tint="@color/colorPrimary"
+            tools:ignore="UseAppTint"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:id="@+id/text_view_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/header_wireless_debugging"
+            android:gravity="center"
+            android:textColor="@color/colorOnSurface"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/text_view_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/state_enabled"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:padding="5dp"
+            android:textColor="@color/colorSurface"
+            android:background="@drawable/status_enabled" />
+
+    </LinearLayout>
+
+</FrameLayout>

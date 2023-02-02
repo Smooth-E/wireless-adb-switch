@@ -31,8 +31,10 @@
             </intent-filter>
         </activity>
 
+        <!-- Basic Widget Components -->
+
         <activity
-            android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.ConfigurationActivity"
+            android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.BasicWidgetConfigurationActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
@@ -40,13 +42,34 @@
         </activity>
 
         <receiver
-            android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.Widget"
+            android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.BasicWidget"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.appwidget.action.ENABLED" />
                 <action android:name="android.appwidget.action.DISABLED" />
-                <action android:name="com.smoothie.wirelessDebuggingSwitch.UPDATE_WIDGETS" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/widget_basic_info" />
+        </receiver>
+
+        <!-- Coupled (Informative) Widget Components -->
+
+        <activity
+            android:name="com.smoothie.wirelessDebuggingSwitch.widget.coupled.CoupledWidgetConfigurationActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name="com.smoothie.wirelessDebuggingSwitch.widget.coupled.CoupledWidget"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.ENABLED" />
+                <action android:name="android.appwidget.action.DISABLED" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider"
                 android:resource="@xml/widget_basic_info" />

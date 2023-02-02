@@ -2,7 +2,6 @@ package com.smoothie.wirelessDebuggingSwitch.widget
 
 import android.appwidget.AppWidgetManager
 import android.content.*
-import android.content.pm.PackageManager
 import android.util.Log
 import android.widget.Toast
 import androidx.preference.PreferenceManager
@@ -10,9 +9,8 @@ import com.smoothie.widgetFactory.ConfigurableWidget
 import com.smoothie.wirelessDebuggingSwitch.KdeConnect
 import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.wirelessDebuggingSwitch.WirelessDebugging
-import com.topjohnwu.superuser.Shell
 
-abstract class SwitchWidget(name: String) : ConfigurableWidget(name) {
+abstract class SwitchWidget(private val className: String) : ConfigurableWidget(className) {
 
     enum class SwitchState {
         Disabled,
@@ -32,17 +30,12 @@ abstract class SwitchWidget(name: String) : ConfigurableWidget(name) {
         protected var switchState: SwitchState = SwitchState.Disabled
             private set
 
-        @JvmStatic
-        protected fun createStateSwitchIntent(context: Context): Intent {
-            val intent = createBasicIntent(context)
-            intent.putExtra(INTENT_FLAG_CHANGE_STATE, true)
-            return intent
-        }
-
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
+        Log.d(TAG, "onReceive() Action: ${intent?.action}")
         if (intent?.hasExtra(INTENT_FLAG_CHANGE_STATE) != true) {
+            Log.d(TAG, "Calling super! ${intent?.action}")
             super.onReceive(context, intent)
             return
         }
@@ -107,6 +100,20 @@ abstract class SwitchWidget(name: String) : ConfigurableWidget(name) {
     ) {
         super.onUpdate(context, appWidgetManager, appWidgetIds)
         switchState = if (WirelessDebugging.enabled) SwitchState.Enabled else SwitchState.Disabled
+    }
+
+    protected fun createStateSwitchIntent(context: Context): Intent {
+        val componentName = ComponentName(context.applicationContext, className)
+        val manager = AppWidgetManager.getInstance(context)
+        val widgetIds = manager.getAppWidgetIds(componentName)
+
+        val intent = Intent()
+        intent.component = componentName
+        intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIds)
+        intent.putExtra(INTENT_FLAG_CHANGE_STATE, true)
+
+        return intent
     }
 
 }
