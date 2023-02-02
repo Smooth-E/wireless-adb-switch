@@ -5,4 +5,5 @@
     <string translatable="false" name="key_background_transparency">background_transparency</string>
     <string translatable="false" name="key_use_colorful_background">use_colorful_background</string>
     <string translatable="false" name="key_corner_roundness">corner_roundness</string>
+    <string translatable="false" name="key_use_light_text">use_light_text</string>
 </resources>

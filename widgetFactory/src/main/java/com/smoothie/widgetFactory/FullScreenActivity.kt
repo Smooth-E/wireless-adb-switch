@@ -4,7 +4,7 @@ import android.content.res.Configuration.ORIENTATION_PORTRAIT
 import android.graphics.Color
 import android.os.Bundle
 import android.util.TypedValue
-import android.view.WindowManager.LayoutParams
+import android.view.WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 
@@ -32,13 +32,10 @@ open class FullScreenActivity : AppCompatActivity() {
                 Color.TRANSPARENT
             window.navigationBarDividerColor = outlineColor
 
-            val typedValue = TypedValue()
-            val resourceId = com.google.android.material.R.attr.colorSurface
-            theme.resolveAttribute(resourceId, typedValue, true)
-            window.navigationBarColor = getColor(typedValue.data)
+            window.navigationBarColor = getColor(R.color.colorSurface)
         }
 
-        window.attributes.layoutInDisplayCutoutMode = LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+        window.attributes.layoutInDisplayCutoutMode = LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
     }
 
 }

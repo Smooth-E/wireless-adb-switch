@@ -44,6 +44,12 @@
         Transparency is applied independently.
     </string>
 
+    <string name="preference_name_use_light_text">Light text</string>
+    <string name="preference_summary_use_light_text">
+        Whether to use light-colored text. This option may improve readability when using
+        semi-transparent background on dark wallpaper.
+    </string>
+
     <string name="widget_basic_name">Basic switch</string>
     <string name="widget_basic_description">
         This widget provides a switch to enable wireless Android Debugging.

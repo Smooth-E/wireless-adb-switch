@@ -99,12 +99,10 @@ object RoundedWidgetUtilities {
 
     private fun createPaint(context: Context, preferences: SharedPreferences): Paint {
         var key = context.getString(R.string.key_use_colorful_background)
-        val useColorfulBackground =
-            preferences.getBoolean(key, false)
+        val useColorfulBackground = preferences.getBoolean(key, false)
 
         key = context.getString(R.string.key_background_transparency)
-        val transparency =
-            preferences.getFloat(key, 100f) / 100f
+        val transparency = preferences.getFloat(key, 100f) / 100f
 
         val colorId =
             if (useColorfulBackground)
