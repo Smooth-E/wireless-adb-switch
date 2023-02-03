@@ -42,12 +42,6 @@ abstract class ConfigurableWidget(private val className: String) : AppWidgetProv
 
     }
 
-    init {
-        addWidget(className)
-        Log.d(TAG, "Added a name: $className")
-        Log.d(TAG, "All names added: $widgetClassNames")
-    }
-
     override fun onAppWidgetOptionsChanged(
         context: Context?,
         appWidgetManager: AppWidgetManager?,

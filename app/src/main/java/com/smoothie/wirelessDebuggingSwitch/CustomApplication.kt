@@ -25,6 +25,10 @@ class CustomApplication : WidgetFactoryApplication() {
 
     override fun onCreate() {
         super.onCreate()
+
+        ConfigurableWidget.addWidget(BasicWidget::class.java.name)
+        ConfigurableWidget.addWidget(CoupledWidget::class.java.name)
+
         Shell.getShell()
     }
 

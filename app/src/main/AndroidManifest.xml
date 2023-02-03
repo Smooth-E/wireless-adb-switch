@@ -72,7 +72,7 @@
                 <action android:name="android.appwidget.action.DISABLED" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider"
-                android:resource="@xml/widget_basic_info" />
+                android:resource="@xml/widget_coupled_info" />
         </receiver>
 
     </application>

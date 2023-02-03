@@ -23,6 +23,9 @@ class CoupledWidget : SwitchWidget(CoupledWidget::class.java.name) {
         RoundedWidgetUtilities.applyRemoteViewsParameters(context, preferences, switchViews)
         RoundedWidgetUtilities.applyRemoteViewsParameters(context, preferences, infoViews)
 
+        coreViews.removeAllViews(R.id.holder_start)
+        coreViews.removeAllViews(R.id.holder_end)
+
         coreViews.addView(R.id.holder_start, switchViews)
         coreViews.addView(R.id.holder_end, infoViews)
 
