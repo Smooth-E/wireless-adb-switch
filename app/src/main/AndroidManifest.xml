@@ -34,7 +34,7 @@
         <!-- Basic Widget Components -->
 
         <activity
-            android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.BasicWidgetConfigurationActivity"
+            android:name="com.smoothie.wirelessDebuggingSwitch.widget.BasicWidgetConfigurationActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
@@ -42,7 +42,7 @@
         </activity>
 
         <receiver
-            android:name="com.smoothie.wirelessDebuggingSwitch.widget.basic.BasicWidget"
+            android:name="com.smoothie.wirelessDebuggingSwitch.widget.BasicWidget"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -56,7 +56,7 @@
         <!-- Coupled (Informative) Widget Components -->
 
         <activity
-            android:name="com.smoothie.wirelessDebuggingSwitch.widget.coupled.CoupledWidgetConfigurationActivity"
+            android:name="com.smoothie.wirelessDebuggingSwitch.widget.InformationWidgetConfigurationActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
@@ -64,7 +64,7 @@
         </activity>
 
         <receiver
-            android:name="com.smoothie.wirelessDebuggingSwitch.widget.coupled.CoupledWidget"
+            android:name="com.smoothie.wirelessDebuggingSwitch.widget.InformationWidget"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -72,7 +72,7 @@
                 <action android:name="android.appwidget.action.DISABLED" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider"
-                android:resource="@xml/widget_coupled_info" />
+                android:resource="@xml/widget_information_info" />
         </receiver>
 
     </application>

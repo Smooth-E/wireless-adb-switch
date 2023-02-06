@@ -31,7 +31,7 @@
             android:id="@+id/text_view_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/header_wireless_debugging"
+            android:text="@string/label_wireless_debugging"
             android:gravity="center"
             android:textColor="@color/colorOnSurface"
             android:layout_marginTop="7dp"

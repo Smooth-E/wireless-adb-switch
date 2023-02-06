@@ -1,12 +1,10 @@
-package com.smoothie.wirelessDebuggingSwitch.widget.basic
+package com.smoothie.wirelessDebuggingSwitch.widget
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.widget.RemoteViews
 import com.smoothie.wirelessDebuggingSwitch.PreferenceUtilities
-import com.smoothie.wirelessDebuggingSwitch.widget.RoundedWidgetUtilities
 import com.smoothie.wirelessDebuggingSwitch.R
-import com.smoothie.wirelessDebuggingSwitch.widget.SwitchWidget
 
 class BasicWidget : SwitchWidget(BasicWidget::class.java.name) {
 

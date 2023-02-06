@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/Theme.WirelessDebuggingSwitch"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:background="#000"
+    tools:ignore="UseAppTint">
+
+    <include layout="@layout/widget_background" />
+
+    <FrameLayout
+        tools:visibility="gone"
+        android:id="@+id/data_disabled"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/image_view_status"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/round_not_interested_24"
+                android:tint="@color/colorPrimary"
+                android:adjustViewBounds="true"/>
+
+            <TextView
+                android:id="@+id/text_view_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_not_disconnected"
+                android:gravity="center"
+                android:layout_marginTop="7dp"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <RelativeLayout
+        tools:visibility="visible"
+        android:id="@+id/data_enabled"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/text_view_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_connection_data"
+            android:gravity="center"
+            android:textColor="@color/colorOnSurface"
+            android:layout_marginTop="7dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@id/text_view_name"
+            android:layout_above="@id/button_copy"
+            android:layout_marginVertical="8dp"
+            android:padding="8dp"
+            android:background="@drawable/status_disabled"
+            android:backgroundTint="?colorSurfaceVariant">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                        android:text="@string/label_address"
+                        android:textAlignment="viewEnd"
+                        android:paddingHorizontal="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        tools:ignore="HardcodedText"
+                        android:id="@+id/text_view_address"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                        android:text="192.168.0.1"
+                        android:textAlignment="viewStart"
+                        android:paddingHorizontal="4dp"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                        android:text="@string/label_port"
+                        android:textAlignment="viewEnd"
+                        android:paddingHorizontal="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        tools:ignore="HardcodedText"
+                        android:id="@+id/text_view_port"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                        android:text="8080"
+                        android:textAlignment="viewStart"
+                        android:paddingHorizontal="4dp"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/button_copy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_copy"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:padding="5dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/status_disabled"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

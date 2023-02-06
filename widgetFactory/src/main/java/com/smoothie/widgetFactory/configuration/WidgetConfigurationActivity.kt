@@ -122,6 +122,7 @@ abstract class WidgetConfigurationActivity(
             .setImageDrawable(wallpaperManager.drawable)
     }
 
+    @SuppressLint("InflateParams")
     abstract fun generateWidget(
         width: Int,
         height: Int,

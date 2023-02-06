@@ -1,10 +1,9 @@
 package com.smoothie.wirelessDebuggingSwitch
 
-import android.content.IntentFilter
 import com.smoothie.widgetFactory.ConfigurableWidget
 import com.smoothie.widgetFactory.WidgetFactoryApplication
-import com.smoothie.wirelessDebuggingSwitch.widget.basic.BasicWidget
-import com.smoothie.wirelessDebuggingSwitch.widget.coupled.CoupledWidget
+import com.smoothie.wirelessDebuggingSwitch.widget.BasicWidget
+import com.smoothie.wirelessDebuggingSwitch.widget.InformationWidget
 import com.topjohnwu.superuser.Shell
 
 class CustomApplication : WidgetFactoryApplication() {
@@ -27,7 +26,7 @@ class CustomApplication : WidgetFactoryApplication() {
         super.onCreate()
 
         ConfigurableWidget.addWidget(BasicWidget::class.java.name)
-        ConfigurableWidget.addWidget(CoupledWidget::class.java.name)
+        ConfigurableWidget.addWidget(InformationWidget::class.java.name)
 
         Shell.getShell()
     }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <appwidget-provider
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="200dp"
+    android:minWidth="80dp"
     android:minHeight="40dp"
     android:updatePeriodMillis="1000"
-    android:description="@string/widget_coupled_description"
+    android:description="@string/widget_information_description"
     android:previewLayout="@layout/widget_basic"
-    android:initialLayout="@layout/widget_basic"
+    android:initialLayout="@layout/widget_information"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen"
-    android:configure="com.smoothie.wirelessDebuggingSwitch.widget.coupled.CoupledWidgetConfigurationActivity"
+    android:configure="com.smoothie.wirelessDebuggingSwitch.widget.InformationWidgetConfigurationActivity"
     android:widgetFeatures="configuration_optional|reconfigurable"/>

@@ -3,7 +3,13 @@
 
     <string name="app_name">Wireless Debugging Switch</string>
 
-    <string name="header_wireless_debugging">Wireless\nDebugging</string>
+    <string name="label_wireless_debugging">Wireless\nDebugging</string>
+    <string name="label_not_disconnected">Disconnected</string>
+    <string name="label_connection_data">Connection data</string>
+    <string name="label_port">Port:</string>
+    <string name="label_address">Address:</string>
+    <string name="label_error">Error</string>
+    <string name="label_copy">Copy</string>
 
     <string name="message_failed_sending_clipboard">Failed to send clipboard!</string>
 
@@ -50,16 +56,14 @@
         semi-transparent background on dark wallpaper.
     </string>
 
-    <string name="widget_basic_name">Basic switch</string>
+    <string name="widget_basic_name">Switch</string>
     <string name="widget_basic_description">
         This widget provides a switch to enable Android\'s Wireless Debugging feature.
     </string>
 
-    <string name="widget_coupled_name">Informative widget</string>
-    <string name="widget_coupled_description">
-        This widget provides a switch to enable Android\'s Wireless Debugging feature.
-        It also provides some technical information about current connection and
-        allows you to copy it.
+    <string name="widget_information_name">Connection Information</string>
+    <string name="widget_information_description">
+        Displays current Wireless Debugging connection information and allows to copy it.
     </string>
 
 </resources>
