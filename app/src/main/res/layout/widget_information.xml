@@ -68,8 +68,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_below="@id/text_view_name"
-            android:layout_above="@id/button_copy"
-            android:layout_marginVertical="8dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="8dp"
             android:padding="8dp"
             android:background="@drawable/status_disabled"
             android:backgroundTint="?colorSurfaceVariant">
@@ -144,18 +144,6 @@
 
 
         </FrameLayout>
-
-        <TextView
-            android:id="@+id/button_copy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_copy"
-            android:gravity="center"
-            android:textSize="12sp"
-            android:padding="5dp"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/status_disabled"
-            android:layout_alignParentBottom="true"/>
 
     </RelativeLayout>
 
