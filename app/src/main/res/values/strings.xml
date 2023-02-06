@@ -12,6 +12,10 @@
     <string name="label_copy">Copy</string>
 
     <string name="message_failed_sending_clipboard">Failed to send clipboard!</string>
+    <string name="message_error_copying_connection_data">
+        Error copying connection information!
+    </string>
+    <string name="message_copied">Copied!</string>
 
     <string name="state_enabled">Enabled</string>
     <string name="state_waiting">Waiting</string>

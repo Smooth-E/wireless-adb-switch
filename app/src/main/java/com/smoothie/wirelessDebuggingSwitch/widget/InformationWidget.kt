@@ -1,17 +1,53 @@
 package com.smoothie.wirelessDebuggingSwitch.widget
 
-import android.content.Context
-import android.content.SharedPreferences
+import android.app.PendingIntent
+import android.appwidget.AppWidgetManager.ACTION_APPWIDGET_UPDATE
+import android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_IDS
+import android.content.*
 import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.RemoteViews
+import android.widget.Toast
 import com.smoothie.widgetFactory.ConfigurableWidget
 import com.smoothie.wirelessDebuggingSwitch.PreferenceUtilities
 import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.wirelessDebuggingSwitch.WirelessDebugging
 
 class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name) {
+
+    companion object {
+        private const val EXTRA_FLAG = "COPY_CONNECTION_INFORMATION"
+        private const val EXTRA_ADDRESS = "ADDRESS"
+        private const val EXTRA_PORT = "PORT"
+        private const val STATUS_ERROR = "ERROR"
+    }
+
+    override fun onReceive(context: Context?, intent: Intent?) {
+        val extras = intent?.extras
+        if (context == null || extras == null || !extras.getBoolean(EXTRA_FLAG)) {
+            super.onReceive(context, intent)
+            return
+        }
+
+        val address = extras.getString(EXTRA_ADDRESS)
+        val port = extras.getString(EXTRA_PORT)
+
+        if (address == STATUS_ERROR || port == STATUS_ERROR) {
+            val message = context.getString(R.string.message_error_copying_connection_data)
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val label = "Connection Data"
+        val content = "$address:$port"
+        val clipboardManager =
+            context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        clipboardManager.setPrimaryClip(ClipData.newPlainText(label, content))
+
+        val message = context.getString(R.string.message_copied)
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
 
     override fun generateRemoteViews(
         context: Context,
@@ -31,6 +67,7 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
 
         var address: String
         var port: String
+        val stringError = context.getString(R.string.label_error)
         try {
             address = WirelessDebugging.getAddress(context)
             port = WirelessDebugging.getPort()
@@ -39,7 +76,6 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
             Log.e("Information Widget", "Failed to get connection data!")
             exception.printStackTrace()
 
-            val stringError = context.getString(R.string.label_error)
             address = stringError
             port = stringError
         }
@@ -50,6 +86,17 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
         val textColor = PreferenceUtilities.getLightOrDarkTextColor(context, preferences)
         views.setTextColor(R.id.text_view_status, textColor)
         views.setTextColor(R.id.text_view_name, textColor)
+
+        val intent = Intent(ACTION_APPWIDGET_UPDATE)
+        intent.component = ComponentName(context, this::class.java.name)
+        intent.putExtra(EXTRA_APPWIDGET_IDS, intArrayOf(widgetId))
+        intent.putExtra(EXTRA_FLAG, true)
+        intent.putExtra(EXTRA_ADDRESS, if (address != stringError) address else STATUS_ERROR)
+        intent.putExtra(EXTRA_PORT, if (port != stringError) port else STATUS_ERROR)
+
+        val intentFlags = PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, intentFlags)
+        views.setOnClickPendingIntent(R.id.data_enabled, pendingIntent)
 
         return views
     }
