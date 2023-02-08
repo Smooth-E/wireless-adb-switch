@@ -1,26 +1,25 @@
 package com.smoothie.widgetFactory.configuration
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.WallpaperManager
 import android.appwidget.AppWidgetManager.*
-import android.content.ComponentName
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.google.android.material.imageview.ShapeableImageView
 import com.smoothie.widgetFactory.ConfigurableWidget
-import com.smoothie.widgetFactory.FullScreenActivity
-import com.smoothie.widgetFactory.R
 import com.smoothie.widgetFactory.configuration.PreferenceFragment.Companion.KEY_PREFERENCES_NAME
 import com.smoothie.widgetFactory.configuration.PreferenceFragment.Companion.KEY_PREFERENCES_RESOURCE
 import com.smoothie.widgetFactory.configuration.PreferenceFragment.Companion.KEY_PREVIEW_ASPECT
+import com.smoothie.widgetFactory.FullScreenActivity
+import com.smoothie.widgetFactory.R
 
 abstract class WidgetConfigurationActivity(
     private val preferencesResourceId: Int,
@@ -63,13 +62,11 @@ abstract class WidgetConfigurationActivity(
                 setWallpaper()
         }
 
-        val permissionState = ContextCompat.checkSelfPermission(this,
-            Manifest.permission.READ_EXTERNAL_STORAGE
-        )
+        val permissionState = ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE)
         if (permissionState == PackageManager.PERMISSION_GRANTED)
             setWallpaper()
         else
-            permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+            permissionLauncher.launch(READ_EXTERNAL_STORAGE)
 
         val extras = intent.extras
         widgetId = extras?.getInt(EXTRA_APPWIDGET_ID, INVALID_APPWIDGET_ID) ?: INVALID_APPWIDGET_ID

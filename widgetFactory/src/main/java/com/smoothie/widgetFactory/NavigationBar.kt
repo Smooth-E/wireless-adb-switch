@@ -6,19 +6,13 @@ import androidx.annotation.IntDef
 // Source: https://gist.github.com/Thorsten1976/07d61b3f697364e5f1c08ae076641d58
 
 object NavigationBar {
-    /**
-     * Classic three-button navigation (Back, Home, Recent Apps)
-     */
+    /** Classic three-button navigation (Back, Home, Recent Apps) */
     const val MODE_THREE_BUTTONS = 0
 
-    /**
-     * Two-button navigation (Android P navigation mode: Back, combined Home and Recent Apps)
-     */
+    /** Two-button navigation (Android P navigation mode: Back, combined Home and Recent Apps) */
     const val MODE_TWO_BUTTONS = 1
 
-    /**
-     * Full screen gesture mode (introduced with Android Q)
-     */
+    /** Full screen gesture mode (introduced with Android Q) */
     const val MODE_GESTURES = 2
 
     /**

@@ -11,6 +11,7 @@
     </style>
 
     <style name="Theme.WidgetFactory" parent="Theme.WidgetFactory.Base">
+        <item name="android:enforceNavigationBarContrast">false</item>
         <item name="android:windowLightNavigationBar">true</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
