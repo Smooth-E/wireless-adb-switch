@@ -20,7 +20,7 @@ object RoundedWidgetUtilities {
             R.id.corner_top_left,
             R.id.corner_top_right
         ),
-        plainViewIds: Array<Int> = arrayOf(
+        rectangularViewIds: Array<Int> = arrayOf(
             R.id.side_top,
             R.id.side_bottom,
             R.id.side_left,
@@ -35,9 +35,9 @@ object RoundedWidgetUtilities {
             remoteViews.setBitmap(id, "setImageBitmap", cornerBitmap)
         }
 
-        val centerBitmap = generateRectangleBitmapForWidget(context, preferences)
-        plainViewIds.forEach { id ->
-            remoteViews.setBitmap(id, "setImageBitmap", centerBitmap)
+        val rectangularBitmap = generateRectangleBitmapForWidget(context, preferences)
+        rectangularViewIds.forEach { id ->
+            remoteViews.setBitmap(id, "setImageBitmap", rectangularBitmap)
         }
     }
 
@@ -51,7 +51,7 @@ object RoundedWidgetUtilities {
             R.id.corner_top_left,
             R.id.corner_top_right
         ),
-        plainViewIds: Array<Int> = arrayOf(
+        rectangularViewIds: Array<Int> = arrayOf(
             R.id.side_top,
             R.id.side_bottom,
             R.id.side_left,
@@ -66,13 +66,13 @@ object RoundedWidgetUtilities {
             view.findViewById<ImageView>(id).setImageBitmap(cornerBitmap)
         }
 
-        val centerBitmap = generateRectangleBitmapForWidget(context, preferences)
-        plainViewIds.forEach { id ->
-            view.findViewById<ImageView>(id).setImageBitmap(centerBitmap)
+        val rectangularBitmap = generateRectangleBitmapForWidget(context, preferences)
+        rectangularViewIds.forEach { id ->
+            view.findViewById<ImageView>(id).setImageBitmap(rectangularBitmap)
         }
     }
 
-    fun generateRectangleBitmapForWidget(
+    private fun generateRectangleBitmapForWidget(
         context: Context,
         preferences: SharedPreferences
     ): Bitmap {
@@ -85,7 +85,7 @@ object RoundedWidgetUtilities {
         return bitmap
     }
 
-    fun getWidgetCornerRadius(
+    private fun getWidgetCornerRadius(
         context: Context,
         preferences: SharedPreferences
     ): Int {
@@ -122,7 +122,7 @@ object RoundedWidgetUtilities {
         return paint
     }
 
-    fun generateWidgetCornerBitmap(
+    private fun generateWidgetCornerBitmap(
         context: Context,
         preferences: SharedPreferences,
         radius: Int

@@ -9,7 +9,7 @@ import com.smoothie.widgetFactory.configuration.WidgetConfigurationActivity
 import com.smoothie.wirelessDebuggingSwitch.PreferenceUtilities
 
 class BasicWidgetActivity : WidgetConfigurationActivity(
-    R.xml.widget_basic_preferences,
+    R.xml.widget_preferences,
     1f
 ) {
 
