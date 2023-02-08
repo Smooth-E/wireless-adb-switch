@@ -6,7 +6,7 @@ import android.widget.RemoteViews
 import com.smoothie.wirelessDebuggingSwitch.PreferenceUtilities
 import com.smoothie.wirelessDebuggingSwitch.R
 
-class BasicWidget : SwitchWidget(BasicWidget::class.java.name) {
+open class BasicWidget(className: String = BasicWidget::class.java.name) : SwitchWidget(className) {
 
     override fun generateRemoteViews(
         context: Context,

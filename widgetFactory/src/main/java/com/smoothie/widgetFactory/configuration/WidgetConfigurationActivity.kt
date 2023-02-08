@@ -23,7 +23,6 @@ import com.smoothie.widgetFactory.configuration.PreferenceFragment.Companion.KEY
 import com.smoothie.widgetFactory.configuration.PreferenceFragment.Companion.KEY_PREVIEW_ASPECT
 
 abstract class WidgetConfigurationActivity(
-    private val widgetClassName: String,
     private val preferencesResourceId: Int,
     private val previewAspectRatio: Float
 ) : FullScreenActivity() {

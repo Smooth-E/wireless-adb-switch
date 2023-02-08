@@ -34,7 +34,7 @@
         <!-- Basic Widget Components -->
 
         <activity
-            android:name="com.smoothie.wirelessDebuggingSwitch.widget.BasicWidgetConfigurationActivity"
+            android:name="com.smoothie.wirelessDebuggingSwitch.widget.BasicWidgetActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
@@ -53,18 +53,20 @@
                 android:resource="@xml/widget_basic_info" />
         </receiver>
 
-        <!-- Coupled (Informative) Widget Components -->
+        <!-- Information Widget Components -->
 
         <activity
-            android:name="com.smoothie.wirelessDebuggingSwitch.widget.InformationWidgetConfigurationActivity"
+            android:name="com.smoothie.wirelessDebuggingSwitch.widget.InformationWidgetActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
 
+        <!-- Coupled Widget Components -->
+
         <receiver
-            android:name="com.smoothie.wirelessDebuggingSwitch.widget.InformationWidget"
+            android:name="com.smoothie.wirelessDebuggingSwitch.widget.CoupledWidget"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -72,7 +74,7 @@
                 <action android:name="android.appwidget.action.DISABLED" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider"
-                android:resource="@xml/widget_information_info" />
+                android:resource="@xml/widget_coupled_info" />
         </receiver>
 
     </application>
