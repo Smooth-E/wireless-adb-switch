@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string translatable="false" name="key_update_interval">update_interval</string>
+    <string translatable="false" name="key_update_interval">widget_factory_update_interval</string>
+    <string translatable="false" name="key_ignore_optional_wallpaper_permission">
+        widget_factory_ignore_optional_wallpaper_permission
+    </string>
 </resources>

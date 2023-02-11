@@ -5,18 +5,23 @@ import android.app.WallpaperManager
 import android.appwidget.AppWidgetManager.*
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
-import android.graphics.drawable.Drawable
+import android.Manifest.permission.MANAGE_EXTERNAL_STORAGE
+import android.content.DialogInterface
+import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.net.Uri
 import android.os.Build
+import android.os.Environment
+import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
-import androidx.annotation.CallSuper
 import androidx.annotation.RequiresPermission
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.preference.PreferenceManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
 import com.smoothie.widgetFactory.ConfigurableWidget
 import com.smoothie.widgetFactory.configuration.PreferenceFragment.Companion.KEY_PREFERENCES_NAME
@@ -61,23 +66,6 @@ abstract class WidgetConfigurationActivity(
             return@setOnMenuItemClickListener true
         }
 
-        val permissionLauncher = registerForActivityResult(RequestPermission()) { granted ->
-            if (granted)
-                setWallpaper(getWallpaperDrawable())
-            else
-                Log.w(TAG, "Permission needed to get wallpaper not granted!")
-        }
-
-        val permissionState = ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            Log.d("", "Requesting wallpaper for newer SDK!")
-            setWallpaper(getWallpaperOnNewerSdk())
-        }
-        else if (permissionState == PackageManager.PERMISSION_GRANTED)
-            setWallpaper(getWallpaperDrawable())
-        else
-            permissionLauncher.launch(READ_EXTERNAL_STORAGE)
-
         val extras = intent.extras
         widgetId = extras?.getInt(EXTRA_APPWIDGET_ID, INVALID_APPWIDGET_ID) ?: INVALID_APPWIDGET_ID
 
@@ -99,6 +87,70 @@ abstract class WidgetConfigurationActivity(
             .beginTransaction()
             .replace(R.id.preference_fragment_holder, fragmentClass, arguments)
             .commit()
+
+
+
+        val runningTiramisu = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+        val needsDifferentPermission = runningTiramisu && !Environment.isExternalStorageManager()
+
+        Log.i(TAG, "Running Tiramisu and higher: $runningTiramisu")
+        Log.i(TAG, "Needs different permission: $needsDifferentPermission")
+
+        val preferenceKey = getString(R.string.key_ignore_optional_wallpaper_permission)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val ignoreDifferentPermission = preferences.getBoolean(preferenceKey, false)
+
+        if (needsDifferentPermission && !ignoreDifferentPermission) {
+            val listener = DialogInterface.OnClickListener { dialog, button ->
+                when (button) {
+                    DialogInterface.BUTTON_POSITIVE -> requestManageAllFilesPermission()
+                    DialogInterface.BUTTON_NEUTRAL -> {
+                        preferences.edit().putBoolean(preferenceKey, true).apply()
+                        dialog.dismiss()
+                    }
+                }
+            }
+
+            MaterialAlertDialogBuilder(this)
+                .setPositiveButton(R.string.action_grant_permission, listener)
+                .setNeutralButton(R.string.action_dismiss, listener)
+                .setTitle(R.string.header_optional_permission)
+                .setMessage(R.string.message_allow_all_files_for_wallpaper)
+                .setCancelable(false)
+                .show()
+        }
+
+        val storagePermissionLauncher = registerForActivityResult(RequestPermission()) { granted ->
+            if (granted)
+                setWallpaper()
+            else
+                Log.w(TAG, "Permission needed to get wallpaper not granted!")
+        }
+
+        val storagePermissionState =
+            ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE)
+
+        if (needsDifferentPermission)
+            return
+
+        if (!runningTiramisu && storagePermissionState != PERMISSION_GRANTED)
+            storagePermissionLauncher.launch(READ_EXTERNAL_STORAGE)
+        else
+            setWallpaper()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val readExternalStoragePermissionState =
+            ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE)
+
+        val permissionGranted =
+            readExternalStoragePermissionState == PERMISSION_GRANTED ||
+            Environment.isExternalStorageManager()
+
+        if (permissionGranted)
+            setWallpaper()
     }
 
     override fun finish() {
@@ -121,31 +173,19 @@ abstract class WidgetConfigurationActivity(
         super.finish()
     }
 
-    private fun setWallpaper(drawable: Drawable?) {
-        if (drawable == null)
-            return
+    private fun requestManageAllFilesPermission() {
+        val uri = Uri.fromParts("package", packageName, null)
+        val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
+        intent.data = uri
+        startActivity(intent)
+    }
 
+    @RequiresPermission(anyOf = [READ_EXTERNAL_STORAGE, MANAGE_EXTERNAL_STORAGE])
+    private fun setWallpaper() {
+        val wallpaperManager = WallpaperManager.getInstance(this)
+        val drawable = wallpaperManager.drawable ?: return
         findViewById<ShapeableImageView>(R.id.showcase_background).setImageDrawable(drawable)
     }
-
-    @RequiresPermission(READ_EXTERNAL_STORAGE)
-    private fun getWallpaperDrawable(): Drawable? {
-        val wallpaperManager = WallpaperManager.getInstance(this)
-        return wallpaperManager.drawable
-    }
-
-    /**
-     * As of Android 13 (API 33, Tiramisu) READ_EXTERNAL_STORAGE permission which is needed to get
-     * the wallpaper with a WallpaperManager is no longer available.
-     *
-     * It is still possible to get wallpaper if you have root access, for example.
-     *
-     * Apps using this library should overwrite this method if they need
-     * to get wallpaper on Android 13+
-     *
-     * @return retrieved wallpaper drawable
-     */
-    abstract fun getWallpaperOnNewerSdk(): Drawable?
 
     @SuppressLint("InflateParams")
     abstract fun generateWidget(

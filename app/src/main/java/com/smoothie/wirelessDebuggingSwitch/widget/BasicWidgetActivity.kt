@@ -6,10 +6,9 @@ import android.view.View
 import android.widget.TextView
 import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.widgetFactory.configuration.WidgetConfigurationActivity
-import com.smoothie.wirelessDebuggingSwitch.BetterConfigurationActivity
 import com.smoothie.wirelessDebuggingSwitch.PreferenceUtilities
 
-class BasicWidgetActivity : BetterConfigurationActivity(
+class BasicWidgetActivity : WidgetConfigurationActivity(
     R.xml.widget_preferences,
     1f
 ) {

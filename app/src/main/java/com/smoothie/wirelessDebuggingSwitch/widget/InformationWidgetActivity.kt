@@ -5,11 +5,10 @@ import android.content.SharedPreferences
 import android.view.View
 import android.widget.TextView
 import com.smoothie.widgetFactory.configuration.WidgetConfigurationActivity
-import com.smoothie.wirelessDebuggingSwitch.BetterConfigurationActivity
 import com.smoothie.wirelessDebuggingSwitch.PreferenceUtilities
 import com.smoothie.wirelessDebuggingSwitch.R
 
-class InformationWidgetActivity : BetterConfigurationActivity(
+class InformationWidgetActivity : WidgetConfigurationActivity(
     R.xml.widget_preferences,
     1f
 ) {
