@@ -74,6 +74,26 @@
             <meta-data android:name="android.appwidget.provider"
                 android:resource="@xml/widget_information_info" />
         </receiver>
+        
+        <!-- Quick Settings Tile Service -->
+        
+        <service
+            android:name=".QSTileService"
+            android:exported="true"
+            android:icon="@drawable/baseline_wifi_24"
+            android:label="@string/qs_tile_label_disabled"
+            android:description="@string/qs_tile_subtitle_basic"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.ACTIVE_TILE"
+                android:value="false" />
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
 
     </application>
 

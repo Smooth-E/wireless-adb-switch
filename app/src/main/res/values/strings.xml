@@ -73,4 +73,11 @@
         Displays current Wireless Debugging connection information and allows to copy it.
     </string>
 
+    <string name="qs_tile_label_disabled">Enable debugging</string>
+    <string name="qs_tile_label_enabled">Disable debugging</string>
+    <string name="qs_tile_label_unavailable">Debugging unavailable</string>
+    <string name="qs_tile_subtitle_basic">Hold for settings</string>
+    <string name="qs_tile_subtitle_unavailable">Enable WIFI first</string>
+    <string name="qs_tile_subtitle_connection_data_error">No data</string>
+
 </resources>

@@ -3,7 +3,6 @@ package com.smoothie.wirelessDebuggingSwitch
 import android.content.Context
 import android.net.wifi.WifiManager
 import android.text.format.Formatter
-import android.util.Log
 import com.topjohnwu.superuser.Shell
 
 object WirelessDebugging {
@@ -36,5 +35,8 @@ object WirelessDebugging {
         val ipAddress = connectionInfo.ipAddress
         return Formatter.formatIpAddress(ipAddress)
     }
+
+    fun getConnectionData(context: Context): String =
+        "${getAddress(context)}:${getPort()}"
 
 }
