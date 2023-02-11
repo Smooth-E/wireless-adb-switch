@@ -55,7 +55,7 @@ abstract class WidgetConfigurationActivity(
                 return@setOnMenuItemClickListener false
 
             val intent = packageManager.getLaunchIntentForPackage(application.packageName)
-
+            
             if (intent == null) {
                 Log.e(TAG, "No activity found to handle a launch intent!")
                 return@setOnMenuItemClickListener false
