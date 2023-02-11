@@ -16,6 +16,9 @@
         Error copying connection information!
     </string>
     <string name="message_copied">Copied!</string>
+    <string name="message_need_root_for_wallpaper">
+        Android 13+ devices need root access to get wallpaper.
+    </string>
 
     <string name="state_enabled">Enabled</string>
     <string name="state_waiting">Waiting</string>
