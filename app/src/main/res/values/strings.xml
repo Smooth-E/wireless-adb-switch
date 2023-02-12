@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
 
-    <string name="app_name">Wireless Debugging Switch</string>
+    <string name="app_name">WADBS</string>
 
     <string name="label_wireless_debugging">Wireless\nDebugging</string>
     <string name="label_not_disconnected">Disconnected</string>
@@ -16,9 +16,6 @@
         Error copying connection information!
     </string>
     <string name="message_copied">Copied!</string>
-    <string name="message_need_root_for_wallpaper">
-        Android 13+ devices need root access to get wallpaper.
-    </string>
 
     <string name="state_enabled">Enabled</string>
     <string name="state_waiting">Waiting</string>
@@ -31,13 +28,7 @@
     </string>
 
     <string name="preference_name_prefix_connection_data">Prefix synced connection data</string>
-    <string name="preference_summary_prefix_connection_data">
-        If this option is enabled, connection data will be prefixed with
-        connect-wireless-debugging://
-        \nThis allows user scripts to separate it from other clipboard
-        data and automatically connect with your phone. KDE Connect integration must be enabled for
-        this to work.
-    </string>
+    <string name="preference_summary_prefix_connection_data">If this option is enabled, connection data will be prefixed with\\n\nconnect-wireless-debugging://\nThis allows user scripts to separate it from other clipboard data and automatically connect with your device. \nKDE Connect integration must be enabled for this to work.</string>
 
     <string name="preference_name_background_transparency">Background transparency</string>
     <string name="preference_summary_background_transparency">
@@ -45,11 +36,7 @@
     </string>
 
     <string name="preference_name_corner_radius">Corner radius</string>
-    <string name="preference_summary_corner_radius">
-        Specify the corner roundness for widget\'s background.
-        Corner radius ic calculated relative to your system\'s
-        default corner radius for widget background
-    </string>
+    <string name="preference_summary_corner_radius">Specify the corner roundness for widget\'s background.\nCorner radius is calculated relative to your system\'s default corner radius for widget background</string>
 
     <string name="preference_name_container_color">Use colorful background</string>
     <string name="preference_summary_container_color">
@@ -58,10 +45,7 @@
     </string>
 
     <string name="preference_name_use_light_text">Light text</string>
-    <string name="preference_summary_use_light_text">
-        Whether to use light-colored text. This option may improve readability when using
-        semi-transparent background on dark wallpaper.
-    </string>
+    <string name="preference_summary_use_light_text">Whether to use light-colored text.\nThis option may improve readability when using semi-transparent background on dark wallpaper.</string>
 
     <string name="widget_basic_name">Switch</string>
     <string name="widget_basic_description">

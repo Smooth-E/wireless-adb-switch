@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WADBS</string>
+    <string name="label_wireless_debugging">Беспроводная отладка</string>
+    <string name="label_not_disconnected">Отключено</string>
+    <string name="label_connection_data">Информация о подключении</string>
+    <string name="label_port">Порт:</string>
+    <string name="label_address">Адрес:</string>
+    <string name="label_error">Ошибка</string>
+    <string name="label_copy">Копировать</string>
+    <string name="message_failed_sending_clipboard">Ошибка отправки буфера обмена!</string>
+    <string name="message_error_copying_connection_data">Ошибка копирования информации о подключении!</string>
+    <string name="message_copied">Скопировано!</string>
+    <string name="state_enabled">Активно</string>
+    <string name="state_waiting">Ожидание</string>
+    <string name="state_disabled">Отключено</string>
+    <string name="preference_name_enable_kde_connect">Интеграция с KDE Connect</string>
+    <string name="preference_summary_enable_kde_connect">Если эта опция активна, буфер обмена будет синхронизирован средствами KDE Connect после активации беспроводной откладки при помощи виджета. \nДля работы необходимо установленное приложение  KDE Connrct.</string>
+    <string name="preference_name_prefix_connection_data">Префикс информации</string>
+    <string name="preference_summary_prefix_connection_data">Если эта опция активна, к синхронизируемой информации о подключении будет добавлен префикс\\n\nconnect-wireless-debugging://\nЭто позволяет пользовательским скриптам отделять нужную информацию от прочих копируемых данных и автоматически соединяться с вашим устройством.\nДля работы необходимо установленное приложение  KDE Connrct.</string>
+    <string name="preference_name_background_transparency">Прозрачность фона</string>
+    <string name="preference_summary_background_transparency">Настройте прозрачность фона виджета.</string>
+    <string name="preference_name_corner_radius">Радиус углов</string>
+    <string name="preference_summary_corner_radius">Настройте радиус углов виджета.\nРадиус углов считается относительно радиуса углов для виджетов по умолчанию в вашей системе.</string>
+    <string name="preference_name_container_color">Использовать цветной фон</string>
+    <string name="preference_summary_container_color">Выберите между цветом surface и container для фона виджета. Прозрачность не зависит от статуса этой опции.</string>
+    <string name="preference_summary_container_color">В</string>
+    <string name="preference_name_use_light_text">Светлый текст</string>
+    <string name="preference_summary_use_light_text">Использование светлого текста может помочь выделить его на темных обоях при использовании полупрозрачного фона.</string>
+    <string name="widget_basic_name">Преключатель</string>
+    <string name="widget_basic_description">Этот виджет позволяет переключать состояние беспроводной отладки.</string>
+    <string name="widget_information_name">Информация о подключении</string>
+    <string name="widget_information_description">Отображает информацию о текущем подключении и позволяет скопировать её.</string>
+    <string name="qs_tile_label_disabled">Включить отладку</string>
+    <string name="qs_tile_label_enabled">Отключить отладку</string>
+    <string name="qs_tile_label_unavailable">Отладка недоступна</string>
+    <string name="qs_tile_subtitle_basic">Зажмите для настроек</string>
+    <string name="qs_tile_subtitle_unavailable">Сначала включите WIFI</string>
+    <string name="qs_tile_subtitle_connection_data_error">Нет информации</string>
+</resources>
