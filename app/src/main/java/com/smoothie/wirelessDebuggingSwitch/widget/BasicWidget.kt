@@ -20,9 +20,9 @@ open class BasicWidget(className: String = BasicWidget::class.java.name) : Switc
 
         val iconResource =
             if (switchState == SwitchState.Enabled)
-                R.drawable.ic_round_wifi_24
+                R.drawable.round_wifi_24
             else
-                R.drawable.ic_round_wifi_off_24
+                R.drawable.round_wifi_off_24
         remoteViews.setImageViewResource(R.id.image_view_status, iconResource)
 
         var textColor = PreferenceUtilities.getLightOrDarkTextColor(context, preferences)

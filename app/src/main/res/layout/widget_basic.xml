@@ -22,7 +22,7 @@
             android:id="@+id/image_view_status"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_round_wifi_24"
+            android:src="@drawable/round_wifi_24"
             android:tint="@color/colorPrimary"
             tools:ignore="UseAppTint"
             android:adjustViewBounds="true"/>

@@ -19,7 +19,7 @@
         app:tint="?attr/colorSecondary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_android_24dp"
+        android:src="@drawable/android_24dp"
         android:paddingHorizontal="10dp"/>
 
     <LinearLayout

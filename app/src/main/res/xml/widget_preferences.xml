@@ -5,7 +5,7 @@
     <com.smoothie.widgetFactory.preference.slider.SliderPreference
         android:defaultValue="100"
         android:key="@string/key_background_transparency"
-        android:icon="@drawable/ic_round_gradient_24"
+        android:icon="@drawable/round_gradient_24"
         app:title="@string/preference_name_background_transparency"
         android:summary="@string/preference_summary_background_transparency"
         app:min="0"
@@ -34,7 +34,7 @@
         android:key="@string/key_use_colorful_background"
         app:title="@string/preference_name_container_color"
         android:summary="@string/preference_summary_container_color"
-        android:icon="@drawable/ic_round_invert_colors_24"
+        android:icon="@drawable/round_invert_colors_24"
         android:defaultValue="true"/>
 
     <SwitchPreferenceCompat

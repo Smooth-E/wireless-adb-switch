@@ -3,6 +3,7 @@ package com.smoothie.wirelessDebuggingSwitch
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.IntentFilter
+import android.graphics.drawable.Icon
 import android.net.wifi.WifiManager
 import android.os.Build
 import android.service.quicksettings.Tile
@@ -23,7 +24,7 @@ class QSTileService : TileService() {
     }
 
     // Why @SuppressLint("WrongConstant")
-    // Android Studio reports ContextCompat.RECEIVER_NOT_EXPORTED as a wrong constant even tho is is
+    // Android Studio reports ContextCompat.RECEIVER_NOT_EXPORTED as a wrong constant even tho it is
     // stated to use it in the documentation.
     // https://developer.android.com/guide/components/broadcasts#context-registered-receivers
     // 'Context.RECEIVER_NOT_EXPORTED' however is only accessible on API 33+
@@ -70,11 +71,13 @@ class QSTileService : TileService() {
         val wifiManager = getSystemService(Context.WIFI_SERVICE) as WifiManager
         if (!wifiManager.isWifiEnabled) {
             qsTile.state = Tile.STATE_UNAVAILABLE
+            qsTile.icon = Icon.createWithResource(this, R.drawable.baseline_wifi_off_24)
             qsTile.subtitle = getString(R.string.qs_tile_subtitle_unavailable)
             qsTile.updateTile()
             return
         }
 
+        qsTile.icon = Icon.createWithResource(this, R.drawable.baseline_phonelink_24)
         if (WirelessDebugging.enabled) {
             var label: String
             var message: String

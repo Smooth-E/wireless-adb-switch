@@ -8,7 +8,7 @@
             android:key="@string/key_update_interval"
             android:title="@string/preference_name_update_interval"
             android:summary="@string/preference_summary_update_interval"
-            android:icon="@drawable/ic_round_manage_history_24"
+            android:icon="@drawable/round_manage_history_24"
             android:defaultValue="1"
             app:labelFormatter="suffix_int"
             app:labelFormatterSuffix="s"
