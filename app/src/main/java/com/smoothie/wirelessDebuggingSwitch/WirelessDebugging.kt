@@ -84,7 +84,6 @@ object WirelessDebugging {
             val message = context.getString(R.string.message_failed_sending_clipboard)
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             Log.w(TAG, result.toString())
-            return
         }
     }
 
