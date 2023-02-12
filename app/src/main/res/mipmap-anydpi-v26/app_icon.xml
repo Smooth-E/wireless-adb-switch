@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <background android:drawable="@color/colorSecondaryContainer"/>
+
+    <foreground>
+
+        <inset
+            android:inset="24dp"
+            android:drawable="@drawable/app_icon_foreground"/>
+
+    </foreground>
+
+    <monochrome>
+
+        <inset
+            android:inset="24dp"
+            android:drawable="@drawable/app_icon_foreground"/>
+
+    </monochrome>
+
+</adaptive-icon>
