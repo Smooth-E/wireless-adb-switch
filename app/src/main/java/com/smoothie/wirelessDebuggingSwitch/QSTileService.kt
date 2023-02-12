@@ -57,6 +57,9 @@ class QSTileService : TileService() {
 
         WirelessDebugging.enabled = !WirelessDebugging.enabled
         updateTile()
+
+        if (WirelessDebugging.enabled)
+            WirelessDebugging.syncConnectionData(this)
     }
 
     override fun onDestroy() {

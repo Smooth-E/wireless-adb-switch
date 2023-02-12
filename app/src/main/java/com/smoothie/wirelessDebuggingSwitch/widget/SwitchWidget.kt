@@ -3,11 +3,8 @@ package com.smoothie.wirelessDebuggingSwitch.widget
 import android.appwidget.AppWidgetManager
 import android.content.*
 import android.util.Log
-import android.widget.Toast
-import androidx.preference.PreferenceManager
 import com.smoothie.widgetFactory.ConfigurableWidget
 import com.smoothie.wirelessDebuggingSwitch.KdeConnect
-import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.wirelessDebuggingSwitch.WirelessDebugging
 
 abstract class SwitchWidget(private val className: String) : ConfigurableWidget(className) {
@@ -21,7 +18,6 @@ abstract class SwitchWidget(private val className: String) : ConfigurableWidget(
     companion object {
 
         private const val TAG = "SwitchWidget"
-        private const val CLIPBOARD_PREFIX = "connect-wireless-debugging://"
 
         const val INTENT_FLAG_CHANGE_STATE =
             "com.smoothie.wirelessDebuggingSwitch.intent.FLAG_CHANGE_STATE"
@@ -51,46 +47,9 @@ abstract class SwitchWidget(private val className: String) : ConfigurableWidget(
 
         updateAllWidgets(context)
 
-        if (switchState != SwitchState.Enabled || !KdeConnect.isInstalled(context))
-            return
+        if (switchState == SwitchState.Enabled)
+            WirelessDebugging.syncConnectionData(context)
 
-        val connectionAddress: String
-        try {
-            val port = WirelessDebugging.getPort()
-            val address = WirelessDebugging.getAddress(context)
-            connectionAddress = "$address:$port"
-        }
-        catch (exception: Exception) {
-            Log.e(TAG, "Unable to get connection address and port.")
-            exception.printStackTrace()
-            return
-        }
-
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-
-        var preferenceKey = context.getString(R.string.key_enable_kde_connect)
-        val kdeIntegrationEnabled = preferences.getBoolean(preferenceKey, true)
-
-        if (!KdeConnect.isInstalled(context) || !kdeIntegrationEnabled)
-            return
-
-        preferenceKey = context.getString(R.string.key_prefix_connection_data)
-        val prefixConnectionData = preferences.getBoolean(preferenceKey, true)
-
-        val connectionData =
-            if (prefixConnectionData)
-                CLIPBOARD_PREFIX + connectionAddress
-            else
-                connectionAddress
-
-        val result = KdeConnect.sendClipboard(context, connectionData)
-
-        if (!result.isSuccess) {
-            val message = context.getString(R.string.message_failed_sending_clipboard)
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-            Log.w(TAG, result.toString())
-            return
-        }
     }
 
     override fun onUpdate(

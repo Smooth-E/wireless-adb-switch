@@ -1,6 +1,5 @@
 package com.smoothie.wirelessDebuggingSwitch
 
-import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -13,6 +12,8 @@ object KdeConnect {
     private const val PACKAGE_NAME = "org.kde.kdeconnect_tp"
     private const val CLIPBOARD_ACTIVITY_NAME =
         "org.kde.kdeconnect.Plugins.ClibpoardPlugin.ClipboardFloatingActivity"
+
+    const val CLIPBOARD_PREFIX = "connect-wireless-debugging://"
 
     fun isInstalled(context: Context): Boolean {
         val packages = context.packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
