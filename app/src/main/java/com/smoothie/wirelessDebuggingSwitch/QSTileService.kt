@@ -78,6 +78,7 @@ class QSTileService : TileService() {
         }
 
         qsTile.icon = Icon.createWithResource(this, R.drawable.baseline_phonelink_24)
+
         if (WirelessDebugging.enabled) {
             var label: String
             var message: String
