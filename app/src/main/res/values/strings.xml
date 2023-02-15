@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
 
-    <string name="app_name">WADBS</string>
+    <string name="app_name_short" translatable="false">WADBS</string>
+    <string name="app_name" translatable="false">Wireless Debugging Switch</string>
 
     <string name="label_wireless_debugging">Wireless\nDebugging</string>
     <string name="label_not_disconnected">Disconnected</string>
@@ -12,9 +13,7 @@
     <string name="label_copy">Copy</string>
 
     <string name="message_failed_sending_clipboard">Failed to send clipboard!</string>
-    <string name="message_error_copying_connection_data">
-        Error copying connection information!
-    </string>
+    <string name="message_error_copying_connection_data">"Error copying connection information!\n    "</string>
     <string name="message_copied">Copied!</string>
 
     <string name="state_enabled">Enabled</string>
@@ -22,40 +21,28 @@
     <string name="state_disabled">Disabled</string>
 
     <string name="preference_name_enable_kde_connect">Enable KDE Connect integration</string>
-    <string name="preference_summary_enable_kde_connect">
-        If this option is enabled your clipboard will be synced with KDE Connect when you enable
-        wireless debugging using a widget. KDE Connect must be installed for this to work.
-    </string>
+    <string name="preference_summary_enable_kde_connect">If this option is enabled your clipboard will be synced with KDE Connect when you enable wireless debugging using a widget.\nKDE Connect must be installed for this to work.</string>
 
     <string name="preference_name_prefix_connection_data">Prefix synced connection data</string>
     <string name="preference_summary_prefix_connection_data">If this option is enabled, connection data will be prefixed with\\n\nconnect-wireless-debugging://\nThis allows user scripts to separate it from other clipboard data and automatically connect with your device. \nKDE Connect integration must be enabled for this to work.</string>
 
     <string name="preference_name_background_transparency">Background transparency</string>
-    <string name="preference_summary_background_transparency">
-        Specify how transparent this widget should be.
-    </string>
+    <string name="preference_summary_background_transparency">Specify how transparent this widget should be.</string>
 
     <string name="preference_name_corner_radius">Corner radius</string>
     <string name="preference_summary_corner_radius">Specify the corner roundness for widget\'s background.\nCorner radius is calculated relative to your system\'s default corner radius for widget background</string>
 
     <string name="preference_name_container_color">Use colorful background</string>
-    <string name="preference_summary_container_color">
-        Choose whether to use surface or container color for widget background.
-        Transparency is applied independently.
-    </string>
+    <string name="preference_summary_container_color">Choose whether to use surface or container color for widget background.\nTransparency is applied independently.</string>
 
     <string name="preference_name_use_light_text">Light text</string>
     <string name="preference_summary_use_light_text">Whether to use light-colored text.\nThis option may improve readability when using semi-transparent background on dark wallpaper.</string>
 
     <string name="widget_basic_name">Switch</string>
-    <string name="widget_basic_description">
-        This widget provides a switch to enable Android\'s Wireless Debugging feature.
-    </string>
+    <string name="widget_basic_description">This widget provides a switch to enable Android\'s Wireless Debugging feature.</string>
 
     <string name="widget_information_name">Connection Information</string>
-    <string name="widget_information_description">
-        Displays current Wireless Debugging connection information and allows to copy it.
-    </string>
+    <string name="widget_information_description">Displays current Wireless Debugging connection information and allows to copy it.</string>
 
     <string name="qs_tile_label_disabled">Enable debugging</string>
     <string name="qs_tile_label_enabled">Disable debugging</string>

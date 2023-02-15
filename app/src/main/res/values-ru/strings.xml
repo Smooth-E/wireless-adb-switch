@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WADBS</string>
-    <string name="label_wireless_debugging">Беспроводная отладка</string>
+    <string name="label_wireless_debugging">Беспроводная\nОтладка</string>
     <string name="label_not_disconnected">Отключено</string>
     <string name="label_connection_data">Информация о подключении</string>
     <string name="label_port">Порт:</string>
@@ -15,9 +14,9 @@
     <string name="state_waiting">Ожидание</string>
     <string name="state_disabled">Отключено</string>
     <string name="preference_name_enable_kde_connect">Интеграция с KDE Connect</string>
-    <string name="preference_summary_enable_kde_connect">Если эта опция активна, буфер обмена будет синхронизирован средствами KDE Connect после активации беспроводной откладки при помощи виджета. \nДля работы необходимо установленное приложение  KDE Connrct.</string>
+    <string name="preference_summary_enable_kde_connect">Если эта опция активна, буфер обмена будет синхронизирован средствами KDE Connect после активации беспроводной откладки при помощи виджета. \nДля работы необходимо установленное приложение  KDE Connect.</string>
     <string name="preference_name_prefix_connection_data">Префикс информации</string>
-    <string name="preference_summary_prefix_connection_data">Если эта опция активна, к синхронизируемой информации о подключении будет добавлен префикс\\n\nconnect-wireless-debugging://\nЭто позволяет пользовательским скриптам отделять нужную информацию от прочих копируемых данных и автоматически соединяться с вашим устройством.\nДля работы необходимо установленное приложение  KDE Connrct.</string>
+    <string name="preference_summary_prefix_connection_data">Если эта опция активна, к синхронизируемой информации о подключении будет добавлен префикс\nconnect-wireless-debugging://\nЭто позволяет пользовательским скриптам отделять нужную информацию от прочих копируемых данных и автоматически соединяться с вашим устройством.\nДля работы необходимо установленное приложение  KDE Connrct.</string>
     <string name="preference_name_background_transparency">Прозрачность фона</string>
     <string name="preference_summary_background_transparency">Настройте прозрачность фона виджета.</string>
     <string name="preference_name_corner_radius">Радиус углов</string>
