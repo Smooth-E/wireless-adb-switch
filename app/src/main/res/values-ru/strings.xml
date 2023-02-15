@@ -24,7 +24,6 @@
     <string name="preference_summary_corner_radius">Настройте радиус углов виджета.\nРадиус углов считается относительно радиуса углов для виджетов по умолчанию в вашей системе.</string>
     <string name="preference_name_container_color">Использовать цветной фон</string>
     <string name="preference_summary_container_color">Выберите между цветом surface и container для фона виджета. Прозрачность не зависит от статуса этой опции.</string>
-    <string name="preference_summary_container_color">В</string>
     <string name="preference_name_use_light_text">Светлый текст</string>
     <string name="preference_summary_use_light_text">Использование светлого текста может помочь выделить его на темных обоях при использовании полупрозрачного фона.</string>
     <string name="widget_basic_name">Преключатель</string>

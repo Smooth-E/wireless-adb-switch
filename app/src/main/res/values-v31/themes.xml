@@ -47,4 +47,5 @@
         <item name="android:textColorAlertDialogListItem">@color/m3_dynamic_default_color_primary_text</item>
 
     </style>
+
 </resources>
