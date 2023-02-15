@@ -23,7 +23,7 @@ class QSTileService : TileService() {
             updateTile()
     }
 
-    // Why @SuppressLint("WrongConstant")
+    // Why @SuppressLint("WrongConstant")?
     // Android Studio reports ContextCompat.RECEIVER_NOT_EXPORTED as a wrong constant even tho it is
     // stated to use it in the documentation.
     // https://developer.android.com/guide/components/broadcasts#context-registered-receivers
@@ -64,8 +64,14 @@ class QSTileService : TileService() {
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterReceiver(WifiReceiver())
-        WifiReceiver.removeOnWifiStateChangeListener(wifiStateChangeListener)
+        try {
+            WifiReceiver.removeOnWifiStateChangeListener(wifiStateChangeListener)
+            unregisterReceiver(WifiReceiver())
+        }
+        catch (expected: Exception) {
+            // It fails sometimes due to unpredictable QS lifecycle
+            Log.w(TAG, "Failed to remove WifiReceiver!")
+        }
     }
 
     private fun updateTile() {
