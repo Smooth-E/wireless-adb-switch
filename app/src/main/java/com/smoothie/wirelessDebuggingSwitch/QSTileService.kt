@@ -63,15 +63,9 @@ class QSTileService : TileService() {
     }
 
     override fun onDestroy() {
+        WifiReceiver.removeOnWifiStateChangeListener(wifiStateChangeListener)
+        unregisterReceiver(WifiReceiver())
         super.onDestroy()
-        try {
-            WifiReceiver.removeOnWifiStateChangeListener(wifiStateChangeListener)
-            unregisterReceiver(WifiReceiver())
-        }
-        catch (expected: Exception) {
-            // It fails sometimes due to unpredictable QS lifecycle
-            Log.w(TAG, "Failed to remove WifiReceiver!")
-        }
     }
 
     private fun updateTile() {
