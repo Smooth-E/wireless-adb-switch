@@ -6,7 +6,5 @@ It provides several widgets and a quick settings tile to do this. You can also i
 ## Features
 
 <img src="./media/feature-qs-tile.png" alt="Quick Settings Tile"/>
-
-<br>
-
+<img src="./media/feature-widgets.png" alt="Home Screen Widgets"/>
 <img src="./media/feature-customization.png" alt="Widget Customization"/>
