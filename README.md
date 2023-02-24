@@ -8,3 +8,4 @@ It provides several widgets and a quick settings tile to do this. You can also i
 <img src="./media/feature-qs-tile.png" alt="Quick Settings Tile"/>
 <img src="./media/feature-widgets.png" alt="Home Screen Widgets"/>
 <img src="./media/feature-customization.png" alt="Widget Customization"/>
+<img src="./media/feature-instant-connection.png" alt="Instant Connection"/>
