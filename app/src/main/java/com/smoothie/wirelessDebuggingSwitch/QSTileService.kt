@@ -19,8 +19,7 @@ class QSTileService : TileService() {
     }
 
     private val wifiStateChangeListener = object : OnWifiStateChangeListener {
-        override fun onWifiStateChanged(currentState: Int, previousState: Int) =
-            updateTile()
+        override fun onWifiStateChanged(currentState: Int, previousState: Int) = updateTile()
     }
 
     // Why @SuppressLint("WrongConstant")?
@@ -63,9 +62,16 @@ class QSTileService : TileService() {
     }
 
     override fun onDestroy() {
-        WifiReceiver.removeOnWifiStateChangeListener(wifiStateChangeListener)
-        unregisterReceiver(WifiReceiver())
         super.onDestroy()
+
+        WifiReceiver.removeOnWifiStateChangeListener(wifiStateChangeListener)
+
+        try {
+            unregisterReceiver(WifiReceiver())
+        }
+        catch (expected: IllegalArgumentException) {
+            Log.w(TAG, "Failed to unregister the WIFI receiver!")
+        }
     }
 
     private fun updateTile() {

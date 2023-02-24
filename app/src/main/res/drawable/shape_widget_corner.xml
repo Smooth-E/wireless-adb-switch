@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#FFF" />
+    <solid android:color="@color/colorGoogleWidgetBackground" />
     <corners android:topLeftRadius="@dimen/system_appwidget_background_radius" />
+    <size android:width="24dp" android:height="24dp" />
 </shape>

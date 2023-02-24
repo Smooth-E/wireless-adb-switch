@@ -3,17 +3,16 @@
 
     <style name="Theme.WidgetFactory.Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="preferenceCategoryStyle">@style/Theme.WidgetFactory.PreferenceCategory</item>
-        <item name="switchPreferenceCompatStyle">
-            @style/Theme.WidgetFactory.SwitchPreferenceCompat
-        </item>
-        <item name="sliderPreferenceStyle">@style/Theme.WidgetFactory.SliderPreference</item>
     </style>
 
     <style name="Theme.WidgetFactory" parent="Theme.WidgetFactory.Base">
         <item name="android:enforceNavigationBarContrast">false</item>
         <item name="android:windowLightNavigationBar">true</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="preferenceCategoryStyle">@style/Theme.WidgetFactory.PreferenceCategory</item>
+        <item name="switchPreferenceCompatStyle">@style/Theme.WidgetFactory.SwitchPreferenceCompat</item>
+        <item name="sliderPreferenceStyle">@style/Theme.WidgetFactory.SliderPreference</item>
+        <item name="dialogPreferenceStyle">@style/Theme.WidgetFactory.DialogPreference</item>
     </style>
 
 </resources>

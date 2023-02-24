@@ -34,7 +34,7 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +43,7 @@
 
     <TextView
         android:id="@android:id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
@@ -52,7 +52,7 @@
 
     <TextView
         android:id="@android:id/summary"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:textColor="?android:attr/textColorSecondary"
@@ -62,6 +62,7 @@
     </LinearLayout>
 
     <!-- Preference should place its actual preference widget here. -->
+
     <LinearLayout
         android:id="@android:id/widget_frame"
         android:layout_width="wrap_content"

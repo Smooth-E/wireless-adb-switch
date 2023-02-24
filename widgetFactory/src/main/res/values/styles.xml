@@ -7,8 +7,7 @@
         <item name="layout">@layout/preference_category_custom</item>
     </style>
 
-    <style name="Theme.WidgetFactory.SwitchPreferenceCompat"
-        parent="Preference.SwitchPreferenceCompat">
+    <style name="Theme.WidgetFactory.SwitchPreferenceCompat" parent="Preference.SwitchPreferenceCompat">
         <item name="layout">@layout/preference_base</item>
         <item name="widgetLayout">@layout/preference_switch_compat</item>
         <item name="allowDividerAbove">false</item>
@@ -18,6 +17,10 @@
     <style name="Theme.WidgetFactory.SliderPreference" parent="Preference">
         <item name="allowDividerBelow">false</item>
         <item name="allowDividerAbove">true</item>
+    </style>
+
+    <style name="Theme.WidgetFactory.DialogPreference" parent="Preference.DialogPreference">
+        <item name="layout">@layout/preference_base</item>
     </style>
 
 </resources>
