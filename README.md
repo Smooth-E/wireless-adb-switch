@@ -5,3 +5,4 @@ It provides several widgets and a quick settings tile to do this. You can also i
 
 ## Features
 
+<img src="./media/feature-qs-tile.png" alt="Quick Settings Tile"/>
