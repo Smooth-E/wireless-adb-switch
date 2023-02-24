@@ -1,5 +1,7 @@
-# Wireless Debugging Switch Widget
+<img src="./media/banner.png" alt="Wireless Debugging Switch Widget"/>
 
-**WADBS** is an Android app that lets you easily enable and disable the *Wireless Debugging* feature, which was introduced in Android 11.
+**Wireless Debugging Switch Widget** (or **WADBS** for short) is an app that allows you to switch Android's Wireless Debugging feature on and off quickly.
+It provides several widgets and a quick settings tile to do this. You can also instantly connect to your PC using KDE Connect's clipboard sharing feature.
 
-Please note, that switching such feature on and off requires root access, therefore your device must be rooted.
+## Features
+
