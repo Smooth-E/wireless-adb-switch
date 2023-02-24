@@ -38,35 +38,11 @@
     <string name="preference_name_use_light_text">Light text</string>
     <string name="preference_summary_use_light_text">Whether to use light-colored text.\nThis option may improve readability when using semi-transparent background on dark wallpaper.</string>
 
-    <string name="preference_name_icon_shape">Shape</string>
-    <string name="preference_summary_icon_shape">Select a shape of your widget.</string>
-
     <string name="widget_basic_name">Switch</string>
     <string name="widget_basic_description">This widget provides a switch to enable Android\'s Wireless Debugging feature.</string>
 
     <string name="widget_information_name">Connection Information</string>
     <string name="widget_information_description">Displays current Wireless Debugging connection information and allows to copy it.</string>
-
-    <string name="widget_icon_name">Icon Widget</string>
-    <string name="widget_icon_description">Allows to instantly switch Wireless Debugging keeping your desktop clean.</string>
-    <string-array name="icon_shape_names">
-        <item>Cloudy</item>
-        <item>Cylinder</item>
-        <item>Flower</item>
-        <item>Heart</item>
-        <item>Hexagon</item>
-        <item>Leaf</item>
-        <item>Meow</item>
-        <item>Pebble</item>
-        <item>Rounded Hexagon</item>
-        <item>Rounded Rect</item>
-        <item>Square</item>
-        <item>Squircle</item>
-        <item>Stretched</item>
-        <item>Tapered_rect</item>
-        <item>Teardrop</item>
-        <item>Vessel</item>
-    </string-array>
 
     <string name="qs_tile_label_disabled">Enable debugging</string>
     <string name="qs_tile_label_enabled">Disable debugging</string>
