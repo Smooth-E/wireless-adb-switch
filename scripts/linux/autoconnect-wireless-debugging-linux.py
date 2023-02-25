@@ -26,16 +26,17 @@ def main():
             previous_clipboard = new_clipboard
             continue
 
-        pyperclip.copy(previous_clipboard)
-
         address = new_clipboard.removeprefix(connect_action_prefix)
         result = os.popen('adb connect ' + address).readline()
         result = result[0].upper() + result[1:]
         
         if result.startswith('Connected to '):
             icon = 'nm-device-wireless'
+            pyperclip.copy(previous_clipboard)
         else:
             icon = 'error'
+            raw_connection_data = new_clipboard.removeprefix(connect_action_prefix)
+            pyperclip.copy(raw_connection_data)
 
         command = 'notify-send' + \
             ' --expire-time 3000' + \
