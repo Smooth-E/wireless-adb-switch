@@ -13,8 +13,8 @@ It provides several widgets and a quick settings tile to do this. You can also i
 ## Credits
 
 [libsu](https://github.com/topjohnwu/libsu) - a library that makes performing root-requiring operations easier.
-<br>[IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) - this font was used in my designs for this README.
-<br>[Wallpaper](https://lineageos.org/) - default wallpaper for a widget configuration activity is taken from Lineage OS.
+<br>[IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) - font used in my designs for this app.
+<br>[Wallpaper](https://lineageos.org/) - default wallpaper image for the widget configuration activity was taken from Lineage OS.
 <br>[Leaves](https://unsplash.com/photos/wAU3MfsGPNw) - an amazing photo of leaves I used as a background for my designs was made by [Aedrian](https://unsplash.com/@aedrian).
 
 ## License
