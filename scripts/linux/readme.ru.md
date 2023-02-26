@@ -1,6 +1,6 @@
 # Инструкция по установке
 
-[`⬅️ Назад`](../readme.md)
+[`⬅️ Назад`](../readme.ru.md)
 
 1. Скачайте файл [`autoconnect-wireless-debugging-linux.py`](./autoconnect-wireless-debugging-linux.py)
 2. Установите Python и pip
