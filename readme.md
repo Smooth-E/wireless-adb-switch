@@ -1,7 +1,14 @@
 <img src="./media/banner.png" alt="Wireless Debugging Switch Widget"/>
 
+<p align=center>
+
+> Read in other languages: [`🇷🇺`](./readme.ru.md) [`Translate into your language!`](./translate.md)
+
+</p>
+
 **Wireless Debugging Switch Widget** (or **WADBS** for short) is an app that allows you to switch Android's Wireless Debugging feature on and off quickly.
-It provides several widgets and a quick settings tile to do this. You can also instantly connect to your PC using KDE Connect's clipboard sharing feature.
+It provides several widgets and a quick settings tile to do this. 
+You can also instantly connect to your PC using KDE Connect's clipboard sharing feature (see [scripts](./scripts/)).
 
 ## Features
 
@@ -21,7 +28,7 @@ It provides several widgets and a quick settings tile to do this. You can also i
 
 WADBS is a free software. It was made with the intention to make developers' lives easier.
 It is licensed under GNU General Public License version 3. 
-In short - you can redistribute and modify it, but should give a credit to the original author in some way.
+In short - you can redistribute and modify it, but should give a credit to the original author.
 
 WADBS is distributed "as is". 
 Developers of this app are not responsible for any kind of damage or harm made by the content of this repository or materials related to it directly or not.

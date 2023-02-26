@@ -1,5 +1,7 @@
 # Installation instructions
 
+[`⬅️ Go back`](../readme.md)
+
 1. Download [`autoconnect-wireless-debugging-linux.py`](./autoconnect-wireless-debugging-linux.py)
 2. Install Python and pip
 3. Execute `pip install pyperclip`
