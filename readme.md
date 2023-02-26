@@ -1,10 +1,6 @@
 <img src="./media/banner.png" alt="Wireless Debugging Switch Widget"/>
 
-<p align=center>
-
 > Read in other languages: [`🇷🇺`](./readme.ru.md) [`Translate into your language!`](./translate.md)
-
-</p>
 
 **Wireless Debugging Switch Widget** (or **WADBS** for short) is an app that allows you to switch Android's Wireless Debugging feature on and off quickly.
 It provides several widgets and a quick settings tile to do this. 
