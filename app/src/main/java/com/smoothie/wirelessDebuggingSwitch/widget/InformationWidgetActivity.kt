@@ -10,7 +10,7 @@ import com.smoothie.wirelessDebuggingSwitch.R
 
 class InformationWidgetActivity : WidgetConfigurationActivity(
     R.xml.widget_preferences,
-    1f
+    2f
 ) {
 
     @SuppressLint("InflateParams")

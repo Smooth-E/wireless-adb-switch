@@ -48,7 +48,7 @@ abstract class WidgetConfigurationActivity(
         setResult(RESULT_CANCELED)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        toolbar.setOnClickListener { finish() }
+        toolbar.setNavigationOnClickListener { finish() }
         toolbar.inflateMenu(R.menu.widget_configuration_toolbar)
         toolbar.setOnMenuItemClickListener { menuItem ->
             if (menuItem.itemId != R.id.settings)

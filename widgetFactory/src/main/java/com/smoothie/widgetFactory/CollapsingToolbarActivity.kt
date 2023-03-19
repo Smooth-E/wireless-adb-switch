@@ -19,7 +19,7 @@ open class CollapsingToolbarActivity(
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         toolbar.title = getString(titleStringResource)
-        toolbar.setOnClickListener { finish() }
+        toolbar.setNavigationOnClickListener { finish() }
 
         fixSystemWindowsPadding()
 
