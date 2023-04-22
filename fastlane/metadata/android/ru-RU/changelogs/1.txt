@@ -1,7 +1,0 @@
-Это первая версия данного приложения. Вот, что вы можете делать при помощи него:
-
-<ul>
-    <li>Создавать и кастомизировать удобные виджеты для рабочего стола</li>
-    <li>Использовать удобный тайл быстрых настроек для переключения функции Беспроводной отладки</li>
-    <li>Мгновенно соединять ваши устройства, используя <a href='https://kdeconnect.kde.org/' target='_blank' rel='nofollow noopener'>KDE Connect</a> и <a herf='https://github.com/Smooth-E/wireless-adb-switch/tree/main/scripts/readme.ru.md' target='_blank' rel='nofollow noopener>скрипты</a></li>
-</ul>

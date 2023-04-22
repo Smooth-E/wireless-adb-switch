@@ -1,7 +1,5 @@
 This is an initial release of the app. Here is what you can do with it:
 
-<ul>
-    <li>Create and customize useful home screen widgets</li>
-    <li>Use a handy Quick Settings toggle for Wireless Debugging</li>
-    <li>Instantly pair your devices using <a href='https://kdeconnect.kde.org/' target='_blank' rel='nofollow noopener'>KDE Connect</a> and <a herf='https://github.com/Smooth-E/wireless-adb-switch/tree/main/scripts/readme.md' target='_blank' rel='nofollow noopener>scripts</a></li>
-</ul>
+- Create and customize useful home screen widgets
+- Use a handy Quick Settings toggle for Wireless Debugging
+- Instantly pair your devices using KDE Connect and some Python scripts (read more in repository's readme)
