@@ -1,1 +1,1 @@
-switch Android's Wireless Debugging feature on and off quickly
+Switch Android's Wireless Debugging feature on and off quickly
