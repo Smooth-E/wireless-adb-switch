@@ -1,12 +1,17 @@
 <img src="./media/banner.png" alt="Wireless Debugging Switch Widget"/>
 
-<p align="center"> 
+<p align="center">
+    <a href="https://github.com/Smooth-E/wireless-adb-switch/releases/latest" target="_blank" rel="nofollow noopener">
+        <img alt="Badge GitHub" src="media/badge-github.png" width="40%"/>
+    </a>
+    <a href="https://apt.izzysoft.de/fdroid/index/apk/com.smoothie.wirelessDebuggingSwitch" target="_blank" rel="nofollow noopener">
+        <img alt="Badge IzzyOnDroid" src="media/badge-izzy-on-droid.png" width="40%"/>
+    </a>
+</p>
 
 > Читайте на других языках: [`🇺🇸`](./readme.md) [`Переведите на свой язык!`](./translate.md)
 
-</p>
-
-**Wireless Debugging Switch Widget** (или **WADBS** в более краткой форме) - приложение, позволяющее легко включать и выключать функцию Беспроводной отладки на Android.
+**Wireless Android Debugging Bridge Switch** (или **WADBS** в более краткой форме) - приложение, позволяющее легко включать и выключать функцию Беспроводной отладки на Android.
 Для этого приложение предоставляет набор виджетов для рабочего стола, а также тайл быстрых настроек.
 Вы также можете настроить мгновенное соединение с вашим ПК при помощи функции синхронизации буфером обмена в KDE Connect (подробнее [здесь](./scripts/readme.ru.md)).
 
