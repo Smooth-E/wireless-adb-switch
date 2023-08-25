@@ -1,3 +1,0 @@
-[submodule "libsu"]
-	path = libsu
-	url = https://github.com/topjohnwu/libsu.git

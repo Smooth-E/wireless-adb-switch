@@ -41,7 +41,9 @@ dependencies {
     implementation 'androidx.preference:preference-ktx:1.2.0'
 
     implementation(project(':widgetFactory'))
-    implementation(project(':libsu:core'))
+
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.core:core-ktx:1.9.0'
+
+    implementation "com.github.topjohnwu.libsu:core:5.2.0"
 }
