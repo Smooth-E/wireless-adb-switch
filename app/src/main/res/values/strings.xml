@@ -5,7 +5,7 @@
     <string name="app_name" translatable="false">Wireless Debugging Switch</string>
 
     <string name="label_wireless_debugging">Wireless\nDebugging</string>
-    <string name="label_not_disconnected">Disconnected</string>
+    <string name="label_disconnected">Disconnected</string>
     <string name="label_connection_data">Connection data</string>
     <string name="label_port">Port:</string>
     <string name="label_address">Address:</string>
@@ -15,6 +15,8 @@
     <string name="message_failed_sending_clipboard">Failed to send clipboard!</string>
     <string name="message_error_copying_connection_data">"Error copying connection information!\n    "</string>
     <string name="message_copied">Copied!</string>
+    <string name="message_no_way_to_work">Both root access and Shizuku are unavailable.</string>
+    <string name="message_need_at_least_shizuku">You need to either provide root access or the permission to use Shizuku.</string>
 
     <string name="state_enabled">Enabled</string>
     <string name="state_waiting">Waiting</string>

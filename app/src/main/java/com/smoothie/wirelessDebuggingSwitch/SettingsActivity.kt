@@ -1,10 +1,20 @@
 package com.smoothie.wirelessDebuggingSwitch
 
+import android.os.Bundle
 import androidx.preference.SwitchPreferenceCompat
 import com.smoothie.widgetFactory.preference.PreferenceActivity
 import com.smoothie.widgetFactory.preference.PreferenceFragment
 
 class SettingsActivity : PreferenceActivity(R.xml.app_preferences, R.string.app_name) {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        if (intent.getBooleanExtra("EXIT", false)) {
+            finish()
+            return
+        }
+
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onPreferencesCreated(preferenceFragment: PreferenceFragment) {
         super.onPreferencesCreated(preferenceFragment)

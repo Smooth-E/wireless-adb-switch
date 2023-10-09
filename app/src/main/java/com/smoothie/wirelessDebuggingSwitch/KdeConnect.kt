@@ -32,7 +32,7 @@ object KdeConnect {
     }
 
     // https://invent.kde.org/network/kdeconnect-android/-/blob/aca039433c455b44b621dda077b940f26a732f25/src/org/kde/kdeconnect/Plugins/ClibpoardPlugin/ClipboardFloatingActivity.java
-    fun sendClipboard(context: Context, content: String): Shell.Result {
+    fun sendClipboard(context: Context, content: String): Shell.Result? {
         val label = "Clipboard for KDE Connect"
         val clipboardManager =
             context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -43,7 +43,7 @@ object KdeConnect {
             "-n $PACKAGE_NAME/$CLIPBOARD_ACTIVITY_NAME " +
             "--ez SHOW_TOAST 0"
 
-        return Shell.cmd(command).exec()
+        return Utilities.executeShellCommand(command)
     }
 
 }

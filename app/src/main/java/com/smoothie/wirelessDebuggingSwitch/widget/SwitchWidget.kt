@@ -4,7 +4,6 @@ import android.appwidget.AppWidgetManager
 import android.content.*
 import android.util.Log
 import com.smoothie.widgetFactory.ConfigurableWidget
-import com.smoothie.wirelessDebuggingSwitch.KdeConnect
 import com.smoothie.wirelessDebuggingSwitch.WirelessDebugging
 
 abstract class SwitchWidget(private val className: String) : ConfigurableWidget(className) {
@@ -40,16 +39,12 @@ abstract class SwitchWidget(private val className: String) : ConfigurableWidget(
         updateAllWidgets(context!!)
 
         WirelessDebugging.enabled = !WirelessDebugging.enabled
-        switchState = if (WirelessDebugging.enabled)
-            SwitchState.Enabled
-        else
-            SwitchState.Disabled
+        switchState = if (WirelessDebugging.enabled) SwitchState.Enabled else SwitchState.Disabled
 
         updateAllWidgets(context)
 
         if (switchState == SwitchState.Enabled)
             WirelessDebugging.syncConnectionData(context)
-
     }
 
     override fun onUpdate(

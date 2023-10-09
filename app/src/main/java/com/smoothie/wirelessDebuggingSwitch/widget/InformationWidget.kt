@@ -17,7 +17,6 @@ import com.smoothie.wirelessDebuggingSwitch.WirelessDebugging
 class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name) {
 
     companion object {
-
         private const val EXTRA_FLAG = "COPY_CONNECTION_INFORMATION"
         private const val EXTRA_ADDRESS = "ADDRESS"
         private const val EXTRA_PORT = "PORT"
@@ -45,9 +44,10 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
         if (!debuggingEnabled)
             return views
 
+        val stringError = context.getString(R.string.label_error)
+
         var address: String
         var port: String
-        val stringError = context.getString(R.string.label_error)
         try {
             address = WirelessDebugging.getAddress(context)
             port = WirelessDebugging.getPort()

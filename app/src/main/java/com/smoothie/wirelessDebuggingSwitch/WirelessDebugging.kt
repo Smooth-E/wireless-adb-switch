@@ -6,31 +6,34 @@ import android.text.format.Formatter
 import android.util.Log
 import android.widget.Toast
 import androidx.preference.PreferenceManager
-import com.topjohnwu.superuser.Shell
 
 object WirelessDebugging {
 
-    private const val TAG = "Wireless Debugging"
+    private const val TAG = "WirelessDebuggingFeature"
 
     var enabled: Boolean
         get() {
-            val command = "settings get global adb_wifi_enabled"
-            val result = Shell.cmd(command).exec()
-            return result.isSuccess && result.out.joinToString().trim().toInt() == 1
+            val command = "settings get --user current global adb_wifi_enabled"
+
+            val result = Utilities.executeShellCommand(command)
+                ?: return false
+
+            return result.isSuccess && result.out.joinToString("\n").trim().toInt() == 1
         }
         set(value) {
-            val command = "settings put global adb_wifi_enabled ${if (value) 1 else 0}"
-            Shell.cmd(command).exec()
+            val state = if (value) 1 else 0
+            val command = "settings put --user current global adb_wifi_enabled $state"
+            Utilities.executeShellCommand(command)
         }
 
     fun getPort(): String {
         val command = "getprop service.adb.tls.port"
-        val result = Shell.cmd(command).exec()
+        val result = Utilities.executeShellCommand(command)
 
-        if (!result.isSuccess)
+        if (result == null || !result.isSuccess)
             throw Exception("Failed to obtain wireless debugging port!")
 
-        return result.out.joinToString()
+        return result.out.joinToString("\n")
     }
 
     fun getAddress(context: Context): String {
@@ -79,6 +82,7 @@ object WirelessDebugging {
                 connectionInfo
 
         val result = KdeConnect.sendClipboard(context, connectionData)
+            ?: return
 
         if (!result.isSuccess) {
             val message = context.getString(R.string.message_failed_sending_clipboard)

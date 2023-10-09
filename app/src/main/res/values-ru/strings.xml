@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="label_wireless_debugging">Беспроводная\nОтладка</string>
-    <string name="label_not_disconnected">Отключено</string>
+    <string name="label_disconnected">Отключено</string>
     <string name="label_connection_data">Информация о подключении</string>
     <string name="label_port">Порт:</string>
     <string name="label_address">Адрес:</string>
@@ -10,6 +10,8 @@
     <string name="message_failed_sending_clipboard">Ошибка отправки буфера обмена!</string>
     <string name="message_error_copying_connection_data">Ошибка копирования информации о подключении!</string>
     <string name="message_copied">Скопировано!</string>
+    <string name="message_no_way_to_work">Оба из способов: Shizuku и root-доступ не активны.</string>
+    <string name="message_need_at_least_shizuku">Приложению необходим root-доступ или разрешение использовать Shizuku.</string>
     <string name="state_enabled">Активно</string>
     <string name="state_waiting">Ожидание</string>
     <string name="state_disabled">Отключено</string>

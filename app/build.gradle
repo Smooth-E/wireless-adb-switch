@@ -33,16 +33,19 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
-
+    implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.preference:preference-ktx:1.2.1'
 
-    implementation(project(':widgetFactory'))
-
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.core:core-ktx:1.10.1'
-
     implementation "com.github.topjohnwu.libsu:core:5.2.0"
+
+    // We are using an older version of the Shizuku library to skip the implementation of a custom
+    // user service and just use now-deprecated newProcess(...) method.
+    // TODO: This is a bad practice, learn Shizuku and use the correct approach
+    def shizuku_version = "12.1.0"
+    implementation "dev.rikka.shizuku:api:$shizuku_version"
+    implementation "dev.rikka.shizuku:provider:$shizuku_version"
+
+    implementation(project(':widgetFactory'))
 }
