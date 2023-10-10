@@ -38,8 +38,12 @@ abstract class SwitchWidget(private val className: String) : ConfigurableWidget(
         switchState = SwitchState.Waiting
         updateAllWidgets(context!!)
 
-        WirelessDebugging.enabled = !WirelessDebugging.enabled
-        switchState = if (WirelessDebugging.enabled) SwitchState.Enabled else SwitchState.Disabled
+        WirelessDebugging.setEnabled(context, !WirelessDebugging.isEnabled(context))
+        switchState =
+            if (WirelessDebugging.isEnabled(context))
+                SwitchState.Enabled
+            else
+                SwitchState.Disabled
 
         updateAllWidgets(context)
 
@@ -53,7 +57,11 @@ abstract class SwitchWidget(private val className: String) : ConfigurableWidget(
         appWidgetIds: IntArray?
     ) {
         super.onUpdate(context, appWidgetManager, appWidgetIds)
-        switchState = if (WirelessDebugging.enabled) SwitchState.Enabled else SwitchState.Disabled
+        switchState =
+            if (WirelessDebugging.isEnabled(context!!))
+                SwitchState.Enabled
+            else
+                SwitchState.Disabled
     }
 
     protected fun createStateSwitchIntent(context: Context): Intent {

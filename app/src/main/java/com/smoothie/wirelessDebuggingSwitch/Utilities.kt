@@ -1,5 +1,6 @@
 package com.smoothie.wirelessDebuggingSwitch
 
+import android.content.Context
 import android.util.Log
 import com.topjohnwu.superuser.Shell
 
@@ -15,11 +16,24 @@ object Utilities {
      * @param command a command to execute
      * @return [Shell.Result] if either Shizuku or root are present and null otherwise.
      */
-    fun executeShellCommand(command: String): Shell.Result? {
-        if (Shell.isAppGrantedRoot() == true) {
+    fun executeShellCommand(
+        context: Context,
+        command: String,
+        requiredPrivilegeLevel: PrivilegeLevel = PrivilegeLevel.Shizuku
+    ): Shell.Result? {
+        val privilegeLevel = AdditionalSetupNotifier.getPrivilegeLevel(context)
+
+        val executableWithShizuku =
+            requiredPrivilegeLevel == PrivilegeLevel.Shizuku ||
+            requiredPrivilegeLevel == PrivilegeLevel.User
+
+        // Did not consider the case when the required privilege level is User,
+        // because WADBS is almost useless without either root or Shizuku.
+
+        if (privilegeLevel == PrivilegeLevel.Root) {
             return Shell.cmd(command).exec()
         }
-        else if (ShizukuUtilities.hasShizukuPermission()) {
+        else if (privilegeLevel == PrivilegeLevel.Shizuku && executableWithShizuku) {
             val process = ShizukuUtilities.executeCommand(command)
 
             return object : Shell.Result() {

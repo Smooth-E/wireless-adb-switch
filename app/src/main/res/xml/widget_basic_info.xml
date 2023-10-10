@@ -11,4 +11,4 @@
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen"
     android:configure="com.smoothie.wirelessDebuggingSwitch.widget.BasicWidgetActivity"
-    android:widgetFeatures="configuration_optional|reconfigurable"/>
+    android:widgetFeatures="configuration_optional|reconfigurable" />

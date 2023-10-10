@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string translatable="false" name="key_asked_shizuku_permission">asked_shizuku_permission</string>
     <string translatable="false" name="key_enable_kde_connect">enable_kde_connect</string>
     <string translatable="false" name="key_prefix_connection_data">prefix_connection_data</string>
     <string translatable="false" name="key_background_transparency">background_transparency</string>

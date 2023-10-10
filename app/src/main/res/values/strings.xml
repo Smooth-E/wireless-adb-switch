@@ -11,12 +11,21 @@
     <string name="label_address">Address:</string>
     <string name="label_error">Error</string>
     <string name="label_copy">Copy</string>
+    <string name="label_grant_permissions">Grant permissions</string>
+    <string name="label_learn_more">Learn more</string>
+    <string name="label_crucial_permission">Crucial permission</string>
+    <string name="label_ignore">Ignore</string>
+    <string name="label_got_to_settings">Go to settings</string>
 
     <string name="message_failed_sending_clipboard">Failed to send clipboard!</string>
     <string name="message_error_copying_connection_data">"Error copying connection information!\n    "</string>
     <string name="message_copied">Copied!</string>
     <string name="message_no_way_to_work">Both root access and Shizuku are unavailable.</string>
     <string name="message_need_at_least_shizuku">You need to either provide root access or the permission to use Shizuku.</string>
+    <string name="message_provide_shizuku_permission">WADBS will not work without this permission!</string>
+    <string name="message_explain_shizuku">Since your device either do not have the root access or you did not allow WADBS to use it, you should allow Shizuku to be used instead. Note: the clipboard sharing feature through KDE Connect will not work in Shizuku mode.</string>
+    <string name="message_explain_notifications">WADBS will display a notification whenever it lacks the needed set of privileges (at least Shizuku mode). For this to work, allow WADBS to send notifications.</string>
+    <string name="message_force_allow_notifications">Notifications is the crucial permission for WADBS, because it allows to notify the user about errors.</string>
 
     <string name="state_enabled">Enabled</string>
     <string name="state_waiting">Waiting</string>

@@ -11,24 +11,24 @@ object WirelessDebugging {
 
     private const val TAG = "WirelessDebuggingFeature"
 
-    var enabled: Boolean
-        get() {
-            val command = "settings get --user current global adb_wifi_enabled"
+    fun isEnabled(context: Context): Boolean {
+        val command = "settings get --user current global adb_wifi_enabled"
 
-            val result = Utilities.executeShellCommand(command)
-                ?: return false
+        val result = Utilities.executeShellCommand(context, command)
+            ?: return false
 
-            return result.isSuccess && result.out.joinToString("\n").trim().toInt() == 1
-        }
-        set(value) {
-            val state = if (value) 1 else 0
-            val command = "settings put --user current global adb_wifi_enabled $state"
-            Utilities.executeShellCommand(command)
-        }
+        return result.isSuccess && result.out.joinToString("\n").trim().toInt() == 1
+    }
 
-    fun getPort(): String {
+    fun setEnabled(context: Context, value: Boolean) {
+        val state = if (value) 1 else 0
+        val command = "settings put --user current global adb_wifi_enabled $state"
+        Utilities.executeShellCommand(context, command)
+    }
+
+    fun getPort(context: Context): String {
         val command = "getprop service.adb.tls.port"
-        val result = Utilities.executeShellCommand(command)
+        val result = Utilities.executeShellCommand(context, command)
 
         if (result == null || !result.isSuccess)
             throw Exception("Failed to obtain wireless debugging port!")
@@ -45,7 +45,7 @@ object WirelessDebugging {
     }
 
     fun getConnectionData(context: Context): String =
-        "${getAddress(context)}:${getPort()}"
+        "${getAddress(context)}:${getPort(context)}"
 
     /**
      * Synchronize connection data if device is connected via Wireless ADB and
