@@ -2,7 +2,8 @@ package com.smoothie.wirelessDebuggingSwitch
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.ComponentName
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -24,7 +25,7 @@ import com.smoothie.widgetFactory.CollapsingToolbarActivity
 import com.topjohnwu.superuser.Shell
 
 class GrantPermissionsActivity : CollapsingToolbarActivity(
-    R.string.title_welcome,
+    R.string.title_additional_setup,
     GrantPermissionsFragment(),
     false
 ) {
@@ -47,37 +48,9 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
             val hasRootAccess = Shell.isAppGrantedRoot() == true
             val hasPrivileges = hasRootAccess || ShizukuUtilities.hasShizukuPermission()
 
-            if (isNotificationPermissionGranted(context) && hasPrivileges) {
-                if (comingFromEnablingRootAccess(context))
-                    showMagiskNotificationsReminder(context)
-                return
-            }
-
-            context.startActivity(Intent(context, GrantPermissionsActivity::class.java))
+            if (!(isNotificationPermissionGranted(context) && hasPrivileges))
+                context.startActivity(Intent(context, GrantPermissionsActivity::class.java))
         }
-
-        private fun comingFromEnablingRootAccess(context: Context): Boolean {
-            val preferences =  PreferenceManager.getDefaultSharedPreferences(context)
-            val value = preferences.getBoolean(PREFERENCE_NAME, false)
-            preferences.edit().putBoolean(PREFERENCE_NAME, false).apply()
-
-            if (Shell.isAppGrantedRoot() != true)
-                return false
-
-            return value
-        }
-
-        private fun showMagiskNotificationsReminder(context: Context) {
-            MaterialAlertDialogBuilder(context, centeredAlertDialogStyle)
-                .setIcon(R.drawable.magisk)
-                .setTitle(R.string.title_root_access_notifications)
-                .setMessage(R.string.message_disable_magisk_notification)
-                .setPositiveButton(R.string.label_got_it) { dialog, _ -> dialog.dismiss() }
-                .show()
-        }
-
-        private fun magiskPresent(context: Context): Boolean =
-            isPackageInstalled(context, "com.topjohnwu.magisk")
 
     }
 
@@ -143,21 +116,31 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
             rootAccessButton.setOnClickListener(requestRootAccess)
             shizukuButton.setOnClickListener(requestShizukuPermission)
             refreshShizukuStatusButton.setOnClickListener { updatePrivilegeLevelCards() }
+            rootAccessButton.setOnClickListener { restartAppForRootAccessRefresh() }
 
             continueButton.fixTextAlignment()
             continueButton.setOnClickListener {
-                this@GrantPermissionsFragment.requireActivity().finish()
+                if (Shell.isAppGrantedRoot() == true)
+                    showMagiskNotificationsReminder(requireContext())
+                else
+                    this@GrantPermissionsFragment.requireActivity().finish()
             }
 
             updateAllCards()
-
-            if (comingFromEnablingRootAccess(requireContext()))
-                showMagiskNotificationsReminder(requireContext())
         }
 
         override fun onResume() {
             super.onResume()
             updateAllCards()
+        }
+
+        private fun showMagiskNotificationsReminder(context: Context) {
+            MaterialAlertDialogBuilder(context, centeredAlertDialogStyle)
+                .setIcon(R.drawable.magisk)
+                .setTitle(R.string.title_root_access_notifications)
+                .setMessage(R.string.message_disable_magisk_notification)
+                .setPositiveButton(R.string.label_got_it) { _, _ -> requireActivity().finish() }
+                .show()
         }
 
         private fun updateAllCards() {
@@ -206,48 +189,15 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
             }
 
             rootAccessButton.isEnabled = true
-
-            if (magiskPresent(requireContext())) {
-                rootAccessButton.text = getString(R.string.label_open_magisk)
-                rootAccessButton.setOnClickListener {
-                    MaterialAlertDialogBuilder(requireContext(), centeredAlertDialogStyle)
-                        .setIcon(R.drawable.magisk)
-                        .setTitle(R.string.title_root_access)
-                        .setMessage(R.string.message_use_magisk)
-                        .setPositiveButton(R.string.label_continue) { _, _ ->
-                            val packageName = "com.topjohnwu.magisk"
-                            val activityName = "com.topjohnwu.magisk.ui.MainActivity"
-
-                            val intent = Intent()
-                            intent.component = ComponentName(packageName, activityName)
-                            startActivity(intent)
-                            killAppForRootAccessRefresh()
-                        }
-                        .setCancelable(false)
-                        .show()
-                }
-            }
-            else {
-                rootAccessButton.text = getString(R.string.label_restart)
-                rootAccessButton.setOnClickListener {
-                    MaterialAlertDialogBuilder(requireContext(), centeredAlertDialogStyle)
-                        .setIcon(R.drawable.magisk)
-                        .setTitle(R.string.title_root_access)
-                        .setMessage(R.string.message_no_magisk)
-                        .setPositiveButton(R.string.label_continue) { _, _ ->
-                            killAppForRootAccessRefresh()
-                        }
-                        .setCancelable(false)
-                        .show()
-                }
-            }
+            rootAccessButton.text = getString(R.string.label_restart)
 
             updateContinueButton()
         }
 
         private fun updateContinueButton() {
             continueButton.isEnabled =
-                ShizukuUtilities.hasShizukuPermission() && isNotificationPermissionGranted(context)
+                (ShizukuUtilities.hasShizukuPermission() || Shell.isAppGrantedRoot() == true)
+                        && isNotificationPermissionGranted(context)
         }
 
         /**
@@ -255,11 +205,23 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
          * solutions like Magisk do not update the state of Shell.isAppGrantedRoot()
          * without a full restart
          */
-        private fun killAppForRootAccessRefresh() {
+        @SuppressLint("WrongConstant")
+        private fun restartAppForRootAccessRefresh() {
             PreferenceManager.getDefaultSharedPreferences(requireContext())
                 .edit()
                 .putBoolean(PREFERENCE_NAME, true)
                 .apply()
+
+            val manager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val time = System.currentTimeMillis() + 100
+            val intent = PendingIntent.getActivity(
+                requireActivity().baseContext,
+                0,
+                requireActivity().intent,
+                requireActivity().intent.flags
+            )
+            manager.set(AlarmManager.RTC, time, intent)
+
             Process.killProcess(Process.myPid())
         }
 
