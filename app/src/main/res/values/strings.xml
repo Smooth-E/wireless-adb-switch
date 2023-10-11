@@ -16,11 +16,15 @@
     <string name="label_not_needed">Not needed</string>
     <string name="label_setup_shizuku">Setup Shizuku</string>
     <string name="label_continue">Continue</string>
+    <string name="label_got_it">Got it!</string>
+    <string name="label_open_magisk">Open Magisk</string>
+    <string name="label_restart">Restart</string>
 
     <string name="title_welcome">Welcome to WADBS!</string>
     <string name="title_shizuku">Shizuku</string>
     <string name="title_root_access">Root access</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_root_access_notifications">Root access notifications</string>
 
     <string name="hint_refresh_shizuku">Refresh Shizuku availability</string>
 
@@ -34,6 +38,9 @@
     <string name="message_explain_root_access">Root access allows WADBS to change the state of Wireless Debugging, gather connection data and interact with KDE Connect to instantly pair your Android device with your PC via local network.\nThis permission is optional if you use Shizuku.</string>
     <string name="message_explain_shizuku">Alternatively to Root access WADBS can utilize Shizuku to gain the needed set of privileges. Note that KDE Connect integration does not work with Shizuku.</string>
     <string name="message_grant_permisson_berfore_leaving">Please, provide all of the required permissions and then tap Continue.</string>
+    <string name="message_disable_magisk_notification">Magisk displays a toast whenever some app is granted root access. WADBS frequently checks the state of Wireless Debugging on your device to update its widgets (you can edit the interval in settings). This makes Magisk\'s notifications somewhat annoying.\n\nYou can disable Magisk\'s root access notifications from the "Superuser" tab (tap on WADBS int he list there to unfold more options for it).</string>
+    <string name="message_no_magisk">You are either using a different root access management solution or Magisk is hidden. To grant root access to WADBS, whitelist in your root access management solution, and completely restart the app.</string>
+    <string name="message_use_magisk">You will be redirected to Magisk. To grant root access to WADBS, proceed to the \"Superuser\" tab. WADBS will be completely closed now, to refresh the state of root access, return to it from your home screen.</string>
 
     <string name="state_enabled">Enabled</string>
     <string name="state_waiting">Waiting</string>

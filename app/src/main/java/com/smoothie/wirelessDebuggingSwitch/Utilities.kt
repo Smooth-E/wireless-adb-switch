@@ -1,8 +1,13 @@
 package com.smoothie.wirelessDebuggingSwitch
 
+import android.content.Context
+import android.content.pm.PackageManager
 import android.util.Log
 import com.google.android.material.button.MaterialButton
 import com.topjohnwu.superuser.Shell
+
+val centeredAlertDialogStyle =
+    com.google.android.material.R.style.ThemeOverlay_Material3_MaterialAlertDialog_Centered
 
 /**
  * Execute a shell command. This method will choose between Shizuku and root execution.
@@ -75,4 +80,13 @@ fun getPrivilegeLevel(): PrivilegeLevel {
     else if (ShizukuUtilities.hasShizukuPermission())
         return PrivilegeLevel.Shizuku
     return PrivilegeLevel.User
+}
+
+fun isPackageInstalled(context: Context, name: String): Boolean {
+    val packages = context.packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
+    for (installedPackage in packages) {
+        if (installedPackage.packageName == name)
+            return true
+    }
+    return false
 }

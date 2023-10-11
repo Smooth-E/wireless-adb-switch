@@ -16,18 +16,8 @@ object KdeConnect {
     const val CLIPBOARD_PREFIX = "connect-wireless-debugging://"
 
     fun isInstalled(context: Context): Boolean {
-        val packages = context.packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
-
-        var kdeConnectInstalled = false
-        for (installedPackage in packages) {
-            if (installedPackage.packageName == PACKAGE_NAME) {
-                kdeConnectInstalled = true
-                break
-            }
-        }
-
+        val kdeConnectInstalled = isPackageInstalled(context, PACKAGE_NAME)
         Log.d("KdeConnect", "KDE Connect installation status is $kdeConnectInstalled")
-
         return kdeConnectInstalled
     }
 
