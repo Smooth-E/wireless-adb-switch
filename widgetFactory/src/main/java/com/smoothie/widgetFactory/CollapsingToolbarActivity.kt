@@ -10,7 +10,8 @@ import com.google.android.material.appbar.MaterialToolbar
 
 open class CollapsingToolbarActivity(
     private val titleStringResource: Int,
-    private val contentFragment: Fragment
+    private val contentFragment: Fragment,
+    private val addToolbarNavigation: Boolean = true
 ) : FullScreenActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +20,11 @@ open class CollapsingToolbarActivity(
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         toolbar.title = getString(titleStringResource)
-        toolbar.setNavigationOnClickListener { finish() }
+
+        if (addToolbarNavigation)
+            toolbar.setNavigationOnClickListener { finish() }
+        else
+            toolbar.navigationIcon = null
 
         fixSystemWindowsPadding()
 

@@ -53,14 +53,10 @@ class QSTileService : TileService() {
     override fun onClick() {
         super.onClick()
         Log.d(TAG, "Tile onClick() called!")
-
-        WirelessDebugging.setEnabled(
-            applicationContext,
-            !WirelessDebugging.isEnabled(applicationContext)
-        )
+        WirelessDebugging.enabled = !WirelessDebugging.enabled
         updateTile()
 
-        if (WirelessDebugging.isEnabled(applicationContext))
+        if (WirelessDebugging.enabled)
             WirelessDebugging.syncConnectionData(this)
     }
 
@@ -91,7 +87,7 @@ class QSTileService : TileService() {
 
         qsTile.icon = Icon.createWithResource(this, R.drawable.baseline_phonelink_24)
 
-        if (WirelessDebugging.isEnabled(applicationContext)) {
+        if (WirelessDebugging.enabled) {
             var label: String
             var message: String
 

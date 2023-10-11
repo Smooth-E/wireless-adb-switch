@@ -5,10 +5,10 @@ import android.content.SharedPreferences
 import android.view.View
 import android.widget.TextView
 import com.smoothie.wirelessDebuggingSwitch.R
-import com.smoothie.widgetFactory.configuration.WidgetConfigurationActivity
 import com.smoothie.wirelessDebuggingSwitch.PreferenceUtilities
+import com.smoothie.wirelessDebuggingSwitch.PrivilegeCheckingWidgetConfigurationActivity
 
-class BasicWidgetActivity : WidgetConfigurationActivity(
+class BasicWidgetActivity : PrivilegeCheckingWidgetConfigurationActivity(
     R.xml.widget_preferences,
     1f
 ) {

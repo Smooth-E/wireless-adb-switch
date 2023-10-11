@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:padding="24dp"
+        android:backgroundTint="@color/colorSecondaryContainer"
+        android:background="@drawable/shape_medium_corners"
+        style="@style/ShapeAppearance.Material3.Corner.Large">
+
+
+        <ImageView
+            android:id="@+id/explanation_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/round_app_shortcut_24"
+            app:tint="@color/colorSecondary"
+            android:importantForAccessibility="no"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/message_welcome"
+            app:layout_constraintStart_toEndOf="@id/explanation_icon"
+            android:layout_marginStart="24dp"
+            style="@style/MaterialAlertDialog.Material3.Body.Text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/grant_notifications"
+            style="@style/TextAppearance.Material3.TitleLarge"
+            android:text="@string/title_notifications"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
+
+        <Button
+            android:id="@+id/grant_notifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            android:text="@string/label_grant_permission" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:text="@string/message_explain_notifications"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/grant_root_access"
+            style="@style/TextAppearance.Material3.TitleLarge"
+            android:text="@string/title_root_access"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
+
+        <Button
+            android:id="@+id/grant_root_access"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/label_grant_permission"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:text="@string/message_explain_root_access"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/grant_shizuku"
+            style="@style/TextAppearance.Material3.TitleLarge"
+            android:text="@string/title_shizuku"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
+
+        <Button
+            android:id="@+id/refresh_shizuku_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Material3.Button.IconButton"
+            app:icon="@drawable/round_refresh_24"
+            app:layout_constraintEnd_toStartOf="@id/grant_shizuku"
+            app:layout_constraintTop_toTopOf="parent"
+            android:tooltipText="@string/hint_refresh_shizuku"/>
+
+        <Button
+            android:id="@+id/grant_shizuku"
+            android:layout_width="wrap_content"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/label_grant_permission" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:text="@string/message_explain_shizuku"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
+
+    <FrameLayout
+        android:id="@+id/spacer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_continue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.Material3.Button.IconButton.Outlined"
+        android:text="@string/label_continue"
+        app:icon="@drawable/round_keyboard_arrow_right_24"
+        app:iconGravity="end"
+        android:layout_gravity="end" />
+
+</LinearLayout>

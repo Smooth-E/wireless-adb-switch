@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.view.View
 import android.widget.TextView
-import com.smoothie.widgetFactory.configuration.WidgetConfigurationActivity
 import com.smoothie.wirelessDebuggingSwitch.PreferenceUtilities
+import com.smoothie.wirelessDebuggingSwitch.PrivilegeCheckingWidgetConfigurationActivity
 import com.smoothie.wirelessDebuggingSwitch.R
 
-class InformationWidgetActivity : WidgetConfigurationActivity(
+class InformationWidgetActivity : PrivilegeCheckingWidgetConfigurationActivity(
     R.xml.widget_preferences,
     2f
 ) {

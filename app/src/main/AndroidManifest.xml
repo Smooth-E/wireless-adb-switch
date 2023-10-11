@@ -35,9 +35,8 @@
         </activity>
 
         <activity
-            android:name=".AdditionalSetupNotifierActivity"
-            android:exported="false"
-            android:theme="@style/Theme.WirelessDebuggingSwitch.Transparent" />
+            android:name=".GrantPermissionsActivity"
+            android:exported="false"/>
 
         <!-- Shizuku provider -->
 

@@ -51,7 +51,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:padding="10dp">
+                android:padding="8dp">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/showcase_background"

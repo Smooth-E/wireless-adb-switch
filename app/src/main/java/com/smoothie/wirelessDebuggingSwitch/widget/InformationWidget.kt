@@ -37,7 +37,7 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
 
         RoundedWidgetUtilities.applyRemoteViewsParameters(context, preferences, views)
 
-        val debuggingEnabled = WirelessDebugging.isEnabled(context)
+        val debuggingEnabled = WirelessDebugging.enabled
         views.setViewVisibility(R.id.data_enabled, if (debuggingEnabled) VISIBLE else GONE)
         views.setViewVisibility(R.id.data_disabled, if (!debuggingEnabled) VISIBLE else GONE)
 
@@ -50,7 +50,7 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
         var port: String
         try {
             address = WirelessDebugging.getAddress(context)
-            port = WirelessDebugging.getPort(context)
+            port = WirelessDebugging.getPort()
         }
         catch (exception: Exception) {
             Log.e("Information Widget", "Failed to get connection data!")

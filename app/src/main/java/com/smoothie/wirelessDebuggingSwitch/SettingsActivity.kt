@@ -8,6 +8,7 @@ class SettingsActivity : PreferenceActivity(R.xml.app_preferences, R.string.app_
 
     override fun onPreferencesCreated(preferenceFragment: PreferenceFragment) {
         super.onPreferencesCreated(preferenceFragment)
+        GrantPermissionsActivity.startIfNeeded(this)
 
         val keyKdeConnectIntegration = getString(R.string.key_enable_kde_connect)
         val keyPrefixData = getString(R.string.key_prefix_connection_data)

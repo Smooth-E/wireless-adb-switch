@@ -43,7 +43,7 @@ object KdeConnect {
             "-n $PACKAGE_NAME/$CLIPBOARD_ACTIVITY_NAME " +
             "--ez SHOW_TOAST 0"
 
-        return Utilities.executeShellCommand(context, command, PrivilegeLevel.Root)
+        return executeShellCommand(command, PrivilegeLevel.Root)
     }
 
 }
