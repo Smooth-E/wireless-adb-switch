@@ -11,8 +11,9 @@ import androidx.preference.PreferenceManager
 
 class WidgetUpdater : BroadcastReceiver() {
 
-    class OnSharedPreferencesChangeListener(private val context: Context) :
-        SharedPreferences.OnSharedPreferenceChangeListener {
+    class OnSharedPreferencesChangeListener(
+        private val context: Context
+    ) : SharedPreferences.OnSharedPreferenceChangeListener {
 
         override fun onSharedPreferenceChanged(
             sharedPreferences: SharedPreferences?,
@@ -30,8 +31,7 @@ class WidgetUpdater : BroadcastReceiver() {
 
     companion object {
 
-        private const val INTENT_ACTION =
-            "com.smoothie.wirelessDebuggingSwitch.intent.WIDGET_UPDATE_TICK"
+        private const val INTENT_ACTION = "com.smoothie.widgetFactory.WIDGET_UPDATE_TICK_ACTION"
         private const val BOOT_COMPLETED_ACTION = Intent.ACTION_BOOT_COMPLETED
         private const val TAG = "WidgetUpdater"
 

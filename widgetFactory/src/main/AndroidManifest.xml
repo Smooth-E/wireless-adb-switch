@@ -16,8 +16,7 @@
             tools:node="merge">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action
-                    android:name="com.smoothie.wirelessDebuggingSwitch.intent.WIDGET_UPDATE_TICK" />
+                <action android:name="com.smoothie.widgetFactory.WIDGET_UPDATE_TICK_ACTION" />
             </intent-filter>
         </receiver>
 

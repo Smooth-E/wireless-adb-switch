@@ -6,9 +6,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Process
 import android.provider.Settings
@@ -18,7 +16,6 @@ import android.view.View.OnClickListener
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.preference.PreferenceManager
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.smoothie.widgetFactory.CollapsingToolbarActivity
@@ -31,19 +28,6 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
 ) {
 
     companion object {
-
-        private const val PREFERENCE_NAME = "renew_root_access"
-
-        private fun isNotificationPermissionGranted(context: Context?): Boolean =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                val permission = Manifest.permission.POST_NOTIFICATIONS
-                val permissionState = context?.checkSelfPermission(permission)
-                permissionState == PackageManager.PERMISSION_GRANTED
-            }
-            else {
-                true
-            }
-
         fun startIfNeeded(context: Context) {
             val hasRootAccess = Shell.isAppGrantedRoot() == true
             val hasPrivileges = hasRootAccess || ShizukuUtilities.hasShizukuPermission()
@@ -51,7 +35,6 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
             if (!(isNotificationPermissionGranted(context) && hasPrivileges))
                 context.startActivity(Intent(context, GrantPermissionsActivity::class.java))
         }
-
     }
 
     @SuppressLint("MissingSuperCall")
@@ -207,11 +190,6 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
          */
         @SuppressLint("WrongConstant")
         private fun restartAppForRootAccessRefresh() {
-            PreferenceManager.getDefaultSharedPreferences(requireContext())
-                .edit()
-                .putBoolean(PREFERENCE_NAME, true)
-                .apply()
-
             val manager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val time = System.currentTimeMillis() + 100
             val intent = PendingIntent.getActivity(

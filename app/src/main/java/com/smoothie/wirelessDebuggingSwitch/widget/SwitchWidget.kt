@@ -38,9 +38,9 @@ abstract class SwitchWidget(private val className: String) : ConfigurableWidget(
         switchState = SwitchState.Waiting
         updateAllWidgets(context!!)
 
-        WirelessDebugging.enabled = !WirelessDebugging.enabled
+        WirelessDebugging.setEnabled(context, !WirelessDebugging.getEnabled(context))
         switchState =
-            if (WirelessDebugging.enabled)
+            if (WirelessDebugging.getEnabled(context))
                 SwitchState.Enabled
             else
                 SwitchState.Disabled
@@ -58,7 +58,7 @@ abstract class SwitchWidget(private val className: String) : ConfigurableWidget(
     ) {
         super.onUpdate(context, appWidgetManager, appWidgetIds)
         switchState =
-            if (WirelessDebugging.enabled)
+            if (WirelessDebugging.getEnabled(context!!))
                 SwitchState.Enabled
             else
                 SwitchState.Disabled

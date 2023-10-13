@@ -40,6 +40,13 @@
     <string name="message_grant_permisson_berfore_leaving">Please, provide all of the required permissions and then tap Continue.</string>
     <string name="message_disable_magisk_notification">Magisk displays a toast whenever some app is granted root access. WADBS frequently checks the state of Wireless Debugging on your device to update its widgets (you can edit the interval in settings). This makes Magisk\'s notifications somewhat annoying.\n\nYou can disable Magisk\'s root access notifications from the \"Superuser\" tab (tap on WADBS in the list there to see more options for it).</string>
 
+    <string name="notification_channel_name">Missing sufficient privileges</string>
+    <string name="notification_channel_description">Sends a notification when WADBS is missing sufficient privileges (root access or Shizuku)</string>
+    <string name="notification_title">Missing sufficient privileges</string>
+    <string name="notification_message_short">Expand this notification to learn more.</string>
+    <string name="notification_message_long">WADBS requires either root access or the permission to use Shizuku. Currently it seems like it has none of those. Ensure the minimum level of privileges and click the button below to restart the app.</string>
+    <string name="notification_button">Restart to refresh privileges</string>
+
     <string name="state_enabled">Enabled</string>
     <string name="state_waiting">Waiting</string>
     <string name="state_disabled">Disabled</string>

@@ -48,6 +48,16 @@
             android:exported="true"
             android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
 
+        <!-- Provider to receive broadcasts from the "Restart app" notification action -->
+
+        <receiver
+            android:name="com.smoothie.wirelessDebuggingSwitch.KillAppBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.smoothie.wadbs.KILL_APP"/>
+            </intent-filter>
+        </receiver>
+
         <!-- Basic Widget Components -->
 
         <activity

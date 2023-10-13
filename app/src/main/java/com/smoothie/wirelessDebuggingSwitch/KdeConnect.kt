@@ -3,7 +3,6 @@ package com.smoothie.wirelessDebuggingSwitch
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import android.content.pm.PackageManager
 import android.util.Log
 import com.topjohnwu.superuser.Shell
 
@@ -33,7 +32,7 @@ object KdeConnect {
             "-n $PACKAGE_NAME/$CLIPBOARD_ACTIVITY_NAME " +
             "--ez SHOW_TOAST 0"
 
-        return executeShellCommand(command, PrivilegeLevel.Root)
+        return executeShellCommand(context, command, PrivilegeLevel.Root, false)
     }
 
 }
