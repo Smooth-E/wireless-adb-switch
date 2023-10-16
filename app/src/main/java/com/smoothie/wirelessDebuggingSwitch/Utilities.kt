@@ -3,6 +3,8 @@ package com.smoothie.wirelessDebuggingSwitch
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.PendingIntent
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -152,4 +154,13 @@ fun isPackageInstalled(context: Context, name: String): Boolean {
             return true
     }
     return false
+}
+
+fun hasSufficientPrivileges(): Boolean =
+    Shell.isAppGrantedRoot() == true || ShizukuUtilities.hasShizukuPermission()
+
+fun copyText(context: Context, label: String, content: String) {
+    val clipboardManager =
+        context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    clipboardManager.setPrimaryClip(ClipData.newPlainText(label, content))
 }

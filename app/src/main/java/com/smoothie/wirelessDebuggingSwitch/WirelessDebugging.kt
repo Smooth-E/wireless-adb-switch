@@ -13,8 +13,13 @@ object WirelessDebugging {
 
     fun getEnabled(context: Context): Boolean {
         val command = "settings get --user current global adb_wifi_enabled"
-        val result = executeShellCommand(context, command) ?: return false
-        return result.isSuccess && result.out.joinToString("\n").trim().toInt() == 1
+        val result = executeShellCommand(context, command)
+        val value =
+            result != null &&
+            result.isSuccess &&
+            result.out.joinToString("\n").trim().toInt() == 1
+        Log.d(TAG, "getEnabled($context) returned $value")
+        return value
     }
 
     fun setEnabled(context: Context, value: Boolean) {
@@ -34,15 +39,19 @@ object WirelessDebugging {
     }
 
     fun getAddress(context: Context): String {
-        val wm =
+        val wifiManager =
             context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
-        val connectionInfo = wm.connectionInfo
+        val connectionInfo = wifiManager.connectionInfo
         val ipAddress = connectionInfo.ipAddress
         return Formatter.formatIpAddress(ipAddress)
     }
 
     fun getConnectionData(context: Context): String =
         "${getAddress(context)}:${getPort(context)}"
+
+    /** Place connection data into the clipboard. Does not check whether the debugging is enabled */
+    fun copyConnectionData(context: Context) =
+        copyText(context, "Wireless debugging connection data", getConnectionData(context))
 
     /**
      * Synchronize connection data if device is connected via Wireless ADB and
@@ -78,7 +87,8 @@ object WirelessDebugging {
             else
                 connectionInfo
 
-        val result = KdeConnect.sendClipboard(context, connectionData)
+        copyText(context, "Data for KDE Connect", connectionData)
+        val result = KdeConnect.sendClipboard(context)
             ?: return
 
         if (!result.isSuccess) {

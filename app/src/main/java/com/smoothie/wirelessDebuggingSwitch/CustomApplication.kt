@@ -42,7 +42,7 @@ class CustomApplication : WidgetFactoryApplication() {
     private fun createMissingPrivilegeNotificationsChannel() {
         val channel = NotificationChannel(
             PRIVILEGE_NOTIFICATION_CHANNEL_ID,
-            getString(R.string.notification_channel_name),
+            getString(R.string.notification_title),
             NotificationManager.IMPORTANCE_LOW
         )
         channel.description = getString(R.string.notification_channel_description)
@@ -50,7 +50,7 @@ class CustomApplication : WidgetFactoryApplication() {
         val notificationManager = NotificationManagerCompat.from(this)
         notificationManager.createNotificationChannel(channel)
 
-        if (Shell.isAppGrantedRoot() == true || ShizukuUtilities.hasShizukuPermission())
+        if (hasSufficientPrivileges())
             notificationManager.cancel(PRIVILEGE_NOTIFICATION_ID)
     }
 

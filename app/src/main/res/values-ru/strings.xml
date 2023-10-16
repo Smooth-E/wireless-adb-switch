@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="label_wireless_debugging">Беспроводная\nОтладка</string>
+    <string name="label_wireless_debugging_two_lines">Беспроводная\nОтладка</string>
     <string name="label_disconnected">Отключено</string>
     <string name="label_connection_data">Информация о подключении</string>
     <string name="label_port">Порт:</string>
@@ -34,7 +34,7 @@
     <string name="qs_tile_label_disabled">Включить отладку</string>
     <string name="qs_tile_label_enabled">Отключить отладку</string>
     <string name="qs_tile_label_unavailable">Отладка недоступна</string>
-    <string name="qs_tile_subtitle_basic">Зажмите для настроек</string>
-    <string name="qs_tile_subtitle_unavailable">Сначала включите WIFI</string>
-    <string name="qs_tile_subtitle_connection_data_error">Нет информации</string>
+    <string name="qs_tile_subtitle_hold_for_settings">Зажмите для настроек</string>
+    <string name="qs_tile_subtitle_enable_wifi_first">Сначала включите WIFI</string>
+    <string name="qs_tile_subtitle_no_connection_data">Нет информации</string>
 </resources>

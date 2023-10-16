@@ -7,6 +7,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Process
 import android.provider.Settings
@@ -29,10 +30,7 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
 
     companion object {
         fun startIfNeeded(context: Context) {
-            val hasRootAccess = Shell.isAppGrantedRoot() == true
-            val hasPrivileges = hasRootAccess || ShizukuUtilities.hasShizukuPermission()
-
-            if (!(isNotificationPermissionGranted(context) && hasPrivileges))
+            if (!(isNotificationPermissionGranted(context) && hasSufficientPrivileges()))
                 context.startActivity(Intent(context, GrantPermissionsActivity::class.java))
         }
     }
@@ -45,6 +43,10 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
 
     class GrantPermissionsFragment : Fragment(R.layout.fragment_permissions) {
 
+        companion object {
+            private const val TAG = "GrantPermissionsFragment"
+        }
+
         private val requestCode = 12345
 
         private lateinit var notificationsButton: Button
@@ -53,7 +55,21 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
         private lateinit var refreshShizukuStatusButton: Button
         private lateinit var continueButton: MaterialButton
 
+        /**
+         * Requests a permission to send notifications,
+         * opens system settings if it is impossible to show the rationale.
+         * Ensure that this function is onl called on API 33.
+         */
         private val requestNotificationsPermission = OnClickListener {
+            val currentApi = Build.VERSION.SDK_INT
+            if (currentApi < Build.VERSION_CODES.TIRAMISU) {
+                val message =
+                    "requestNotificationsPermission OnClickListener called on API $currentApi, " +
+                    "required API is Tiramisu (33)"
+                Log.e(TAG, message)
+                return@OnClickListener
+            }
+
             val permission = Manifest.permission.POST_NOTIFICATIONS
             val showRationale = shouldShowRequestPermissionRationale(permission)
 
@@ -179,8 +195,7 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
 
         private fun updateContinueButton() {
             continueButton.isEnabled =
-                (ShizukuUtilities.hasShizukuPermission() || Shell.isAppGrantedRoot() == true)
-                        && isNotificationPermissionGranted(context)
+                isNotificationPermissionGranted(context) && hasSufficientPrivileges()
         }
 
         /**

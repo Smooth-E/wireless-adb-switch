@@ -2,7 +2,6 @@
 <resources>
 
     <style name="Theme.WirelessDebuggingSwitch" parent="Theme.WidgetFactory">
-
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>
@@ -29,7 +28,12 @@
         <item name="colorOnSurfaceInverse">@color/md_theme_dark_inverseOnSurface</item>
         <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
+    </style>
 
+    <style name="Theme.WirelessDebuggingSwitch.OneUiIntegration"
+        parent="Theme.WirelessDebuggingSwitch">
+        <item name="colorPrimary">@color/colorOneUiBlueDark</item>
+        <item name="android:textColorSecondary">@color/colorOneUiGreyDark</item>
     </style>
 
 </resources>

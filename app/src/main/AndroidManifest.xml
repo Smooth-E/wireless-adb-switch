@@ -48,7 +48,7 @@
             android:exported="true"
             android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
 
-        <!-- Provider to receive broadcasts from the "Restart app" notification action -->
+        <!-- Receiver for the the "Restart app" notification action -->
 
         <receiver
             android:name="com.smoothie.wirelessDebuggingSwitch.KillAppBroadcastReceiver"
@@ -107,9 +107,10 @@
         <service
             android:name=".QSTileService"
             android:exported="true"
+            android:enabled="true"
             android:icon="@drawable/baseline_phonelink_24"
             android:label="@string/qs_tile_label_disabled"
-            android:description="@string/qs_tile_subtitle_basic"
+            android:description="@string/qs_tile_subtitle_hold_for_settings"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
@@ -121,6 +122,15 @@
                 android:name="android.service.quicksettings.TOGGLEABLE_TILE"
                 android:value="true" />
         </service>
+
+        <receiver
+            android:name=".ExtendedViewBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.smoothie.wadbs.oneui_qs_action.COPY_DATA"/>
+                <action android:name="com.smoothie.wadbs.oneui_qs_action.INSTANT_CONNECTION"/>
+            </intent-filter>
+        </receiver>
 
     </application>
 

@@ -5,6 +5,11 @@
 
 <resources>
 
+    <color name="colorOneUiBlue">#2D66FE</color>
+    <color name="colorOneUiBlueDark">#4A7BFE</color>
+    <color name="colorOneUiGrey">#909090</color>
+    <color name="colorOneUiGreyDark">#919191</color>
+
     <!-- Base theme colors -->
 
     <color name="colorPrimary">@color/md_theme_light_primary</color>

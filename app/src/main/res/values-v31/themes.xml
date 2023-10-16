@@ -48,4 +48,11 @@
 
     </style>
 
+    <style name="Theme.WirelessDebuggingSwitch.OneUiIntegration"
+        parent="Theme.WirelessDebuggingSwitch"
+        tools:ignore="PrivateResource">
+        <item name="colorPrimary">@color/m3_sys_color_dynamic_light_primary</item>
+        <item name="android:textColorSecondary">@color/m3_dynamic_default_color_secondary_text</item>
+    </style>
+
 </resources>

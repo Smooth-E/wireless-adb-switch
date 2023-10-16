@@ -25,13 +25,14 @@
             android:src="@drawable/round_wifi_24"
             android:tint="@color/colorPrimary"
             tools:ignore="UseAppTint"
+            android:importantForAccessibility="no"
             android:adjustViewBounds="true"/>
 
         <TextView
             android:id="@+id/text_view_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/label_wireless_debugging"
+            android:text="@string/label_wireless_debugging_two_lines"
             android:gravity="center"
             android:textColor="@color/colorOnSurface"
             android:layout_marginTop="7dp"
