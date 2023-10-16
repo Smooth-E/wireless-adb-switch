@@ -10,13 +10,14 @@ import android.view.View.VISIBLE
 import android.widget.RemoteViews
 import android.widget.Toast
 import com.smoothie.widgetFactory.ConfigurableWidget
-import com.smoothie.wirelessDebuggingSwitch.PreferenceUtilities
 import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.wirelessDebuggingSwitch.WirelessDebugging
+import com.smoothie.wirelessDebuggingSwitch.getLightOrDarkTextColor
 
 class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name) {
 
     companion object {
+        private const val TAG = "InformationWidget"
         private const val EXTRA_FLAG = "COPY_CONNECTION_INFORMATION"
         private const val EXTRA_ADDRESS = "ADDRESS"
         private const val EXTRA_PORT = "PORT"
@@ -35,7 +36,7 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
     ): RemoteViews {
         val views = RemoteViews(context.packageName, R.layout.widget_information)
 
-        RoundedWidgetUtilities.applyRemoteViewsParameters(context, preferences, views)
+        applyRemoteViewsParameters(context, preferences, views)
 
         val debuggingEnabled = WirelessDebugging.getEnabled(context)
         views.setViewVisibility(R.id.data_enabled, if (debuggingEnabled) VISIBLE else GONE)
@@ -44,8 +45,7 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
         if (!debuggingEnabled)
             return views
 
-        val stringError = context.getString(R.string.label_error)
-
+        var connectionDataError = false
         var address: String
         var port: String
         try {
@@ -53,9 +53,11 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
             port = WirelessDebugging.getPort(context)
         }
         catch (exception: Exception) {
-            Log.e("Information Widget", "Failed to get connection data!")
+            connectionDataError = true
+            Log.e(TAG, "Failed to get connection data!")
             exception.printStackTrace()
 
+            val stringError = context.getString(R.string.label_error)
             address = stringError
             port = stringError
         }
@@ -63,7 +65,7 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
         views.setTextViewText(R.id.text_view_address, address)
         views.setTextViewText(R.id.text_view_port, port)
 
-        val textColor = PreferenceUtilities.getLightOrDarkTextColor(context, preferences)
+        val textColor = getLightOrDarkTextColor(context, preferences)
         views.setTextColor(R.id.text_view_status, textColor)
         views.setTextColor(R.id.text_view_name, textColor)
 
@@ -71,8 +73,8 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
         intent.component = ComponentName(context, this::class.java.name)
         intent.putExtra(EXTRA_APPWIDGET_IDS, intArrayOf(widgetId))
         intent.putExtra(EXTRA_FLAG, true)
-        intent.putExtra(EXTRA_ADDRESS, if (address != stringError) address else STATUS_ERROR)
-        intent.putExtra(EXTRA_PORT, if (port != stringError) port else STATUS_ERROR)
+        intent.putExtra(EXTRA_ADDRESS, if (connectionDataError) address else STATUS_ERROR)
+        intent.putExtra(EXTRA_PORT, if (connectionDataError) port else STATUS_ERROR)
 
         val intentFlags = PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, intentFlags)

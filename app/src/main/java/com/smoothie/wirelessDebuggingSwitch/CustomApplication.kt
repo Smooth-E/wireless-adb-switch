@@ -27,11 +27,17 @@ class CustomApplication : WidgetFactoryApplication() {
 
     }
 
+    private lateinit var notificationManager: NotificationManagerCompat
+
     override fun onCreate() {
         super.onCreate()
         addWidgets()
         Shell.getShell()
+
+        notificationManager =  NotificationManagerCompat.from(this)
         createMissingPrivilegeNotificationsChannel()
+        if (hasSufficientPrivileges())
+            notificationManager.cancel(PRIVILEGE_NOTIFICATION_ID)
     }
 
     private fun addWidgets() {
@@ -46,12 +52,7 @@ class CustomApplication : WidgetFactoryApplication() {
             NotificationManager.IMPORTANCE_LOW
         )
         channel.description = getString(R.string.notification_channel_description)
-
-        val notificationManager = NotificationManagerCompat.from(this)
         notificationManager.createNotificationChannel(channel)
-
-        if (hasSufficientPrivileges())
-            notificationManager.cancel(PRIVILEGE_NOTIFICATION_ID)
     }
 
 }

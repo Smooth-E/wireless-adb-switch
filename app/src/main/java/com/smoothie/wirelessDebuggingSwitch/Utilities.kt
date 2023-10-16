@@ -39,7 +39,7 @@ fun executeShellCommand(
 ): Shell.Result? {
     val privilegeLevel = getPrivilegeLevel()
 
-    if (privilegeLevel.ordinal <= requiredPrivilegeLevel.ordinal) {
+    if (privilegeLevel.ordinal < requiredPrivilegeLevel.ordinal) {
         Log.e("Utilities.executeShellCommand", "Required privilege level too high!")
         if (notifyUser)
             sendMissingPrivilegesNotification(context)

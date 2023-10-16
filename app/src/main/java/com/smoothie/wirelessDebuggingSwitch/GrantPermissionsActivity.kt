@@ -85,6 +85,7 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
 
         private val requestRootAccess = OnClickListener {
             Log.d("requestRootAccess", "Requesting the state")
+            // This line will prompt the user to provide root access if it is unavailable
             val state = Shell.isAppGrantedRoot()
             Log.d("requestRootAccess", "Received state: $state")
             updatePrivilegeLevelCards()
