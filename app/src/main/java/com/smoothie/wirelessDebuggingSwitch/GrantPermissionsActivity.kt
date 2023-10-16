@@ -37,7 +37,7 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
 
     @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
-        val message = getString(R.string.message_grant_permisson_berfore_leaving)
+        val message = getString(R.string.message_grant_permission_before_leaving)
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
