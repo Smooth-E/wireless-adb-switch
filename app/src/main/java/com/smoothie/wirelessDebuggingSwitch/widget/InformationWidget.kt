@@ -73,8 +73,8 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
         intent.component = ComponentName(context, this::class.java.name)
         intent.putExtra(EXTRA_APPWIDGET_IDS, intArrayOf(widgetId))
         intent.putExtra(EXTRA_FLAG, true)
-        intent.putExtra(EXTRA_ADDRESS, if (connectionDataError) address else STATUS_ERROR)
-        intent.putExtra(EXTRA_PORT, if (connectionDataError) port else STATUS_ERROR)
+        intent.putExtra(EXTRA_ADDRESS, if (connectionDataError) STATUS_ERROR else address)
+        intent.putExtra(EXTRA_PORT, if (connectionDataError) STATUS_ERROR else port)
 
         val intentFlags = PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, intentFlags)
@@ -85,8 +85,13 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
 
     private fun resolvePossibleCopyIntent(context: Context?, intent: Intent?): Boolean {
         val extras = intent?.extras
-        if (context == null || extras == null || !extras.getBoolean(EXTRA_FLAG))
+
+        if (intent?.extras?.getBoolean(EXTRA_FLAG) == true)
+            Log.d(TAG, "Extra is there")
+
+        if (context == null || extras == null || !extras.getBoolean(EXTRA_FLAG)) {
             return false
+        }
 
         val address = extras.getString(EXTRA_ADDRESS)
         val port = extras.getString(EXTRA_PORT)
