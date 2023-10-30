@@ -9,7 +9,7 @@ import com.smoothie.wirelessDebuggingSwitch.widget.BasicWidget
 import com.smoothie.wirelessDebuggingSwitch.widget.InformationWidget
 import com.topjohnwu.superuser.Shell
 
-class CustomApplication : WidgetFactoryApplication() {
+class WADBS : WidgetFactoryApplication() {
 
     companion object {
 

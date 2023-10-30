@@ -19,67 +19,80 @@ val centeredAlertDialogStyle =
     com.google.android.material.R.style.ThemeOverlay_Material3_MaterialAlertDialog_Centered
 
 /**
+ * Get the highest privilege level available
+ * and notify the user otherwise if it is lower than the required one.
+ *
+ * @param requiredPrivilegeLevel the required privileged level.
+ * @param context if a [Context] is provided, the user will be notified about missing privileges
+ *
+ * @return highest privilege level available
+ */
+fun getPrivilegeLevel(
+    requiredPrivilegeLevel: PrivilegeLevel = PrivilegeLevel.Shizuku,
+    context: Context? = null,
+) : PrivilegeLevel {
+    val privilegeLevel: PrivilegeLevel =
+        if (Shell.isAppGrantedRoot() == true)
+            PrivilegeLevel.Root
+        else if (ShizukuUtilities.hasShizukuPermission())
+            PrivilegeLevel.Shizuku
+        else
+            PrivilegeLevel.User
+
+    if (privilegeLevel.ordinal < requiredPrivilegeLevel.ordinal) {
+        Log.e("Utilities.getPrivilegeLevel", "Required privilege level too high!")
+        if (context != null)
+            sendMissingPrivilegesNotification(context)
+    }
+
+    return privilegeLevel
+}
+
+/**
+ * Check whether you have a required privilege level and notify the user otherwise.
+ * @param requiredPrivilegeLevel the required privileged level.
+ * @param context if a [Context] is provided, the user will be notified about missing privileges
+ *
+ * @return whether the available privilegeLevel is higher or equal to [requiredPrivilegeLevel]
+ */
+fun hasSufficientPrivileges(
+    requiredPrivilegeLevel: PrivilegeLevel = PrivilegeLevel.Shizuku,
+    context: Context? = null,
+): Boolean =
+    getPrivilegeLevel(
+        requiredPrivilegeLevel,
+        context,
+    ).ordinal >= requiredPrivilegeLevel.ordinal
+
+/**
  * Execute a shell command. This method will choose between Shizuku and root execution.
  * If neither are possible the result will be null.
  *
- * Originally written by [CasperVerswijvelt](https://github.com/CasperVerswijvelt)
- * for [Better Internet Tiles](https://github.com/CasperVerswijvelt/Better-Internet-Tiles).
+ * Inspired by a similar implementation in
+ * [Better Internet Tiles](https://github.com/CasperVerswijvelt/Better-Internet-Tiles).
  *
  * @param command a command to execute
+ * @param context if a context is provided, the user will be notified about missing privileges
  * @param requiredPrivilegeLevel a required level of privileges
- * @param context context used to send the notification
- * @param notifyUser whether to notify the user if required privilege level is too high
- * @return [Shell.Result] if either Shizuku or root are present and null otherwise.
+ *
+ * @return the output of a command if it executed successfully and an empty [String] otherwise
  */
 fun executeShellCommand(
-    context: Context,
     command: String,
+    context: Context? = null,
     requiredPrivilegeLevel: PrivilegeLevel = PrivilegeLevel.Shizuku,
-    notifyUser: Boolean = true,
-): Shell.Result? {
-    val privilegeLevel = getPrivilegeLevel()
+): String {
+    val privilegeLevel = getPrivilegeLevel(requiredPrivilegeLevel, context)
 
-    if (privilegeLevel.ordinal < requiredPrivilegeLevel.ordinal) {
-        Log.e("Utilities.executeShellCommand", "Required privilege level too high!")
-        if (notifyUser)
-            sendMissingPrivilegesNotification(context)
-        return null
-    }
-
-    if (privilegeLevel == PrivilegeLevel.Root) {
-        return Shell.cmd(command).exec()
-    }
-    else if (privilegeLevel == PrivilegeLevel.Shizuku) {
-        val process = ShizukuUtilities.executeCommand(command)
-
-        return object : Shell.Result() {
-
-            override fun getOut(): MutableList<String> {
-                return process
-                    .inputStream.bufferedReader()
-                    .use { it.readText() }
-                    .split("\n".toRegex())
-                    .toMutableList()
-            }
-
-            override fun getErr(): MutableList<String> {
-                return process
-                    .errorStream.bufferedReader()
-                    .use { it.readText() }
-                    .split("\n".toRegex())
-                    .toMutableList()
-            }
-
-            override fun getCode(): Int {
-                return process.exitValue()
-            }
-        }
-    }
+    if (privilegeLevel == PrivilegeLevel.Root)
+        return Shell.cmd(command).exec().out.toString()
+    else if (privilegeLevel == PrivilegeLevel.Shizuku)
+        return ShizukuUtilities.executeCommand(command)
 
     val message =
         "Error executing a shell command! Neither Shizuku or root access are present."
     Log.d("Utilities.executeShellCommand", message)
-    return null
+    return ""
 }
 
 @SuppressLint("MissingPermission")
@@ -98,7 +111,7 @@ private fun sendMissingPrivilegesNotification(context: Context) {
         .build()
 
     val notification = NotificationCompat
-        .Builder(context, CustomApplication.PRIVILEGE_NOTIFICATION_CHANNEL_ID)
+        .Builder(context, WADBS.PRIVILEGE_NOTIFICATION_CHANNEL_ID)
         .setSmallIcon(R.drawable.app_icon_foreground)
         .setContentTitle(context.getString(R.string.notification_title))
         .setContentText(context.getString(R.string.notification_message_short))
@@ -112,7 +125,7 @@ private fun sendMissingPrivilegesNotification(context: Context) {
     // is no point to request it
     if (isNotificationPermissionGranted(context)) {
         NotificationManagerCompat.from(context)
-            .notify(CustomApplication.PRIVILEGE_NOTIFICATION_ID, notification)
+            .notify(WADBS.PRIVILEGE_NOTIFICATION_ID, notification)
     }
 }
 
@@ -139,14 +152,6 @@ fun MaterialButton.fixTextAlignment() {
     iconPadding = -(icon?.intrinsicWidth ?: 0)
 }
 
-fun getPrivilegeLevel(): PrivilegeLevel {
-    if (Shell.isAppGrantedRoot() == true)
-        return PrivilegeLevel.Root
-    else if (ShizukuUtilities.hasShizukuPermission())
-        return PrivilegeLevel.Shizuku
-    return PrivilegeLevel.User
-}
-
 fun isPackageInstalled(context: Context, name: String): Boolean {
     val packages = context.packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
     for (installedPackage in packages) {
@@ -155,9 +160,6 @@ fun isPackageInstalled(context: Context, name: String): Boolean {
     }
     return false
 }
-
-fun hasSufficientPrivileges(): Boolean =
-    Shell.isAppGrantedRoot() == true || ShizukuUtilities.hasShizukuPermission()
 
 fun copyText(context: Context, label: String, content: String) {
     val clipboardManager =

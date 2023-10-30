@@ -27,13 +27,13 @@ object KdeConnect {
      * [the following activity](https://invent.kde.org/network/kdeconnect-android/-/blob/aca039433c455b44b621dda077b940f26a732f25/src/org/kde/kdeconnect/Plugins/ClibpoardPlugin/ClipboardFloatingActivity.java)
      * of KDE Connect.
      */
-    fun sendClipboard(context: Context): Shell.Result? {
+    fun sendClipboard(): Shell.Result {
         val command =
             "am start " +
             "-n $PACKAGE_NAME/$CLIPBOARD_ACTIVITY_NAME " +
             "--ez SHOW_TOAST 0"
 
-        return executeShellCommand(context, command, PrivilegeLevel.Root, false)
+        return Shell.cmd(command).exec()
     }
 
 }

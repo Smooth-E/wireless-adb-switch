@@ -6,18 +6,16 @@ import android.text.format.Formatter
 import android.util.Log
 import android.widget.Toast
 import androidx.preference.PreferenceManager
+import com.topjohnwu.superuser.Shell
 
 object WirelessDebugging {
 
     private const val TAG = "WirelessDebuggingFeature"
 
     fun getEnabled(context: Context): Boolean {
-        val command = "settings get --user current global adb_wifi_enabled"
-        val result = executeShellCommand(context, command)
-        val value =
-            result != null &&
-            result.isSuccess &&
-            result.out.joinToString("\n").trim().toInt() == 1
+        val command = "settings get global adb_wifi_enabled"
+        val result = executeShellCommand(command, context)
+        val value = result.isNotBlank() && result.toInt() == 1
         Log.d(TAG, "getEnabled($context) returned $value")
         return value
     }
@@ -25,18 +23,17 @@ object WirelessDebugging {
     fun setEnabled(context: Context, value: Boolean) {
         val state = if (value) 1 else 0
         val command = "settings put --user current global adb_wifi_enabled $state"
-        executeShellCommand(context, command)
+        executeShellCommand(command, context)
     }
 
-    fun getPort(context: Context): String {
-        val command = "getprop service.adb.tls.port"
-        val result = executeShellCommand(context, command)
-
-        if (result == null || !result.isSuccess)
-            throw Exception("Failed to obtain wireless debugging port!")
-
-        return result.out.joinToString("\n")
-    }
+    fun getPort(context: Context): String =
+        when (getPrivilegeLevel(PrivilegeLevel.Shizuku, context)) {
+            PrivilegeLevel.Root ->
+                Shell.cmd("getprop service.adb.tls.port").exec().out.toString()
+            PrivilegeLevel.Shizuku ->
+                ShizukuUtilities.getWirelessAdbPort()
+            else -> ""
+        }
 
     fun getAddress(context: Context): String {
         val wifiManager =
@@ -60,6 +57,9 @@ object WirelessDebugging {
      * @param context context used to create a WIFI_SERVICE
      */
     fun syncConnectionData(context: Context) {
+        if (!hasSufficientPrivileges(PrivilegeLevel.Root))
+            return
+
         val connectionInfo: String
         try {
             connectionInfo = getConnectionData(context)
@@ -88,8 +88,7 @@ object WirelessDebugging {
                 connectionInfo
 
         copyText(context, "Data for KDE Connect", connectionData)
-        val result = KdeConnect.sendClipboard(context)
-            ?: return
+        val result = KdeConnect.sendClipboard()
 
         if (!result.isSuccess) {
             val message = context.getString(R.string.message_failed_sending_clipboard)

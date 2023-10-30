@@ -30,7 +30,7 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
 
     companion object {
         fun startIfNeeded(context: Context) {
-            if (!(isNotificationPermissionGranted(context) && hasSufficientPrivileges()))
+            if (!isNotificationPermissionGranted(context) || !hasSufficientPrivileges())
                 context.startActivity(Intent(context, GrantPermissionsActivity::class.java))
         }
     }

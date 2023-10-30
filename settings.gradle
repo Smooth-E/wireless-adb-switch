@@ -19,3 +19,4 @@ dependencyResolutionManagement {
 rootProject.name = "wireless-adb-switch"
 include ':app'
 include ':widgetFactory'
+include ':hidden-api-stub'
