@@ -17,6 +17,7 @@
     <style name="Theme.WidgetFactory.SliderPreference" parent="Preference">
         <item name="allowDividerBelow">false</item>
         <item name="allowDividerAbove">true</item>
+        <item name="selectable">false</item>
     </style>
 
     <style name="Theme.WidgetFactory.DialogPreference" parent="Preference.DialogPreference">

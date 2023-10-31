@@ -4,4 +4,5 @@
     <dimen name="corner_radius_medium">16dp</dimen>
     <dimen name="system_appwidget_background_radius">24dp</dimen>
     <dimen name="system_appwidget_inner_radius">16dp</dimen>
+    <dimen name="preference_padding_vertical">10dp</dimen>
 </resources>

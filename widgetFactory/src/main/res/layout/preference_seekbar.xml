@@ -7,7 +7,12 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     tools:ignore="HardcodedText"
-    android:paddingTop="10dp">
+    android:paddingTop="@dimen/preference_padding_vertical"
+    android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+    android:paddingRight="?android:attr/listPreferredItemPaddingRight"
+    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+    android:background="?android:attr/selectableItemBackground">
 
     <ImageView
         android:id="@android:id/icon"
