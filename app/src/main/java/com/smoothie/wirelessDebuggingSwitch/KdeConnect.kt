@@ -10,8 +10,6 @@ object KdeConnect {
     private const val CLIPBOARD_ACTIVITY_NAME =
         "org.kde.kdeconnect.Plugins.ClibpoardPlugin.ClipboardFloatingActivity"
 
-    const val CLIPBOARD_PREFIX = "connect-wireless-debugging://"
-
     fun isInstalled(context: Context): Boolean {
         val kdeConnectInstalled = isPackageInstalled(context, PACKAGE_NAME)
         Log.d("KdeConnect", "KDE Connect installation status is $kdeConnectInstalled")

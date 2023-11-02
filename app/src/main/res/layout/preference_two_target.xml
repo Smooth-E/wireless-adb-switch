@@ -39,6 +39,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linear_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -72,8 +73,8 @@
         android:layout_width="1dp"
         android:layout_height="0dp"
         android:background="?attr/colorOutlineVariant"
-        app:layout_constraintTop_toTopOf="@android:id/widget_frame"
-        app:layout_constraintBottom_toBottomOf="@android:id/widget_frame"
+        app:layout_constraintTop_toTopOf="@id/linear_layout"
+        app:layout_constraintBottom_toBottomOf="@id/linear_layout"
         app:layout_constraintEnd_toStartOf="@android:id/widget_frame"
         android:layout_marginEnd="@dimen/preference_padding"/>
 
@@ -86,6 +87,7 @@
         android:gravity="center_vertical"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:paddingHorizontal="@dimen/preference_padding"
         android:minWidth="24dp"

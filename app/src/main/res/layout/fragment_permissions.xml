@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:backgroundTint="@color/colorSecondaryContainer"
-        android:background="@drawable/shape_medium_corners"
+        android:background="@drawable/shape_large_corners"
         style="@style/ShapeAppearance.Material3.Corner.Large">
 
 

@@ -34,9 +34,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".GrantPermissionsActivity" android:exported="false"/>
+
         <activity
-            android:name=".GrantPermissionsActivity"
-            android:exported="false"/>
+            android:name=".preference.ActivityPreferencePrefix"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
 
         <!-- Shizuku provider -->
 

@@ -81,9 +81,13 @@ object WirelessDebugging {
         preferenceKey = context.getString(R.string.key_prefix_connection_data)
         val prefixConnectionData = preferences.getBoolean(preferenceKey, true)
 
+        preferenceKey = context.getString(R.string.key_connection_data_prefix)
+        val defaultPrefix = context.getString(R.string.default_connection_data_prefix)
+        val connectionDataPrefix = preferences.getString(preferenceKey, defaultPrefix)
+
         val connectionData =
             if (prefixConnectionData)
-                KdeConnect.CLIPBOARD_PREFIX + connectionInfo
+                connectionDataPrefix + connectionInfo
             else
                 connectionInfo
 
