@@ -1,6 +1,7 @@
 package com.smoothie.wirelessDebuggingSwitch
 
-import androidx.preference.SwitchPreferenceCompat
+import androidx.preference.Preference.OnPreferenceClickListener
+import com.android.settingslib.PrimarySwitchPreference
 import com.smoothie.widgetFactory.preference.PreferenceActivity
 import com.smoothie.widgetFactory.preference.PreferenceFragment
 
@@ -10,17 +11,16 @@ class SettingsActivity : PreferenceActivity(R.xml.app_preferences, R.string.app_
         super.onPreferencesCreated(preferenceFragment)
         GrantPermissionsActivity.startIfNeeded(this)
 
-        val keyKdeConnectIntegration = getString(R.string.key_enable_kde_connect)
-        val keyPrefixData = getString(R.string.key_prefix_connection_data)
+        val preferenceKdeConnect = preferenceFragment
+            .findPreference<PrimarySwitchPreference>(getString(R.string.key_enable_kde_connect))!!
+        preferenceKdeConnect.isEnabled = KdeConnect.isInstalled(this)
+        preferenceKdeConnect.onPreferenceClickListener = OnPreferenceClickListener {
+            // TODO: Open an activity with extensive feature description
+            false
+        }
 
-        val preferenceKdeConnect =
-            preferenceFragment.findPreference<SwitchPreferenceCompat>(keyKdeConnectIntegration)
-        preferenceKdeConnect!!.isEnabled = KdeConnect.isInstalled(this)
+        // TODO: Open an activity with extensive feature description for Prefix synced data
 
-        val preferencePrefixData =
-            preferenceFragment.findPreference<SwitchPreferenceCompat>(keyPrefixData)!!
-        val status = preferenceKdeConnect.isEnabled && preferenceKdeConnect.isChecked
-        preferencePrefixData.isEnabled = status
     }
 
 }

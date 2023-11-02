@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:gravity="center"
+    android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+    android:paddingRight="?android:attr/listPreferredItemPaddingRight"
+    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingVertical="@dimen/preference_padding_vertical"
+    tools:ignore="hardcodedText">
+
+    <FrameLayout
+        android:id="@+id/icon_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            tools:src="@drawable/android_24dp"
+            android:id="@android:id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:maxWidth="48dp"
+            app:maxHeight="48dp"
+            android:minWidth="24dp"
+            android:minHeight="24dp"
+            android:importantForAccessibility="no"
+            app:tint="?attr/colorSecondary"
+            android:paddingHorizontal="10dp"/>
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon_frame"
+        app:layout_constraintEnd_toStartOf="@id/target_divider"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@android:id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:ellipsize="marquee"
+            tools:text="Placeholder Title"/>
+
+        <TextView
+            android:id="@android:id/summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?android:attr/textColorSecondary"
+            tools:text="Placeholder"
+            android:paddingTop="5dp"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/target_divider"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="?attr/colorOutlineVariant"
+        app:layout_constraintTop_toTopOf="@android:id/widget_frame"
+        app:layout_constraintBottom_toBottomOf="@android:id/widget_frame"
+        app:layout_constraintEnd_toStartOf="@android:id/widget_frame"
+        android:layout_marginEnd="@dimen/preference_padding_vertical"/>
+
+    <!-- Preference should place its actual preference widget here. -->
+
+    <LinearLayout
+        android:id="@android:id/widget_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingHorizontal="@dimen/preference_padding_vertical"
+        android:minWidth="24dp"
+        android:minHeight="24dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

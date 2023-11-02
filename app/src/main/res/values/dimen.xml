@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="two_target_pref_small_icon_size">24dp</dimen>
+    <dimen name="two_target_pref_medium_icon_size">32dp</dimen>
+    <dimen name="two_target_min_width">24dp</dimen>
+</resources>

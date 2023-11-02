@@ -1,6 +1,7 @@
 package com.smoothie.widgetFactory.preference
 
 import android.os.Bundle
+import android.view.View
 import androidx.preference.PreferenceFragmentCompat
 
 open class PreferenceFragment : PreferenceFragmentCompat() {
@@ -12,6 +13,12 @@ open class PreferenceFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(resource, rootKey)
 
         preferenceActivity.onPreferencesCreated(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as PreferenceActivity)
+            .onPreferenceFragmentViewCreated(view, savedInstanceState)
     }
 
 }
