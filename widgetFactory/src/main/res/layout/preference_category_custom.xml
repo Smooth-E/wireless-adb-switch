@@ -8,7 +8,7 @@
     tools:text="Placeholder"
     android:textColor="?attr/colorPrimaryVariant"
     android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-    android:paddingVertical="@dimen/preference_padding_vertical"
+    android:paddingVertical="@dimen/preference_padding"
     android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
     android:paddingStart="?android:attr/listPreferredItemPaddingStart"
     android:paddingRight="?android:attr/listPreferredItemPaddingRight"

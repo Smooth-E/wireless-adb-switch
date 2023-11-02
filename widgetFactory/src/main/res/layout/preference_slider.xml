@@ -10,7 +10,7 @@
     android:paddingStart="?android:attr/listPreferredItemPaddingStart"
     android:paddingRight="?android:attr/listPreferredItemPaddingRight"
     android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-    android:paddingTop="@dimen/preference_padding_vertical"
+    android:paddingTop="@dimen/preference_padding"
     android:background="?android:attr/selectableItemBackground">
 
     <ImageView

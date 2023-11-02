@@ -12,7 +12,7 @@
     android:paddingRight="?android:attr/listPreferredItemPaddingRight"
     android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
     android:background="?android:attr/selectableItemBackground"
-    android:paddingVertical="@dimen/preference_padding_vertical"
+    android:paddingVertical="@dimen/preference_padding"
     tools:ignore="hardcodedText">
 
     <FrameLayout

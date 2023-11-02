@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:padding="24dp"
         android:backgroundTint="@color/colorSecondaryContainer"
         android:background="@drawable/shape_medium_corners"
@@ -40,18 +40,18 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/grant_notifications"
             style="@style/TextAppearance.Material3.TitleLarge"
-            android:text="@string/title_notifications"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"/>
+            android:text="@string/title_notifications" />
 
         <Button
             android:id="@+id/grant_notifications"
@@ -69,23 +69,22 @@
         android:layout_height="wrap_content"
         style="@style/TextAppearance.AppCompat.Body1"
         android:text="@string/message_explain_notifications"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"/>
+        android:paddingVertical="8dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/grant_root_access"
             style="@style/TextAppearance.Material3.TitleLarge"
-            android:text="@string/title_root_access"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"/>
+            android:text="@string/title_root_access" />
 
         <Button
             android:id="@+id/grant_root_access"
@@ -103,23 +102,23 @@
         android:layout_height="wrap_content"
         style="@style/TextAppearance.AppCompat.Body1"
         android:text="@string/message_explain_root_access"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"/>
+        android:paddingVertical="8dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/grant_shizuku"
+            app:layout_constraintEnd_toStartOf="@id/refresh_shizuku_status"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center_vertical"
             style="@style/TextAppearance.Material3.TitleLarge"
-            android:text="@string/title_shizuku"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"/>
+            android:text="@string/title_shizuku" />
 
         <Button
             android:id="@+id/refresh_shizuku_status"
@@ -147,18 +146,13 @@
         android:layout_height="wrap_content"
         style="@style/TextAppearance.AppCompat.Body1"
         android:text="@string/message_explain_shizuku"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"/>
-
-    <FrameLayout
-        android:id="@+id/spacer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:paddingVertical="8dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         style="@style/Widget.Material3.Button.IconButton.Outlined"
         android:text="@string/label_continue"
         app:icon="@drawable/round_keyboard_arrow_right_24"

@@ -1,7 +1,7 @@
 package com.smoothie.wirelessDebuggingSwitch;
 
 /**
- * Shizuku's UserService implementstion.
+ * Shizuku's UserService implementation.
  * @author Smooth-E
  */
 interface IUserService {

@@ -85,7 +85,7 @@ fun executeShellCommand(
     val privilegeLevel = getPrivilegeLevel(requiredPrivilegeLevel, context)
 
     if (privilegeLevel == PrivilegeLevel.Root)
-        return Shell.cmd(command).exec().out.toString()
+        return Shell.cmd(command).exec().out.joinToString()
     else if (privilegeLevel == PrivilegeLevel.Shizuku)
         return ShizukuUtilities.executeCommand(command)
 
