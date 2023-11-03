@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        android:key="@string/key_enable_kde_connect"
+        android:title="@string/preference_switch_name_kde_connect"
+        app:layout="@layout/preference_big_switch"/>
+
+    <Preference
+        android:summary="@string/preference_summary_kde_connect"
+        android:layout="@layout/preference_summary_only"/>
+
+</PreferenceScreen>

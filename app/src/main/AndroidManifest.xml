@@ -41,6 +41,8 @@
             android:exported="false"
             android:windowSoftInputMode="adjustPan"/>
 
+        <activity android:name=".preference.ActivityPreferenceKdeConnect" android:exported="false"/>
+
         <!-- Shizuku provider -->
 
         <provider

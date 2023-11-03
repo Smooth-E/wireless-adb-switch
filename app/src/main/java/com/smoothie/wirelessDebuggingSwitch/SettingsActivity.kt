@@ -7,6 +7,7 @@ import androidx.preference.PreferenceManager
 import com.android.settingslib.PrimarySwitchPreference
 import com.smoothie.widgetFactory.preference.PreferenceActivity
 import com.smoothie.widgetFactory.preference.PreferenceFragment
+import com.smoothie.wirelessDebuggingSwitch.preference.ActivityPreferenceKdeConnect
 import com.smoothie.wirelessDebuggingSwitch.preference.ActivityPreferencePrefix
 
 class SettingsActivity : PreferenceActivity(R.xml.preferences_app, R.string.app_name) {
@@ -14,12 +15,26 @@ class SettingsActivity : PreferenceActivity(R.xml.preferences_app, R.string.app_
     private lateinit var preferenceKdeConnect: PrimarySwitchPreference
     private lateinit var preferencePrefixData: PrimarySwitchPreference
 
+    private val kdeConnectSummaryProvider =
+        SummaryProvider<PrimarySwitchPreference> { preference ->
+            if (!KdeConnect.isInstalled(this))
+                return@SummaryProvider getString(R.string.preference_summary_need_kde_connect)
+
+            val manager = PreferenceManager.getDefaultSharedPreferences(this)
+            if (manager.getBoolean(preference.key, true))
+                return@SummaryProvider getString(R.string.state_enabled)
+            return@SummaryProvider getString(R.string.state_disabled)
+        }
+
     private val prefixConnectionDataSummaryProvider =
         SummaryProvider<PrimarySwitchPreference> { preference ->
+            if (!KdeConnect.isInstalled(this))
+                return@SummaryProvider getString(R.string.preference_summary_need_kde_connect)
+
             val manager = PreferenceManager.getDefaultSharedPreferences(this)
 
-            if (!manager.getBoolean(preference.key, false))
-                return@SummaryProvider getString(R.string.label_disabled)
+            if (!manager.getBoolean(preference.key, true))
+                return@SummaryProvider getString(R.string.state_disabled)
 
             return@SummaryProvider manager.getString(
                     getString(R.string.key_connection_data_prefix),
@@ -46,15 +61,18 @@ class SettingsActivity : PreferenceActivity(R.xml.preferences_app, R.string.app_
         super.onPreferencesCreated(preferenceFragment)
         GrantPermissionsActivity.startIfNeeded(this)
 
+        val kdeConnectInstalled = KdeConnect.isInstalled(this)
         preferenceKdeConnect = preferenceFragment.findPreference(getString(R.string.key_enable_kde_connect))!!
-        preferenceKdeConnect.isEnabled = KdeConnect.isInstalled(this)
+        preferenceKdeConnect.isEnabled = kdeConnectInstalled
+        preferenceKdeConnect.summaryProvider = kdeConnectSummaryProvider
         preferenceKdeConnect.onPreferenceClickListener = OnPreferenceClickListener {
-            // TODO: Open an activity with extensive feature description
+            startActivity(Intent(baseContext, ActivityPreferenceKdeConnect::class.java))
             false
         }
 
         val prefixDataPreferenceKey = getString(R.string.key_prefix_connection_data)
         preferencePrefixData = preferenceFragment.findPreference(prefixDataPreferenceKey)!!
+        preferencePrefixData.isEnabled = kdeConnectInstalled
         preferencePrefixData.summaryProvider = prefixConnectionDataSummaryProvider
         preferencePrefixData.setOnPreferenceClickListener {
             startActivity(Intent(baseContext, ActivityPreferencePrefix::class.java))

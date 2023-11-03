@@ -20,8 +20,8 @@
         <com.android.settingslib.PrimarySwitchPreference
             android:defaultValue="true"
             android:key="@string/key_enable_kde_connect"
-            android:title="@string/preference_name_enable_kde_connect"
-            android:summary="@string/preference_summary_enable_kde_connect"
+            android:title="@string/preference_name_kde_connect"
+            android:summary="@string/preference_summary_kde_connect"
             android:icon="@drawable/round_phone_link_24"/>
 
         <com.android.settingslib.PrimarySwitchPreference
