@@ -14,11 +14,13 @@ open class CollapsingToolbarActivity(
     private val addToolbarNavigation: Boolean = true
 ) : FullScreenActivity() {
 
+    lateinit var toolbar: MaterialToolbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_collapsing_toolbar)
 
-        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
+        toolbar = findViewById(R.id.toolbar)
         toolbar.title = getString(titleStringResource)
 
         if (addToolbarNavigation)

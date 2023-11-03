@@ -4,6 +4,8 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.Preference.OnPreferenceClickListener
@@ -46,6 +48,11 @@ class SettingsActivity : PreferenceActivity(R.xml.preferences_app, R.string.app_
                     getString(R.string.default_connection_data_prefix)
                 )
         }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d(javaClass.name, "Action: ${intent.action}")
+    }
 
     override fun onResume() {
         super.onResume()
