@@ -22,7 +22,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center"
-            android:gravity="center">
+            android:gravity="center"
+            tools:ignore="UseCompoundDrawables,UselessParent">
 
             <ImageView
                 android:id="@+id/image_view_status"
@@ -30,6 +31,7 @@
                 android:layout_height="24dp"
                 android:src="@drawable/round_not_interested_24"
                 android:tint="@color/colorPrimary"
+                android:importantForAccessibility="no"
                 android:adjustViewBounds="true"/>
 
             <TextView
@@ -78,7 +80,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="center"
-                android:gravity="center">
+                android:gravity="center"
+                tools:ignore="UselessParent">
 
                 <LinearLayout
                     android:layout_width="match_parent"

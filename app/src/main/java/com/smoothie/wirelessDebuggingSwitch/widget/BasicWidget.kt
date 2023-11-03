@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.widget.RemoteViews
 import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.wirelessDebuggingSwitch.getLightOrDarkTextColor
+import com.smoothie.wirelessDebuggingSwitch.hasSufficientPrivileges
 
 open class BasicWidget(className: String = BasicWidget::class.java.name) : SwitchWidget(className) {
 
@@ -13,6 +14,9 @@ open class BasicWidget(className: String = BasicWidget::class.java.name) : Switc
         widgetId: Int,
         preferences: SharedPreferences
     ): RemoteViews {
+        if (!hasSufficientPrivileges())
+            return getMissingPrivilegesRemoteViews(context, preferences)
+
         val remoteViews = RemoteViews(context.packageName, R.layout.widget_basic)
 
         val pendingIntent = getPendingUpdateIntent(context, createStateSwitchIntent(context))

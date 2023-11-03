@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/shape_widget_corner"
         android:layout_alignParentTop="true"
+        android:importantForAccessibility="no"
         android:layout_alignParentStart="true"/>
 
     <ImageView
@@ -25,6 +26,7 @@
         android:src="@drawable/shape_widget_corner"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:importantForAccessibility="no"
         android:rotation="90"/>
 
     <ImageView
@@ -34,6 +36,7 @@
         android:src="@drawable/shape_widget_corner"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+        android:importantForAccessibility="no"
         android:rotation="-90"/>
 
     <ImageView
@@ -43,6 +46,7 @@
         android:src="@drawable/shape_widget_corner"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:importantForAccessibility="no"
         android:rotation="180"/>
 
     <!-- Side pieces -->
@@ -56,6 +60,7 @@
         android:layout_toStartOf="@id/corner_top_right"
         android:layout_alignBottom="@id/corner_top_right"
         android:layout_alignParentTop="true"
+        android:importantForAccessibility="no"
         android:scaleType="centerCrop"/>
 
     <ImageView
@@ -67,6 +72,7 @@
         android:layout_toStartOf="@id/corner_bottom_right"
         android:layout_alignTop="@id/corner_bottom_right"
         android:layout_alignParentBottom="true"
+        android:importantForAccessibility="no"
         android:scaleType="centerCrop"/>
 
     <ImageView
@@ -78,6 +84,7 @@
         android:layout_above="@id/corner_bottom_left"
         android:layout_alignEnd="@id/corner_bottom_left"
         android:layout_alignParentStart="true"
+        android:importantForAccessibility="no"
         android:scaleType="centerCrop"/>
 
     <ImageView
@@ -89,6 +96,7 @@
         android:layout_alignStart="@id/corner_bottom_right"
         android:layout_alignParentEnd="true"
         android:src="@drawable/shape_widget_center"
+        android:importantForAccessibility="no"
         android:scaleType="centerCrop"/>
 
     <!-- Center piece -->
@@ -102,6 +110,7 @@
         android:layout_below="@id/side_top"
         android:layout_toEndOf="@id/side_left"
         android:layout_toStartOf="@id/side_right"
+        android:importantForAccessibility="no"
         android:scaleType="centerCrop"/>
 
 </RelativeLayout>

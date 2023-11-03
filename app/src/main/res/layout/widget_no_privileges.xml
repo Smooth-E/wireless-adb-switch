@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true">
+
+    <include layout="@layout/widget_background"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/image_view_status"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/round_phonelink_setup_24"
+            android:tint="@color/colorPrimary"
+            android:adjustViewBounds="true"
+            android:importantForAccessibility="no"
+            tools:ignore="UseAppTint"/>
+
+        <TextView
+            android:id="@+id/text_view_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+            android:text="@string/qs_tile_label_missing_privileges"
+            android:gravity="center"
+            android:layout_marginTop="7dp"/>
+
+        <TextView
+            android:id="@+id/text_view_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            android:text="@string/qs_tile_subtitle_missing_privileges"
+            android:gravity="center"
+            android:layout_marginTop="7dp"/>
+
+    </LinearLayout>
+
+</FrameLayout>

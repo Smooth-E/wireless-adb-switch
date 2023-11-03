@@ -13,6 +13,7 @@ import com.smoothie.widgetFactory.ConfigurableWidget
 import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.wirelessDebuggingSwitch.WirelessDebugging
 import com.smoothie.wirelessDebuggingSwitch.getLightOrDarkTextColor
+import com.smoothie.wirelessDebuggingSwitch.hasSufficientPrivileges
 
 class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name) {
 
@@ -34,8 +35,10 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
         widgetId: Int,
         preferences: SharedPreferences
     ): RemoteViews {
-        val views = RemoteViews(context.packageName, R.layout.widget_information)
+        if (!hasSufficientPrivileges())
+            return getMissingPrivilegesRemoteViews(context, preferences)
 
+        val views = RemoteViews(context.packageName, R.layout.widget_information)
         applyRemoteViewsParameters(context, preferences, views)
 
         val debuggingEnabled = WirelessDebugging.getEnabled(context)

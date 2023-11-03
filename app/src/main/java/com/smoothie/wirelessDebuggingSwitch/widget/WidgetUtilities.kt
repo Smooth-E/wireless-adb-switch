@@ -1,12 +1,15 @@
 package com.smoothie.wirelessDebuggingSwitch.widget
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.*
 import android.view.View
 import android.widget.ImageView
 import android.widget.RemoteViews
+import androidx.core.app.PendingIntentCompat
 import com.smoothie.wirelessDebuggingSwitch.R
+import com.smoothie.wirelessDebuggingSwitch.SettingsActivity
 
 fun applyRemoteViewsParameters(
     context: Context,
@@ -133,4 +136,17 @@ private fun generateWidgetCornerBitmap(
     canvas.drawCircle(radiusFloat, radiusFloat, radiusFloat, paint)
 
     return bitmap
+}
+
+fun getMissingPrivilegesRemoteViews(context: Context, preferences: SharedPreferences): RemoteViews {
+    val views = RemoteViews(context.packageName, R.layout.widget_no_privileges)
+    views.setOnClickPendingIntent(R.id.root_view, PendingIntentCompat.getActivity(
+        context,
+        0,
+        Intent(context, SettingsActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+        0,
+        false
+    ))
+    applyRemoteViewsParameters(context, preferences, views)
+    return views
 }
