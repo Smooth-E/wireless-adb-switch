@@ -7,6 +7,7 @@
         <item name="switchPreferenceCompatStyle">@style/Theme.WidgetFactory.SwitchPreferenceCompat</item>
         <item name="sliderPreferenceStyle">@style/Theme.WidgetFactory.SliderPreference</item>
         <item name="dialogPreferenceStyle">@style/Theme.WidgetFactory.DialogPreference</item>
+        <item name="preferenceStyle">@style/Theme.WidgetFactory.Preference</item>
     </style>
 
     <style name="Theme.WidgetFactory" parent="Theme.WidgetFactory.Base">

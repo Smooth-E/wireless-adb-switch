@@ -27,12 +27,15 @@
             android:id="@android:id/icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
             app:maxWidth="48dp"
             app:maxHeight="48dp"
             android:minWidth="24dp"
             android:minHeight="24dp"
             app:tint="?attr/colorSecondary"
-            android:paddingHorizontal="10dp"/>
+            tools:ignore="UseAppTint"
+            android:tint="?attr/colorSecondary"
+            android:paddingHorizontal="10dp" />
 
     </FrameLayout>
 

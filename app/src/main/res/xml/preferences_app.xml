@@ -34,4 +34,32 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/preference_category_other">
+
+        <Preference
+            android:icon="@drawable/ic_github_24"
+            android:title="@string/preference_name_github"
+            android:summary="@string/preference_summary_github">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/Smooth-E/wireless-adb-switch"/>
+        </Preference>
+
+        <Preference
+            android:icon="@drawable/round_bug_report_24"
+            android:title="@string/preference_name_report_issue"
+            android:summary="@string/preference_summary_report_issue">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/Smooth-E/wireless-adb-switch/issues/new"/>
+        </Preference>
+
+        <Preference
+            android:key="@string/key_app_version"
+            android:icon="@drawable/info_outline_white_24dp"
+            android:title="@string/preference_name_app_version"
+            android:persistent="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

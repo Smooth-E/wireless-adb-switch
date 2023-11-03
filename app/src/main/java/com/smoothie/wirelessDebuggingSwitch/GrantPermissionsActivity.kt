@@ -136,7 +136,7 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
 
         private fun showMagiskNotificationsReminder(context: Context) {
             MaterialAlertDialogBuilder(context, centeredAlertDialogStyle)
-                .setIcon(R.drawable.magisk)
+                .setIcon(R.drawable.ic_magisk_24)
                 .setTitle(R.string.title_root_access_notifications)
                 .setMessage(R.string.message_disable_magisk_notification)
                 .setPositiveButton(R.string.label_got_it) { _, _ -> requireActivity().finish() }

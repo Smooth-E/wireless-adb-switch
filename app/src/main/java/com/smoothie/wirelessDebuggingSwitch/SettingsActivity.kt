@@ -1,6 +1,11 @@
 package com.smoothie.wirelessDebuggingSwitch
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
+import android.widget.Toast
+import androidx.preference.Preference
 import androidx.preference.Preference.OnPreferenceClickListener
 import androidx.preference.Preference.SummaryProvider
 import androidx.preference.PreferenceManager
@@ -62,7 +67,10 @@ class SettingsActivity : PreferenceActivity(R.xml.preferences_app, R.string.app_
         GrantPermissionsActivity.startIfNeeded(this)
 
         val kdeConnectInstalled = KdeConnect.isInstalled(this)
-        preferenceKdeConnect = preferenceFragment.findPreference(getString(R.string.key_enable_kde_connect))!!
+        var preferenceKey: String
+
+        preferenceKey = getString(R.string.key_enable_kde_connect)
+        preferenceKdeConnect = preferenceFragment.findPreference(preferenceKey)!!
         preferenceKdeConnect.isEnabled = kdeConnectInstalled
         preferenceKdeConnect.summaryProvider = kdeConnectSummaryProvider
         preferenceKdeConnect.onPreferenceClickListener = OnPreferenceClickListener {
@@ -70,8 +78,8 @@ class SettingsActivity : PreferenceActivity(R.xml.preferences_app, R.string.app_
             false
         }
 
-        val prefixDataPreferenceKey = getString(R.string.key_prefix_connection_data)
-        preferencePrefixData = preferenceFragment.findPreference(prefixDataPreferenceKey)!!
+        preferenceKey = getString(R.string.key_prefix_connection_data)
+        preferencePrefixData = preferenceFragment.findPreference(preferenceKey)!!
         preferencePrefixData.isEnabled = kdeConnectInstalled
         preferencePrefixData.summaryProvider = prefixConnectionDataSummaryProvider
         preferencePrefixData.setOnPreferenceClickListener {
@@ -79,6 +87,18 @@ class SettingsActivity : PreferenceActivity(R.xml.preferences_app, R.string.app_
             false
         }
 
+        preferenceKey = getString(R.string.key_app_version)
+        val preferenceAppVersion = preferenceFragment.findPreference<Preference>(preferenceKey)!!
+        preferenceAppVersion.summary = BuildConfig.VERSION_NAME
+        preferenceAppVersion.setOnPreferenceClickListener { _ ->
+            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            clipboard.setPrimaryClip(ClipData.newPlainText(
+                getString(R.string.preference_name_app_version),
+                BuildConfig.VERSION_NAME
+            ))
+            Toast.makeText(this, R.string.message_copied, Toast.LENGTH_SHORT).show()
+            return@setOnPreferenceClickListener false
+        }
     }
 
 }

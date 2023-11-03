@@ -13,7 +13,7 @@
         android:id="@+id/icon"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/magisk"
+        android:src="@drawable/ic_magisk_24"
         android:tint="?android:attr/textColorSecondary"
         android:importantForAccessibility="no"
         android:adjustViewBounds="true"/>

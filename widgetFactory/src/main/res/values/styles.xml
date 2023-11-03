@@ -24,4 +24,11 @@
         <item name="layout">@layout/preference_base</item>
     </style>
 
+    <style name="Theme.WidgetFactory.Preference" parent="Preference">
+        <item name="layout">@layout/preference_base</item>
+        <item name="allowDividerBelow">false</item>
+        <item name="allowDividerAbove">false</item>
+        <item name="allowDividerAfterLastItem">false</item>
+    </style>
+
 </resources>
