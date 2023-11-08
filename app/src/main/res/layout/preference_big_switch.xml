@@ -20,7 +20,8 @@
         android:gravity="center"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         tools:ignore="hardcodedText"
-        android:padding="18dp">
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp">
 
         <TextView
             android:id="@android:id/title"
@@ -48,7 +49,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:paddingHorizontal="10dp"
             android:minWidth="24dp"
             android:minHeight="24dp" />
 
