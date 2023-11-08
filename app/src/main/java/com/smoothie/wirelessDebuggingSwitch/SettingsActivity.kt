@@ -63,6 +63,9 @@ class SettingsActivity : ApplicationPreferenceActivity(
 
         value = preferences.getBoolean(preferencePrefixData.key, false)
         preferencePrefixData.isChecked = value
+
+        // This will update the summary using the previously set SummaryProvider
+        preferencePrefixData.forceUpdate()
     }
 
     override fun onPreferencesCreated(preferenceFragment: PreferenceFragment) {

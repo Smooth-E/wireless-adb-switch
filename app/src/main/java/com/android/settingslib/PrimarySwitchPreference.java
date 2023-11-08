@@ -173,4 +173,9 @@ public class PrimarySwitchPreference extends TwoTargetPreference {
         return !mChecked && isEnabled();
     }
 
+    /** Calls notifyChanged() on a preference. */
+    public void forceUpdate() {
+        notifyChanged();
+    }
+
 }
