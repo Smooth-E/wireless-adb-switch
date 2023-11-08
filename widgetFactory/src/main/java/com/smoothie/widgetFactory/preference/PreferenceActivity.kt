@@ -14,19 +14,6 @@ open class PreferenceActivity(
     PreferenceFragment()
 ) {
 
-    companion object {
-        const val EXTRA_KEEP_NAVIGATION_UP = "com.smoothie.widgetFactory.KEEP_NAVIGATION_UP"
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        if (!intent.hasExtra(EXTRA_KEEP_NAVIGATION_UP)) {
-            toolbar.setNavigationOnClickListener(null)
-            toolbar.navigationIcon = null
-        }
-    }
-
     @CallSuper
     open fun onPreferencesCreated(preferenceFragment: PreferenceFragment) {  }
 

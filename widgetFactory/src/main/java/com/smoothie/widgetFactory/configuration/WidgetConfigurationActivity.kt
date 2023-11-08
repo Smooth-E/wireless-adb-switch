@@ -23,13 +23,13 @@ import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
+import com.smoothie.widgetFactory.ApplicationPreferenceActivity
 import com.smoothie.widgetFactory.ConfigurableWidget
 import com.smoothie.widgetFactory.configuration.PreferenceFragment.Companion.KEY_PREFERENCES_NAME
 import com.smoothie.widgetFactory.configuration.PreferenceFragment.Companion.KEY_PREFERENCES_RESOURCE
 import com.smoothie.widgetFactory.configuration.PreferenceFragment.Companion.KEY_PREVIEW_ASPECT
 import com.smoothie.widgetFactory.FullScreenActivity
 import com.smoothie.widgetFactory.R
-import com.smoothie.widgetFactory.preference.PreferenceActivity
 
 abstract class WidgetConfigurationActivity(
     private val preferencesResourceId: Int,
@@ -63,7 +63,7 @@ abstract class WidgetConfigurationActivity(
             }
 
             intent.action = Intent.ACTION_APPLICATION_PREFERENCES
-            intent.putExtra(PreferenceActivity.EXTRA_KEEP_NAVIGATION_UP, true)
+            intent.putExtra(ApplicationPreferenceActivity.EXTRA_KEEP_NAVIGATION_UP, true)
             startActivity(intent)
             return@setOnMenuItemClickListener true
         }

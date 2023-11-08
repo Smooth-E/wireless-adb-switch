@@ -4,20 +4,21 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.Preference.OnPreferenceClickListener
 import androidx.preference.Preference.SummaryProvider
 import androidx.preference.PreferenceManager
 import com.android.settingslib.PrimarySwitchPreference
-import com.smoothie.widgetFactory.preference.PreferenceActivity
+import com.smoothie.widgetFactory.ApplicationPreferenceActivity
 import com.smoothie.widgetFactory.preference.PreferenceFragment
 import com.smoothie.wirelessDebuggingSwitch.preference.ActivityPreferenceKdeConnect
 import com.smoothie.wirelessDebuggingSwitch.preference.ActivityPreferencePrefix
 
-class SettingsActivity : PreferenceActivity(R.xml.preferences_app, R.string.app_name) {
+class SettingsActivity : ApplicationPreferenceActivity(
+    R.xml.preferences_app,
+    R.string.app_name
+) {
 
     private lateinit var preferenceKdeConnect: PrimarySwitchPreference
     private lateinit var preferencePrefixData: PrimarySwitchPreference
@@ -48,11 +49,6 @@ class SettingsActivity : PreferenceActivity(R.xml.preferences_app, R.string.app_
                     getString(R.string.default_connection_data_prefix)
                 )
         }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.d(javaClass.name, "Action: ${intent.action}")
-    }
 
     override fun onResume() {
         super.onResume()
