@@ -21,6 +21,8 @@
 <img src="./media/feature-widgets.ru.png" alt="Виджеты на Рабочий Стол"/>
 <img src="./media/feature-customization.ru.png" alt="Кастомизация Виджетов"/>
 <img src="./media/feature-instant-connection.ru.png" alt="Мгновенное Соединение"/>
+<img src="./media/feature-shizuku.ru.png" alt="Работает с Shizuku"/>
+<img src="./media/feature-one-ui.ru.png" alt="Интеграция с OneUI"/>
 
 ## Благодарности
 
@@ -28,6 +30,8 @@
 <br>[IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) - шрифт, использованный в дизайнах для этого приложения.
 <br>[Обои](https://lineageos.org/) - обои по умолчанию на экране конфигурации виджета взяты из Lineage OS.
 <br>[Листва](https://unsplash.com/photos/wAU3MfsGPNw) - автор замечательного фото листвы, которое я использовал в своих дизайнах, - [Aedrian](https://unsplash.com/@aedrian).
+<br>[Волны](https://unsplash.com/photos/a-close-up-of-a-body-of-water-with-ripples-dujWQFlKE7c) - атор замечательного фото волн, которая я использовал для интеграции с OneUI - [Michał Bińkiewicz](https://unsplash.com/@binkievitz).
+
 
 ## Лицензирование
 

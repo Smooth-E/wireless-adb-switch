@@ -21,6 +21,8 @@ You can also instantly connect to your PC using KDE Connect's clipboard sharing 
 <img src="./media/feature-widgets.png" alt="Home Screen Widgets"/>
 <img src="./media/feature-customization.png" alt="Widget Customization"/>
 <img src="./media/feature-instant-connection.png" alt="Instant Connection"/>
+<img src="./media/feature-shizuku.png" alt="Works with Shizuku"/>
+<img src="./media/feature-one-ui.png" alt="OneUI Integration"/>
 
 ## Credits
 
@@ -28,6 +30,7 @@ You can also instantly connect to your PC using KDE Connect's clipboard sharing 
 <br>[IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) - font used in my designs for this app.
 <br>[Wallpaper](https://lineageos.org/) - default wallpaper image for the widget configuration activity was taken from Lineage OS.
 <br>[Leaves](https://unsplash.com/photos/wAU3MfsGPNw) - an amazing photo of leaves I used as a background for my designs was made by [Aedrian](https://unsplash.com/@aedrian).
+<br>[Waves](https://unsplash.com/photos/a-close-up-of-a-body-of-water-with-ripples-dujWQFlKE7c) - an amazing photo of waves I used for the promo picture for OneUI integration was made by [Michał Bińkiewicz](https://unsplash.com/@binkievitz).
 
 ## License
 
