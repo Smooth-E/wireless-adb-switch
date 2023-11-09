@@ -29,7 +29,7 @@ object WirelessDebugging {
     fun getPort(context: Context): String =
         when (getPrivilegeLevel(PrivilegeLevel.Shizuku, context)) {
             PrivilegeLevel.Root ->
-                Shell.cmd("getprop service.adb.tls.port").exec().out.toString()
+                Shell.cmd("getprop service.adb.tls.port").exec().out.first().toString()
             PrivilegeLevel.Shizuku ->
                 ShizukuUtilities.getWirelessAdbPort()
             else -> ""
