@@ -73,8 +73,11 @@
             <FrameLayout
                 android:id="@+id/preference_fragment_holder"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fitsSystemWindows="true" />
+                android:layout_height="wrap_content" />
+
+            <com.smoothie.widgetFactory.BottomInsetHeightDistributor
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
 
         </LinearLayout>
 

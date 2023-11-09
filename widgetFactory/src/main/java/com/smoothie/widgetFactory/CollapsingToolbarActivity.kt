@@ -3,7 +3,6 @@ package com.smoothie.widgetFactory
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.ViewGroup
-import android.view.WindowInsets
 import androidx.core.view.doOnAttach
 import androidx.fragment.app.Fragment
 import com.google.android.material.appbar.MaterialToolbar
@@ -47,8 +46,7 @@ open class CollapsingToolbarActivity(
         fragmentHolder.fitsSystemWindows = false
 
         window.decorView.doOnAttach { decorView ->
-            val typeMask = WindowInsets.Type.systemBars() or WindowInsets.Type.displayCutout()
-            val insets = decorView.rootWindowInsets.getInsetsIgnoringVisibility(typeMask)
+            val insets = getInsets(decorView)
 
             toolbarFrame.setPadding(
                 toolbarFrame.paddingLeft + insets.left,
