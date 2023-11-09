@@ -4,8 +4,9 @@
     <string name="app_name_short" translatable="false">WADBS</string>
     <string name="app_name" translatable="false">Wireless Debugging Switch</string>
     <string name="kde_connect" translatable="false">KDE Connect</string>
+    <string name="title_shizuku" translatable="false">Shizuku</string>
 
-    <string name="label_wireless_debugging">Wireless Debugging</string>
+    <string name="label_wireless_debugging">Wireless debugging</string>
     <string name="label_wireless_debugging_two_lines">Wireless\nDebugging</string>
     <string name="label_disconnected">Disconnected</string>
     <string name="label_connection_data">Connection data</string>
@@ -24,7 +25,6 @@
     <string name="label_connect">Connect</string>
 
     <string name="title_additional_setup">Additional setup</string>
-    <string name="title_shizuku" translatable="false">Shizuku</string>
     <string name="title_root_access">Root access</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_root_access_notifications">Root access notifications</string>
@@ -67,11 +67,11 @@
 
     <string name="preference_name_kde_connect">KDE Connect integration</string>
     <string name="preference_switch_name_kde_connect">Enable integration</string>
-    <string name="preference_summary_kde_connect">If this option is enabled your clipboard will be synced with KDE Connect when you enable wireless debugging using a widget.\nKDE Connect must be installed for this to work.</string>
+    <string name="preference_summary_kde_connect">If this option is enabled your clipboard will be synced with KDE Connect when you enable wireless debugging using a widget. KDE Connect must be installed for this to work.</string>
 
     <string name="preference_name_prefix_connection_data">Prefix connection data</string>
     <string name="preference_switch_name_prefix_connection_data">Enable prefixing</string>
-    <string name="preference_explanation_prefix_connection_data">If this option is enabled, connection data will be prefixed with a string defined below. This allows user scripts to separate it from other clipboard data and automatically connect with your device.</string>
+    <string name="preference_explanation_prefix_connection_data">If this option is enabled, connection data will be prefixed with a string defined below. This allows user scripts to separate it from other clipboard data and automatically connect with your device. KDE Connect has to be installed for this to work.</string>
 
     <string name="preference_name_background_transparency">Background transparency</string>
     <string name="preference_summary_background_transparency">Specify how transparent this widget should be.</string>
