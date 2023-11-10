@@ -37,7 +37,7 @@ class SettingsActivity : ApplicationPreferenceActivity(
     private val prefixConnectionDataSummaryProvider =
         SummaryProvider<PrimarySwitchPreference> { preference ->
             if (!KdeConnect.isInstalled(this))
-                return@SummaryProvider getString(R.string.preference_summary_need_kde_connect)
+                return@SummaryProvider getString(R.string.preference_summary_need_kde_connect_integration)
 
             val manager = PreferenceManager.getDefaultSharedPreferences(this)
 

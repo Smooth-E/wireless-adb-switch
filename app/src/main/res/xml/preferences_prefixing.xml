@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <SwitchPreferenceCompat
@@ -13,9 +14,9 @@
 
     <com.smoothie.wirelessDebuggingSwitch.preference.TextInputPreference
         android:key="@string/key_connection_data_prefix"
-        android:title="Prefix"
+        android:title="@string/preference_name_connection_data_prefix"
         android:icon="@drawable/round_settings_ethernet_24"
         android:defaultValue="@string/default_connection_data_prefix"
-        android:summary="Define a prefix for your custom scripts" />
+        android:summary="@string/preference_summary_connection_data_prefix" />
 
 </PreferenceScreen>

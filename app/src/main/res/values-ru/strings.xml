@@ -49,13 +49,16 @@
     <string name="state_enabled">Активно</string>
     <string name="state_waiting">Ожидание</string>
     <string name="state_disabled">Отключено</string>
-    <string name="preference_summary_need_kde_connect">Сначала включите интеграцию с KDE Connect.</string>
+    <string name="preference_summary_need_kde_connect">Приложение KDE Connect не установлено.</string>
+    <string name="preference_summary_need_kde_connect_integration">Сначала включите интеграцию с KDE Connect.</string>
     <string name="preference_name_kde_connect">Интеграция с KDE Connect</string>
     <string name="preference_switch_name_kde_connect">Включить интеграцию</string>
     <string name="preference_switch_name_prefix_connection_data">Использовать префикс</string>
     <string name="preference_summary_kde_connect">Если эта опция активна, буфер обмена будет синхронизирован средствами KDE Connect после активации беспроводной отладки при помощи виджета. Для работы необходимо установленное приложение  KDE Connect.</string>
     <string name="preference_name_prefix_connection_data">Префикс информации</string>
     <string name="preference_explanation_prefix_connection_data">Если эта опция активна, к синхронизируемой информации о подключении будет добавлен указанный ниже префикс. Это позволяет пользовательским скриптам отделять нужную информацию от прочих копируемых данных и автоматически соединяться с вашим устройством. Для работы необходимо установленное приложение KDE Connect.</string>
+    <string name="preference_name_connection_data_prefix">Префикс</string>
+    <string name="preference_summary_connection_data_prefix">Назначьте префикс для пользовательских скриптов</string>
     <string name="preference_name_background_transparency">Прозрачность фона</string>
     <string name="preference_summary_background_transparency">Настройте прозрачность фона виджета.</string>
     <string name="preference_name_corner_radius">Радиус углов</string>
