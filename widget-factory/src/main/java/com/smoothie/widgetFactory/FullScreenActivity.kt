@@ -1,11 +1,9 @@
 package com.smoothie.widgetFactory
 
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
-import android.content.res.Configuration.ORIENTATION_PORTRAIT
 import android.graphics.Color
 import android.os.Bundle
 import android.util.TypedValue
-import android.view.WindowManager.LayoutParams
 import android.view.WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat

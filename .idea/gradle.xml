@@ -14,7 +14,7 @@
             <option value="$PROJECT_DIR$/aosp" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/hidden-api-stub" />
-            <option value="$PROJECT_DIR$/widgetFactory" />
+            <option value="$PROJECT_DIR$/widget-factory" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -25,10 +25,6 @@ open class SliderPreference : Preference {
         const val SUFFIX_INT = 3
     }
 
-    companion object {
-        private const val TAG = "SliderPreference"
-    }
-
     private var isTrackingTouch = false
     private var sliderValueTextView: TextView? = null
     private var currentSliderValue = 0f

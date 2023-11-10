@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.util.Log
 import androidx.preference.PreferenceManager
-import com.smoothie.widgetFactory.WidgetUpdater
 
 open class WidgetFactoryApplication : Application() {
 
