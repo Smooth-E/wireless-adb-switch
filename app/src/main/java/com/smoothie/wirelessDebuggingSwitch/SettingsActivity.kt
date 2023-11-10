@@ -58,10 +58,10 @@ class SettingsActivity : ApplicationPreferenceActivity(
 
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
 
-        var value = preferences.getBoolean(preferenceKdeConnect.key, false)
+        var value = preferences.getBoolean(preferenceKdeConnect.key, true)
         preferenceKdeConnect.isChecked = value
 
-        value = preferences.getBoolean(preferencePrefixData.key, false)
+        value = preferences.getBoolean(preferencePrefixData.key, true)
         preferencePrefixData.isChecked = value
 
         // This will update the summary using the previously set SummaryProvider
