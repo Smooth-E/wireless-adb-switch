@@ -27,6 +27,7 @@ You can also instantly connect to your PC using KDE Connect's clipboard sharing 
 ## Credits
 
 [libsu](https://github.com/topjohnwu/libsu) - a library that makes performing root-requiring operations easier.
+<br>[Shizuku](https://shizuku.rikka.app/) - a framework WADBS can use as an alternative to root access.
 <br>[IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) - font used in my designs for this app.
 <br>[Wallpaper](https://lineageos.org/) - default wallpaper image for the widget configuration activity was taken from Lineage OS.
 <br>[Leaves](https://unsplash.com/photos/wAU3MfsGPNw) - an amazing photo of leaves I used as a background for my designs was made by [Aedrian](https://unsplash.com/@aedrian).

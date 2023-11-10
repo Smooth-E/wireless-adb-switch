@@ -27,6 +27,7 @@
 ## Благодарности
 
 [libsu](https://github.com/topjohnwu/libsu) - библиотека, позволяющая легко выполнять операции, требующие root-доступ.
+<br>[Shizuku](https://shizuku.rikka.app/) - фреймворк, который WADBS может использовать в качестве альтернативы root-доступу.
 <br>[IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) - шрифт, использованный в дизайнах для этого приложения.
 <br>[Обои](https://lineageos.org/) - обои по умолчанию на экране конфигурации виджета взяты из Lineage OS.
 <br>[Листва](https://unsplash.com/photos/wAU3MfsGPNw) - автор замечательного фото листвы, которое я использовал в своих дизайнах, - [Aedrian](https://unsplash.com/@aedrian).
