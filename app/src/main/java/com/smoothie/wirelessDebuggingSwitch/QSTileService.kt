@@ -186,6 +186,12 @@ class QSTileService : TileService() {
             views.setOnClickPendingIntent(R.id.button_copy_connection_data, copyDataPendingIntent)
 
             val settingsIntent = Intent(baseContext, SettingsActivity::class.java)
+                .setFlags(
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP or
+                    Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                    Intent.FLAG_ACTIVITY_NEW_TASK
+                )
+
             val settingsPendingIntent = PendingIntentCompat
                 .getActivity(this, 1, settingsIntent, 0, false)
             views.setOnClickPendingIntent(R.id.group_more_setting_in_app, settingsPendingIntent)
