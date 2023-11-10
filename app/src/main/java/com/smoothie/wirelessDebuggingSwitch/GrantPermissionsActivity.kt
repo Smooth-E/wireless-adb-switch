@@ -208,13 +208,19 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
         private fun restartAppForRootAccessRefresh() {
             val manager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val time = System.currentTimeMillis() + 100
-            val intent = PendingIntent.getActivity(
+            val intent = requireActivity().intent
+            intent.flags =
+                Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                Intent.FLAG_ACTIVITY_SINGLE_TOP or
+                Intent.FLAG_ACTIVITY_NEW_TASK
+
+            val pendingIntent = PendingIntent.getActivity(
                 requireActivity().baseContext,
                 0,
-                requireActivity().intent,
-                requireActivity().intent.flags
+                intent,
+                PendingIntent.FLAG_IMMUTABLE
             )
-            manager.set(AlarmManager.RTC, time, intent)
+            manager.set(AlarmManager.RTC, time, pendingIntent)
 
             Process.killProcess(Process.myPid())
         }

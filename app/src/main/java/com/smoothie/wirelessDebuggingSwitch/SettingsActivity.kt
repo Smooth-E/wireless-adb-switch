@@ -4,6 +4,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.Preference.OnPreferenceClickListener
@@ -68,9 +69,13 @@ class SettingsActivity : ApplicationPreferenceActivity(
         preferencePrefixData.forceUpdate()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        GrantPermissionsActivity.startIfNeeded(this)
+    }
+
     override fun onPreferencesCreated(preferenceFragment: PreferenceFragment) {
         super.onPreferencesCreated(preferenceFragment)
-        GrantPermissionsActivity.startIfNeeded(this)
 
         val kdeConnectInstalled = KdeConnect.isInstalled(this)
         var preferenceKey: String

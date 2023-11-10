@@ -6,6 +6,7 @@
     <SwitchPreferenceCompat
         android:key="@string/key_prefix_connection_data"
         android:title="@string/preference_switch_name_prefix_connection_data"
+        android:defaultValue="true"
         app:layout="@layout/preference_big_switch" />
 
     <Preference

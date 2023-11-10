@@ -20,4 +20,5 @@ interface IUserService {
 
     /** Returns Wireless ADB port number or -1 if Wireless ADB is disabled */
     int getWirelessAdbPort() = 1;
+
 }
