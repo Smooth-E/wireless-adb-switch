@@ -2,13 +2,10 @@
 
 <p align="center">
     <a href="https://github.com/Smooth-E/wireless-adb-switch/releases/latest" target="_blank" rel="nofollow noopener">
-        <img alt="Скачайте с GitHub" src="media/badge-github.png" width="30%"/>
+        <img alt="Скачайте с GitHub" src="media/badge-github.png" width="40%"/>
     </a>
     <a href="https://f-droid.org/ru/packages/com.smoothie.wirelessDebuggingSwitch" target="_blank" rel="nofollow noopener">
-        <img alt="Скачайте с F-Droid" src="media/badge-f-droid.png" width="30%"/>
-    </a>
-    <a href="https://apt.izzysoft.de/fdroid/index/apk/com.smoothie.wirelessDebuggingSwitch" target="_blank" rel="nofollow noopener">
-        <img alt="Скачайте с IzzyOnDroid" src="media/badge-izzy-on-droid.png" width="30%"/>
+        <img alt="Скачайте с F-Droid" src="media/badge-f-droid.png" width="40%"/>
     </a>
 </p>
 
