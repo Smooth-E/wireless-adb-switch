@@ -19,7 +19,7 @@ public class UserService extends IUserService.Stub {
 
     @Keep
     public UserService() {
-        Log.d(TAG, "UserService initialized without the context");
+        Log.d(TAG, "UserService initialized without a context");
     }
 
     @Keep
@@ -37,6 +37,7 @@ public class UserService extends IUserService.Stub {
     public String executeShellCommand(String command) {
         Process process = null;
         String output = "";
+
         try {
             Log.d(TAG, "Executing shell command: " + command);
             process = Runtime.getRuntime().exec(command);

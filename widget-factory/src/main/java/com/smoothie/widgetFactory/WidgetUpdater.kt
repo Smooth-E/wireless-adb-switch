@@ -83,7 +83,7 @@ class WidgetUpdater : BroadcastReceiver() {
             }
 
             val alarmManager = getAlarmManager(context)
-            alarmManager.cancel(lastPendingIntent)
+            alarmManager.cancel(lastPendingIntent!!)
             enabled = false
             Log.d(TAG, "Disabled")
         }
