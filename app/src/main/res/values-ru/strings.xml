@@ -17,6 +17,8 @@
     <string name="label_open_magisk">Открыть Magisk</string>
     <string name="label_restart">Перезапустить</string>
     <string name="label_connect">Соединить</string>
+    <string name="label_proceed">Продолжить</string>
+    <string name="label_exit">Выйти</string>
     <string name="title_additional_setup">Дополнительная настройка</string>
     <string name="title_root_access">Root-доступ</string>
     <string name="title_notifications">Уведомления</string>
@@ -35,12 +37,13 @@
     <string name="message_explain_notifications">WADBS уведомит вас, если ему не будет хватать привилегий, необходимых для работы (root-доступ или Shizuku).</string>
     <string name="message_explain_root_access">Root-доступ позволяет WADBS включать и выключать беспроводную отладку, получать информацию о соединении и взаимодействовать с KDE Connect для мгновенного соединения через локальную сеть.\nЭто разрешение необязательно, если используется Shizuku.</string>
     <string name="message_explain_shizuku">WADBS может использовать Shizuku в качестве альтернативы root-доступу, однако в таком случае интеграция с KDE Connect будет недоступна.</string>
-    <string name="message_grant_permission_before_leaving">Пожалуйста, предоставьте все необходимые разрешения и нажмите \"Продолжить\".</string>
+    <string name="message_grant_permission_before_leaving">Предоставьте все необходимые разрешения и нажмите \"Продолжить\".</string>
     <string name="message_disable_magisk_notification">Magisk отображает текстовое сообщение, когда приложению предоставляется root-доступ. WADBS часто проверяет состояние беспроводной отладки, чтобы обновлять виджеты (вы можете изменить интервал проверки в настройках приложения). Это делает уведомления Magisk несколько назойливыми.\n\nВы можете отключить такие уведомления для WADBS во вкладке \"Superuser\" (разверните настройки для WADBS, чтобы увидеть опцию отключения уведомлений).</string>
     <string name="message_kde_connect_ready">Интеграция с KDE Connect доступна.</string>
     <string name="message_more_settings_description">Измените более специфичные настройки внутри приложения.</string>
     <string name="message_wifi_disabled">Беспроводная отладка недоступна, когда Wi-Fi отключен.</string>
     <string name="message_debugging_disabled">Быстрые действие недоступны, когда беспроводная отладка отключена.</string>
+    <string name="message_before_adding_widgets">WADBS требуется дополнительная настройка. Пожалуйста, завершите конфигурацию, пред тем как работать с виджетами.</string>
     <string name="notification_channel_description">Присылает уведомление, если у WADBS недостаточно привилегий (root-доступ или Shizuku)</string>
     <string name="notification_title">Недостаточно привилегий</string>
     <string name="notification_message_short">Разверните уведомление, чтобы узнать больше.</string>

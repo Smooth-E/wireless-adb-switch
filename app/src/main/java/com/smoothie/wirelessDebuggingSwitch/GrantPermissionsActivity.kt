@@ -15,10 +15,11 @@ import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
-import android.widget.Toast
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.smoothie.widgetFactory.CollapsingToolbarActivity
 import com.topjohnwu.superuser.Shell
 
@@ -29,16 +30,27 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
 ) {
 
     companion object {
+
+        fun shouldBeStarted(context: Context): Boolean {
+            return !isNotificationPermissionGranted(context) || !hasSufficientPrivileges()
+        }
+
         fun startIfNeeded(context: Context) {
-            if (!isNotificationPermissionGranted(context) || !hasSufficientPrivileges())
+            if (shouldBeStarted(context))
                 context.startActivity(Intent(context, GrantPermissionsActivity::class.java))
         }
+
     }
 
     @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
-        val message = getString(R.string.message_grant_permission_before_leaving)
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        val view = findViewById<CoordinatorLayout>(R.id.root_view)
+        val stringId = R.string.message_grant_permission_before_leaving
+        val duration = Snackbar.LENGTH_LONG
+
+        Snackbar.make(view, stringId, duration)
+            .setAction(R.string.label_exit) { _ -> AutoClosingActivity.start(this) }
+            .show()
     }
 
     class GrantPermissionsFragment : Fragment(R.layout.fragment_permissions) {
@@ -58,7 +70,7 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
         /**
          * Requests a permission to send notifications,
          * opens system settings if it is impossible to show the rationale.
-         * Ensure that this function is onl called on API 33.
+         * Ensure that this function is only called on API 33.
          */
         private val requestNotificationsPermission = OnClickListener {
             val currentApi = Build.VERSION.SDK_INT
@@ -209,10 +221,9 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
             val manager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val time = System.currentTimeMillis() + 100
             val intent = requireActivity().intent
-            intent.flags =
-                Intent.FLAG_ACTIVITY_CLEAR_TOP or
-                Intent.FLAG_ACTIVITY_SINGLE_TOP or
-                Intent.FLAG_ACTIVITY_NEW_TASK
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
             val pendingIntent = PendingIntent.getActivity(
                 requireActivity().baseContext,

@@ -23,6 +23,8 @@
     <string name="label_open_magisk">Open Magisk</string>
     <string name="label_restart">Restart</string>
     <string name="label_connect">Connect</string>
+    <string name="label_proceed">Proceed</string>
+    <string name="label_exit">Exit</string>
 
     <string name="title_additional_setup">Additional setup</string>
     <string name="title_root_access">Root access</string>
@@ -44,12 +46,13 @@
     <string name="message_explain_notifications">WADBS will display a notification when it encounters an error which is usually because it lacks a needed set of privileges.</string>
     <string name="message_explain_root_access">Root access allows WADBS to change the state of Wireless Debugging, gather connection data and interact with KDE Connect to instantly pair your Android device with your PC via local network.\nThis permission is optional if you use Shizuku.</string>
     <string name="message_explain_shizuku">Alternatively to Root access WADBS can utilize Shizuku to gain the needed set of privileges. Note that KDE Connect integration does not work with Shizuku.</string>
-    <string name="message_grant_permission_before_leaving">Please, provide all of the required permissions and then tap \"Continue\".</string>
+    <string name="message_grant_permission_before_leaving">Grant all of the required permissions and then tap \"Continue\".</string>
     <string name="message_disable_magisk_notification">Magisk displays a toast whenever some app is granted root access. WADBS frequently checks the state of Wireless Debugging on your device to update its widgets (you can edit the interval in settings). This makes Magisk\'s notifications somewhat annoying.\n\nYou can disable Magisk\'s root access notifications from the \"Superuser\" tab (tap on WADBS in the list there to see more options for it).</string>
     <string name="message_kde_connect_ready">KDE Connect is ready.</string>
     <string name="message_more_settings_description">Tweak more specific settings in the app.</string>
     <string name="message_debugging_disabled">Shortcuts are not available while Wireless Debugging is disabled.</string>
     <string name="message_wifi_disabled">Wireless Debugging is unavailable while Wi-Fi is disabled.</string>
+    <string name="message_before_adding_widgets">WADBS requires some additional configuration. Please, finish setting it up before managing widgets.</string>
 
     <!-- notification_title is used as a channel name as well -->
     <!-- notification_title and notification_message_long is also used as an error message in One UI expanded QS view -->

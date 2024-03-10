@@ -63,6 +63,8 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".AutoClosingActivity" android:exported="false" />
+
         <!-- Basic Widget Components -->
 
         <activity
