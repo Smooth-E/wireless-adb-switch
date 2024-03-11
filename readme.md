@@ -13,7 +13,7 @@
 
 **WADBS** (short or **Wireless Android Debugging Bridge Switch**) is an app that allows you to switch Android's Wireless Debugging feature on and off quickly.
 It provides several widgets and a quick settings tile to do this. 
-You can also instantly connect to your PC using KDE Connect's clipboard sharing feature (see [scripts](./scripts/)).
+You can also instantly connect to your PC using KDE Connect's clipboard sharing feature (see [scripts](./scripts)).
 
 ## Features
 
@@ -29,7 +29,6 @@ You can also instantly connect to your PC using KDE Connect's clipboard sharing 
 [libsu](https://github.com/topjohnwu/libsu) - a library that makes performing root-requiring operations easier.
 <br>[Shizuku](https://shizuku.rikka.app/) - a framework WADBS can use as an alternative to root access.
 <br>[IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) - font used in my designs for this app.
-<br>[Wallpaper](https://lineageos.org/) - default wallpaper image for the widget configuration activity was taken from Lineage OS.
 <br>[Leaves](https://unsplash.com/photos/wAU3MfsGPNw) - an amazing photo of leaves I used as a background for my designs was made by [Aedrian](https://unsplash.com/@aedrian).
 <br>[Waves](https://unsplash.com/photos/a-close-up-of-a-body-of-water-with-ripples-dujWQFlKE7c) - an amazing photo of waves I used for the promo picture for OneUI integration was made by [Michał Bińkiewicz](https://unsplash.com/@binkievitz).
 

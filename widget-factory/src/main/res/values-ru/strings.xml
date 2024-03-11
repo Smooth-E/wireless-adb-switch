@@ -2,10 +2,6 @@
 <resources>
     <string name="settings">Настройки</string>
     <string name="header_widget_configuration">Конфигурация виджета</string>
-    <string name="header_optional_permission">Предоставьте необязательное разрешение</string>
     <string name="preference_name_update_interval">Интервал обновления виджетов</string>
     <string name="preference_summary_update_interval">Настройте, как часто виджеты будут обновлятся</string>
-    <string name="message_allow_all_files_for_wallpaper">В Android 13 Tiramisu и выше приложениям необходимо разрешение на управление всеми файлами, чтобы получить обои рабочего стола. Предоставление такого разрешение необязательно и несет лишь косметические изменения.</string>
-    <string name="action_grant_permission">Предоставить разрешение</string>
-    <string name="action_dismiss">Пропустить</string>
 </resources>

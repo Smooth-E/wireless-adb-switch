@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -23,9 +22,7 @@
         android:theme="@style/Theme.WirelessDebuggingSwitch"
         tools:targetApi="31">
 
-        <activity
-            android:name="com.smoothie.wirelessDebuggingSwitch.SettingsActivity"
-            android:exported="true">
+        <activity android:name=".SettingsActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
@@ -55,9 +52,7 @@
 
         <!-- Receiver for the the "Restart app" notification action -->
 
-        <receiver
-            android:name="com.smoothie.wirelessDebuggingSwitch.KillAppBroadcastReceiver"
-            android:exported="false">
+        <receiver android:name=".KillAppBroadcastReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="com.smoothie.wadbs.KILL_APP"/>
             </intent-filter>
@@ -68,7 +63,7 @@
         <!-- Basic Widget Components -->
 
         <activity
-            android:name="com.smoothie.wirelessDebuggingSwitch.widget.BasicWidgetActivity"
+            android:name=".widget.BasicWidgetActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
@@ -76,7 +71,7 @@
         </activity>
 
         <receiver
-            android:name="com.smoothie.wirelessDebuggingSwitch.widget.BasicWidget"
+            android:name=".widget.BasicWidget"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

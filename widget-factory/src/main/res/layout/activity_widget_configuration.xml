@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?attr/colorSurface"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -50,34 +49,33 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:padding="8dp">
+                android:layout_height="300dp">
 
-                <com.google.android.material.imageview.ShapeableImageView
+                <ImageView
                     android:id="@+id/showcase_background"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
-                    android:src="@drawable/placeholder_wallpaper"
-                    android:scaleType="centerCrop" />
+                    android:importantForAccessibility="no" />
 
                 <RelativeLayout
                     android:id="@+id/preview_holder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:padding="30dp"/>
+                    android:padding="46dp"/>
 
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/preference_fragment_holder"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="?colorSurface" />
 
-            <com.smoothie.widgetFactory.BottomInsetHeightDistributor
+            <com.smoothie.widgetFactory.view.BottomInsetHeightDistributor
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:background="?colorSurface" />
 
         </LinearLayout>
 
