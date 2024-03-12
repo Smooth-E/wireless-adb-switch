@@ -16,6 +16,7 @@ class WADBS : WidgetFactoryApplication() {
         const val PRIVILEGE_NOTIFICATION_CHANNEL_ID =
             "com.smoothie.wadbs.missing_privileges_channel"
         const val PRIVILEGE_NOTIFICATION_ID = 0
+
         init {
             Shell.enableVerboseLogging = BuildConfig.DEBUG
 
@@ -31,18 +32,16 @@ class WADBS : WidgetFactoryApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        addWidgets()
+
+        ConfigurableWidget.addWidget(BasicWidget::class.java.name)
+        ConfigurableWidget.addWidget(InformationWidget::class.java.name)
+
         Shell.getShell()
 
         notificationManager =  NotificationManagerCompat.from(this)
         createMissingPrivilegeNotificationsChannel()
         if (hasSufficientPrivileges())
             notificationManager.cancel(PRIVILEGE_NOTIFICATION_ID)
-    }
-
-    private fun addWidgets() {
-        ConfigurableWidget.addWidget(BasicWidget::class.java.name)
-        ConfigurableWidget.addWidget(InformationWidget::class.java.name)
     }
 
     private fun createMissingPrivilegeNotificationsChannel() {

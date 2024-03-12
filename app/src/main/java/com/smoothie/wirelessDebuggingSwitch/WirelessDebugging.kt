@@ -52,14 +52,12 @@ object WirelessDebugging {
 
     /**
      * Synchronize connection data if device is connected via Wireless ADB and
-     * synchronization is enabled in app's settings.
+     * synchronization is enabled in app's settings. This includes copying the data to the
+     * clipboard and sending it via KDE Connect (enabled separately).
      *
-     * @param context context used to create a WIFI_SERVICE
+     * @param context application or activity context used internally
      */
     fun syncConnectionData(context: Context) {
-        if (!hasSufficientPrivileges(PrivilegeLevel.Root))
-            return
-
         val connectionInfo: String
         try {
             connectionInfo = getConnectionData(context)
@@ -72,10 +70,10 @@ object WirelessDebugging {
 
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
 
-        var preferenceKey = context.getString(R.string.key_enable_kde_connect)
-        val kdeIntegrationEnabled = preferences.getBoolean(preferenceKey, true)
+        var preferenceKey =context.getString(R.string.key_copy_connection_data)
+        val copyConnectionData = preferences.getBoolean(preferenceKey, true)
 
-        if (!KdeConnect.isInstalled(context) || !kdeIntegrationEnabled)
+        if (!copyConnectionData)
             return
 
         preferenceKey = context.getString(R.string.key_prefix_connection_data)
@@ -91,7 +89,15 @@ object WirelessDebugging {
             else
                 connectionInfo
 
-        copyText(context, "Data for KDE Connect", connectionData)
+        val clipboardLabel = context.getString(R.string.label_connection_data)
+        copyText(context, clipboardLabel, connectionData)
+
+        preferenceKey = context.getString(R.string.key_enable_kde_connect)
+        val kdeIntegrationEnabled = preferences.getBoolean(preferenceKey, true)
+
+        if (!kdeIntegrationEnabled || !KdeConnect.isClipboardSharingAvailable(context))
+            return
+
         val result = KdeConnect.sendClipboard()
 
         if (!result.isSuccess) {

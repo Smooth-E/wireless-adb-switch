@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string translatable="false" name="key_skip_permission_activity">skip_permissions_activity</string>
+    <string translatable="false" name="key_copy_connection_data">copy_connection_data</string>
     <string translatable="false" name="key_enable_kde_connect">enable_kde_connect</string>
     <string translatable="false" name="key_prefix_connection_data">prefix_connection_data</string>
     <string translatable="false" name="key_connection_data_prefix">connection_data_prefix</string>
-    <string translatable="false" name="default_connection_data_prefix">connect-wireless-debugging://</string>
     <string translatable="false" name="key_app_version">app_version</string>
     <string translatable="false" name="key_background_transparency">background_transparency</string>
     <string translatable="false" name="key_use_colorful_background">use_colorful_background</string>
     <string translatable="false" name="key_corner_roundness">corner_roundness</string>
     <string translatable="false" name="key_use_light_text">use_light_text</string>
-    <string translatable="false" name="key_icon_shape">icon_shape</string>
+
+    <string translatable="false" name="default_connection_data_prefix">connect-wireless-debugging://</string>
 </resources>

@@ -145,7 +145,6 @@
             android:layout_below="@id/title_more_settings"
             android:textColor="?android:attr/textColorSecondary"/>
 
-
         <ImageView
             android:id="@+id/icon_arrow"
             android:layout_width="wrap_content"
@@ -159,6 +158,5 @@
             android:tint="?android:attr/textColorPrimary" />
 
     </RelativeLayout>
-
 
 </LinearLayout>

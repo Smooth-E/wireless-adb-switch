@@ -66,8 +66,12 @@
     <string name="state_waiting">Waiting</string>
     <string name="state_disabled">Disabled</string>
 
+    <string name="preference_name_copy_connection_data">Copy connection data</string>
+    <string name="preference_switch_name_copy_connection_data">Put connection data into the clipboard after enabling wireless debugging</string>
+
     <string name="preference_summary_need_kde_connect">KDE Connect is not installed</string>
-    <string name="preference_summary_need_kde_connect_integration">Enabled KDE Connect integration first.</string>
+    <string name="preference_summary_root_for_kde_connect">KDE Connect integration requires root privileges</string>
+    <string name="preference_summary_need_copying_data">Enable copying connection data first</string>
 
     <string name="preference_name_kde_connect">KDE Connect integration</string>
     <string name="preference_switch_name_kde_connect">Enable integration</string>
@@ -75,7 +79,7 @@
 
     <string name="preference_name_prefix_connection_data">Prefix connection data</string>
     <string name="preference_switch_name_prefix_connection_data">Enable prefixing</string>
-    <string name="preference_explanation_prefix_connection_data">If this option is enabled, connection data will be prefixed with a string defined below. This allows user scripts to separate it from other clipboard data and automatically connect with your device. KDE Connect has to be installed for this to work.</string>
+    <string name="preference_explanation_prefix_connection_data">If this option is enabled, connection data will be prefixed with a string defined below. This allows user scripts to separate it from other clipboard data and automatically connect with your device.</string>
 
     <string name="preference_name_connection_data_prefix">Prefix</string>
     <string name="preference_summary_connection_data_prefix">Define  prefix for your custom scripts</string>

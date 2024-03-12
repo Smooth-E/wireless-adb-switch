@@ -10,12 +10,12 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\smooth-e\.android\avd\Pixel_8_Pro_API_33.avd" />
+                  <value value="C:\Users\smooth-e\.android\avd\Pixel_7_API_34.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-06T22:03:45.733393200Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-03-11T13:24:24.585689700Z" />
         </State>
       </entry>
       <entry key="clean install">

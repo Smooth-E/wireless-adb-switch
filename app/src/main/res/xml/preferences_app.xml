@@ -17,12 +17,12 @@
             android:valueFrom="1"
             android:valueTo="10" />
 
-        <com.android.settingslib.PrimarySwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="true"
-            android:key="@string/key_enable_kde_connect"
-            android:title="@string/preference_name_kde_connect"
-            android:summary="@string/state_enabled"
-            android:icon="@drawable/round_phone_link_24"/>
+            android:key="@string/key_copy_connection_data"
+            android:title="@string/preference_name_copy_connection_data"
+            android:summary="@string/preference_switch_name_copy_connection_data"
+            android:icon="@drawable/round_content_copy_24" />
 
         <com.android.settingslib.PrimarySwitchPreference
             android:defaultValue="true"
@@ -30,7 +30,15 @@
             android:title="@string/preference_name_prefix_connection_data"
             android:summary="@string/default_connection_data_prefix"
             android:icon="@drawable/round_settings_ethernet_24"
-            android:dependency="@string/key_enable_kde_connect" />
+            android:dependency="@string/key_copy_connection_data" />
+
+        <com.android.settingslib.PrimarySwitchPreference
+            android:defaultValue="true"
+            android:key="@string/key_enable_kde_connect"
+            android:title="@string/preference_name_kde_connect"
+            android:summary="@string/state_enabled"
+            android:icon="@drawable/round_phone_link_24"
+            android:dependency="@string/key_copy_connection_data" />
 
     </PreferenceCategory>
 

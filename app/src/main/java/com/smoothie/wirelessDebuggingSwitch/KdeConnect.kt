@@ -17,7 +17,7 @@ object KdeConnect {
     }
 
     fun isClipboardSharingAvailable(context: Context): Boolean =
-        isInstalled(context) && Shell.isAppGrantedRoot() == true
+        isInstalled(context) && hasSufficientPrivileges(PrivilegeLevel.Root)
 
     /**
      * Synchronizes the clipboard data using KDE Connect.
