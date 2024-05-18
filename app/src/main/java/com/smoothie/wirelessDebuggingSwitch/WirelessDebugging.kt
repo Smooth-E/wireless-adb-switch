@@ -46,7 +46,9 @@ object WirelessDebugging {
     fun getConnectionData(context: Context): String =
         "${getAddress(context)}:${getPort(context)}"
 
-    /** Place connection data into the clipboard. Does not check whether the debugging is enabled */
+    /**
+     * Place connection data into the clipboard. Does not check whether the debugging is enabled
+     */
     fun copyConnectionData(context: Context) =
         copyText(context, "Wireless debugging connection data", getConnectionData(context))
 

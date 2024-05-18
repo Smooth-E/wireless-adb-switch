@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.Preference.OnPreferenceClickListener
 import androidx.preference.Preference.SummaryProvider
+import androidx.preference.PreferenceGroup
 import androidx.preference.PreferenceManager
 import androidx.preference.SwitchPreferenceCompat
 import com.android.settingslib.PrimarySwitchPreference
@@ -22,6 +23,8 @@ class SettingsActivity : ApplicationPreferenceActivity(
     R.string.app_name
 ) {
 
+    private lateinit var preferenceServiceActive: SwitchPreferenceCompat
+    private lateinit var preferenceGroupSettings: PreferenceGroup
     private lateinit var preferenceCopyData: SwitchPreferenceCompat
     private lateinit var preferencePrefixData: PrimarySwitchPreference
     private lateinit var preferenceKdeConnect: PrimarySwitchPreference
@@ -40,6 +43,7 @@ class SettingsActivity : ApplicationPreferenceActivity(
             val manager = PreferenceManager.getDefaultSharedPreferences(this)
             if (manager.getBoolean(preference.key, true))
                 return@SummaryProvider getString(R.string.state_enabled)
+
             return@SummaryProvider getString(R.string.state_disabled)
         }
 
@@ -59,15 +63,15 @@ class SettingsActivity : ApplicationPreferenceActivity(
                 )
         }
 
-        private val appVersionOnPreferenceClickListener = OnPreferenceClickListener { _ ->
-            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            clipboard.setPrimaryClip(ClipData.newPlainText(
-                getString(R.string.preference_name_app_version),
-                BuildConfig.VERSION_NAME
-            ))
-            Toast.makeText(this, R.string.message_copied, Toast.LENGTH_SHORT).show()
-            return@OnPreferenceClickListener false
-        }
+    private val appVersionOnPreferenceClickListener = OnPreferenceClickListener { _ ->
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        clipboard.setPrimaryClip(ClipData.newPlainText(
+            getString(R.string.preference_name_app_version),
+            BuildConfig.VERSION_NAME
+        ))
+        Toast.makeText(this, R.string.message_copied, Toast.LENGTH_SHORT).show()
+        return@OnPreferenceClickListener false
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,13 +81,26 @@ class SettingsActivity : ApplicationPreferenceActivity(
     override fun onPreferencesCreated(preferenceFragment: PreferenceFragment) {
         super.onPreferencesCreated(preferenceFragment)
 
+        var preferenceKey = getString(com.smoothie.widgetFactory.R.string.key_updates_enabled)
+        preferenceServiceActive = preferenceFragment.findPreference(preferenceKey)!!
+
+        preferenceKey = getString(R.string.key_settings_preference_group)
+        preferenceGroupSettings = preferenceFragment.findPreference(preferenceKey)!!
+
+        preferenceServiceActive.setOnPreferenceClickListener {
+            updatePreferencesFromServiceStatus()
+            false
+        }
+
+        updatePreferencesFromServiceStatus()
+
         // Right now, integration with KDE Connect requires root privileges,
         // because we need to start a non-exported activity to share clipboard
 
         val kdeConnectInstalled = KdeConnect.isInstalled(this)
         val hasRoot = hasSufficientPrivileges(PrivilegeLevel.Root)
 
-        var preferenceKey = getString(R.string.key_copy_connection_data)
+        preferenceKey = getString(R.string.key_copy_connection_data)
         preferenceCopyData = preferenceFragment.findPreference(preferenceKey)!!
 
         preferenceKey = getString(R.string.key_prefix_connection_data)
@@ -126,6 +143,18 @@ class SettingsActivity : ApplicationPreferenceActivity(
         // This will update the summary using the previously set SummaryProvider
         preferenceKdeConnect.forceUpdate()
         preferencePrefixData.forceUpdate()
+    }
+
+    private fun updatePreferencesFromServiceStatus() {
+        val serviceEnabled = preferenceServiceActive.isChecked
+        preferenceServiceActive.title = getString(
+            if (serviceEnabled)
+                R.string.preference_name_service_active_on
+            else
+                R.string.preference_name_service_active_off
+        )
+
+        preferenceGroupSettings.isVisible = serviceEnabled
     }
 
 }

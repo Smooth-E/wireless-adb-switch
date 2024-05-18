@@ -3,7 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/settings">
+    <SwitchPreferenceCompat
+        android:key="@string/key_updates_enabled"
+        android:title="@string/preference_name_service_active_on"
+        android:defaultValue="true"
+        app:layout="@layout/preference_big_switch"/>
+
+    <Preference
+        android:summary="@string/preference_summary_service_active"
+        app:layout="@layout/preference_summary_only" />
+
+    <PreferenceCategory
+        app:title="@string/settings"
+        android:key="@string/key_settings_preference_group">
 
         <com.smoothie.widgetFactory.preference.slider.SliderPreference
             android:key="@string/key_update_interval"

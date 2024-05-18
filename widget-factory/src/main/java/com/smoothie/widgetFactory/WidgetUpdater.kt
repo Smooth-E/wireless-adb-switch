@@ -19,12 +19,17 @@ class WidgetUpdater : BroadcastReceiver() {
             sharedPreferences: SharedPreferences?,
             key: String?
         ) {
-            if (key != "update_interval")
+            val keyUpdateInterval = context.getString(R.string.key_update_interval)
+            val keyUpdatesEnabled = context.getString(R.string.key_updates_enabled)
+
+            if (key != keyUpdateInterval && key != keyUpdatesEnabled)
                 return
 
             Log.d("WidgetUpdaterSPListener", "Preference updated!")
             disable(context)
-            enable(context)
+
+            if (sharedPreferences?.getBoolean(keyUpdatesEnabled, true) == true)
+                enable(context)
         }
 
     }

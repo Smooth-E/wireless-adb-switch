@@ -10,6 +10,6 @@
 
     <Preference
         android:summary="@string/preference_summary_kde_connect"
-        android:layout="@layout/preference_summary_only"/>
+        app:layout="@layout/preference_summary_only"/>
 
 </PreferenceScreen>

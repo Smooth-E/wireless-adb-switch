@@ -11,7 +11,7 @@
 
     <Preference
         android:summary="@string/preference_explanation_prefix_connection_data"
-        android:layout="@layout/preference_summary_only"/>
+        app:layout="@layout/preference_summary_only"/>
 
     <com.smoothie.wirelessDebuggingSwitch.preference.TextInputPreference
         android:key="@string/key_connection_data_prefix"
