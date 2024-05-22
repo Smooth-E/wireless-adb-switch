@@ -4,18 +4,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <SwitchPreferenceCompat
-        android:key="@string/key_updates_enabled"
-        android:title="@string/preference_name_service_active_on"
+        android:key="@string/key_debugging_enabled"
+        android:title="@string/label_wireless_debugging"
         android:defaultValue="true"
-        app:layout="@layout/preference_big_switch"/>
+        app:layout="@layout/preference_big_switch" />
 
     <Preference
-        android:summary="@string/preference_summary_service_active"
-        app:layout="@layout/preference_summary_only" />
+        android:key="@string/key_connection_details"
+        android:title="Connection details"
+        android:summary="Available at 192.168.0.1:8080"
+        android:icon="@drawable/round_content_copy_24" />
 
     <PreferenceCategory
         app:title="@string/settings"
         android:key="@string/key_settings_preference_group">
+
+        <SwitchPreferenceCompat
+            android:key="@string/key_updates_enabled"
+            android:defaultValue="true"
+            android:title="@string/preference_name_service_active_on"
+            android:summary="@string/preference_summary_service_active"
+            android:icon="@drawable/round_send_time_extension_24" />
 
         <com.smoothie.widgetFactory.preference.slider.SliderPreference
             android:key="@string/key_update_interval"

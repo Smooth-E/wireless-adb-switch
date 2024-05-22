@@ -43,6 +43,9 @@ object WirelessDebugging {
         return Formatter.formatIpAddress(ipAddress)
     }
 
+    /**
+     * Returns connection data in form of `address:port`
+     */
     fun getConnectionData(context: Context): String =
         "${getAddress(context)}:${getPort(context)}"
 

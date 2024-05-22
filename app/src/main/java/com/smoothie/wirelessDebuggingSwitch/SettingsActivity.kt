@@ -5,6 +5,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.Preference.OnPreferenceClickListener
@@ -23,11 +24,31 @@ class SettingsActivity : ApplicationPreferenceActivity(
     R.string.app_name
 ) {
 
+    companion object {
+        private const val TAG = "SettingsActivityLogs"
+    }
+
+    private lateinit var preferenceDebuggingEnabled: SwitchPreferenceCompat
+    private lateinit var preferenceConnectionDetails: Preference
     private lateinit var preferenceServiceActive: SwitchPreferenceCompat
     private lateinit var preferenceGroupSettings: PreferenceGroup
     private lateinit var preferenceCopyData: SwitchPreferenceCompat
     private lateinit var preferencePrefixData: PrimarySwitchPreference
     private lateinit var preferenceKdeConnect: PrimarySwitchPreference
+
+    private var debuggingStatusThread: DebuggingStatusThread? = null
+
+    private val debuggingEnabledClickListener = OnPreferenceClickListener {
+        WirelessDebugging.setEnabled(this, !WirelessDebugging.getEnabled(this))
+        updateDebuggingConnectionDetails()
+        false
+    }
+
+    private val connectionDetailsClickListener = OnPreferenceClickListener {
+        // TODO: Use resource string
+        copyWithToast("Connection details", WirelessDebugging.getConnectionData(this))
+        false
+    }
 
     private val kdeConnectSummaryProvider =
         SummaryProvider<PrimarySwitchPreference> { preference ->
@@ -64,13 +85,8 @@ class SettingsActivity : ApplicationPreferenceActivity(
         }
 
     private val appVersionOnPreferenceClickListener = OnPreferenceClickListener { _ ->
-        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        clipboard.setPrimaryClip(ClipData.newPlainText(
-            getString(R.string.preference_name_app_version),
-            BuildConfig.VERSION_NAME
-        ))
-        Toast.makeText(this, R.string.message_copied, Toast.LENGTH_SHORT).show()
-        return@OnPreferenceClickListener false
+        copyWithToast(getString(R.string.preference_name_app_version), BuildConfig.VERSION_NAME)
+        false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,18 +97,21 @@ class SettingsActivity : ApplicationPreferenceActivity(
     override fun onPreferencesCreated(preferenceFragment: PreferenceFragment) {
         super.onPreferencesCreated(preferenceFragment)
 
-        var preferenceKey = getString(com.smoothie.widgetFactory.R.string.key_updates_enabled)
+        Log.d(TAG, "onPreferencesCreated")
+
+        var preferenceKey = getString(R.string.key_debugging_enabled)
+        preferenceDebuggingEnabled = preferenceFragment.findPreference(preferenceKey)!!
+        preferenceDebuggingEnabled.onPreferenceClickListener = debuggingEnabledClickListener
+
+        preferenceKey = getString(R.string.key_connection_details)
+        preferenceConnectionDetails = preferenceFragment.findPreference(preferenceKey)!!
+        preferenceConnectionDetails.onPreferenceClickListener = connectionDetailsClickListener
+
+        preferenceKey = getString(com.smoothie.widgetFactory.R.string.key_updates_enabled)
         preferenceServiceActive = preferenceFragment.findPreference(preferenceKey)!!
 
         preferenceKey = getString(R.string.key_settings_preference_group)
         preferenceGroupSettings = preferenceFragment.findPreference(preferenceKey)!!
-
-        preferenceServiceActive.setOnPreferenceClickListener {
-            updatePreferencesFromServiceStatus()
-            false
-        }
-
-        updatePreferencesFromServiceStatus()
 
         // Right now, integration with KDE Connect requires root privileges,
         // because we need to start a non-exported activity to share clipboard
@@ -124,10 +143,17 @@ class SettingsActivity : ApplicationPreferenceActivity(
         val preferenceAppVersion = preferenceFragment.findPreference<Preference>(preferenceKey)!!
         preferenceAppVersion.summary = BuildConfig.VERSION_NAME
         preferenceAppVersion.onPreferenceClickListener = appVersionOnPreferenceClickListener
+
+        updateDebuggingConnectionDetails()
     }
 
     override fun onResume() {
         super.onResume()
+
+        Log.d(TAG, "onResume()")
+
+        debuggingStatusThread = DebuggingStatusThread(this)
+        debuggingStatusThread?.start()
 
         if (!this::preferenceKdeConnect.isInitialized || !this::preferencePrefixData.isInitialized)
             return
@@ -145,16 +171,61 @@ class SettingsActivity : ApplicationPreferenceActivity(
         preferencePrefixData.forceUpdate()
     }
 
-    private fun updatePreferencesFromServiceStatus() {
-        val serviceEnabled = preferenceServiceActive.isChecked
-        preferenceServiceActive.title = getString(
-            if (serviceEnabled)
-                R.string.preference_name_service_active_on
-            else
-                R.string.preference_name_service_active_off
-        )
+    override fun onPause() {
+        super.onPause()
 
-        preferenceGroupSettings.isVisible = serviceEnabled
+        if (debuggingStatusThread != null) {
+            debuggingStatusThread!!.interrupt()
+            debuggingStatusThread = null
+        }
+    }
+
+    private fun updateDebuggingConnectionDetails() {
+        val enabled = WirelessDebugging.getEnabled(this)
+
+        preferenceDebuggingEnabled.isChecked = enabled
+        preferenceConnectionDetails.isVisible = enabled
+
+        if (enabled) {
+            val connectionData = WirelessDebugging.getConnectionData(this)
+            // TODO: Use a resource string
+            preferenceConnectionDetails.summary = "Available at $connectionData"
+        }
+
+        Log.d(TAG, "Debugging details updated: $enabled")
+    }
+
+    private fun copyWithToast(label: String, text: String) {
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        clipboard.setPrimaryClip(ClipData.newPlainText(label, text))
+        Toast.makeText(this, R.string.message_copied, Toast.LENGTH_SHORT).show()
+    }
+
+    private class DebuggingStatusThread(private val settingsActivity: SettingsActivity) : Thread() {
+
+        val tag: String = "SettingsActivity.DebuggingStatusThread"
+        val interval: Long = 1000
+
+        override fun run() {
+            while (!isInterrupted) {
+                try {
+                    settingsActivity.runOnUiThread {
+                        settingsActivity.updateDebuggingConnectionDetails()
+                        Log.d(tag, "Debugging switch status updated")
+                    }
+                    sleep(interval)
+                }
+                catch (exception: InterruptedException) {
+                    Log.d(tag, "The thread was interrupted")
+                    interrupt()
+                    break
+                }
+                catch (exception: Exception) {
+                    Log.d(tag, "Failed to update the debugging status.")
+                    Log.d(tag, exception.stackTraceToString())
+                }
+            }
+        }
     }
 
 }

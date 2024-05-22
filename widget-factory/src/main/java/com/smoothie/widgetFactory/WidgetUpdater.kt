@@ -42,7 +42,9 @@ class WidgetUpdater : BroadcastReceiver() {
 
         private var interval = 1
         private var lastPendingIntent: PendingIntent? = null
-        private var enabled = false
+
+        var enabled = false
+            private set
 
         private fun getAlarmManager(context: Context): AlarmManager =
             context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -97,8 +99,10 @@ class WidgetUpdater : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         if (intent?.action == INTENT_ACTION || intent?.action == BOOT_COMPLETED_ACTION) {
-            schedule(context!!)
-            ConfigurableWidget.updateAllWidgets(context)
+            ConfigurableWidget.updateAllWidgets(context!!)
+
+            if (enabled)
+                schedule(context)
         }
     }
 

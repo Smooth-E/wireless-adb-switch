@@ -82,12 +82,21 @@ fun executeShellCommand(
     context: Context? = null,
     requiredPrivilegeLevel: PrivilegeLevel = PrivilegeLevel.Shizuku,
 ): String {
+    val tag = "Utilities.executeShellCommand"
+    Log.d(tag, "Executing a shell command:\n'$command'\nLevel: $requiredPrivilegeLevel")
+
     val privilegeLevel = getPrivilegeLevel(requiredPrivilegeLevel, context)
 
-    if (privilegeLevel == PrivilegeLevel.Root)
-        return Shell.cmd(command).exec().out.joinToString()
-    else if (privilegeLevel == PrivilegeLevel.Shizuku)
-        return ShizukuUtilities.executeCommand(command)
+    if (privilegeLevel == PrivilegeLevel.Root) {
+        val result = Shell.cmd(command).exec().out.joinToString()
+        Log.d(tag, "Executed with Shell. Result: '$result'")
+        return result
+    }
+    else if (privilegeLevel == PrivilegeLevel.Shizuku) {
+        val result = ShizukuUtilities.executeCommand(command)
+        Log.d(tag, "Executed with ShizukuUtilities. Result: '$result'")
+        return result
+    }
 
     val message =
         "Error executing a shell command! Neither Shizuku or root access are present."
