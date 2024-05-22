@@ -45,8 +45,9 @@ class SettingsActivity : ApplicationPreferenceActivity(
     }
 
     private val connectionDetailsClickListener = OnPreferenceClickListener {
-        // TODO: Use resource string
-        copyWithToast("Connection details", WirelessDebugging.getConnectionData(this))
+        val label = getString(R.string.preference_name_connection_details)
+        val text = WirelessDebugging.getConnectionData(this)
+        copyWithToast(label, text)
         false
     }
 
@@ -188,8 +189,8 @@ class SettingsActivity : ApplicationPreferenceActivity(
 
         if (enabled) {
             val connectionData = WirelessDebugging.getConnectionData(this)
-            // TODO: Use a resource string
-            preferenceConnectionDetails.summary = "Available at $connectionData"
+            val message = getString(R.string.preference_summary_connection_details)
+            preferenceConnectionDetails.summary = "$message $connectionData"
         }
 
         Log.d(TAG, "Debugging details updated: $enabled")

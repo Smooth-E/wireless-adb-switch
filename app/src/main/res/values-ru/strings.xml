@@ -87,6 +87,8 @@
     <string name="qs_tile_subtitle_enable_wifi_first">Сначала включите WIFI</string>
     <string name="qs_tile_subtitle_no_connection_data">Нет информации</string>
     <string name="qs_tile_subtitle_missing_privileges">Прочтите инструкцию в приложении.</string>
+    <string name="preference_name_connection_details">Детали подключения</string>
+    <string name="preference_summary_connection_details">Доступно по адресу</string>
     <string name="preference_name_copy_connection_data">Копировать информацию</string>
     <string name="preference_switch_name_copy_connection_data">Копировать информацию о соединениии при вкдючении беспроводной отладки</string>
     <string name="preference_summary_root_for_kde_connect">Для интеграции с KDE Connect необходим root-доступ</string>

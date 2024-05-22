@@ -66,9 +66,8 @@
     <string name="state_waiting">Waiting</string>
     <string name="state_disabled">Disabled</string>
 
-    <string name="preference_name_service_active_on">Updates enabled</string>
-    <string name="preference_name_service_active_off">Updates disabled</string>
-    <string name="preference_summary_service_active">When updates are enabled, WADBS will continuously monitor the state of wireless debugging and update widgets accordingly.</string>
+    <string name="preference_name_connection_details">Connection details</string>
+    <string name="preference_summary_connection_details">Available at</string>
 
     <string name="preference_name_copy_connection_data">Copy connection data</string>
     <string name="preference_switch_name_copy_connection_data">Put connection data into the clipboard after enabling wireless debugging</string>

@@ -3,6 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <SwitchPreferenceCompat
+        android:key="@string/key_updates_enabled"
+        android:title="@string/preference_name_widget_updates"
+        android:summary="@string/preference_summary_widget_updates"
+        android:icon="@drawable/round_sync_24"
+        android:defaultValue="true"/>
+
     <com.smoothie.widgetFactory.preference.slider.SliderPreference
         app:key="@string/key_update_interval"
         app:title="@string/preference_name_update_interval"

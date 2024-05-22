@@ -2,6 +2,8 @@
 <resources>
     <string name="settings">Настройки</string>
     <string name="header_widget_configuration">Конфигурация виджета</string>
+    <string name="preference_name_widget_updates">Обновление виджетов</string>
+    <string name="preference_summary_widget_updates">Периодически обновлять виджеты</string>
     <string name="preference_name_update_interval">Интервал обновления виджетов</string>
     <string name="preference_summary_update_interval">Настройте, как часто виджеты будут обновлятся</string>
 </resources>
