@@ -34,6 +34,7 @@
     <string name="title_more_settings">More settings</string>
     <string name="title_wifi_disabled">Wi-Fi is disabled</string>
     <string name="title_debugging_disabled">Debugging is disabled</string>
+    <string name="title_updates_disabled">Updates disabled</string>
 
     <string name="hint_refresh_shizuku">Refresh Shizuku availability</string>
 
@@ -53,6 +54,7 @@
     <string name="message_debugging_disabled">Shortcuts are not available while Wireless Debugging is disabled.</string>
     <string name="message_wifi_disabled">Wireless Debugging is unavailable while Wi-Fi is disabled.</string>
     <string name="message_before_adding_widgets">WADBS requires some additional configuration. Please, finish setting it up before managing widgets.</string>
+    <string name="message_updates_disabled">This widget requires periodical updates</string>
 
     <!-- notification_title is used as a channel name as well -->
     <!-- notification_title and notification_message_long is also used as an error message in One UI expanded QS view -->
@@ -113,6 +115,8 @@
     <string name="widget_basic_description">This widget provides a switch to enable Android\'s Wireless Debugging feature.</string>
 
     <string name="widget_information_name">Connection Information</string>
+    <string name="widget_information_short_name">Wireless ADB</string>
+    <string name="widget_information_button_update">Update</string>
     <string name="widget_information_description">Displays current Wireless Debugging connection information and allows to copy it.</string>
 
     <string name="qs_tile_label_disabled">Enable debugging</string>

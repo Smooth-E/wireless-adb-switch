@@ -72,6 +72,11 @@ class WidgetUpdater : BroadcastReceiver() {
             Log.d(TAG, "Scheduled alarm for $interval seconds")
         }
 
+        fun forceUpdate(context: Context) {
+            Log.d(TAG, "forceUpdate()")
+            createPendingIntent(context).send()
+        }
+
         fun enable(context: Context) {
             if (enabled) {
                 Log.d(TAG, "Already enabled!")

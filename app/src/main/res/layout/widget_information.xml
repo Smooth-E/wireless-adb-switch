@@ -7,15 +7,20 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:background="#000"
-    tools:ignore="UseAppTint">
+    tools:ignore="UseAppTint"
+    tools:layout_height="120dp"
+    tools:layout_width="240dp">
 
     <include layout="@layout/widget_background" />
 
+    <!-- Wireless debugging is disabled -->
     <FrameLayout
         android:visibility="gone"
         android:id="@+id/data_disabled"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -43,12 +48,39 @@
                 android:gravity="center"
                 android:layout_marginTop="7dp" />
 
+            <LinearLayout
+                android:id="@+id/button_update_disabled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/status_enabled">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/round_sync_24"
+                    android:tint="@color/colorSurface"
+                    android:importantForAccessibility="no" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/widget_information_button_update"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorSurface"
+                    android:paddingEnd="6dp"/>
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </FrameLayout>
 
+    <!-- Wireless debugging is active -->
     <RelativeLayout
-        tools:visibility="gone"
+        tools:visibility="visible"
         android:id="@+id/data_enabled"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,13 +89,63 @@
         android:focusable="true">
 
         <TextView
+            android:visibility="visible"
             android:id="@+id/text_view_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_connection_data"
             android:gravity="center"
             android:textColor="@color/colorOnSurface"
-            android:layout_marginTop="7dp" />
+            android:layout_marginTop="6dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:lines="1"
+            android:layout_alignParentStart="true" />
+
+
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/text_view_short_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/widget_information_short_name"
+            android:gravity="start"
+            android:textColor="@color/colorOnSurface"
+            android:layout_marginTop="6dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:lines="1"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/button_update"/>
+
+        <LinearLayout
+            android:visibility="invisible"
+            android:id="@+id/button_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_alignParentEnd="true"
+            android:padding="5dp"
+            android:background="@drawable/status_enabled">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_sync_24"
+                android:tint="@color/colorSurface"
+                android:importantForAccessibility="no" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/widget_information_button_update"
+                android:textSize="12sp"
+                android:textColor="@color/colorSurface"
+                android:paddingEnd="6dp"/>
+
+        </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"

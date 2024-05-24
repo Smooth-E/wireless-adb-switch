@@ -6,10 +6,12 @@ import android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_IDS
 import android.content.*
 import android.util.Log
 import android.view.View.GONE
+import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.RemoteViews
 import android.widget.Toast
 import com.smoothie.widgetFactory.ConfigurableWidget
+import com.smoothie.widgetFactory.WidgetUpdater
 import com.smoothie.wirelessDebuggingSwitch.R
 import com.smoothie.wirelessDebuggingSwitch.WirelessDebugging
 import com.smoothie.wirelessDebuggingSwitch.getLightOrDarkTextColor
@@ -19,15 +21,27 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
 
     companion object {
         private const val TAG = "InformationWidget"
-        private const val EXTRA_FLAG = "COPY_CONNECTION_INFORMATION"
+        private const val EXTRA_FLAG_COPY = "COPY_CONNECTION_INFORMATION"
+        private const val REQUEST_CODE_COPY = 0
+        private const val EXTRA_FLAG_UPDATE = "UPDATE_CONNECTION_INFORMATION"
+        private const val REQUEST_CODE_UPDATE = 1
         private const val EXTRA_ADDRESS = "ADDRESS"
         private const val EXTRA_PORT = "PORT"
         private const val STATUS_ERROR = "ERROR"
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        if (!resolvePossibleCopyIntent(context, intent))
-            super.onReceive(context, intent)
+        val extraCopy = intent?.getBooleanExtra(EXTRA_FLAG_COPY, false)
+        val extraUpdate = intent?.getBooleanExtra(EXTRA_FLAG_UPDATE, false)
+        Log.d(TAG, "onReceive(): EXTRA_COPY: $extraCopy, EXTRA_UPDATE: $extraUpdate")
+
+        if (resolvePossibleCopyIntent(context, intent))
+            return
+
+        if (resolvePossibleUpdateIntent(context, intent))
+            return
+
+        super.onReceive(context, intent)
     }
 
     override fun generateRemoteViews(
@@ -45,8 +59,13 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
         views.setViewVisibility(R.id.data_enabled, if (debuggingEnabled) VISIBLE else GONE)
         views.setViewVisibility(R.id.data_disabled, if (!debuggingEnabled) VISIBLE else GONE)
 
-        if (!debuggingEnabled)
+        if (!debuggingEnabled) {
+            val visibility = if (WidgetUpdater.enabled) GONE else VISIBLE
+            views.setViewVisibility(R.id.button_update_disabled, visibility)
+            val pendingIntent = createUpdatePendingIntent(context, widgetId)
+            views.setOnClickPendingIntent(R.id.data_disabled, pendingIntent)
             return views
+        }
 
         var connectionDataError = false
         var address: String
@@ -72,29 +91,63 @@ class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name)
         views.setTextColor(R.id.text_view_status, textColor)
         views.setTextColor(R.id.text_view_name, textColor)
 
-        val intent = Intent(ACTION_APPWIDGET_UPDATE)
-        intent.component = ComponentName(context, this::class.java.name)
-        intent.putExtra(EXTRA_APPWIDGET_IDS, intArrayOf(widgetId))
-        intent.putExtra(EXTRA_FLAG, true)
-        intent.putExtra(EXTRA_ADDRESS, if (connectionDataError) STATUS_ERROR else address)
-        intent.putExtra(EXTRA_PORT, if (connectionDataError) STATUS_ERROR else port)
+        val copyIntent = createReceivableIntent(context, widgetId)
+        copyIntent.putExtra(EXTRA_FLAG_COPY, true)
+        copyIntent.putExtra(EXTRA_ADDRESS, if (connectionDataError) STATUS_ERROR else address)
+        copyIntent.putExtra(EXTRA_PORT, if (connectionDataError) STATUS_ERROR else port)
 
         val intentFlags = PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, intentFlags)
-        views.setOnClickPendingIntent(R.id.data_enabled, pendingIntent)
+        val copyPendingIntent =
+            PendingIntent.getBroadcast(context, REQUEST_CODE_COPY, copyIntent, intentFlags)
+        views.setOnClickPendingIntent(R.id.data_enabled, copyPendingIntent)
+
+        if (WidgetUpdater.enabled) {
+            views.setViewVisibility(R.id.text_view_name, VISIBLE)
+            views.setViewVisibility(R.id.text_view_short_name, GONE)
+            views.setViewVisibility(R.id.button_update, GONE)
+            return views
+        }
+
+        views.setViewVisibility(R.id.text_view_name, INVISIBLE)
+        views.setViewVisibility(R.id.text_view_short_name, VISIBLE)
+        views.setViewVisibility(R.id.button_update, VISIBLE)
+
+        val updatePendingIntent = createUpdatePendingIntent(context, widgetId)
+        views.setOnClickPendingIntent(R.id.button_update, updatePendingIntent)
 
         return views
     }
 
+    private fun createUpdatePendingIntent(context: Context, widgetId: Int): PendingIntent {
+        val intent = createReceivableIntent(context, widgetId)
+        intent.putExtra(EXTRA_FLAG_UPDATE, true)
+        val flags = PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        return PendingIntent.getBroadcast(context, REQUEST_CODE_UPDATE, intent, flags)
+    }
+
+    private fun createReceivableIntent(context: Context, widgetId: Int): Intent {
+        val intent = Intent(ACTION_APPWIDGET_UPDATE)
+        intent.component = ComponentName(context, this::class.java.name)
+        intent.putExtra(EXTRA_APPWIDGET_IDS, intArrayOf(widgetId))
+        return intent
+    }
+
+    private fun resolvePossibleUpdateIntent(context: Context?, intent: Intent?): Boolean {
+        val extraPresent = intent?.getBooleanExtra(EXTRA_FLAG_UPDATE, false)
+        if (context != null && extraPresent == true) {
+            Log.d(TAG, "Force update intent caught!")
+            WidgetUpdater.forceUpdate(context)
+            return true
+        }
+
+        return false
+    }
+
     private fun resolvePossibleCopyIntent(context: Context?, intent: Intent?): Boolean {
         val extras = intent?.extras
-
-        if (intent?.extras?.getBoolean(EXTRA_FLAG) == true)
-            Log.d(TAG, "Extra is there")
-
-        if (context == null || extras == null || !extras.getBoolean(EXTRA_FLAG)) {
+        val extraPresent = intent?.getBooleanExtra(EXTRA_FLAG_COPY, false) == true
+        if (context == null || extras == null || !extraPresent)
             return false
-        }
 
         val address = extras.getString(EXTRA_ADDRESS)
         val port = extras.getString(EXTRA_PORT)

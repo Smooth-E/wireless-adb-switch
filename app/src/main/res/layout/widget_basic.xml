@@ -7,7 +7,9 @@
     android:clickable="true"
     android:focusable="true"
     android:id="@+id/clickable"
-    tools:background="#000">
+    tools:background="#000"
+    tools:layout_width="120dp"
+    tools:layout_height="120dp">
 
     <include layout="@layout/widget_background" />
 

@@ -150,3 +150,16 @@ fun getMissingPrivilegesRemoteViews(context: Context, preferences: SharedPrefere
     applyRemoteViewsParameters(context, preferences, views)
     return views
 }
+
+fun getDisabledUpdatesRemoteViews(
+    context: Context,
+    preferences: SharedPreferences
+): RemoteViews {
+    val views = getMissingPrivilegesRemoteViews(context, preferences)
+    val header = context.getString(R.string.title_updates_disabled)
+    val description = context.getString(R.string.message_updates_disabled)
+    views.setImageViewResource(R.id.image_view_status, R.drawable.round_sync_disabled_24)
+    views.setTextViewText(R.id.text_view_header, header)
+    views.setTextViewText(R.id.text_view_description, description)
+    return views
+}
