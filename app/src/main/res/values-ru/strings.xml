@@ -3,7 +3,7 @@
     <string name="label_wireless_debugging">Беспроводная отладка</string>
     <string name="label_wireless_debugging_two_lines">Беспроводная\nОтладка</string>
     <string name="label_disconnected">Отключено</string>
-    <string name="label_connection_data">Информация о подключении</string>
+    <string name="label_connection_details">Инфо о подключении</string>
     <string name="label_port">Порт:</string>
     <string name="label_address">Адрес:</string>
     <string name="label_error">Ошибка</string>

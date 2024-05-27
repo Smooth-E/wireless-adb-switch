@@ -94,7 +94,7 @@ object WirelessDebugging {
             else
                 connectionInfo
 
-        val clipboardLabel = context.getString(R.string.label_connection_data)
+        val clipboardLabel = context.getString(R.string.label_connection_details)
         copyText(context, clipboardLabel, connectionData)
 
         preferenceKey = context.getString(R.string.key_enable_kde_connect)

@@ -9,7 +9,7 @@
     <string name="label_wireless_debugging">Wireless debugging</string>
     <string name="label_wireless_debugging_two_lines">Wireless\nDebugging</string>
     <string name="label_disconnected">Disconnected</string>
-    <string name="label_connection_data">Connection data</string>
+    <string name="label_connection_details">Connection details</string>
     <string name="label_port">Port:</string>
     <string name="label_address">Address:</string>
     <string name="label_error">Error</string>

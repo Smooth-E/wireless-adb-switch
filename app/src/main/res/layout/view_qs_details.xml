@@ -19,7 +19,7 @@
             android:id="@+id/header_connection_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/label_connection_data"
+            android:text="@string/preference_name_connection_details"
             style="@style/TextAppearance.Material3.TitleMedium"
             android:layout_toStartOf="@id/button_container_copy_connection_data"
             android:layout_alignParentTop="true"/>

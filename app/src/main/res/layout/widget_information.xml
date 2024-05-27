@@ -93,13 +93,14 @@
             android:id="@+id/text_view_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/label_connection_data"
+            android:text="@string/label_connection_details"
             android:gravity="center"
             android:textColor="@color/colorOnSurface"
             android:layout_marginTop="6dp"
             android:paddingStart="6dp"
             android:paddingEnd="6dp"
             android:lines="1"
+            android:ellipsize="marquee"
             android:layout_alignParentStart="true" />
 
 
