@@ -28,8 +28,11 @@ class WidgetUpdater : BroadcastReceiver() {
             Log.d("WidgetUpdaterSPListener", "Preference updated!")
             disable(context)
 
+            // Condition: update rate has changed and updater is enabled or updater just got enabled
             if (sharedPreferences?.getBoolean(keyUpdatesEnabled, true) == true)
                 enable(context)
+            else if (key == keyUpdatesEnabled) // Condition: updater just got disabled
+                forceUpdate(context)
         }
 
     }

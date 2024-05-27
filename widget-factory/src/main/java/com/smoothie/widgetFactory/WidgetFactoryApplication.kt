@@ -16,10 +16,14 @@ open class WidgetFactoryApplication : Application() {
 
         sharedPreferenceChangeListener =
             WidgetUpdater.OnSharedPreferencesChangeListener(this)
-        PreferenceManager.getDefaultSharedPreferences(this)
-            .registerOnSharedPreferenceChangeListener(sharedPreferenceChangeListener)
 
-        WidgetUpdater.enable(this)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        preferences.registerOnSharedPreferenceChangeListener(sharedPreferenceChangeListener)
+
+        if (preferences.getBoolean(getString(R.string.key_updates_enabled), true))
+            WidgetUpdater.enable(this)
+        else
+            WidgetUpdater.forceUpdate(this)
     }
 
 }
