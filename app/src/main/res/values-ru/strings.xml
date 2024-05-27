@@ -93,4 +93,8 @@
     <string name="preference_switch_name_copy_connection_data">Копировать информацию о соединениии при включении беспроводной отладки</string>
     <string name="preference_summary_root_for_kde_connect">Для интеграции с KDE Connect необходим root-доступ</string>
     <string name="preference_summary_need_copying_data">Сначала включите копирование информации</string>
+    <string name="title_updates_disabled">Обновления отключены</string>
+    <string name="message_updates_disabled">Этому виджету нужны пер. обновления</string>
+    <string name="widget_information_short_name">Б/п отладка</string>
+    <string name="widget_information_button_update">Обновить</string>
 </resources>
