@@ -126,19 +126,11 @@ class SettingsActivity : ApplicationPreferenceActivity(
         preferenceKey = getString(R.string.key_prefix_connection_data)
         preferencePrefixData = preferenceFragment.findPreference(preferenceKey)!!
         preferencePrefixData.summaryProvider = prefixConnectionDataSummaryProvider
-        preferencePrefixData.setOnPreferenceClickListener {
-            startActivity(Intent(baseContext, ActivityPreferencePrefix::class.java))
-            false
-        }
 
         preferenceKey = getString(R.string.key_enable_kde_connect)
         preferenceKdeConnect = preferenceFragment.findPreference(preferenceKey)!!
         preferenceKdeConnect.isEnabled = kdeConnectInstalled && hasRoot
         preferenceKdeConnect.summaryProvider = kdeConnectSummaryProvider
-        preferenceKdeConnect.onPreferenceClickListener = OnPreferenceClickListener {
-            startActivity(Intent(baseContext, ActivityPreferenceKdeConnect::class.java))
-            false
-        }
 
         preferenceKey = getString(R.string.key_app_version)
         val preferenceAppVersion = preferenceFragment.findPreference<Preference>(preferenceKey)!!

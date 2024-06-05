@@ -71,6 +71,14 @@
     <string name="preference_name_connection_details">Connection details</string>
     <string name="preference_summary_connection_details">Available at</string>
 
+    <string name="preference_name_enable_on_boot">Wireless debugging</string>
+    <string name="preference_switch_name_enable_on_boot">Enable on boot</string>
+    <string name="preference_summary_enable_on_boot">Enable wireless debugging right after system has booted up</string>
+    <string name="preference_explanation_enable_on_boot">When your phone boots, you are not connected to a WiFi network immediately. WADBS will wait for a connection, enable wireless debugging and perform the sync (if enabled). If after the specified time your device has still not connected to any network, WADBS will stop the monitoring process. You can always enable wireless debugging manually.</string>
+
+    <string name="preference_name_after_boot_wait_time">Waiting time</string>
+    <string name="preference_summary_after_boot_wait_time">Amount of time WADBS should wait for a WiFi connection after the boot is completed</string>
+
     <string name="preference_name_copy_connection_data">Copy connection data</string>
     <string name="preference_switch_name_copy_connection_data">Put connection data into the clipboard after enabling wireless debugging</string>
 

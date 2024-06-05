@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        android:key="@string/key_enable_on_boot"
+        android:defaultValue="false"
+        android:title="@string/preference_switch_name_enable_on_boot"
+        app:layout="@layout/preference_big_switch" />
+
+    <com.smoothie.widgetFactory.preference.slider.SliderPreference
+        android:key="@string/key_after_boot_wait_time"
+        android:icon="@drawable/round_av_timer_24"
+        android:title="@string/preference_name_after_boot_wait_time"
+        android:summary="@string/preference_summary_after_boot_wait_time"
+        android:defaultValue="30"
+        android:valueFrom="30"
+        android:valueTo="60"
+        app:displayWholeNumbers="true"
+        app:labelFormatter="suffix_int"
+        app:labelFormatterSuffix="s" />
+
+    <Preference
+        android:summary="@string/preference_explanation_enable_on_boot"
+        android:icon="@drawable/info_outline_white_24dp"
+        android:selectable="false" />
+
+</androidx.preference.PreferenceScreen>

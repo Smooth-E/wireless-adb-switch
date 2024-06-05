@@ -71,7 +71,7 @@
     <string name="preference_summary_use_light_text">Использование светлого текста может помочь выделить его на темных обоях при использовании полупрозрачного фона.</string>
     <string name="preference_category_other">Прочее</string>
     <string name="preference_name_github">GitHub</string>
-    <string name="preference_summary_github">Посетите страницу этого проекта на GitHub</string>
+    <string name="preference_summary_github">Посетите страницу проекта на GitHub</string>
     <string name="preference_name_report_issue">Оставить отзыв</string>
     <string name="preference_summary_report_issue">Сообщите о проблеме или предложите новый функционал</string>
     <string name="preference_name_app_version">Версия приложения</string>
@@ -89,6 +89,11 @@
     <string name="qs_tile_subtitle_missing_privileges">Прочтите инструкцию в приложении.</string>
     <string name="preference_name_connection_details">Детали подключения</string>
     <string name="preference_summary_connection_details">Доступно по адресу</string>
+    <string name="preference_switch_name_enable_on_boot">Включать после загрузки</string>
+    <string name="preference_summary_enable_on_boot">Включать отладку сразу после загрузки системы</string>
+    <string name="preference_explanation_enable_on_boot">Ваше устройство обычно не подключено к сети WiFi сразу после загрузки. WADBS подождет, пока подключение появится, включит беспроводную отладку и проведет синхронизацию (если включено). Если ваше устройство не было подключено к WiFi в течение указанного времени, WADBS остановит мониторинг. Вы всегда можете включить беспроводную отладку самостоятельно.</string>
+    <string name="preference_name_after_boot_wait_time">Время ожидания</string>
+    <string name="preference_summary_after_boot_wait_time">Количество времени на протяжении которого WADBS будет ожидать WiFi соединения после загрузки системы</string>
     <string name="preference_name_copy_connection_data">Копировать информацию</string>
     <string name="preference_switch_name_copy_connection_data">Копировать информацию о соединениии при включении беспроводной отладки</string>
     <string name="preference_summary_root_for_kde_connect">Для интеграции с KDE Connect необходим root-доступ</string>
@@ -97,4 +102,5 @@
     <string name="message_updates_disabled">Этому виджету нужны пер. обновления</string>
     <string name="widget_information_short_name">Б/п отладка</string>
     <string name="widget_information_button_update">Обновить</string>
+    <string name="preference_name_enable_on_boot">Беспроводная отладка</string>
 </resources>

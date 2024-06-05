@@ -2,6 +2,8 @@
 <resources>
     <string translatable="false" name="key_debugging_enabled">debugging_enabled</string>
     <string translatable="false" name="key_connection_details">connection_details</string>
+    <string translatable="false" name="key_enable_on_boot">enable_on_boot</string>
+    <string translatable="false" name="key_after_boot_wait_time">after_boot_wait_time</string>
     <string translatable="false" name="key_skip_permission_activity">skip_permissions_activity</string>
     <string translatable="false" name="key_settings_preference_group">settings_preference_group</string>
     <string translatable="false" name="key_copy_connection_data">copy_connection_data</string>
