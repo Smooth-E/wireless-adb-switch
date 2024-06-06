@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="label_wireless_debugging">无线调试</string>
+    <string name="label_wireless_debugging_two_lines">无线\n调试</string>
+    <string name="label_disconnected">断开</string>
+    <string name="label_connection_data">连接数据</string>
+    <string name="label_port">端口:</string>
+    <string name="label_address">地址:</string>
+    <string name="label_error">错误</string>
+    <string name="label_copy">复制</string>
+    <string name="label_grant_permission">授予权限</string>
+    <string name="label_granted">已授予</string>
+    <string name="label_not_needed">不需要</string>
+    <string name="label_setup_shizuku">设置 Shizuku</string>
+    <string name="label_continue">继续</string>
+    <string name="label_got_it">知道了！</string>
+    <string name="label_open_magisk">打开 Magisk</string>
+    <string name="label_restart">重新启动</string>
+    <string name="label_connect">连接</string>
+
+    <string name="title_additional_setup">重新启动</string>
+    <string name="title_root_access">Root 访问</string>
+    <string name="title_notifications">通知</string>
+    <string name="title_root_access_notifications">Root 访问通知</string>
+    <string name="title_instant_connection">即时连接</string>
+    <string name="title_more_settings">更多设置</string>
+    <string name="title_wifi_disabled">Wi-Fi 已禁用</string>
+    <string name="title_debugging_disabled">调试已禁用</string>
+
+    <string name="hint_refresh_shizuku">刷新 Shizuku 可用性</string>
+
+    <string name="message_failed_sending_clipboard">发送剪贴板失败！</string>
+    <string name="message_error_copying_connection_data">"复制连接信息出错！\n    "</string>
+    <string name="message_copied">已复制！</string>
+    <string name="message_no_way_to_work">root 访问和 Shizuku 都无法使用。</string>
+    <string name="message_need_at_least_shizuku">您需要提供 root 访问权限或使用 Shizuku 的权限。</string>
+    <string name="message_welcome">欢迎使用 WADBS，这款小巧的配套应用程序能让您的开发生活变得更加轻松！在开始之前，请授予一些必要的权限。</string>
+    <string name="message_explain_notifications">WADBS 遇到错误时会显示通知，错误通常是因为缺少所需的权限。</string>
+    <string name="message_explain_root_access">Root 权限允许 WADBS 更改无线调试状态、收集连接数据并与 KDE Connect 交互，从而通过本地网络将安卓设备与电脑即时配对。</string>
+    <string name="message_explain_shizuku">除了 Root 访问权限外，WADBS 还可以利用 Shizuku 获得所需的权限集。请注意，KDE Connect 集成不能与 Shizuku 一起使用。</string>
+    <string name="message_grant_permission_before_leaving">请提供所有必要的权限，然后点击 “继续”。</string>
+    <string name="message_disable_magisk_notification">每当某个应用程序被授予 root 访问权限时，Magisk 就会显示提示。WADBS 会经常检查设备上的无线调试状态，以更新其小部件（你可以在设置中编辑间隔时间）。你可以在“超级用户”选项卡中禁用 Magisk 的 root 访问通知（点击列表中的 WADBS 可查看更多选项）。</string>
+    <string name="message_kde_connect_ready">KDE Connect 已准备就绪。</string>
+    <string name="message_more_settings_description">在应用程序中调整更多特定设置。</string>
+    <string name="message_debugging_disabled">禁用无线调试时，快捷方式不可用。</string>
+    <string name="message_wifi_disabled">禁用 Wi-Fi 时，无线调试不可用。</string>
+
+
+    <string name="notification_channel_description">当 WADBS 缺少足够权限（root 访问权限或 Shizuku）时发送通知</string>
+    <string name="notification_title">缺少足够的权限</string>
+    <string name="notification_message_short">展开此通知以了解更多信息。</string>
+    <string name="notification_message_long">WADBS 需要 root 权限或使用 Shizuku 的权限。目前它似乎不具备这些权限。确保最低权限级别并重新启动应用程序。</string>
+    <string name="notification_button">重新启动以刷新权限</string>
+
+    <string name="state_enabled">已启用</string>
+    <string name="state_waiting">等待中</string>
+    <string name="state_disabled">已禁用</string>
+
+    <string name="preference_summary_need_kde_connect">未安装 KDE Connect</string>
+    <string name="preference_summary_need_kde_connect_integration">首先启用 KDE Connect 集成。</string>
+
+    <string name="preference_name_kde_connect">KDE Connect 集成</string>
+    <string name="preference_switch_name_kde_connect">启用集成</string>
+    <string name="preference_summary_kde_connect">如果启用此选项，当您使用窗口小部件启用无线调试时，您的剪贴板将与 KDE Connect 同步。必须安装 KDE Connect 才能运行。</string>
+
+    <string name="preference_name_prefix_connection_data">前缀连接数据</string>
+    <string name="preference_switch_name_prefix_connection_data">启用前缀</string>
+    <string name="preference_explanation_prefix_connection_data">如果启用此选项，连接数据将以下面定义的字符串作为前缀。这样，用户脚本就可以将其从其他剪贴板数据中分离出来，并自动与设备连接。必须安装 KDE Connect 才能使用。</string>
+
+    <string name="preference_name_connection_data_prefix">前缀</string>
+    <string name="preference_summary_connection_data_prefix">为自定义脚本定义前缀</string>
+
+    <string name="preference_name_background_transparency">背景透明度</string>
+    <string name="preference_summary_background_transparency">指定此窗口小部件的透明程度。</string>
+
+    <string name="preference_name_corner_radius">圆角半径</string>
+    <string name="preference_summary_corner_radius">指定窗口小部件背景的圆角。圆角半径是相对于系统默认的窗口小部件背景角半径计算的</string>
+
+    <string name="preference_name_container_color">使用多彩背景</string>
+    <string name="preference_summary_container_color">选择在窗口小部件背景中使用表面色还是容器色。</string>
+
+    <string name="preference_name_use_light_text">浅色文字</string>
+    <string name="preference_summary_use_light_text">是否使用浅色文字。在深色壁纸上使用半透明背景时，该选项可提高可读性。</string>
+
+    <string name="preference_category_other">其他</string>
+
+    <string name="preference_name_github">GitHub</string>
+    <string name="preference_summary_github">访问该项目在 GitHub 上的页面</string>
+
+    <string name="preference_name_report_issue">打开问题</string>
+    <string name="preference_summary_report_issue">报告错误或建议功能</string>
+
+    <string name="preference_name_app_version">应用版本</string>
+
+    <string name="widget_basic_name">开关</string>
+    <string name="widget_basic_description">该部件提供了一个开关，用于启用 Android 的无线调试功能。</string>
+
+    <string name="widget_information_name">连接信息</string>
+    <string name="widget_information_description">显示当前无线调试连接信息并允许复制。</string>
+
+    <string name="qs_tile_label_disabled">启用调试</string>
+    <string name="qs_tile_label_enabled">禁用调试</string>
+    <string name="qs_tile_label_unavailable">无法调试</string>
+    <string name="qs_tile_label_missing_privileges">特权缺失</string>
+    <string name="qs_tile_subtitle_hold_for_settings">保持设置</string>
+    <string name="qs_tile_subtitle_enable_wifi_first">首先启用 Wi-Fi</string>
+    <string name="qs_tile_subtitle_no_connection_data">无连接数据</string>
+    <string name="qs_tile_subtitle_missing_privileges">有关说明，请参阅应用程序</string>
+
+</resources>
