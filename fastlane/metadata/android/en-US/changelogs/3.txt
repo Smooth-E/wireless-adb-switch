@@ -1,0 +1,8 @@
+This release brings several quality of life features and some bug fixes. Here is the list:
+
+- Add option to automatically enable wireless debugging on boot
+- Add option to disable widget updates (in case you do not have any widgets or if you need better battery life)
+- Add option to copy connection data without syncing it through KDE Connect
+- State on the settings screen that KDE Connect integration requires root privileges
+- Use translucent activity for widget configuration to show wallpapers on the background. WADBS no longer requires the storage permission!
+- Notify user about missing privileges when trying to configure a widget
