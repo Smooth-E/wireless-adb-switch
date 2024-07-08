@@ -1,0 +1,5 @@
+Esta é uma versão inicial do app. Aqui está o que você pode fazer com isso:
+
+- Crie e personalize widgets úteis na tela inicial
+- Use um prático botão de alternância de configurações rápidas para a Depuração por Wi-Fi
+- Pareie instantaneamente seus dispositivos usando o KDE Connect e alguns scripts Python (leia mais no readme do repositório)

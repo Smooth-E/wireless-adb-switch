@@ -46,7 +46,7 @@
     <string name="message_welcome">Welcome to WADBS, a small companion app that makes your life as a developer much easier! Before you start, please, grant some necessary permissions.</string>
     <string name="message_explain_notifications">WADBS will display a notification when it encounters an error which is usually because it lacks a needed set of privileges.</string>
     <string name="message_explain_root_access">Root access allows WADBS to change the state of Wireless Debugging, gather connection data and interact with KDE Connect to instantly pair your Android device with your PC via local network.\nThis permission is optional if you use Shizuku.</string>
-    <string name="message_explain_shizuku">Alternatively to Root access WADBS can utilize Shizuku to gain the needed set of privileges. Note that KDE Connect integration does not work with Shizuku.</string>
+    <string name="message_explain_shizuku">Alternatively to root access WADBS can utilize Shizuku to gain the needed set of privileges. Note that KDE Connect integration does not work with Shizuku.</string>
     <string name="message_grant_permission_before_leaving">Grant all of the required permissions and then tap \"Continue\".</string>
     <string name="message_disable_magisk_notification">Magisk displays a toast whenever some app is granted root access. WADBS frequently checks the state of Wireless Debugging on your device to update its widgets (you can edit the interval in settings). This makes Magisk\'s notifications somewhat annoying.\n\nYou can disable Magisk\'s root access notifications from the \"Superuser\" tab (tap on WADBS in the list there to see more options for it).</string>
     <string name="message_kde_connect_ready">KDE Connect is ready.</string>
@@ -74,10 +74,10 @@
     <string name="preference_name_enable_on_boot">Wireless debugging</string>
     <string name="preference_switch_name_enable_on_boot">Enable on boot</string>
     <string name="preference_summary_enable_on_boot">Enable wireless debugging right after system has booted up</string>
-    <string name="preference_explanation_enable_on_boot">When your phone boots, you are not connected to a WiFi network immediately. WADBS will wait for a connection, enable wireless debugging and perform the sync (if enabled). If after the specified time your device has still not connected to any network, WADBS will stop the monitoring process. You can always enable wireless debugging manually.</string>
+    <string name="preference_explanation_enable_on_boot">When your phone boots, you are not connected to a Wi-Fi network immediately. WADBS will wait for a connection, enable wireless debugging and perform the sync (if enabled). If after the specified time your device has still not connected to any network, WADBS will stop the monitoring process. You can always enable wireless debugging manually.</string>
 
     <string name="preference_name_after_boot_wait_time">Waiting time</string>
-    <string name="preference_summary_after_boot_wait_time">Amount of time WADBS should wait for a WiFi connection after the boot is completed</string>
+    <string name="preference_summary_after_boot_wait_time">Amount of time WADBS should wait for a Wi-Fi connection after the boot is completed</string>
 
     <string name="preference_name_copy_connection_data">Copy connection data</string>
     <string name="preference_switch_name_copy_connection_data">Put connection data into the clipboard after enabling wireless debugging</string>
@@ -95,13 +95,13 @@
     <string name="preference_explanation_prefix_connection_data">If this option is enabled, connection data will be prefixed with a string defined below. This allows user scripts to separate it from other clipboard data and automatically connect with your device.</string>
 
     <string name="preference_name_connection_data_prefix">Prefix</string>
-    <string name="preference_summary_connection_data_prefix">Define  prefix for your custom scripts</string>
+    <string name="preference_summary_connection_data_prefix">Define prefix for your custom scripts.</string>
 
     <string name="preference_name_background_transparency">Background transparency</string>
     <string name="preference_summary_background_transparency">Specify how transparent this widget should be.</string>
 
     <string name="preference_name_corner_radius">Corner radius</string>
-    <string name="preference_summary_corner_radius">Specify the corner roundness for widget\'s background.\nCorner radius is calculated relative to your system\'s default corner radius for widget background</string>
+    <string name="preference_summary_corner_radius">Specify the corner roundness for widget\'s background.\nCorner radius is calculated relative to your system\'s default corner radius for widget background.</string>
 
     <string name="preference_name_container_color">Use colorful background</string>
     <string name="preference_summary_container_color">Choose whether to use surface or container color for widget background.\nTransparency is applied independently.</string>
