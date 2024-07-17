@@ -17,12 +17,12 @@ Você também pode conectar-se instantaneamente ao seu PC usando o recurso de co
 
 ## Recursos
 
-<img src="./media/feature-qs-tile.png" alt="Bloco de configurações rápidas"/>
-<img src="./media/feature-widgets.png" alt="Widgets na tela inicial"/>
-<img src="./media/feature-customization.png" alt="Personalização de widgets"/>
-<img src="./media/feature-instant-connection.png" alt="Conexão instantânea"/>
-<img src="./media/feature-shizuku.png" alt="Funciona com Shizuku"/>
-<img src="./media/feature-one-ui.png" alt="Integração da OneUI"/>
+<img src="./media/feature-qs-tile.pt_br.png" alt="Bloco de configurações rápidas"/>
+<img src="./media/feature-widgets.pt_br.png" alt="Widgets na tela inicial"/>
+<img src="./media/feature-customization.pt_br.png" alt="Personalização de widgets"/>
+<img src="./media/feature-instant-connection.pt_br.png" alt="Conexão instantânea"/>
+<img src="./media/feature-shizuku.pt_br.png" alt="Funciona com Shizuku"/>
+<img src="./media/feature-one-ui.pt_br.png" alt="Integração da OneUI"/>
 
 ## Créditos
 
