@@ -1,0 +1,8 @@
+Esta versão traz vários recursos de qualidade de vida e algumas correções de bugs. Aqui está a lista:
+
+- Adicionada opção para ativar automaticamente a Depuração por Wi-Fi na inicialização
+- Adicionada opção para desativar as atualizações de widgets (caso você não tenha nenhum widget ou precise de uma melhor duração da bateria)
+- Adicionada opção para copiar dados de conexão sem sincronizá-los através do KDE Connect
+- Indique na tela de configurações que a integração do KDE Connect requer privilégios root
+- Use atividade translúcida para configuração de widget para mostrar os planos de fundos em segundo plano. WADBS não requer mais permissão de armazenamento!
+- Notificar o usuário sobre a falta de privilégios ao tentar configurar um widget

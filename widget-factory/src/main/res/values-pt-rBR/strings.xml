@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <string name="settings">Configurações</string>
+    <string name="header_widget_configuration">Configuração de widget</string>
+    <string name="preference_name_widget_updates">Atualizações de widgets</string>
+    <string name="preference_summary_widget_updates">Atualize os widgets periodicamente</string>
+    <string name="preference_name_update_interval">Intervalo de atualizações de widget</string>
+    <string name="preference_summary_update_interval">Especifique com que frequência os widgets devem ser atualizados</string>
+</resources>
