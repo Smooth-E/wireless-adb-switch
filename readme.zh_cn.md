@@ -1,4 +1,4 @@
-<img src="./media/banner.png" alt="无线调试开关小工具"/>
+<img src="./media/banner.png" alt="无线调试开关小部件"/>
 
 <p align="center">
     <a href="https://github.com/Smooth-E/wireless-adb-switch/releases/latest" target="_blank" rel="nofollow noopener">
@@ -13,14 +13,14 @@
 
 
 **WADBS**（**无线安卓调试桥接开关（Wireless Android Debugging Bridge Switch）** 的简称）是一款可以快速开关安卓无线调试功能的应用程序。
-它提供了几个小工具和一个快速设置磁贴来实现这一功能。 
+它提供了几个小部件和一个快速设置磁贴来实现这一功能。 
 您还可以使用 KDE Connect 的剪贴板共享功能（参见 [scripts](./scripts)）即时连接到电脑。
 
 ## 特性
 
 <img src="./media/feature-qs-tile.png" alt="快速设置磁贴"/>
-<img src="./media/feature-widgets.png" alt="主屏幕小工具"/>
-<img src="./media/feature-customization.png" alt="自定义小工具"/>
+<img src="./media/feature-widgets.png" alt="主屏幕小部件"/>
+<img src="./media/feature-customization.png" alt="自定义小部件"/>
 <img src="./media/feature-instant-connection.png" alt="即时连接"/>
 <img src="./media/feature-shizuku.png" alt="与 Shizuku 工作"/>
 <img src="./media/feature-one-ui.png" alt="OneUI 集成"/>
