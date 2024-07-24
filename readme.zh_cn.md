@@ -36,9 +36,9 @@
 
 ## 许可
 
-WADBS is a free software. It was made with the intention to make developers' lives easier.
-It is licensed under GNU General Public License version 3. 
-In short - you can redistribute and modify it, but should give a credit to the original author.
+WADBS 是一款自由软件。制作该软件的初衷是为了让开发者的工作更轻松。
+它采用 GNU 通用公共许可证第 3 版。 
+简而言之，您可以重新发布和修改它，但应注明原作者。
 
-WADBS is distributed "as is". 
-Developers of this app are not responsible for any kind of damage or harm made by the content of this repository or materials related to it directly or not.
+WADBS 按“原样”发布。 
+本应用的开发者不对本仓库的内容或与其直接或间接相关的材料造成的任何损害或伤害负责。
