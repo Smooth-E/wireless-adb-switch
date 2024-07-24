@@ -18,21 +18,21 @@
 
 ## 特性
 
-<img src="./media/feature-qs-tile.png" alt="快速设置磁贴"/>
-<img src="./media/feature-widgets.png" alt="主屏幕小部件"/>
-<img src="./media/feature-customization.png" alt="自定义小部件"/>
-<img src="./media/feature-instant-connection.png" alt="即时连接"/>
-<img src="./media/feature-shizuku.png" alt="与 Shizuku 工作"/>
-<img src="./media/feature-one-ui.png" alt="OneUI 集成"/>
+<img src="./media/feature-qs-tile.zh.png" alt="快速设置磁贴"/>
+<img src="./media/feature-widgets.zh.png" alt="主屏幕小部件"/>
+<img src="./media/feature-customization.zh.png" alt="自定义小部件"/>
+<img src="./media/feature-instant-connection.zh.png" alt="即时连接"/>
+<img src="./media/feature-shizuku.zh.png" alt="与 Shizuku 工作"/>
+<img src="./media/feature-one-ui.zh.png" alt="OneUI 集成"/>
 
 ## 荣誉
 
 [libsu](https://github.com/topjohnwu/libsu) - 是一个库，它能让要求根的操作更容易执行。
 <br>[Shizuku](https://shizuku.rikka.app/) - 是一个框架， WADBS 可以用来替代 root 访问。
 <br>[IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) - 我在设计此应用程序时使用的字体。
+<br> <!-- TODO: Please, mention the use of Roboto Mono for Chinese imagery here -->
 <br>[Leaves](https://unsplash.com/photos/wAU3MfsGPNw) - 一张由 [Aedrian](https://unsplash.com/@aedrian) 制作的令人惊叹的树叶照片，我用它作为我设计的背景。
 <br>[Waves](https://unsplash.com/photos/a-close-up-of-a-body-of-water-with-ripples-dujWQFlKE7c) - 一张由 [Michał Bińkiewicz](https://unsplash.com/@binkievitz) 制作的令人惊叹的波浪照片，我将其用作 OneUI 整合的宣传图片。
-
 
 ## 许可
 
