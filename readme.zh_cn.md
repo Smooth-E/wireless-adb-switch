@@ -30,7 +30,7 @@
 [libsu](https://github.com/topjohnwu/libsu) - 是一个库，它能让要求根的操作更容易执行。
 <br>[Shizuku](https://shizuku.rikka.app/) - 是一个框架， WADBS 可以用来替代 root 访问。
 <br>[IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) - 我在设计此应用程序时使用的字体。
-<br> <!-- TODO: Please, mention the use of Roboto Mono for Chinese imagery here -->
+<br> <!-- TODO: Please, mention the use of Harmony OS Sans for Chinese imagery here -->
 <br>[Leaves](https://unsplash.com/photos/wAU3MfsGPNw) - 一张由 [Aedrian](https://unsplash.com/@aedrian) 制作的令人惊叹的树叶照片，我用它作为我设计的背景。
 <br>[Waves](https://unsplash.com/photos/a-close-up-of-a-body-of-water-with-ripples-dujWQFlKE7c) - 一张由 [Michał Bińkiewicz](https://unsplash.com/@binkievitz) 制作的令人惊叹的波浪照片，我将其用作 OneUI 整合的宣传图片。
 
