@@ -29,6 +29,7 @@ Você também pode conectar-se instantaneamente ao seu PC usando o recurso de co
 [libsu](https://github.com/topjohnwu/libsu) - uma biblioteca que facilita a execução de operações que exigem root.
 <br>[Shizuku](https://shizuku.rikka.app/) - uma estrutura que o WADBS pode usar como alternativa ao acesso root.
 <br>[IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) - fonte usada em meus designs para este app.
+<br>[HarmonyOS Sans](https://developer.huawei.com/consumer/cn/design/resource-V1/) – fonte usada para imagens promocionais em Chinês Simplificado.
 <br>[Leaves](https://unsplash.com/photos/wAU3MfsGPNw) - uma foto incrível de folhas que usei como fundo para meus designs foi feita por [Aedrian](https://unsplash.com/@aedrian).
 <br>[Waves](https://unsplash.com/photos/a-close-up-of-a-body-of-water-with-ripples-dujWQFlKE7c) - uma foto incrível de ondas que usei para a imagem promocional da integração da OneUI foi feita por [Michał Bińkiewicz](https://unsplash.com/@binkievitz).
 

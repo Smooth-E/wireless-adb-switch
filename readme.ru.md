@@ -29,6 +29,7 @@
 [libsu](https://github.com/topjohnwu/libsu) - библиотека, позволяющая легко выполнять операции, требующие root-доступ.
 <br>[Shizuku](https://shizuku.rikka.app/) - фреймворк, который WADBS может использовать в качестве альтернативы root-доступу.
 <br>[IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) - шрифт, использованный в дизайнах для этого приложения.
+<br>[HarmonyOS Sans](https://developer.huawei.com/consumer/cn/design/resource-V1/) – шрифт, использованный в дизайнах для этого приложения с текстом на упрощенном китайском.
 <br>[Листва](https://unsplash.com/photos/wAU3MfsGPNw) - автор замечательного фото листвы, которое я использовал в своих дизайнах, - [Aedrian](https://unsplash.com/@aedrian).
 <br>[Волны](https://unsplash.com/photos/a-close-up-of-a-body-of-water-with-ripples-dujWQFlKE7c) - атор замечательного фото волн, которая я использовал для интеграции с OneUI - [Michał Bińkiewicz](https://unsplash.com/@binkievitz).
 
