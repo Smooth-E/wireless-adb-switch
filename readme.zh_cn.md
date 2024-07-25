@@ -17,12 +17,12 @@
 
 ## 特性
 
-<img src="./media/feature-qs-tile.zh.png" alt="快速设置磁贴"/>
-<img src="./media/feature-widgets.zh.png" alt="主屏幕小部件"/>
-<img src="./media/feature-customization.zh.png" alt="自定义小部件"/>
-<img src="./media/feature-instant-connection.zh.png" alt="即时连接"/>
-<img src="./media/feature-shizuku.zh.png" alt="与 root 或者 Shizuku 工作"/>
-<img src="./media/feature-one-ui.zh.png" alt="OneUI 集成"/>
+<img src="./media/feature-qs-tile.zh_cn.png" alt="快速设置磁贴"/>
+<img src="./media/feature-widgets.zh_cn.png" alt="主屏幕小部件"/>
+<img src="./media/feature-customization.zh_cn.png" alt="自定义小部件"/>
+<img src="./media/feature-instant-connection.zh_cn.png" alt="即时连接"/>
+<img src="./media/feature-shizuku.zh_cn.png" alt="与 root 或者 Shizuku 工作"/>
+<img src="./media/feature-one-ui.zh_cn.png" alt="OneUI 集成"/>
 
 ## 荣誉
 
