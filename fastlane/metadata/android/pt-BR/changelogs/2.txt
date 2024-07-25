@@ -1,0 +1,4 @@
+- Suporte para Shizuku como alternativa ao acesso root
+- Integração de configurações rápidas da OneUI
+- Notificação de privilégios ausentes
+- Configurações organizadas
