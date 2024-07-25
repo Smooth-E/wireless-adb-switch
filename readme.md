@@ -9,7 +9,7 @@
     </a>
 </p>
 
-> Read in other languages: [`🇷🇺`](./readme.ru.md) [`🇧🇷`](./readme.pt_br.md) [`Translate into your language!`](./translate.md)
+> Read in other languages: [`🇷🇺`](./readme.ru.md) [`🇧🇷`](./readme.pt_br.md) [`🇨🇳`](./readme.zh_cn.md) [`Translate into your language!`](./translate.md)
 
 **WADBS** (short or **Wireless Android Debugging Bridge Switch**) is an app that allows you to switch Android's Wireless Debugging feature on and off quickly.
 It provides several widgets and a quick settings tile to do this. 

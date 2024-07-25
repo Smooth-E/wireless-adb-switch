@@ -9,8 +9,7 @@
     </a>
 </p>
 
-> 以其他语言阅读：[`🇷🇺`](./readme.ru.md) [`🇧🇷`](./readme.pt_br.md) [`🇨🇳`](./readme.zh_cn.md) [`翻译成您的语言！`](./translate.md)
-
+> 以其他语言阅读：[`🇺🇸`](./readme.md) [`🇷🇺`](./readme.ru.md) [`🇧🇷`](./readme.pt_br.md) [`翻译成您的语言！`](./translate.md)
 
 **WADBS**（**无线安卓调试桥接开关（Wireless Android Debugging Bridge Switch）** 的简称）是一款可以快速开关安卓无线调试功能的应用程序。
 它提供了几个小部件和一个快速设置磁贴来实现这一功能。 

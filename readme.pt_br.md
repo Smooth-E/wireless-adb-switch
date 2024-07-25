@@ -9,7 +9,7 @@
     </a>
 </p>
 
-> Leia em outros idiomas: [`🇺🇸`](./readme.md) [`🇷🇺`](./readme.ru.md) [`Traduza para o seu idioma!`](./translate.md)
+> Leia em outros idiomas: [`🇺🇸`](./readme.md) [`🇷🇺`](./readme.ru.md) [`🇨🇳`](./readme.zh_cn.md) [`Traduza para o seu idioma!`](./translate.md)
 
 **WADBS** (abreviação de **Wireless Android Debugging Bridge Switch**) é um app que permite ativar e desativar o recurso Depuração por Wi-Fi do Android rapidamente.
 Ele fornece vários widgets e um bloco de configurações rápidas para fazer isso. 
