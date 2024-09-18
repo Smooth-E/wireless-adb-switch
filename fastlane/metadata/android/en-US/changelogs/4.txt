@@ -1,0 +1,5 @@
+This release adds more languages to WADBS and updates its internal components.
+
+- Add Simplified Chinese translations (partial) by @Jesse205
+- Add Portuguese Brazilian translations by @igormiguell
+- Update internal components
