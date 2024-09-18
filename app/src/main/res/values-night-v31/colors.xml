@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <color name="colorPrimary">@color/m3_sys_color_dynamic_dark_primary</color>
-    <color name="colorOnPrimary">@color/m3_sys_color_dynamic_dark_on_primary</color>
-    <color name="colorPrimaryInverse">@color/m3_sys_color_dynamic_dark_inverse_primary</color>
-    <color name="colorPrimaryContainer">@color/m3_sys_color_dynamic_dark_primary_container</color>
-    <color name="colorOnPrimaryContainer">@color/m3_sys_color_dynamic_dark_on_primary_container</color>
-    <color name="colorSecondary">@color/m3_sys_color_dynamic_dark_secondary</color>
-    <color name="colorOnSecondary">@color/m3_sys_color_dynamic_dark_on_secondary</color>
-    <color name="colorSecondaryContainer">@color/m3_sys_color_dynamic_dark_secondary_container</color>
-    <color name="colorOnSecondaryContainer">@color/m3_sys_color_dynamic_dark_on_secondary_container</color>
-    <color name="colorTertiary">@color/m3_sys_color_dynamic_dark_tertiary</color>
-    <color name="colorOnTertiary">@color/m3_sys_color_dynamic_dark_on_tertiary</color>
-    <color name="colorTertiaryContainer">@color/m3_sys_color_dynamic_dark_tertiary_container</color>
-    <color name="colorOnTertiaryContainer">@color/m3_sys_color_dynamic_dark_on_tertiary_container</color>
-    <color name="colorBackground">@color/m3_sys_color_dynamic_dark_background</color>
-    <color name="colorOnBackground">@color/m3_sys_color_dynamic_dark_on_background</color>
-    <color name="colorSurface">@color/m3_sys_color_dynamic_dark_surface</color>
-    <color name="colorOnSurface">@color/m3_sys_color_dynamic_dark_on_surface</color>
-    <color name="colorSurfaceVariant">@color/m3_sys_color_dynamic_dark_surface_variant</color>
-    <color name="colorOnSurfaceVariant">@color/m3_sys_color_dynamic_dark_on_surface_variant</color>
-    <color name="colorSurfaceInverse">@color/m3_sys_color_dynamic_dark_inverse_surface</color>
-    <color name="colorOnSurfaceInverse">@color/m3_sys_color_dynamic_dark_inverse_on_surface</color>
-    <color name="colorOutline">@color/m3_sys_color_dynamic_dark_outline</color>
+    <color name="md_theme_primary">@color/m3_sys_color_dynamic_dark_primary</color>
+    <color name="md_theme_onPrimary">@color/m3_sys_color_dynamic_dark_on_primary</color>
+    <color name="md_theme_primaryContainer">@color/m3_sys_color_dynamic_dark_primary_container</color>
+    <color name="md_theme_onPrimaryContainer">@color/m3_sys_color_dynamic_dark_on_primary_container</color>
+    <color name="md_theme_secondary">@color/m3_sys_color_dynamic_dark_secondary</color>
+    <color name="md_theme_onSecondary">@color/m3_sys_color_dynamic_dark_on_secondary</color>
+    <color name="md_theme_secondaryContainer">@color/m3_sys_color_dynamic_dark_secondary_container</color>
+    <color name="md_theme_onSecondaryContainer">@color/m3_sys_color_dynamic_dark_on_secondary_container</color>
+    <color name="md_theme_tertiary">@color/m3_sys_color_dynamic_dark_tertiary</color>
+    <color name="md_theme_onTertiary">@color/m3_sys_color_dynamic_dark_on_tertiary</color>
+    <color name="md_theme_tertiaryContainer">@color/m3_sys_color_dynamic_dark_tertiary_container</color>
+    <color name="md_theme_onTertiaryContainer">@color/m3_sys_color_dynamic_dark_on_tertiary_container</color>
+    <color name="md_theme_error">@color/m3_sys_color_dynamic_dark_error</color>
+    <color name="md_theme_onError">@color/m3_sys_color_dynamic_dark_on_error</color>
+    <color name="md_theme_errorContainer">@color/m3_sys_color_dynamic_dark_error_container</color>
+    <color name="md_theme_onErrorContainer">@color/m3_sys_color_dynamic_dark_on_error_container</color>
+    <color name="md_theme_background">@color/m3_sys_color_dynamic_dark_background</color>
+    <color name="md_theme_onBackground">@color/m3_sys_color_dynamic_dark_on_background</color>
+    <color name="md_theme_surface">@color/m3_sys_color_dynamic_dark_surface</color>
+    <color name="md_theme_onSurface">@color/m3_sys_color_dynamic_dark_on_surface</color>
+    <color name="md_theme_surfaceVariant">@color/m3_sys_color_dynamic_dark_surface_variant</color>
+    <color name="md_theme_onSurfaceVariant">@color/m3_sys_color_dynamic_dark_on_surface_variant</color>
+    <color name="md_theme_outline">@color/m3_sys_color_dynamic_dark_outline</color>
+    <color name="md_theme_outlineVariant">@color/m3_sys_color_dynamic_dark_outline_variant</color>
+    <color name="md_theme_surfaceDim">@color/m3_sys_color_dynamic_dark_surface_dim</color>
+    <color name="md_theme_surfaceBright">@color/m3_sys_color_dynamic_dark_surface_bright</color>
+    <color name="md_theme_surfaceContainerLowest">@color/m3_sys_color_dynamic_dark_surface_container_lowest</color>
+    <color name="md_theme_surfaceContainerLow">@color/m3_sys_color_dynamic_dark_surface_container_low</color>
+    <color name="md_theme_surfaceContainer">@color/m3_sys_color_dynamic_dark_surface_container</color>
+    <color name="md_theme_surfaceContainerHigh">@color/m3_sys_color_dynamic_dark_surface_container_high</color>
+    <color name="md_theme_surfaceContainerHighest">@color/m3_sys_color_dynamic_dark_surface_container_highest</color>
+    <color name="md_theme_inverseSurface">@color/m3_sys_color_dynamic_dark_inverse_surface</color>
+    <color name="md_theme_inverseOnSurface">@color/m3_sys_color_dynamic_dark_inverse_on_surface</color>
+    <color name="md_theme_inversePrimary">@color/m3_sys_color_dynamic_dark_inverse_primary</color>
 
     <color name="colorGoogleWidgetBackground">@color/m3_sys_color_dynamic_dark_on_secondary</color>
-
 </resources>

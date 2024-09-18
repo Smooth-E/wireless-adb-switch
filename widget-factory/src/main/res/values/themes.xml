@@ -1,7 +1,8 @@
 
 <resources>
 
-    <style name="Theme.WidgetFactory.Base" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.WidgetFactory.Base"
+        parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="preferenceCategoryStyle">@style/Theme.WidgetFactory.PreferenceCategory</item>
         <item name="switchPreferenceCompatStyle">@style/Theme.WidgetFactory.SwitchPreferenceCompat</item>
