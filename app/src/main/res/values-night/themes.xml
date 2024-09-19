@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.WirelessDebuggingSwitch.OneUiIntegration"
-        parent="Theme.WirelessDebuggingSwitch">
+    <style name="Theme.WirelessDebuggingSwitch.OneUiIntegration" parent="Theme.WirelessDebuggingSwitch">
         <item name="colorPrimary">@color/colorOneUiBlueDark</item>
         <item name="android:textColorSecondary">@color/colorOneUiGreyDark</item>
     </style>
