@@ -135,5 +135,7 @@
     <string name="qs_tile_subtitle_enable_wifi_first">Enable Wi-Fi first</string>
     <string name="qs_tile_subtitle_no_connection_data">No connection data</string>
     <string name="qs_tile_subtitle_missing_privileges">Refer to the app for instructions</string>
+    <string name="preference_name_secure_qs_tile">Secure quick settings tile</string>
+    <string name="preference_summary_secure_qs_tile">Require unlocking the device before wireless debugging can be toggled.</string>
 
 </resources>

@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.RemoteViews
 import androidx.core.app.PendingIntentCompat
 import androidx.core.content.ContextCompat
+import androidx.preference.PreferenceManager
 import com.smoothie.wirelessDebuggingSwitch.WifiReceiver.Companion.OnWifiStateChangeListener
 
 class QSTileService : TileService() {
@@ -44,7 +45,17 @@ class QSTileService : TileService() {
     override fun onClick() {
         super.onClick()
         Log.d(TAG, "Tile onClick() called!")
-        switchState()
+
+        val manager = PreferenceManager.getDefaultSharedPreferences(this)
+        val isSecure = manager.getBoolean(getString(R.string.key_secure_qs_tile), true)
+        if (isSecure) {
+            unlockAndRun {
+                switchState()
+            }
+        }
+        else {
+            switchState()
+        }
     }
 
     override fun onDestroy() {
@@ -166,8 +177,22 @@ class QSTileService : TileService() {
         WirelessDebugging.getEnabled(this)
 
     @SuppressLint("WrongConstant")
-    fun semGetDetailView(): RemoteViews {
+    fun semGetDetailView(): RemoteViews? {
         Log.d(TAG, "semGetDetailView()")
+
+        // If secure and locked, open the activity
+        val manager = PreferenceManager.getDefaultSharedPreferences(this)
+        val isSecure = manager.getBoolean(getString(R.string.key_secure_qs_tile), true)
+        if (isSecure) {
+            unlockAndRun {
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+            }
+
+            // TODO: Returning null presumably won't open the extended view, but testing is required
+            return null
+        }
+
         val views: RemoteViews
         val hasSufficientPrivileges = hasSufficientPrivileges()
         val wifiEnabled = isWifiEnabled()

@@ -15,6 +15,7 @@
     <string translatable="false" name="key_use_colorful_background">use_colorful_background</string>
     <string translatable="false" name="key_corner_roundness">corner_roundness</string>
     <string translatable="false" name="key_use_light_text">use_light_text</string>
+    <string translatable="false" name="key_secure_qs_tile">secure_qs_tile</string>
 
     <string translatable="false" name="default_connection_data_prefix">connect-wireless-debugging://</string>
 </resources>

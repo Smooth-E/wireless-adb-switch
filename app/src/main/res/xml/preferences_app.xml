@@ -81,6 +81,13 @@
                 android:targetClass="com.smoothie.wirelessDebuggingSwitch.preference.ActivityPreferenceKdeConnect" />
         </com.android.settingslib.PrimarySwitchPreference>
 
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            android:key="@string/key_secure_qs_tile"
+            android:title="@string/preference_name_secure_qs_tile"
+            android:summary="@string/preference_summary_secure_qs_tile"
+            android:icon="@drawable/baseline_lock_outline_24"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/preference_category_other">
