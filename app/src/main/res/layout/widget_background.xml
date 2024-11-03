@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/Theme.WirelessDebuggingSwitch"
-    tools:background="#000">
+    tools:background="#000"
+    tools:ignore="RtlHardcoded">
 
     <!-- Corner pieces -->
 
@@ -17,7 +18,7 @@
         android:src="@drawable/shape_widget_corner"
         android:layout_alignParentTop="true"
         android:importantForAccessibility="no"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentLeft="true"/>
 
     <ImageView
         android:id="@+id/corner_top_right"
@@ -25,7 +26,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/shape_widget_corner"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:importantForAccessibility="no"
         android:rotation="90"/>
 
@@ -35,7 +36,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/shape_widget_corner"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:importantForAccessibility="no"
         android:rotation="-90"/>
 
@@ -45,7 +46,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/shape_widget_corner"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:importantForAccessibility="no"
         android:rotation="180"/>
 
@@ -56,20 +57,20 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/shape_widget_center"
-        android:layout_toEndOf="@id/corner_top_left"
-        android:layout_toStartOf="@id/corner_top_right"
+        android:layout_toRightOf="@id/corner_top_left"
+        android:layout_toLeftOf="@id/corner_top_right"
         android:layout_alignBottom="@id/corner_top_right"
         android:layout_alignParentTop="true"
         android:importantForAccessibility="no"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop" />
 
     <ImageView
         android:id="@+id/side_bottom"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/shape_widget_center"
-        android:layout_toEndOf="@id/corner_bottom_left"
-        android:layout_toStartOf="@id/corner_bottom_right"
+        android:layout_toRightOf="@id/corner_bottom_left"
+        android:layout_toLeftOf="@id/corner_bottom_right"
         android:layout_alignTop="@id/corner_bottom_right"
         android:layout_alignParentBottom="true"
         android:importantForAccessibility="no"
@@ -82,8 +83,8 @@
         android:src="@drawable/shape_widget_center"
         android:layout_below="@id/corner_top_left"
         android:layout_above="@id/corner_bottom_left"
-        android:layout_alignEnd="@id/corner_bottom_left"
-        android:layout_alignParentStart="true"
+        android:layout_alignRight="@id/corner_bottom_left"
+        android:layout_alignParentLeft="true"
         android:importantForAccessibility="no"
         android:scaleType="centerCrop"/>
 
@@ -93,8 +94,8 @@
         android:layout_height="0dp"
         android:layout_below="@+id/corner_top_right"
         android:layout_above="@id/corner_bottom_right"
-        android:layout_alignStart="@id/corner_bottom_right"
-        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@id/corner_bottom_right"
+        android:layout_alignParentRight="true"
         android:src="@drawable/shape_widget_center"
         android:importantForAccessibility="no"
         android:scaleType="centerCrop"/>
@@ -108,8 +109,8 @@
         android:src="@drawable/shape_widget_center"
         android:layout_above="@id/side_bottom"
         android:layout_below="@id/side_top"
-        android:layout_toEndOf="@id/side_left"
-        android:layout_toStartOf="@id/side_right"
+        android:layout_toRightOf="@id/side_left"
+        android:layout_toLeftOf="@id/side_right"
         android:importantForAccessibility="no"
         android:scaleType="centerCrop"/>
 
