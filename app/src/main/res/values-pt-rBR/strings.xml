@@ -75,6 +75,8 @@
     <string name="preference_explanation_prefix_connection_data">Se esta opção estiver ativada, os dados de conexão serão prefixados com uma string definida abaixo. Isso permite que os scripts do usuário os separem de outros dados da área de transferência e se conectem automaticamente ao seu dispositivo.</string>
     <string name="preference_name_connection_data_prefix">Prefixo</string>
     <string name="preference_summary_connection_data_prefix">Defina o prefixo para seus scripts personalizados.</string>
+    <string name="preference_name_secure_qs_tile">Bloco de configurações rápidas seguro</string>
+    <string name="preference_summary_secure_qs_tile">Exija o desbloqueio do dispositivo antes que a Depuração por Wi-Fi possa ser alternada.</string>
     <string name="preference_name_background_transparency">Transparência de fundo</string>
     <string name="preference_summary_background_transparency">Especifique o quão transparente este widget deve ser.</string>
     <string name="preference_name_corner_radius">Raio de canto</string>
