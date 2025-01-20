@@ -8,7 +8,33 @@
 
 from threading import Thread
 import pyperclip
+import time
 import os
+
+
+def waitForNewPaste(timeout=None):
+    """
+    This function is taken from pyperclip 1.8.2 as it was removed in later releases.
+    
+    This function call blocks until a new text string exists on the
+    clipboard that is different from the text that was there when the function
+    was first called. It returns this text.
+
+    This function raises PyperclipTimeoutException if timeout was set to
+    a number of seconds that has elapsed without non-empty text being put on
+    the clipboard.
+    """
+    
+    startTime = time.time()
+    originalText = pyperclip.paste()
+    while True:
+        currentText = pyperclip.paste()
+        if currentText != originalText:
+            return currentText
+        time.sleep(0.01)
+
+        if timeout is not None and time.time() > startTime + timeout:
+            raise pyperclip.PyperclipTimeoutException('waitForNewPaste() timed out after ' + str(timeout) + ' seconds.')
 
 
 def main():
@@ -19,7 +45,7 @@ def main():
     previous_clipboard = pyperclip.paste()
 
     while True:
-        new_clipboard = pyperclip.waitForNewPaste()
+        new_clipboard = waitForNewPaste()
         print('New item copied: ' + new_clipboard)
         
         if not new_clipboard.startswith(connect_action_prefix):
