@@ -1,0 +1,6 @@
+Esta versão adiciona mais idiomas ao WADBS e atualiza seus componentes internos.
+
+- Adicionado tradução em Chinês Simplificado (parcial) por @Jesse205
+- Adicionado tradução em Português Brasileiro por @igormiguell
+- Biblioteca Material Components atualizada
+- Componentes internos atualizado
