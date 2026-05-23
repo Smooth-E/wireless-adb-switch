@@ -13,12 +13,17 @@ android {
     }
 
     defaultConfig {
-        targetSdk 34
         minSdk 30
     }
 
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    lint {
+        targetSdk 34
+    }
+    testOptions {
+        targetSdk 34
     }
 }
 
