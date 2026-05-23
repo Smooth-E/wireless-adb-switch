@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'com.smoothie.wirelessDebuggingSwitch'
-    compileSdk 34
+    compileSdk = 34
 
     defaultConfig {
         applicationId "com.smoothie.wirelessDebuggingSwitch"
@@ -28,7 +28,6 @@ android {
                 getDefaultProguardFile('proguard-android-optimize.txt')
                 'proguard-rules.pro'
             }
-            // signingConfig signingConfigs.debug
         }
     }
 
