@@ -20,4 +20,3 @@ rootProject.name = "wireless-adb-switch"
 include ':app'
 include ':widget-factory'
 include ':hidden-api-stub'
-include ':aosp'
