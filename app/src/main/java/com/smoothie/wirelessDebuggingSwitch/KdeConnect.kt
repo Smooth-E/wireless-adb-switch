@@ -8,7 +8,7 @@ object KdeConnect {
 
     private const val PACKAGE_NAME = "org.kde.kdeconnect_tp"
     private const val CLIPBOARD_ACTIVITY_NAME =
-        "org.kde.kdeconnect.Plugins.ClibpoardPlugin.ClipboardFloatingActivity"
+        "org.kde.kdeconnect.plugins.clipboard.ClipboardFloatingActivity"
 
     fun isInstalled(context: Context): Boolean {
         val kdeConnectInstalled = isPackageInstalled(context, PACKAGE_NAME)
@@ -22,7 +22,7 @@ object KdeConnect {
     /**
      * Synchronizes the clipboard data using KDE Connect.
      * Requires root access. Starts
-     * [the following activity](https://invent.kde.org/network/kdeconnect-android/-/blob/aca039433c455b44b621dda077b940f26a732f25/src/org/kde/kdeconnect/Plugins/ClibpoardPlugin/ClipboardFloatingActivity.java)
+     * [the following activity](https://invent.kde.org/network/kdeconnect-android/-/blob/eb529d1f5556866d4e33392d7ee9391f3e68abe0/src/main/java/org/kde/kdeconnect/plugins/clipboard/ClipboardFloatingActivity.java)
      * of KDE Connect.
      */
     fun sendClipboard(): Shell.Result {
@@ -33,5 +33,4 @@ object KdeConnect {
 
         return Shell.cmd(command).exec()
     }
-
 }
