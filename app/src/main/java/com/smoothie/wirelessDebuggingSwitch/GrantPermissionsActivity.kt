@@ -15,6 +15,7 @@ import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
+import androidx.activity.OnBackPressedCallback
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
@@ -28,33 +29,37 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
     GrantPermissionsFragment(),
     false
 ) {
-
     companion object {
-
         fun shouldBeStarted(context: Context): Boolean {
             return !isNotificationPermissionGranted(context) || !hasSufficientPrivileges()
         }
 
         fun startIfNeeded(context: Context) {
-            if (shouldBeStarted(context))
-                context.startActivity(Intent(context, GrantPermissionsActivity::class.java))
+            if (shouldBeStarted(context)) {
+                val intent = Intent(context, GrantPermissionsActivity::class.java)
+                context.startActivity(intent)
+            }
         }
-
     }
 
-    @SuppressLint("MissingSuperCall")
-    override fun onBackPressed() {
-        val view = findViewById<CoordinatorLayout>(R.id.root_view)
-        val stringId = R.string.message_grant_permission_before_leaving
-        val duration = Snackbar.LENGTH_LONG
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val view = findViewById<CoordinatorLayout>(R.id.root_view)
+                val stringId = R.string.message_grant_permission_before_leaving
+                val duration = Snackbar.LENGTH_LONG
 
-        Snackbar.make(view, stringId, duration)
-            .setAction(R.string.label_exit) { _ -> AutoClosingActivity.start(this) }
-            .show()
+                Snackbar.make(view, stringId, duration)
+                    .setAction(R.string.label_exit) { _ ->
+                        AutoClosingActivity.start(this@GrantPermissionsActivity)
+                    }
+                    .show()
+            }
+        })
     }
 
     class GrantPermissionsFragment : Fragment(R.layout.fragment_permissions) {
-
         companion object {
             private const val TAG = "GrantPermissionsFragment"
         }
@@ -77,7 +82,7 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
             if (currentApi < Build.VERSION_CODES.TIRAMISU) {
                 val message =
                     "requestNotificationsPermission OnClickListener called on API $currentApi, " +
-                    "required API is Tiramisu (33)"
+                            "required API is Tiramisu (33)"
                 Log.e(TAG, message)
                 return@OnClickListener
             }
@@ -89,8 +94,7 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
                 val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
                     .putExtra(Settings.EXTRA_APP_PACKAGE, requireActivity().packageName)
                 startActivity(intent)
-            }
-            else {
+            } else {
                 requestPermissions(arrayOf(permission), requestCode)
             }
         }
@@ -181,20 +185,17 @@ class GrantPermissionsActivity : CollapsingToolbarActivity(
                 shizukuButton.text = getString(R.string.label_not_needed)
                 updateContinueButton()
                 return
-            }
-            else if (ShizukuUtilities.hasShizukuPermission()) {
+            } else if (ShizukuUtilities.hasShizukuPermission()) {
                 rootAccessButton.isEnabled = true
                 rootAccessButton.text = getString(R.string.label_grant_permission)
                 shizukuButton.isEnabled = false
                 shizukuButton.text = getString(R.string.label_granted)
-            }
-            else {
+            } else {
                 shizukuButton.isEnabled = true
                 if (ShizukuUtilities.isShizukuAvailable()) {
                     shizukuButton.text = getString(R.string.label_grant_permission)
                     shizukuButton.setOnClickListener(requestShizukuPermission)
-                }
-                else {
+                } else {
                     shizukuButton.text = getString(R.string.label_setup_shizuku)
                     shizukuButton.setOnClickListener(proceedToShizukuWebsite)
                 }
