@@ -4,11 +4,11 @@ plugins {
 
 android {
     namespace 'com.smoothie.wirelessDebuggingSwitch'
-    compileSdk = 34
+    compileSdk = 37
 
     defaultConfig {
         applicationId "com.smoothie.wirelessDebuggingSwitch"
-        targetSdk 34
+        targetSdk 37
         minSdk 30
         versionCode 4
         versionName "1.3"

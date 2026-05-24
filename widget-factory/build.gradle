@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'com.smoothie.widgetFactory'
-    compileSdk = 34
+    compileSdk = 37
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -16,10 +16,10 @@ android {
     }
 
     lint {
-        targetSdk 34
+        targetSdk 37
     }
     testOptions {
-        targetSdk 34
+        targetSdk 37
     }
 }
 

@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace "android"
-    compileSdk = 34
+    compileSdk = 37
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -15,10 +15,10 @@ android {
         minSdk 30
     }
     lint {
-        targetSdk 34
+        targetSdk 37
     }
     testOptions {
-        targetSdk 34
+        targetSdk 37
     }
 
 }
