@@ -28,11 +28,13 @@
 -->
 
 | Original text        | Translation |
-| -------------------- | ----------- |
+|----------------------|-------------|
 | Quick Settings Tile  |             |
 | Home Screen Widgets  |             |
 | Widget Customization |             |
 | Instant Connection   |             |
+| Root or Shizuku      |             |
+| OneUI Integration    |             |
 
 # Rules and agreements
 
@@ -43,5 +45,5 @@
 <!-- For translators only -->
 
 - [ ] I have read [translate.md](translate.md) and this pull request complies with it
-- [ ] This pull request does not translate [license.md](license.md) and [translate.md](translate.md)
-- [ ] My translations are of good quality and does not contain inappropriate content
+- [ ] This pull request does not translate [license.md](license) and [translate.md](translate.md)
+- [ ] My translations are of good quality and do not contain inappropriate content
