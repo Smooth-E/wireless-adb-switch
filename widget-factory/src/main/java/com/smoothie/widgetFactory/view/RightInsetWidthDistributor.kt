@@ -20,5 +20,4 @@ class RightInsetWidthDistributor : InsetSizeDistributor {
             this.width = insets.right
         }
     }
-
 }

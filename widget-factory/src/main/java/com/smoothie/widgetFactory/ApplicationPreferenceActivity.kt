@@ -5,7 +5,7 @@ import com.smoothie.widgetFactory.preference.PreferenceActivity
 
 /**
  * /this derive]atu=ive of [PreferenceActivity] will hide the navigation up button from the toolbar
- * if the [EXTRA_KEEP_NAVIGATION_UP] is not found inside of an intent.
+ * if the [EXTRA_KEEP_NAVIGATION_UP] is not found inside an intent.
  */
 open class ApplicationPreferenceActivity(
     preferenceResourceId: Int = R.xml.preferences_app,
@@ -24,5 +24,4 @@ open class ApplicationPreferenceActivity(
             toolbar.navigationIcon = null
         }
     }
-
 }

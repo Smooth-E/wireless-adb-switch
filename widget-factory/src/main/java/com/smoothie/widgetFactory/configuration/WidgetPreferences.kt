@@ -6,5 +6,4 @@ object WidgetPreferences {
 
     fun getWidgetSharedPreferencesName(widgetId: Int): String =
         "$WIDGET_SHARED_PREFERENCES_NAME_PREFIX$widgetId"
-
 }

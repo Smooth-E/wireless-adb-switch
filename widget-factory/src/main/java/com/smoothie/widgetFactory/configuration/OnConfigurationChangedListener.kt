@@ -23,7 +23,6 @@ class OnConfigurationChangedListener(
             updatePreview(sharedPreferences, previewView)
             previewView.viewTreeObserver.removeOnGlobalLayoutListener(this)
         }
-
     }
 
     private fun updatePreview(widgetSharedPreferences: SharedPreferences, previewView: ViewGroup) {
@@ -54,7 +53,8 @@ class OnConfigurationChangedListener(
             previewView.viewTreeObserver
                 .addOnGlobalLayoutListener(GlobalLayoutListener(sharedPreferences))
         }
-        else
+        else {
             updatePreview(sharedPreferences, previewView)
+        }
     }
 }

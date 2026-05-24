@@ -20,5 +20,4 @@ class TopInsetHeightDistributor : InsetSizeDistributor {
             this.height = insets.top
         }
     }
-
 }

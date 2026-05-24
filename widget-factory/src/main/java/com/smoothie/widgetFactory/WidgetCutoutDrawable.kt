@@ -7,7 +7,6 @@ import android.graphics.Path
 import android.graphics.PixelFormat
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
-import android.util.Log
 import androidx.annotation.ColorInt
 
 class WidgetCutoutDrawable(
@@ -15,7 +14,6 @@ class WidgetCutoutDrawable(
     private val padding: Float,
     @ColorInt private val color: Int
 ) : Drawable() {
-
     override fun draw(canvas: Canvas) {
         val path = Path()
         val right = bounds.width() - padding
@@ -25,20 +23,18 @@ class WidgetCutoutDrawable(
         canvas.clipOutPath(path)
 
         val paint = Paint()
-        Log.d("DrawableThing", color.toString())
         paint.color = color
         canvas.drawRect(Rect(0, 0, bounds.width(), bounds.height()), paint)
     }
 
     override fun setAlpha(alpha: Int) {
-        TODO("Not yet implemented")
+        // Intentional no-op
     }
 
     override fun setColorFilter(colorFilter: ColorFilter?) {
-        TODO("Not yet implemented")
+        // Intentional no-op
     }
 
     override fun getOpacity(): Int =
         PixelFormat.OPAQUE
-
 }

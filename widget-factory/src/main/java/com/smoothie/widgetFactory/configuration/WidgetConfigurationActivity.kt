@@ -117,5 +117,4 @@ abstract class WidgetConfigurationActivity(
         height: Int,
         widgetPreferences: SharedPreferences
     ) : View
-
 }

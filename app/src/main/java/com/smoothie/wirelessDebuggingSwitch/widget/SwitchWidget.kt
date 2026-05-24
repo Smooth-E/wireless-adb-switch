@@ -6,7 +6,7 @@ import android.util.Log
 import com.smoothie.widgetFactory.ConfigurableWidget
 import com.smoothie.wirelessDebuggingSwitch.WirelessDebugging
 
-abstract class SwitchWidget(private val className: String) : ConfigurableWidget(className) {
+abstract class SwitchWidget(private val className: String) : ConfigurableWidget() {
 
     enum class SwitchState {
         Disabled,

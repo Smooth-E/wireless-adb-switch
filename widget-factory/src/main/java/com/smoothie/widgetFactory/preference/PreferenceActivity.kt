@@ -19,5 +19,4 @@ open class PreferenceActivity(
 
     @CallSuper
     open fun onPreferenceFragmentViewCreated(view: View, savedInstanceState: Bundle?) { }
-
 }

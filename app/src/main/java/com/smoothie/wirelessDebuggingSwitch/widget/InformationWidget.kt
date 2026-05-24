@@ -17,7 +17,7 @@ import com.smoothie.wirelessDebuggingSwitch.WirelessDebugging
 import com.smoothie.wirelessDebuggingSwitch.getLightOrDarkTextColor
 import com.smoothie.wirelessDebuggingSwitch.hasSufficientPrivileges
 
-class InformationWidget : ConfigurableWidget(InformationWidget::class.java.name) {
+class InformationWidget : ConfigurableWidget() {
 
     companion object {
         private const val TAG = "InformationWidget"

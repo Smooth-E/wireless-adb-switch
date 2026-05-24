@@ -12,8 +12,7 @@ import android.util.Log
 import android.widget.RemoteViews
 import com.smoothie.widgetFactory.configuration.WidgetPreferences
 
-abstract class ConfigurableWidget(private val className: String) : AppWidgetProvider() {
-
+abstract class ConfigurableWidget : AppWidgetProvider() {
     companion object {
 
         private const val TAG = "ConfigurableWidget"
@@ -39,7 +38,6 @@ abstract class ConfigurableWidget(private val className: String) : AppWidgetProv
                 context.sendBroadcast(intent)
             }
         }
-
     }
 
     override fun onAppWidgetOptionsChanged(
@@ -101,5 +99,4 @@ abstract class ConfigurableWidget(private val className: String) : AppWidgetProv
             manager.updateAppWidget(id, generateRemoteViews(context, id, preferences))
         }
     }
-
 }

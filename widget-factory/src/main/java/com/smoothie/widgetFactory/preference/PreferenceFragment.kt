@@ -20,5 +20,4 @@ open class PreferenceFragment : PreferenceFragmentCompat() {
         (requireActivity() as PreferenceActivity)
             .onPreferenceFragmentViewCreated(view, savedInstanceState)
     }
-
 }

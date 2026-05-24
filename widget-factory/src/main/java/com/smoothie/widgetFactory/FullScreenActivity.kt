@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 
 open class FullScreenActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,5 +35,4 @@ open class FullScreenActivity : AppCompatActivity() {
         window.navigationBarDividerColor = outlineColor
         window.navigationBarColor = getColor(R.color.colorSurface)
     }
-
 }

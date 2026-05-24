@@ -20,5 +20,4 @@ class BottomInsetHeightDistributor : InsetSizeDistributor {
             this.height = insets.bottom
         }
     }
-
 }

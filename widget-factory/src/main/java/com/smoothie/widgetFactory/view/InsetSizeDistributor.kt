@@ -35,5 +35,4 @@ abstract class InsetSizeDistributor : FrameLayout {
     }
 
     protected abstract fun applyInsets(view: View, insets: Insets)
-
 }
