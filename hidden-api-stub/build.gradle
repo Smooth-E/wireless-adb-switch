@@ -14,16 +14,4 @@ android {
     defaultConfig {
         minSdk 30
     }
-    lint {
-        targetSdk 37
-    }
-    testOptions {
-        targetSdk 37
-    }
-
-}
-
-java {
-    sourceCompatibility JavaVersion.VERSION_1_7
-    targetCompatibility JavaVersion.VERSION_1_7
 }

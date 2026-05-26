@@ -14,13 +14,6 @@ android {
     defaultConfig {
         minSdk 30
     }
-
-    lint {
-        targetSdk 37
-    }
-    testOptions {
-        targetSdk 37
-    }
 }
 
 dependencies {
