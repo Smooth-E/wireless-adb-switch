@@ -1,0 +1,10 @@
+This long-awaited release of WADBS brings new features, translations and internal updates.
+
+- (#29) Fix widget rounding being broken when using an RTL system language
+- (#32) Add an option to secure the quick settings tile
+- (#39) KDE Connect integration python script is fixed
+- (#63) Fix KDE Connect clipboard not being sent
+- Update Portuguese Brazilian translations
+- Add Japanese translations
+- Implement "predictive back" support
+- Update dependencies and target SDK 37
